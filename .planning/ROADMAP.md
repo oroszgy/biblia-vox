@@ -76,7 +76,12 @@ Plans:
   3. User can run `task audio:convert --book GEN --chapter 1` and see the MP3 converted to WAV 16kHz mono with correct format verified
   4. User can run `bibliavox audio info --book GEN --chapter 1` and see duration, bitrate, sample rate metadata
   5. User can seek to a specific timestamp in the decoded WAV file and get accurate audio data (no VBR drift)
-**Plans**: TBD
+**Plans**: 3 plans
+
+Plans:
+- [ ] 03-01-PLAN.md — Playlist discovery + resilient MP3 download (single + batch, retry/resume, mismatch diagnostics)
+- [ ] 03-02-PLAN.md — MP3→WAV conversion + ffprobe metadata CLI (strict 16k mono PCM invariants)
+- [ ] 03-03-PLAN.md — Seek index + prepare/seek workflows (sample-accurate WAV timestamp access)
 
 ### Phase 4: Transcription-Based Alignment
 **Goal**: Verses can be located in audio via faster-whisper transcription with Hungarian LoRA adapter, followed by fuzzy text matching against known verse text. Docker infrastructure for GPU models is set up as part of this phase.
