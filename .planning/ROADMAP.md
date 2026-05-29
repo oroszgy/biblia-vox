@@ -35,15 +35,19 @@ Plans:
 - [x] 01-02-PLAN.md — CLI scaffolding & Taskfile (reference subcommands, dev tasks)
 
 ### Phase 2: Text Acquisition & Validation
-**Goal**: Verified Bible text is available from two independent sources (API + HTML), normalized, and cross-validated for completeness
+**Goal**: Verified Bible text is available from a structured JSON source, normalized, and validated against versification schema
 **Depends on**: Phase 1
-**Requirements**: TEXT-01, TEXT-02, TEXT-03, TEXT-05
+**Requirements**: TEXT-01, TEXT-05
 **Success Criteria** (what must be TRUE):
-  1. User can run `bibliavox text fetch --book GEN --chapter 1` and see structured verse output from the szentiras.eu API
-  2. User can run `bibliavox text parse-html --book GEN --chapter 1` and see matching verse text extracted from mek.oszk.hu
-  3. User can run `task text:validate --book GEN --chapter 1` and receive a discrepancy report showing location and severity of any differences between sources
-  4. User can run `bibliavox text normalize` on any Hungarian Bible verse text and get consistent diacritics (NFC), stripped abbreviations, and standardized verse reference formats
-**Plans**: TBD
+  1. User can run `bibliavox text fetch --book GEN --chapter 1` and see structured verse output from the SZIT JSON source
+  2. User can run `bibliavox text normalize` on any Hungarian Bible verse text and get consistent diacritics (NFC), standardized whitespace, and normalized line endings
+  3. User can run `task text:validate --book GEN --chapter 1` and receive a JSON discrepancy report showing location and severity of verse count mismatches against the versification schema
+  4. User can run `bibliavox text info --book GEN` and see book metadata including chapter/verse counts
+**Plans**: 2 plans
+
+Plans:
+- [ ] 02-01-PLAN.md — Text source acquisition & book mapping (SZIT JSON download, English→USX mapping for 73 books)
+- [ ] 02-02-PLAN.md — Normalization pipeline & validation (NFC normalization, verse count validation, JSON reports)
 
 ### Phase 3: Audio Pipeline
 **Goal**: Chapter audio is downloaded, decoded to WAV 16kHz mono (eliminating VBR timestamp inaccuracy), and indexed for precise timestamp access
