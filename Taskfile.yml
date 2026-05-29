@@ -90,6 +90,14 @@ tasks:
       - test -f data/processed/text/szit.jsonl
     deps: [text:fetch]
 
+  text:fix-verses:
+    desc: Fix embedded verse markers in JSONL
+    cmds:
+      - uv run bibliavox text fix-verses
+    status:
+      - test -f data/processed/text/szit-fixed.jsonl
+    deps: [text:convert-jsonl]
+
   sync:
     desc: Install/sync dependencies
     cmds:

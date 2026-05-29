@@ -6,6 +6,7 @@ Commands:
     validate      — Validate verse counts against versification schema
     normalize     — Normalize Bible text (NFC, whitespace, line endings)
     convert-jsonl — Convert SZIT JSON to JSONL format with USX codes
+    fix-verses    — Fix embedded verse markers in JSONL
 """
 
 from __future__ import annotations
@@ -18,7 +19,7 @@ from rich.table import Table
 
 from bibliavox.reference.books import lookup_by_abbreviation, lookup_by_usx_code
 from bibliavox.reference.schema import get_versification, load_versification
-from bibliavox.text.mapping import english_to_usx, load_book_mapping
+from bibliavox.text.mapping import load_book_mapping
 from bibliavox.text.normalizer import normalize_chapter
 from bibliavox.text.source import get_chapter_verses, load_szit_json
 from bibliavox.text.validator import generate_report, validate_book, validate_chapter
@@ -340,3 +341,29 @@ def convert_jsonl(
     output.parent.mkdir(parents=True, exist_ok=True)
     count = convert_to_jsonl(output)
     console.print(f"[green]✓ Wrote {count} verses to {output}[/green]")
+
+
+@app.command()
+def fix_verses(
+    input_path: Path = typer.Option(
+        Path("data/processed/text/szit.jsonl"),
+        "--input",
+        "-i",
+        help="Input JSONL path",
+    ),
+    output: Path = typer.Option(
+        Path("data/processed/text/szit-fixed.jsonl"),
+        "--output",
+        "-o",
+        help="Output JSONL path",
+    ),
+) -> None:
+    """Fix embedded verse markers in JSONL file."""
+    from bibliavox.text.splitter import fix_verses as split_verses
+
+    stats = split_verses(input_path, output)
+    console.print(
+        f"[green]✓ Fixed verses: {stats['cleaned']} cleaned, "
+        f"{stats['split']} split, {stats['unchanged']} unchanged[/green]"
+    )
+    console.print(f"[green]✓ Output: {output}[/green]")
