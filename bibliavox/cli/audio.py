@@ -1,9 +1,10 @@
-"""Audio subcommand group for discovery, download, conversion, and info."""
+"""Audio subcommand group for discovery, download, conversion, prepare, and seek."""
 
 from __future__ import annotations
 
 from pathlib import Path
 from typing import Any, cast
+import json
 
 import httpx
 import typer
@@ -18,9 +19,31 @@ from bibliavox.audio.discovery import (
 from bibliavox.audio.downloader import download_all, download_chapter
 from bibliavox.audio.convert import AudioConversionError, convert_to_wav
 from bibliavox.audio.metadata import AudioProbeError, format_audio_info, probe_audio
+from bibliavox.audio.pipeline import prepare_chapter
+from bibliavox.audio.seek_index import (
+    SeekIndexError,
+    resolve_sample_window,
+    write_seek_preview,
+)
 
 app = typer.Typer(name="audio", help="Bible audio operations")
 console = Console()
+
+
+def _validate_index_payload(index_payload: dict[str, Any]) -> None:
+    for field in ("sample_rate", "total_samples", "duration_sec", "wav_path"):
+        if field not in index_payload:
+            raise SeekIndexError(
+                f"Invalid seek index: missing required field '{field}'"
+            )
+
+    sample_rate = int(index_payload["sample_rate"])
+    total_samples = int(index_payload["total_samples"])
+    duration_sec = float(index_payload["duration_sec"])
+    if sample_rate <= 0 or total_samples < 0 or duration_sec < 0:
+        raise SeekIndexError(
+            "Invalid seek index: sample_rate must be > 0 and total_samples/duration_sec must be non-negative"
+        )
 
 
 def load_mek_playlist() -> str:
@@ -140,7 +163,7 @@ def convert(
         return
 
     try:
-        converted = convert_to_wav(input_mp3, output_wav)
+        converted = convert_to_wav(input_mp3, output_wav, force=force)
     except AudioConversionError as exc:
         console.print(f"[red]{exc}[/red]")
         raise typer.Exit(code=1)
@@ -164,3 +187,124 @@ def info(
         raise typer.Exit(code=1)
 
     console.print(format_audio_info(input_audio, metadata))
+
+
+@app.command()
+def prepare(
+    book: str = typer.Option(..., "--book", "-b", help="USX book code"),
+    chapter: int = typer.Option(..., "--chapter", "-c", min=1, help="Chapter number"),
+    force: bool = typer.Option(
+        False, "--force", help="Recreate existing prepared artifacts"
+    ),
+    raw_root: Path = typer.Option(
+        Path("data/raw/audio"),
+        "--raw-root",
+        help="Raw audio root",
+    ),
+    prepared_root: Path = typer.Option(
+        Path("data/prepared/audio"),
+        "--prepared-root",
+        help="Prepared audio root",
+    ),
+) -> None:
+    """Prepare chapter WAV + metadata + seek index sidecars."""
+    try:
+        result = prepare_chapter(
+            book.upper(),
+            chapter,
+            raw_root=raw_root,
+            prepared_root=prepared_root,
+            force=force,
+        )
+    except (
+        AudioConversionError,
+        AudioProbeError,
+        FileNotFoundError,
+        ValueError,
+    ) as exc:
+        console.print(f"[red]{exc}[/red]")
+        raise typer.Exit(code=1)
+
+    if result["status"] == "skipped":
+        console.print(
+            "[yellow]Skipped existing prepared artifacts (use --force to rebuild)[/yellow]"
+        )
+    else:
+        console.print("[green]Prepared chapter artifacts[/green]")
+
+    console.print(f"wav={result['wav_path']}")
+    console.print(f"meta={result['meta_path']}")
+    console.print(f"index={result['index_path']}")
+
+
+@app.command()
+def seek(
+    book: str = typer.Option(..., "--book", "-b", help="USX book code"),
+    chapter: int = typer.Option(..., "--chapter", "-c", min=1, help="Chapter number"),
+    seconds: float = typer.Option(
+        ..., "--seconds", min=0.0, help="Seek start timestamp in seconds"
+    ),
+    duration_sec: float = typer.Option(
+        2.0,
+        "--duration-sec",
+        min=0.0,
+        help="Preview window duration in seconds",
+    ),
+    output: Path | None = typer.Option(
+        None, "--output", help="Output preview WAV path"
+    ),
+    prepared_root: Path = typer.Option(
+        Path("data/prepared/audio"),
+        "--prepared-root",
+        help="Prepared audio root",
+    ),
+    force: bool = typer.Option(
+        False, "--force", help="Overwrite existing preview output"
+    ),
+) -> None:
+    """Extract WAV preview window for sample-accurate timestamp verification."""
+    book_usx = book.upper()
+    chapter_root = prepared_root / book_usx
+    index_path = chapter_root / f"{chapter:03d}.index.json"
+    default_output = chapter_root / f"{chapter:03d}.seek-preview.wav"
+    output_path = output or default_output
+
+    if not index_path.exists():
+        console.print(f"[red]Seek index not found: {index_path}[/red]")
+        raise typer.Exit(code=1)
+
+    if output_path.exists() and not force:
+        console.print(
+            f"[yellow]Skipped existing preview output (use --force to rewrite): {output_path}[/yellow]"
+        )
+        return
+
+    try:
+        payload = json.loads(index_path.read_text(encoding="utf-8"))
+        if not isinstance(payload, dict):
+            raise SeekIndexError("Invalid seek index: expected JSON object")
+
+        index_payload = cast(dict[str, Any], payload)
+        _validate_index_payload(index_payload)
+        wav_path = Path(str(index_payload["wav_path"]))
+        start_sample, end_sample = resolve_sample_window(
+            index_payload,
+            seconds=seconds,
+            duration_sec=duration_sec,
+        )
+        written = write_seek_preview(
+            wav_path,
+            output_path,
+            start_sample=start_sample,
+            end_sample=end_sample,
+        )
+    except (OSError, ValueError, SeekIndexError) as exc:
+        console.print(f"[red]{exc}[/red]")
+        raise typer.Exit(code=1)
+
+    # Deterministic seek report for reproducible verification.
+    console.print("[green]Seek preview written[/green]")
+    console.print(f"source_wav={wav_path}")
+    console.print(f"start_sample={start_sample}")
+    console.print(f"end_sample={end_sample}")
+    console.print(f"output={written}")

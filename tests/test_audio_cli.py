@@ -147,3 +147,109 @@ def test_download_all_dispatches_to_batch(monkeypatch, tmp_path: Path) -> None:
     assert captured["workers"] == 3
     assert captured["force"] is True
     assert captured["output_root"] == tmp_path
+
+
+def test_prepare_command_defaults_to_skip_and_supports_force(monkeypatch) -> None:
+    captured: dict[str, object] = {}
+
+    def fake_prepare(
+        book_usx: str,
+        chapter: int,
+        *,
+        raw_root: Path,
+        prepared_root: Path,
+        force: bool = False,
+    ):
+        captured["book_usx"] = book_usx
+        captured["chapter"] = chapter
+        captured["raw_root"] = raw_root
+        captured["prepared_root"] = prepared_root
+        captured["force"] = force
+        return {
+            "status": "prepared",
+            "wav_path": prepared_root / book_usx / f"{chapter:03d}.wav",
+            "meta_path": prepared_root / book_usx / f"{chapter:03d}.meta.json",
+            "index_path": prepared_root / book_usx / f"{chapter:03d}.index.json",
+        }
+
+    monkeypatch.setattr("bibliavox.cli.audio.prepare_chapter", fake_prepare)
+
+    result = runner.invoke(app, ["prepare", "--book", "GEN", "--chapter", "1"])
+    assert result.exit_code == 0
+    assert captured["book_usx"] == "GEN"
+    assert captured["chapter"] == 1
+    assert captured["force"] is False
+
+    result_force = runner.invoke(
+        app,
+        ["prepare", "--book", "GEN", "--chapter", "1", "--force"],
+    )
+    assert result_force.exit_code == 0
+    assert captured["force"] is True
+
+
+def test_seek_command_uses_index_and_wav_preview_primitives(
+    monkeypatch, tmp_path: Path
+) -> None:
+    prepared_root = tmp_path / "prepared"
+    index_path = prepared_root / "GEN" / "001.index.json"
+    wav_path = prepared_root / "GEN" / "001.wav"
+    index_path.parent.mkdir(parents=True, exist_ok=True)
+    wav_path.write_bytes(b"wav")
+    index_path.write_text(
+        '{"sample_rate":16000,"total_samples":32000,"duration_sec":2.0,'
+        '"wav_path":"' + str(wav_path) + '","book_usx":"GEN","chapter":1,'
+        '"created_at":"2026-05-29T00:00:00Z"}'
+    )
+
+    captured: dict[str, object] = {}
+
+    def fake_resolve(index_payload, *, seconds: float, duration_sec: float):
+        captured["seconds"] = seconds
+        captured["duration_sec"] = duration_sec
+        captured["index_payload"] = index_payload
+        return (1600, 3200)
+
+    def fake_write_preview(
+        source_wav: Path,
+        output_wav: Path,
+        *,
+        start_sample: int,
+        end_sample: int,
+    ) -> Path:
+        captured["source_wav"] = source_wav
+        captured["output_wav"] = output_wav
+        captured["start_sample"] = start_sample
+        captured["end_sample"] = end_sample
+        output_wav.parent.mkdir(parents=True, exist_ok=True)
+        output_wav.write_bytes(b"preview")
+        return output_wav
+
+    monkeypatch.setattr("bibliavox.cli.audio.resolve_sample_window", fake_resolve)
+    monkeypatch.setattr("bibliavox.cli.audio.write_seek_preview", fake_write_preview)
+
+    output = tmp_path / "preview.wav"
+    result = runner.invoke(
+        app,
+        [
+            "seek",
+            "--book",
+            "GEN",
+            "--chapter",
+            "1",
+            "--seconds",
+            "0.1",
+            "--duration-sec",
+            "0.1",
+            "--output",
+            str(output),
+            "--prepared-root",
+            str(prepared_root),
+        ],
+    )
+
+    assert result.exit_code == 0
+    assert captured["source_wav"] == wav_path
+    assert captured["start_sample"] == 1600
+    assert captured["end_sample"] == 3200
+    assert output.exists()

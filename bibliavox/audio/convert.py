@@ -32,9 +32,12 @@ def _assert_ffmpeg_available() -> None:
         )
 
 
-def convert_to_wav(input_mp3: Path, output_wav: Path) -> Path:
+def convert_to_wav(input_mp3: Path, output_wav: Path, *, force: bool = False) -> Path:
     """Convert MP3 to 16kHz mono PCM WAV and verify invariants."""
     _assert_ffmpeg_available()
+
+    if output_wav.exists() and not force:
+        return output_wav
 
     output_wav.parent.mkdir(parents=True, exist_ok=True)
     command = [
