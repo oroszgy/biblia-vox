@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pytest
 
-from bibliavox.text.splitter import VerseMarker, detect_markers, fix_verses
+from bibliavox.text.splitter import detect_markers, fix_verses
 
 
 class TestDetectMarkers:
@@ -37,7 +37,7 @@ class TestDetectMarkers:
         markers = detect_markers(text)
         assert len(markers) == 1
         assert markers[0].pattern_type == "(N)N"
-        assert markers[0].target_verse == 6
+        assert markers[0].target_verse == 7  # Target is digit AFTER paren
         assert markers[0].raw_match == "(6)7"
 
     def test_returns_empty_for_no_markers(self) -> None:
@@ -157,12 +157,12 @@ class TestFixVerses:
             [r for r in records if r["book"] == "1KI" and r["chapter"] == 22],
             key=lambda r: r["verse"],
         )
-        # Original 52, 53 + new verse from split
+        # Original 52, 53 + new verse from split → renumbered to 1, 2, 3
         assert len(ki_verses) == 3
-        # Check that the split text is present
+        # Check that the split text is present (renumbered verses)
         texts = {r["verse"]: r["text"] for r in ki_verses}
-        assert "Text before" in texts.get(52, "")
-        assert "text after" in texts.get(54, "")
+        assert "Text before" in texts.get(1, "")
+        assert "text after" in texts.get(3, "")
 
     def test_verses_renumbered_sequentially(
         self, sample_jsonl: Path, tmp_path: Path
