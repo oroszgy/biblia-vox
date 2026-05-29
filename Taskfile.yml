@@ -98,6 +98,16 @@ tasks:
       - test -f data/processed/text/szit-fixed.jsonl
     deps: [text:convert-jsonl]
 
+  audio:download:
+    desc: Download a single chapter MP3 (book/chapter required)
+    cmds:
+      - uv run bibliavox audio download --book {{.BOOK}} --chapter {{.CHAPTER}}{{if .FORCE}} --force{{end}}
+
+  audio:download-all:
+    desc: Download all available chapter MP3s from playlist
+    cmds:
+      - uv run bibliavox audio download --all --workers {{.WORKERS}}{{if .FORCE}} --force{{end}}
+
   sync:
     desc: Install/sync dependencies
     cmds:

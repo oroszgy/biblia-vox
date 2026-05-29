@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+from typing import Any, cast
 
 from typer.testing import CliRunner
 
@@ -12,7 +13,7 @@ runner = CliRunner()
 
 
 def test_download_requires_single_or_all_mode() -> None:
-    result = runner.invoke(app, ["download"])
+    result = runner.invoke(app, [])
     assert result.exit_code == 1
     assert "Specify either --all or --book with --chapter" in result.output
 
@@ -20,7 +21,7 @@ def test_download_requires_single_or_all_mode() -> None:
 def test_download_rejects_mixed_single_and_all_mode() -> None:
     result = runner.invoke(
         app,
-        ["download", "--all", "--book", "GEN", "--chapter", "1"],
+        ["--all", "--book", "GEN", "--chapter", "1"],
     )
     assert result.exit_code == 1
     assert "cannot be combined" in result.output
@@ -70,12 +71,13 @@ def test_download_single_dispatches_to_download_chapter(
 
     result = runner.invoke(
         app,
-        ["download", "--book", "GEN", "--chapter", "1", "--output-root", str(tmp_path)],
+        ["--book", "GEN", "--chapter", "1", "--output-root", str(tmp_path)],
     )
 
     assert result.exit_code == 0
-    assert calls["item"]["book_usx"] == "GEN"
-    assert calls["item"]["chapter"] == 1
+    item = cast(dict[str, Any], calls["item"])
+    assert item["book_usx"] == "GEN"
+    assert item["chapter"] == 1
     assert calls["output_root"] == tmp_path
     assert calls["force"] is False
 
@@ -123,7 +125,6 @@ def test_download_all_dispatches_to_batch(monkeypatch, tmp_path: Path) -> None:
     result = runner.invoke(
         app,
         [
-            "download",
             "--all",
             "--workers",
             "3",
