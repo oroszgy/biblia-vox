@@ -9,7 +9,7 @@ Each phase delivers working Typer commands and Taskfile targets. Docker infrastr
 ## Phases
 
 - [x] **Phase 1: Foundation & Versification Schema** - Canonical reference data, project structure, CLI scaffolding, and configuration for the Catholic Bible domain
-- [ ] **Phase 2: Text Acquisition & Validation** - Bible text fetched from two sources, normalized, and cross-validated
+- [x] **Phase 2: Text Acquisition & Validation** - Bible text fetched from SZIT JSON source, normalized, and validated against versification schema
 - [ ] **Phase 3: Audio Pipeline** - Chapter audio downloaded, decoded to WAV, and indexed for alignment
 - [ ] **Phase 4: Transcription-Based Alignment** - Whisper transcription + fuzzy matching locates verses in audio (includes Docker setup for GPU models)
 - [ ] **Phase 5: Forced Alignment & Alternatives** - MMS forced alignment tier plus VibeVoice and paid API exploration
@@ -46,8 +46,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 02-01-PLAN.md — Text source acquisition & book mapping (SZIT JSON download, English→USX mapping for 73 books)
-- [ ] 02-02-PLAN.md — Normalization pipeline & validation (NFC normalization, verse count validation, JSON reports)
+- [x] 02-01-PLAN.md — Text source acquisition & book mapping (SZIT JSON download, English→USX mapping for 73 books)
+- [x] 02-02-PLAN.md — Normalization pipeline & validation (NFC normalization, verse count validation, JSON reports)
 
 ### Phase 3: Audio Pipeline
 **Goal**: Chapter audio is downloaded, decoded to WAV 16kHz mono (eliminating VBR timestamp inaccuracy), and indexed for precise timestamp access
@@ -139,7 +139,7 @@ Phase 1 (Foundation)
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation & Versification Schema | 2/2 | Complete | 2026-05-29 |
-| 2. Text Acquisition & Validation | 0/? | Not started | - |
+| 2. Text Acquisition & Validation | 2/2 | Complete | 2026-05-29 |
 | 3. Audio Pipeline | 0/? | Not started | - |
 | 4. Transcription-Based Alignment | 0/? | Not started | - |
 | 5. Forced Alignment & Alternatives | 0/? | Not started | - |

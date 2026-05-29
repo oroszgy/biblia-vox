@@ -5,33 +5,34 @@
 See: .planning/PROJECT.md (updated 2026-05-28)
 
 **Core value:** Every verse of the Szent István Társulat Bible can be located in its audio recording — with precise timestamps and confidence metadata.
-**Current focus:** Phase 2 — Text Acquisition & Validation
+**Current focus:** Phase 2 — Text Acquisition & Validation (COMPLETE)
 
 ## Current Position
 
-Phase: 2 of 8 (Text Acquisition & Validation)
-Plan: 0 of ? in current phase
-Status: Context gathered
-Last activity: 2026-05-29 — Phase 2 context gathered (SZIT JSON as primary source)
+Phase: 2 of 8 (Text Acquisition & Validation) — COMPLETE
+Plan: 2 of 2 in current phase
+Status: Phase complete
+Last activity: 2026-05-29 — Phase 2 execution complete (normalization + validation)
 
-Progress: [██░░░░░░░░] 25%
+Progress: [████░░░░░░] 50%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 2
+- Total plans completed: 4
 - Average duration: 8 min
-- Total execution time: 0.34 hours
+- Total execution time: 0.68 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 1. Foundation | 2/2 | 13 min | 6.5 min |
+| 2. Text Acquisition | 2/2 | 18 min | 9 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (10 min), 01-02 (3 min)
-- Trend: Improving (faster on second plan)
+- Last 5 plans: 01-01 (10 min), 01-02 (3 min), 02-01 (8 min), 02-02 (10 min)
+- Trend: Consistent ~8-10 min per plan
 
 *Updated after each plan completion*
 
@@ -81,5 +82,5 @@ Items acknowledged and carried forward from previous milestone close:
 ## Session Continuity
 
 Last session: 2026-05-29
-Stopped at: Phase 2 context gathered
-Resume file: .planning/phases/02-text-acquisition/02-CONTEXT.md
+Stopped at: Phase 2 complete — ready for Phase 3
+Resume file: None (phase complete)
