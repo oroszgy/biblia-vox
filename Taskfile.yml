@@ -126,6 +126,24 @@ tasks:
     cmds:
       - uv run bibliavox audio info --book {{.BOOK}} --chapter {{.CHAPTER}}
 
+  audio:prepare:
+    desc: Prepare chapter artifacts (wav + meta + index) from raw MP3
+    deps: [audio:download]
+    cmds:
+      - uv run bibliavox audio prepare --book {{.BOOK}} --chapter {{.CHAPTER}}{{if .FORCE}} --force{{end}}
+
+  audio:prepare-all:
+    desc: Prepare all downloaded chapters; idempotent unless FORCE=true
+    deps: [audio:download-all]
+    cmds:
+      - FORCE_FLAG="{{.FORCE}}"; total=0; prepared=0; skipped=0; failed=0; rc=0; for mp3 in data/raw/audio/*/*.mp3; do [ -f "$mp3" ] || continue; total=$((total+1)); usx=$(basename "$(dirname "$mp3")"); chapter=$(basename "$mp3" .mp3); out=$(uv run bibliavox audio prepare --book "$usx" --chapter "$((10#$chapter))" $( [ "${FORCE_FLAG,,}" = "true" ] && printf %s "--force" ) 2>&1) || true; case "$out" in *"Prepared chapter artifacts"*) prepared=$((prepared+1));; *"Skipped existing prepared artifacts"*) skipped=$((skipped+1));; *) failed=$((failed+1)); rc=1;; esac; done; printf 'prepare-all summary total=%s prepared=%s skipped=%s failed=%s\n' "$total" "$prepared" "$skipped" "$failed"; exit $rc
+
+  audio:seek:
+    desc: Write WAV preview window from prepared seek index
+    deps: [audio:prepare]
+    cmds:
+      - uv run bibliavox audio seek --book {{.BOOK}} --chapter {{.CHAPTER}} --seconds {{.SECONDS}} --duration-sec {{.DURATION_SEC}} --output {{.OUTPUT}}{{if .FORCE}} --force{{end}}
+
   sync:
     desc: Install/sync dependencies
     cmds:
