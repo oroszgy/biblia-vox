@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Phase 2.5 complete — ready for Phase 3 (Audio Pipeline)
-last_updated: "2026-05-29T20:31:36.918Z"
-last_activity: 2026-05-29 -- Phase 3 planning complete
+stopped_at: Completed 03-01-PLAN.md
+last_updated: "2026-05-29T20:45:59Z"
+last_activity: 2026-05-29 -- Phase 3 plan 03-01 executed
 progress:
   total_phases: 9
   completed_phases: 3
   total_plans: 10
-  completed_plans: 7
-  percent: 70
+  completed_plans: 8
+  percent: 80
 ---
 
 # Project State
@@ -21,24 +21,24 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-28)
 
 **Core value:** Every verse of the Szent István Társulat Bible can be located in its audio recording — with precise timestamps and confidence metadata.
-**Current focus:** Phase 2 — Text Acquisition & Validation (COMPLETE)
+**Current focus:** Phase 3 — Audio Pipeline (IN PROGRESS)
 
 ## Current Position
 
-Phase: 3 of 8 (Audio Pipeline) — NOT STARTED
-Plan: 0 of ? in current phase
-Status: Ready to execute
-Last activity: 2026-05-29 -- Phase 3 planning complete
+Phase: 3 of 8 (Audio Pipeline) — IN PROGRESS
+Plan: 1 of 3 in current phase
+Status: Executing
+Last activity: 2026-05-29 -- Phase 3 plan 03-01 executed
 
-Progress: [██████░░░░] 75%
+Progress: [████████░░] 80%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 7
-- Average duration: 8 min
-- Total execution time: 0.88 hours
+- Total plans completed: 8
+- Average duration: 7.5 min
+- Total execution time: 1.00 hours
 
 **By Phase:**
 
@@ -47,11 +47,12 @@ Progress: [██████░░░░] 75%
 | 1. Foundation | 2/2 | 13 min | 6.5 min |
 | 2. Text Acquisition | 2/2 | 18 min | 9 min |
 | 2.5. Data Quality | 3/3 | 12 min | 4 min |
+| 3. Audio Pipeline | 1/3 | 7 min | 7 min |
 
 **Recent Trend:**
 
-- Last 5 plans: 02-02 (10 min), 02.5-01 (3 min), 02.5-03 (3 min), 02.5-02 (6 min)
-- Trend: Consistent ~8-10 min per plan
+- Last 5 plans: 03-01 (7 min), 02-02 (10 min), 02.5-01 (3 min), 02.5-03 (3 min), 02.5-02 (6 min)
+- Trend: Stable 3-10 min per plan
 
 *Updated after each plan completion*
 
@@ -83,6 +84,9 @@ Recent decisions affecting current work:
 - [2.5]: Schema fixes: DAN 14→12 chapters, MAL 3→4 chapters, off-by-one corrections
 - [2.5]: Verse splitting: 67 Psalms superscriptions cleaned, 4 real splits
 - [2.5]: Validation passes 66/66 books with 0 discrepancies
+- [03-01]: Audio discovery is playlist-first from MEK M3U with explicit source-vs-schema mismatch diagnostics
+- [03-01]: Downloader resume safety appends only for HTTP 206 and overwrites on HTTP 200 to avoid duplicate bytes
+- [03-01]: Audio download UX split into task targets for single chapter and all-chapter batch workflows
 
 ### Pending Todos
 
@@ -105,5 +109,5 @@ Items acknowledged and carried forward from previous milestone close:
 ## Session Continuity
 
 Last session: 2026-05-29
-Stopped at: Phase 2.5 complete — ready for Phase 3 (Audio Pipeline)
-Resume file: None (phase complete)
+Stopped at: Completed 03-01-PLAN.md
+Resume file: .planning/phases/03-audio-pipeline/03-02-PLAN.md

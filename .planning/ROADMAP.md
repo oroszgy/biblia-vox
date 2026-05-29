@@ -79,7 +79,7 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 03-01-PLAN.md — Playlist discovery + resilient MP3 download (single + batch, retry/resume, mismatch diagnostics)
+- [x] 03-01-PLAN.md — Playlist discovery + resilient MP3 download (single + batch, retry/resume, mismatch diagnostics)
 - [ ] 03-02-PLAN.md — MP3→WAV conversion + ffprobe metadata CLI (strict 16k mono PCM invariants)
 - [ ] 03-03-PLAN.md — Seek index + prepare/seek workflows (sample-accurate WAV timestamp access)
 
@@ -163,7 +163,7 @@ Phase 1 (Foundation)
 | 1. Foundation & Versification Schema | 2/2 | Complete | 2026-05-29 |
 | 2. Text Acquisition & Validation | 2/2 | Complete | 2026-05-29 |
 | 2.5. Data Quality & Correction | 3/3 | Complete | 2026-05-29 |
-| 3. Audio Pipeline | 0/? | Not started | - |
+| 3. Audio Pipeline | 1/3 | In progress | 2026-05-29 |
 | 4. Transcription-Based Alignment | 0/? | Not started | - |
 | 5. Forced Alignment & Alternatives | 0/? | Not started | - |
 | 6. Calibration & Alignment Comparison | 0/? | Not started | - |

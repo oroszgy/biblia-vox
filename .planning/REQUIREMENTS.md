@@ -18,8 +18,8 @@ v1 is a **calibration release**: build the full pipeline, validate it on a gold 
 
 ### Audio Pipeline
 
-- [ ] **AUD-01**: Download per-chapter MP3 files from mek.oszk.hu with retry and resume
-- [ ] **AUD-02**: Parallel download of multiple chapters with configurable concurrency
+- [x] **AUD-01**: Download per-chapter MP3 files from mek.oszk.hu with retry and resume
+- [x] **AUD-02**: Parallel download of multiple chapters with configurable concurrency
 - [ ] **AUD-03**: Decode MP3 to WAV 16kHz mono (critical for VBR timestamp accuracy)
 - [ ] **AUD-04**: Extract audio metadata (bitrate, sample rate, duration) per file
 - [ ] **AUD-05**: Build seek index for accurate timestamp access in WAV files
@@ -113,8 +113,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | TEXT-04 | Phase 1 | Complete |
 | TEXT-05 | Phase 2 | Pending |
 | TEXT-06 | Phase 1 | Complete |
-| AUD-01 | Phase 3 | Pending |
-| AUD-02 | Phase 3 | Pending |
+| AUD-01 | Phase 3 | Complete |
+| AUD-02 | Phase 3 | Complete |
 | AUD-03 | Phase 3 | Pending |
 | AUD-04 | Phase 3 | Pending |
 | AUD-05 | Phase 3 | Pending |
