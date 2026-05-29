@@ -1,4 +1,4 @@
-"""Audio subcommand group for discovery and download operations."""
+"""Audio subcommand group for discovery, download, conversion, and info."""
 
 from __future__ import annotations
 
@@ -16,6 +16,8 @@ from bibliavox.audio.discovery import (
     parse_m3u,
 )
 from bibliavox.audio.downloader import download_all, download_chapter
+from bibliavox.audio.convert import AudioConversionError, convert_to_wav
+from bibliavox.audio.metadata import AudioProbeError, format_audio_info, probe_audio
 
 app = typer.Typer(name="audio", help="Bible audio operations")
 console = Console()
@@ -114,3 +116,51 @@ def download(
         console.print(f"[yellow]Skipped existing file: {result['target']}[/yellow]")
     else:
         console.print(f"[green]Downloaded: {result['target']}[/green]")
+
+
+@app.command()
+def convert(
+    book: str = typer.Option(..., "--book", "-b", help="USX book code"),
+    chapter: int = typer.Option(..., "--chapter", "-c", help="Chapter number"),
+    force: bool = typer.Option(False, "--force", help="Re-convert existing WAV"),
+) -> None:
+    """Convert one raw chapter MP3 into prepared WAV."""
+    book_usx = book.upper()
+    input_mp3 = Path("data/raw/audio") / book_usx / f"{chapter:03d}.mp3"
+    output_wav = Path("data/prepared/audio") / book_usx / f"{chapter:03d}.wav"
+
+    if not input_mp3.exists():
+        console.print(f"[red]Input MP3 not found: {input_mp3}[/red]")
+        raise typer.Exit(code=1)
+
+    if output_wav.exists() and not force:
+        console.print(
+            f"[yellow]Skipped existing WAV (use --force to reconvert): {output_wav}[/yellow]"
+        )
+        return
+
+    try:
+        converted = convert_to_wav(input_mp3, output_wav)
+    except AudioConversionError as exc:
+        console.print(f"[red]{exc}[/red]")
+        raise typer.Exit(code=1)
+
+    console.print(f"[green]Converted: {converted}[/green]")
+
+
+@app.command()
+def info(
+    book: str = typer.Option(..., "--book", "-b", help="USX book code"),
+    chapter: int = typer.Option(..., "--chapter", "-c", help="Chapter number"),
+) -> None:
+    """Show deterministic metadata for raw chapter audio."""
+    book_usx = book.upper()
+    input_audio = Path("data/raw/audio") / book_usx / f"{chapter:03d}.mp3"
+
+    try:
+        metadata = probe_audio(input_audio)
+    except AudioProbeError as exc:
+        console.print(f"[red]{exc}[/red]")
+        raise typer.Exit(code=1)
+
+    console.print(format_audio_info(input_audio, metadata))
