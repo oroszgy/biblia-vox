@@ -118,22 +118,24 @@ def fix_verses(
                 stats["unchanged"] += 1
                 continue
 
-            # Process each marker
+            # Process each marker, tracking offset from prior strips
             current_text = text
+            offset = 0
+            split_occurred = False
             for marker in markers:
+                adjusted_pos = marker.position + offset
                 if marker.target_verse in existing_verses:
-                    # Target verse exists — cleanup only (strip marker)
+                    # Target verse exists — strip marker, update offset
                     current_text = (
-                        current_text[: marker.position]
-                        + current_text[marker.position + len(marker.raw_match) :]
+                        current_text[:adjusted_pos]
+                        + current_text[adjusted_pos + len(marker.raw_match) :]
                     )
+                    offset -= len(marker.raw_match)
                     stats["cleaned"] += 1
                 else:
                     # Target verse missing — split
-                    before = current_text[: marker.position].strip()
-                    after = current_text[
-                        marker.position + len(marker.raw_match) :
-                    ].strip()
+                    before = current_text[:adjusted_pos].strip()
+                    after = current_text[adjusted_pos + len(marker.raw_match) :].strip()
 
                     # Write "before" as current verse
                     output_records.append(
@@ -155,10 +157,10 @@ def fix_verses(
                     )
                     existing_verses.add(marker.target_verse)
                     stats["split"] += 1
-                    current_text = None  # Already written both parts
+                    split_occurred = True
                     break
 
-            if current_text is not None:
+            if not split_occurred:
                 # Cleanup-only: write the cleaned text
                 verse_record["text"] = current_text.strip()
                 output_records.append(verse_record)
