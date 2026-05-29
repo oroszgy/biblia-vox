@@ -13,7 +13,7 @@ runner = CliRunner()
 
 
 def test_download_requires_single_or_all_mode() -> None:
-    result = runner.invoke(app, [])
+    result = runner.invoke(app, ["download"])
     assert result.exit_code == 1
     assert "Specify either --all or --book with --chapter" in result.output
 
@@ -21,7 +21,7 @@ def test_download_requires_single_or_all_mode() -> None:
 def test_download_rejects_mixed_single_and_all_mode() -> None:
     result = runner.invoke(
         app,
-        ["--all", "--book", "GEN", "--chapter", "1"],
+        ["download", "--all", "--book", "GEN", "--chapter", "1"],
     )
     assert result.exit_code == 1
     assert "cannot be combined" in result.output
@@ -71,7 +71,15 @@ def test_download_single_dispatches_to_download_chapter(
 
     result = runner.invoke(
         app,
-        ["--book", "GEN", "--chapter", "1", "--output-root", str(tmp_path)],
+        [
+            "download",
+            "--book",
+            "GEN",
+            "--chapter",
+            "1",
+            "--output-root",
+            str(tmp_path),
+        ],
     )
 
     assert result.exit_code == 0
@@ -125,6 +133,7 @@ def test_download_all_dispatches_to_batch(monkeypatch, tmp_path: Path) -> None:
     result = runner.invoke(
         app,
         [
+            "download",
             "--all",
             "--workers",
             "3",
