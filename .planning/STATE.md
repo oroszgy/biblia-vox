@@ -9,10 +9,10 @@ See: .planning/PROJECT.md (updated 2026-05-28)
 
 ## Current Position
 
-Phase: 2.5 of 8 (Data Quality & Correction) — COMPLETE
-Plan: 3 of 3 in current phase
-Status: Phase complete
-Last activity: 2026-05-29 — Phase 2.5 execution complete (JSONL conversion, verse splitting, schema fixes)
+Phase: 3 of 8 (Audio Pipeline) — NOT STARTED
+Plan: 0 of ? in current phase
+Status: Ready to start
+Last activity: 2026-05-29 — Phase 2.5 complete, ready for Phase 3
 
 Progress: [██████░░░░] 75%
 
@@ -87,5 +87,5 @@ Items acknowledged and carried forward from previous milestone close:
 ## Session Continuity
 
 Last session: 2026-05-29
-Stopped at: Phase 2.5 complete — ready for Phase 3
+Stopped at: Phase 2.5 complete — ready for Phase 3 (Audio Pipeline)
 Resume file: None (phase complete)
