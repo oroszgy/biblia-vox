@@ -11,7 +11,7 @@ Each phase delivers working Typer commands and Taskfile targets. Docker infrastr
 - [x] **Phase 1: Foundation & Versification Schema** - Canonical reference data, project structure, CLI scaffolding, and configuration for the Catholic Bible domain
 - [x] **Phase 2: Text Acquisition & Validation** - Bible text fetched from SZIT JSON source, normalized, and validated against versification schema
 - [x] **Phase 2.5: Data Quality & Correction** - JSONL conversion, verse splitting, and schema fixes for full validation (66/66 books)
-- [ ] **Phase 3: Audio Pipeline** - Chapter audio downloaded, decoded to WAV, and indexed for alignment
+- [x] **Phase 3: Audio Pipeline** - Chapter audio downloaded, decoded to WAV, and indexed for alignment
 - [ ] **Phase 4: Transcription-Based Alignment** - Whisper transcription + fuzzy matching locates verses in audio (includes Docker setup for GPU models)
 - [ ] **Phase 5: Forced Alignment & Alternatives** - MMS forced alignment tier plus VibeVoice and paid API exploration
 - [ ] **Phase 6: Calibration & Alignment Comparison** - Gold-standard set built, approaches compared with quality metrics
@@ -80,8 +80,8 @@ Plans:
 
 Plans:
 - [x] 03-01-PLAN.md — Playlist discovery + resilient MP3 download (single + batch, retry/resume, mismatch diagnostics)
-- [ ] 03-02-PLAN.md — MP3→WAV conversion + ffprobe metadata CLI (strict 16k mono PCM invariants)
-- [ ] 03-03-PLAN.md — Seek index + prepare/seek workflows (sample-accurate WAV timestamp access)
+- [x] 03-02-PLAN.md — MP3→WAV conversion + ffprobe metadata CLI (strict 16k mono PCM invariants)
+- [x] 03-03-PLAN.md — Seek index + prepare/seek workflows (sample-accurate WAV timestamp access)
 
 ### Phase 4: Transcription-Based Alignment
 **Goal**: Verses can be located in audio via faster-whisper transcription with Hungarian LoRA adapter, followed by fuzzy text matching against known verse text. Docker infrastructure for GPU models is set up as part of this phase.
@@ -163,7 +163,7 @@ Phase 1 (Foundation)
 | 1. Foundation & Versification Schema | 2/2 | Complete | 2026-05-29 |
 | 2. Text Acquisition & Validation | 2/2 | Complete | 2026-05-29 |
 | 2.5. Data Quality & Correction | 3/3 | Complete | 2026-05-29 |
-| 3. Audio Pipeline | 2/3 | In progress | 2026-05-29 |
+| 3. Audio Pipeline | 3/3 | Complete | 2026-05-29 |
 | 4. Transcription-Based Alignment | 0/? | Not started | - |
 | 5. Forced Alignment & Alternatives | 0/? | Not started | - |
 | 6. Calibration & Alignment Comparison | 0/? | Not started | - |

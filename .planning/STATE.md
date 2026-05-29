@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: executing
-stopped_at: Completed 03-02-PLAN.md
-last_updated: "2026-05-29T20:54:24Z"
-last_activity: 2026-05-29 -- Phase 3 plan 03-02 executed
+status: ready_to_verify
+stopped_at: Completed 03-03-PLAN.md
+last_updated: "2026-05-29T21:04:52Z"
+last_activity: 2026-05-29 -- Phase 3 plan 03-03 executed
 progress:
   total_phases: 9
-  completed_phases: 3
+  completed_phases: 4
   total_plans: 10
-  completed_plans: 9
-  percent: 90
+  completed_plans: 10
+  percent: 100
 ---
 
 # Project State
@@ -21,24 +21,24 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-28)
 
 **Core value:** Every verse of the Szent István Társulat Bible can be located in its audio recording — with precise timestamps and confidence metadata.
-**Current focus:** Phase 3 — Audio Pipeline (IN PROGRESS)
+**Current focus:** Phase 4 — Transcription-Based Alignment (READY)
 
 ## Current Position
 
-Phase: 3 of 8 (Audio Pipeline) — IN PROGRESS
-Plan: 2 of 3 in current phase
-Status: Executing
-Last activity: 2026-05-29 -- Phase 3 plan 03-02 executed
+Phase: 4 of 8 (Transcription-Based Alignment) — READY
+Plan: 0 of ? in current phase
+Status: Ready for planning/execution
+Last activity: 2026-05-29 -- Phase 3 plan 03-03 executed
 
-Progress: [█████████░] 90%
+Progress: [██████████] 100%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 9
-- Average duration: 7.1 min
-- Total execution time: 1.07 hours
+- Total plans completed: 10
+- Average duration: 7.0 min
+- Total execution time: 1.17 hours
 
 **By Phase:**
 
@@ -47,12 +47,12 @@ Progress: [█████████░] 90%
 | 1. Foundation | 2/2 | 13 min | 6.5 min |
 | 2. Text Acquisition | 2/2 | 18 min | 9 min |
 | 2.5. Data Quality | 3/3 | 12 min | 4 min |
-| 3. Audio Pipeline | 2/3 | 11 min | 5.5 min |
+| 3. Audio Pipeline | 3/3 | 17 min | 5.7 min |
 
 **Recent Trend:**
 
-- Last 5 plans: 03-02 (4 min), 03-01 (7 min), 02-02 (10 min), 02.5-01 (3 min), 02.5-03 (3 min)
-- Trend: Stable 3-10 min per plan with improved Phase 3 turnaround
+- Last 5 plans: 03-03 (6 min), 03-02 (4 min), 03-01 (7 min), 02-02 (10 min), 02.5-01 (3 min)
+- Trend: Stable 3-10 min per plan with Phase 3 fully complete
 
 *Updated after each plan completion*
 
@@ -90,6 +90,9 @@ Recent decisions affecting current work:
 - [03-02]: Conversion accepted only after ffprobe confirms codec=pcm_s16le, sample_rate=16000, channels=1
 - [03-02]: audio info reports canonical chapter path with normalized measured values for auditable diagnostics
 - [03-02]: audio conversion/info commands fail fast with explicit ffmpeg/ffprobe setup guidance when binaries are missing
+- [03-03]: Seek index sidecar persists sample_rate/total_samples/duration_sec and chapter identity under canonical prepared paths
+- [03-03]: audio seek computes preview ranges from WAV sample offsets and emits deterministic seek reports
+- [03-03]: Absolute seek output paths are restricted to prepared-root or /tmp for filesystem boundary safety
 
 ### Pending Todos
 
@@ -112,5 +115,5 @@ Items acknowledged and carried forward from previous milestone close:
 ## Session Continuity
 
 Last session: 2026-05-29
-Stopped at: Completed 03-02-PLAN.md
-Resume file: .planning/phases/03-audio-pipeline/03-03-PLAN.md
+Stopped at: Completed 03-03-PLAN.md
+Resume file: .planning/phases/04-transcription-alignment/
