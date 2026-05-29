@@ -107,45 +107,45 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| TEXT-01 | Pending | Pending |
-| TEXT-02 | Pending | Pending |
-| TEXT-03 | Pending | Pending |
-| TEXT-04 | Pending | Pending |
-| TEXT-05 | Pending | Pending |
-| TEXT-06 | Pending | Pending |
-| AUD-01 | Pending | Pending |
-| AUD-02 | Pending | Pending |
-| AUD-03 | Pending | Pending |
-| AUD-04 | Pending | Pending |
-| AUD-05 | Pending | Pending |
-| ALN-01 | Pending | Pending |
-| ALN-02 | Pending | Pending |
-| ALN-03 | Pending | Pending |
-| ALN-04 | Pending | Pending |
-| ALN-05 | Pending | Pending |
-| ALN-06 | Pending | Pending |
-| ALN-07 | Pending | Pending |
-| ALN-08 | Pending | Pending |
-| ALN-09 | Pending | Pending |
-| ALN-10 | Pending | Pending |
-| EXP-01 | Pending | Pending |
-| EXP-02 | Pending | Pending |
-| EXP-03 | Pending | Pending |
-| EXP-04 | Pending | Pending |
-| EXP-05 | Pending | Pending |
-| INF-01 | Pending | Pending |
-| INF-02 | Pending | Pending |
-| INF-03 | Pending | Pending |
-| INF-04 | Pending | Pending |
-| INF-05 | Pending | Pending |
-| OPS-01 | Pending | Pending |
-| OPS-02 | Pending | Pending |
-| OPS-03 | Pending | Pending |
+| TEXT-01 | Phase 2 | Pending |
+| TEXT-02 | Phase 2 | Pending |
+| TEXT-03 | Phase 2 | Pending |
+| TEXT-04 | Phase 1 | Pending |
+| TEXT-05 | Phase 2 | Pending |
+| TEXT-06 | Phase 1 | Pending |
+| AUD-01 | Phase 3 | Pending |
+| AUD-02 | Phase 3 | Pending |
+| AUD-03 | Phase 3 | Pending |
+| AUD-04 | Phase 3 | Pending |
+| AUD-05 | Phase 3 | Pending |
+| ALN-01 | Phase 4 | Pending |
+| ALN-02 | Phase 4 | Pending |
+| ALN-03 | Phase 5 | Pending |
+| ALN-04 | Phase 5 | Pending |
+| ALN-05 | Phase 5 | Pending |
+| ALN-06 | Phase 6 | Pending |
+| ALN-07 | Phase 6 | Pending |
+| ALN-08 | Phase 4 | Pending |
+| ALN-09 | Phase 5 | Pending |
+| ALN-10 | Phase 6 | Pending |
+| EXP-01 | Phase 7 | Pending |
+| EXP-02 | Phase 7 | Pending |
+| EXP-03 | Phase 7 | Pending |
+| EXP-04 | Phase 7 | Pending |
+| EXP-05 | Phase 7 | Pending |
+| INF-01 | Phase 4 | Pending |
+| INF-02 | Phase 1 | Pending |
+| INF-03 | Phase 4 | Pending |
+| INF-04 | Phase 4 | Pending |
+| INF-05 | Phase 4 | Pending |
+| OPS-01 | Phase 8 | Pending |
+| OPS-02 | Phase 8 | Pending |
+| OPS-03 | Phase 8 | Pending |
 
 **Coverage:**
-- v1 requirements: 33 total
-- Mapped to phases: 0
-- Unmapped: 33 ⚠️ (filled during roadmap creation)
+- v1 requirements: 34 total
+- Mapped to phases: 34
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-05-28*
