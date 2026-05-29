@@ -1,0 +1,586 @@
+[
+  {
+    "usx_code": "GEN",
+    "hungarian_name": "Teremtés könyve",
+    "abbreviation": "Ter",
+    "book_number": 101,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "EXO",
+    "hungarian_name": "Kivonulás könyve",
+    "abbreviation": "Kiv",
+    "book_number": 102,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "LEV",
+    "hungarian_name": "Leviták könyve",
+    "abbreviation": "Lev",
+    "book_number": 103,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "NUM",
+    "hungarian_name": "Számok könyve",
+    "abbreviation": "Szám",
+    "book_number": 104,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "DEU",
+    "hungarian_name": "Második törvénykönyv",
+    "abbreviation": "MTörv",
+    "book_number": 105,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "JOS",
+    "hungarian_name": "Józsué könyve",
+    "abbreviation": "Józs",
+    "book_number": 106,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "JDG",
+    "hungarian_name": "Bírák könyve",
+    "abbreviation": "Bír",
+    "book_number": 107,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "RUT",
+    "hungarian_name": "Ruth könyve",
+    "abbreviation": "Ruth",
+    "book_number": 108,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "1SA",
+    "hungarian_name": "Sámuel első könyve",
+    "abbreviation": "Sám1",
+    "book_number": 109,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "2SA",
+    "hungarian_name": "Sámuel második könyve",
+    "abbreviation": "Sám2",
+    "book_number": 110,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "1KI",
+    "hungarian_name": "Királyok első könyve",
+    "abbreviation": "Kir1",
+    "book_number": 111,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "2KI",
+    "hungarian_name": "Királyok második könyve",
+    "abbreviation": "Kir2",
+    "book_number": 112,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "1CH",
+    "hungarian_name": "Krónikák első könyve",
+    "abbreviation": "Krón1",
+    "book_number": 113,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "2CH",
+    "hungarian_name": "Krónikák második könyve",
+    "abbreviation": "Krón2",
+    "book_number": 114,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "EZR",
+    "hungarian_name": "Ezdrás könyve",
+    "abbreviation": "Ezd",
+    "book_number": 115,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "NEH",
+    "hungarian_name": "Nehemiás könyve",
+    "abbreviation": "Neh",
+    "book_number": 116,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "TOB",
+    "hungarian_name": "Tóbiás könyve",
+    "abbreviation": "Tób",
+    "book_number": 117,
+    "testament": "OT",
+    "deuterocanonical": true
+  },
+  {
+    "usx_code": "JDT",
+    "hungarian_name": "Judit könyve",
+    "abbreviation": "Jdt",
+    "book_number": 118,
+    "testament": "OT",
+    "deuterocanonical": true
+  },
+  {
+    "usx_code": "EST",
+    "hungarian_name": "Eszter könyve",
+    "abbreviation": "Esz",
+    "book_number": 119,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "1MA",
+    "hungarian_name": "Makkabeusok első könyve",
+    "abbreviation": "Mak1",
+    "book_number": 120,
+    "testament": "OT",
+    "deuterocanonical": true
+  },
+  {
+    "usx_code": "2MA",
+    "hungarian_name": "Makkabeusok második könyve",
+    "abbreviation": "Mak2",
+    "book_number": 121,
+    "testament": "OT",
+    "deuterocanonical": true
+  },
+  {
+    "usx_code": "JOB",
+    "hungarian_name": "Jób könyve",
+    "abbreviation": "Jób",
+    "book_number": 122,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "PSA",
+    "hungarian_name": "Zsoltárok könyve",
+    "abbreviation": "Zsolt",
+    "book_number": 123,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "PRO",
+    "hungarian_name": "Példabeszédek könyve",
+    "abbreviation": "Péld",
+    "book_number": 124,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "ECC",
+    "hungarian_name": "Prédikátor könyve",
+    "abbreviation": "Préd",
+    "book_number": 125,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "SNG",
+    "hungarian_name": "Énekek éneke",
+    "abbreviation": "Én",
+    "book_number": 126,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "WIS",
+    "hungarian_name": "Bölcsesség könyve",
+    "abbreviation": "Bölcs",
+    "book_number": 127,
+    "testament": "OT",
+    "deuterocanonical": true
+  },
+  {
+    "usx_code": "SIR",
+    "hungarian_name": "Sirák fia könyve",
+    "abbreviation": "Sir",
+    "book_number": 128,
+    "testament": "OT",
+    "deuterocanonical": true
+  },
+  {
+    "usx_code": "ISA",
+    "hungarian_name": "Izajás könyve",
+    "abbreviation": "Iz",
+    "book_number": 129,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "JER",
+    "hungarian_name": "Jeremiás könyve",
+    "abbreviation": "Jer",
+    "book_number": 130,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "LAM",
+    "hungarian_name": "Jeremiás siralmai",
+    "abbreviation": "Siralm",
+    "book_number": 131,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "BAR",
+    "hungarian_name": "Báruch könyve",
+    "abbreviation": "Bár",
+    "book_number": 132,
+    "testament": "OT",
+    "deuterocanonical": true
+  },
+  {
+    "usx_code": "EZK",
+    "hungarian_name": "Ezekiel könyve",
+    "abbreviation": "Ez",
+    "book_number": 133,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "DAN",
+    "hungarian_name": "Dániel könyve",
+    "abbreviation": "Dán",
+    "book_number": 134,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "HOS",
+    "hungarian_name": "Hóseás könyve",
+    "abbreviation": "Hós",
+    "book_number": 135,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "JOL",
+    "hungarian_name": "Joél könyve",
+    "abbreviation": "Joél",
+    "book_number": 136,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "AMO",
+    "hungarian_name": "Ámós könyve",
+    "abbreviation": "Ám",
+    "book_number": 137,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "OBA",
+    "hungarian_name": "Abdiás könyve",
+    "abbreviation": "Abd",
+    "book_number": 138,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "JON",
+    "hungarian_name": "Jónás könyve",
+    "abbreviation": "Jón",
+    "book_number": 139,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "MIC",
+    "hungarian_name": "Mikeás könyve",
+    "abbreviation": "Mik",
+    "book_number": 140,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "NAM",
+    "hungarian_name": "Náhum könyve",
+    "abbreviation": "Náh",
+    "book_number": 141,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "HAB",
+    "hungarian_name": "Habakuk könyve",
+    "abbreviation": "Hab",
+    "book_number": 142,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "ZEP",
+    "hungarian_name": "Sofóniás könyve",
+    "abbreviation": "Sof",
+    "book_number": 143,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "HAG",
+    "hungarian_name": "Aggeus könyve",
+    "abbreviation": "Ag",
+    "book_number": 144,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "ZEC",
+    "hungarian_name": "Zakariás könyve",
+    "abbreviation": "Zak",
+    "book_number": 145,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "MAL",
+    "hungarian_name": "Malakiás könyve",
+    "abbreviation": "Mal",
+    "book_number": 146,
+    "testament": "OT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "MAT",
+    "hungarian_name": "Máté evangéliuma",
+    "abbreviation": "Mt",
+    "book_number": 401,
+    "testament": "NT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "MRK",
+    "hungarian_name": "Márk evangéliuma",
+    "abbreviation": "Mk",
+    "book_number": 402,
+    "testament": "NT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "LUK",
+    "hungarian_name": "Lukács evangéliuma",
+    "abbreviation": "Lk",
+    "book_number": 403,
+    "testament": "NT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "JHN",
+    "hungarian_name": "János evangéliuma",
+    "abbreviation": "Jn",
+    "book_number": 404,
+    "testament": "NT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "ACT",
+    "hungarian_name": "Apostolok cselekedetei",
+    "abbreviation": "ApCsel",
+    "book_number": 405,
+    "testament": "NT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "ROM",
+    "hungarian_name": "Rómabeliekhez írt levél",
+    "abbreviation": "Róm",
+    "book_number": 406,
+    "testament": "NT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "1CO",
+    "hungarian_name": "Korinthusiakhoz írt első levél",
+    "abbreviation": "1Kor",
+    "book_number": 407,
+    "testament": "NT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "2CO",
+    "hungarian_name": "Korinthusiakhoz írt második levél",
+    "abbreviation": "2Kor",
+    "book_number": 408,
+    "testament": "NT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "GAL",
+    "hungarian_name": "Galatáknak írt levél",
+    "abbreviation": "Gal",
+    "book_number": 409,
+    "testament": "NT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "EPH",
+    "hungarian_name": "Efezusiaknak írt levél",
+    "abbreviation": "Ef",
+    "book_number": 410,
+    "testament": "NT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "PHP",
+    "hungarian_name": "Filippiekhez írt levél",
+    "abbreviation": "Fil",
+    "book_number": 411,
+    "testament": "NT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "COL",
+    "hungarian_name": "Kolosszeiekhez írt levél",
+    "abbreviation": "Kol",
+    "book_number": 412,
+    "testament": "NT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "1TH",
+    "hungarian_name": "Thesszalonikiakhoz írt első levél",
+    "abbreviation": "1Tessz",
+    "book_number": 413,
+    "testament": "NT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "2TH",
+    "hungarian_name": "Thesszalonikiakhoz írt második levél",
+    "abbreviation": "2Tessz",
+    "book_number": 414,
+    "testament": "NT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "1TI",
+    "hungarian_name": "Timóteusnak írt első levél",
+    "abbreviation": "1Tim",
+    "book_number": 415,
+    "testament": "NT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "2TI",
+    "hungarian_name": "Timóteusnak írt második levél",
+    "abbreviation": "2Tim",
+    "book_number": 416,
+    "testament": "NT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "TIT",
+    "hungarian_name": "Tituszhoz írt levél",
+    "abbreviation": "Tit",
+    "book_number": 417,
+    "testament": "NT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "PHM",
+    "hungarian_name": "Filemonhoz írt levél",
+    "abbreviation": "Filem",
+    "book_number": 418,
+    "testament": "NT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "HEB",
+    "hungarian_name": "Zsidóknak írt levél",
+    "abbreviation": "Zsid",
+    "book_number": 419,
+    "testament": "NT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "JAS",
+    "hungarian_name": "Jakab levele",
+    "abbreviation": "Jak",
+    "book_number": 420,
+    "testament": "NT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "1PE",
+    "hungarian_name": "Péter első levele",
+    "abbreviation": "1Pt",
+    "book_number": 421,
+    "testament": "NT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "2PE",
+    "hungarian_name": "Péter második levele",
+    "abbreviation": "2Pt",
+    "book_number": 422,
+    "testament": "NT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "1JN",
+    "hungarian_name": "János első levele",
+    "abbreviation": "1Jn",
+    "book_number": 423,
+    "testament": "NT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "2JN",
+    "hungarian_name": "János második levele",
+    "abbreviation": "2Jn",
+    "book_number": 424,
+    "testament": "NT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "3JN",
+    "hungarian_name": "János harmadik levele",
+    "abbreviation": "3Jn",
+    "book_number": 425,
+    "testament": "NT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "JUD",
+    "hungarian_name": "Júdás levele",
+    "abbreviation": "Júd",
+    "book_number": 426,
+    "testament": "NT",
+    "deuterocanonical": false
+  },
+  {
+    "usx_code": "REV",
+    "hungarian_name": "János jelenései",
+    "abbreviation": "Jel",
+    "book_number": 427,
+    "testament": "NT",
+    "deuterocanonical": false
+  }
+]

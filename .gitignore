@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+
+# Virtual environment
+.venv/
+
+# Environment variables (contains API keys)
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data (large files, downloaded content)
+data/raw/
+data/parsed/
+data/aligned/
+data/export/
+data/prepared/
+data/.cache/
+
+# Keep reference data (static, small, version-controlled)
+# data/reference/ is NOT ignored

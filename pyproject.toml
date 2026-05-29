@@ -1,7 +1,25 @@
 [project]
 name = "bibliavox"
 version = "0.1.0"
-description = "Add your description here"
+description = "Hungarian Catholic Bible verse-to-audio alignment tool"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "typer>=0.26",
+    "rich",
+    "pydantic-settings",
+    "httpx>=0.28",
+]
+
+[dependency-groups]
+dev = [
+    "ruff",
+    "pytest",
+]
+
+[project.scripts]
+bibliavox = "bibliavox.cli:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
