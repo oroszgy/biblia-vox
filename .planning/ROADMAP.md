@@ -28,7 +28,11 @@ Each phase delivers working Typer commands and Taskfile targets. Docker infrastr
   2. User can look up any book by Hungarian abbreviation and receive the canonical USX code (e.g., "Ter" → "GEN")
   3. User can load project configuration from environment/dotenv with sensible defaults for all paths, model settings, and API keys
   4. User can run `bibliavox --help` and see the CLI with initial sub-command structure, and `task --list` shows available targets
-**Plans**: TBD
+**Plans**: 2 plans
+
+Plans:
+- [ ] 01-01-PLAN.md — Reference data & project structure (73-book schema, config, generation script)
+- [ ] 01-02-PLAN.md — CLI scaffolding & Taskfile (reference subcommands, dev tasks)
 
 ### Phase 2: Text Acquisition & Validation
 **Goal**: Verified Bible text is available from two independent sources (API + HTML), normalized, and cross-validated for completeness
