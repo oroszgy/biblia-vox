@@ -124,19 +124,81 @@ def info(
 
 @app.command()
 def validate(
-    book: str = typer.Option(
-        ..., "--book", "-b", help="USX code or Hungarian abbreviation"
+    book: str | None = typer.Option(
+        None, "--book", "-b", help="USX code or Hungarian abbreviation"
     ),
     chapter: int | None = typer.Option(
         None, "--chapter", "-c", help="Chapter number (omit for all)"
     ),
+    all_books: bool = typer.Option(False, "--all", "-a", help="Validate all books"),
 ) -> None:
     """Validate verse counts against versification schema."""
-    book_obj = _resolve_book(book)
+    if not book and not all_books:
+        console.print("[red]Specify --book or --all[/red]")
+        raise typer.Exit(code=1)
 
     schemas = load_versification()
     mapping = load_book_mapping()
     szit_data = load_szit_json()
+
+    if all_books:
+        # Validate all books
+        all_discrepancies = []
+        books_checked = 0
+        books_passed = 0
+
+        for english_name, usx_code in mapping.items():
+            if english_name not in szit_data:
+                console.print(
+                    f"[yellow]Skipping {usx_code} — not in SZIT JSON[/yellow]"
+                )
+                continue
+
+            books_checked += 1
+            discrepancies = validate_book(usx_code, szit_data, mapping, schemas)
+
+            if not discrepancies:
+                books_passed += 1
+                console.print(f"[green]✓ {usx_code}[/green]")
+            else:
+                all_discrepancies.extend(discrepancies)
+                console.print(
+                    f"[red]✗ {usx_code} — {len(discrepancies)} discrepancy(ies)[/red]"
+                )
+
+        console.print(
+            f"\n[bold]Summary:[/bold] {books_passed}/{books_checked} books passed validation"
+        )
+
+        if all_discrepancies:
+            # Display all discrepancies
+            table = Table(title="All Validation Discrepancies")
+            table.add_column("Book", style="cyan")
+            table.add_column("Chapter", justify="right")
+            table.add_column("Verse", justify="right")
+            table.add_column("Severity", style="yellow")
+            table.add_column("Details")
+
+            for d in all_discrepancies:
+                severity_style = "red" if d.severity.value == "ERROR" else "yellow"
+                table.add_row(
+                    d.book,
+                    str(d.chapter),
+                    str(d.verse) if d.verse is not None else "—",
+                    f"[{severity_style}]{d.severity.value}[/{severity_style}]",
+                    d.details,
+                )
+
+            console.print(table)
+
+            # Also output JSON report
+            report = generate_report(all_discrepancies)
+            console.print("\n[dim]JSON Report:[/dim]")
+            console.print(report)
+        return
+
+    # Validate single book
+    book_obj = _resolve_book(str(book))
 
     # Get English name for this book
     english_name = None

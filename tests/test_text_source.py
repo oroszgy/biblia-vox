@@ -52,6 +52,9 @@ class TestLoadSzitJson:
 
     def test_raises_on_missing_file(self, tmp_path: Path) -> None:
         """Should raise FileNotFoundError when file doesn't exist."""
+        import bibliavox.text.source
+
+        bibliavox.text.source._SZIT_DATA = None
         with pytest.raises(FileNotFoundError):
             load_szit_json(tmp_path)
 

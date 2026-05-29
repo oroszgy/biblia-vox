@@ -9,6 +9,7 @@ Structure: {book_name: {chapter: {verse: "text"}}} with English book names
 
 from __future__ import annotations
 
+import ast
 import json
 from pathlib import Path
 
@@ -43,7 +44,14 @@ def load_szit_json(data_dir: Path | None = None) -> dict:
 
     json_path = Path(data_dir) / "H_Kaldi_SZIT.json"
     with open(json_path, encoding="utf-8") as f:
-        _SZIT_DATA = json.load(f)
+        content = f.read()
+
+    # SZIT file uses Python literal format (single quotes), not standard JSON
+    try:
+        _SZIT_DATA = ast.literal_eval(content)
+    except (ValueError, SyntaxError):
+        # Fallback to standard JSON if literal_eval fails
+        _SZIT_DATA = json.loads(content)
 
     return _SZIT_DATA
 
