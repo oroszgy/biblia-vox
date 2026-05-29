@@ -108,6 +108,24 @@ tasks:
     cmds:
       - uv run bibliavox audio download --all --workers {{.WORKERS}}{{if .FORCE}} --force{{end}}
 
+  audio:convert:
+    desc: Convert one chapter MP3 to 16kHz mono PCM WAV (requires ffmpeg+ffprobe)
+    deps: [audio:download]
+    cmds:
+      - uv run bibliavox audio convert --book {{.BOOK}} --chapter {{.CHAPTER}}{{if .FORCE}} --force{{end}}
+
+  audio:convert-all:
+    desc: Convert downloaded MP3 batch to WAV; idempotent unless FORCE=true (requires ffmpeg+ffprobe)
+    deps: [audio:download-all]
+    cmds:
+      - FORCE_FLAG="{{.FORCE}}"; FORCE_ARG=""; [ "${FORCE_FLAG,,}" = "true" ] && FORCE_ARG="--force"; rc=0; for mp3 in data/raw/audio/*/*.mp3; do [ -f "$mp3" ] || continue; usx=$(basename "$(dirname "$mp3")"); chapter=$(basename "$mp3" .mp3); wav="data/prepared/audio/$usx/$chapter.wav"; if [ -f "$wav" ] && [ "${FORCE_FLAG,,}" != "true" ]; then continue; fi; uv run bibliavox audio convert --book "$usx" --chapter "$((10#$chapter))" $FORCE_ARG || rc=$?; done; exit $rc
+
+  audio:info:
+    desc: Inspect chapter audio metadata (requires ffprobe)
+    deps: [audio:download]
+    cmds:
+      - uv run bibliavox audio info --book {{.BOOK}} --chapter {{.CHAPTER}}
+
   sync:
     desc: Install/sync dependencies
     cmds:
