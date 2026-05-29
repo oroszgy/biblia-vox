@@ -10,7 +10,7 @@ Each phase delivers working Typer commands and Taskfile targets. Docker infrastr
 
 - [x] **Phase 1: Foundation & Versification Schema** - Canonical reference data, project structure, CLI scaffolding, and configuration for the Catholic Bible domain
 - [x] **Phase 2: Text Acquisition & Validation** - Bible text fetched from SZIT JSON source, normalized, and validated against versification schema
-- [ ] **Phase 2.5: Data Quality & Correction** - JSONL conversion, verse splitting, and schema fixes for full validation (66/66 books)
+- [ ] **Phase 2.5: Data Quality & Correction** - JSONL conversion, verse splitting, and schema fixes for full validation (66/66 books) [Wave 1: 2/2 complete]
 - [ ] **Phase 3: Audio Pipeline** - Chapter audio downloaded, decoded to WAV, and indexed for alignment
 - [ ] **Phase 4: Transcription-Based Alignment** - Whisper transcription + fuzzy matching locates verses in audio (includes Docker setup for GPU models)
 - [ ] **Phase 5: Forced Alignment & Alternatives** - MMS forced alignment tier plus VibeVoice and paid API exploration
@@ -157,7 +157,7 @@ Phase 1 (Foundation)
 |-------|----------------|--------|-----------|
 | 1. Foundation & Versification Schema | 2/2 | Complete | 2026-05-29 |
 | 2. Text Acquisition & Validation | 2/2 | Complete | 2026-05-29 |
-| 2.5. Data Quality & Correction | 0/3 | Not started | - |
+| 2.5. Data Quality & Correction | 2/3 | In progress | - |
 | 3. Audio Pipeline | 0/? | Not started | - |
 | 4. Transcription-Based Alignment | 0/? | Not started | - |
 | 5. Forced Alignment & Alternatives | 0/? | Not started | - |

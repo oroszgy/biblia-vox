@@ -9,12 +9,12 @@ See: .planning/PROJECT.md (updated 2026-05-28)
 
 ## Current Position
 
-Phase: 2 of 8 (Text Acquisition & Validation) — COMPLETE
-Plan: 2 of 2 in current phase
-Status: Phase complete
-Last activity: 2026-05-29 — Phase 2 execution complete (normalization + validation)
+Phase: 2.5 of 8 (Data Quality & Correction) — IN PROGRESS
+Plan: 0 of 3 in current phase (Wave 1 complete)
+Status: Wave 1 complete, Wave 2 pending
+Last activity: 2026-05-29 — Phase 2.5 Wave 1 complete (JSONL converter + schema fixes)
 
-Progress: [████░░░░░░] 50%
+Progress: [█████░░░░░] 62%
 
 ## Performance Metrics
 
@@ -60,6 +60,8 @@ Recent decisions affecting current work:
 - [02]: Two-stage normalization: lightweight (NFC, whitespace) then schema matching
 - [02]: Reproducible pipeline: all steps in Taskfile, data in data/raw/ and data/processed/
 - [02]: Verse count validation against versification schema, JSON discrepancy reports
+- [2.5]: JSONL conversion uses json.dumps per line (not jsonlines library)
+- [2.5]: Schema fixes: DAN 14→12 chapters, MAL 3→4 chapters, off-by-one corrections
 
 ### Pending Todos
 
