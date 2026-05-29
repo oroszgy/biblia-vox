@@ -55,6 +55,32 @@ tasks:
       - test -f data/reference/books.json
       - test -f data/reference/versification.json
 
+  text:fetch:
+    desc: Download SZIT Bible JSON from GitHub
+    cmds:
+      - mkdir -p data/raw/text
+      - curl -L -o data/raw/text/H_Kaldi_SZIT.json https://raw.githubusercontent.com/peterpolgar/Biblia-json-xml/main/bibles_json_dict/full_bibles/H_Kaldi_SZIT.json
+    status:
+      - test -f data/raw/text/H_Kaldi_SZIT.json
+
+  text:test:
+    desc: Test text fetch with sample chapter
+    cmds:
+      - uv run bibliavox text fetch --book GEN --chapter 1
+    deps: [text:fetch]
+
+  text:normalize:
+    desc: Normalize all Bible text
+    cmds:
+      - uv run bibliavox text normalize --all
+    deps: [text:fetch]
+
+  text:validate:
+    desc: Validate verse counts against versification schema
+    cmds:
+      - uv run bibliavox text validate --all
+    deps: [text:fetch]
+
   sync:
     desc: Install/sync dependencies
     cmds:
