@@ -9,19 +9,19 @@ See: .planning/PROJECT.md (updated 2026-05-28)
 
 ## Current Position
 
-Phase: 2.5 of 8 (Data Quality & Correction) — IN PROGRESS
-Plan: 0 of 3 in current phase (Wave 1 complete)
-Status: Wave 1 complete, Wave 2 pending
-Last activity: 2026-05-29 — Phase 2.5 Wave 1 complete (JSONL converter + schema fixes)
+Phase: 2.5 of 8 (Data Quality & Correction) — COMPLETE
+Plan: 3 of 3 in current phase
+Status: Phase complete
+Last activity: 2026-05-29 — Phase 2.5 execution complete (JSONL conversion, verse splitting, schema fixes)
 
-Progress: [█████░░░░░] 62%
+Progress: [██████░░░░] 75%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 4
+- Total plans completed: 7
 - Average duration: 8 min
-- Total execution time: 0.68 hours
+- Total execution time: 0.88 hours
 
 **By Phase:**
 
@@ -29,9 +29,10 @@ Progress: [█████░░░░░] 62%
 |-------|-------|-------|----------|
 | 1. Foundation | 2/2 | 13 min | 6.5 min |
 | 2. Text Acquisition | 2/2 | 18 min | 9 min |
+| 2.5. Data Quality | 3/3 | 12 min | 4 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (10 min), 01-02 (3 min), 02-01 (8 min), 02-02 (10 min)
+- Last 5 plans: 02-02 (10 min), 02.5-01 (3 min), 02.5-03 (3 min), 02.5-02 (6 min)
 - Trend: Consistent ~8-10 min per plan
 
 *Updated after each plan completion*
@@ -62,6 +63,8 @@ Recent decisions affecting current work:
 - [02]: Verse count validation against versification schema, JSON discrepancy reports
 - [2.5]: JSONL conversion uses json.dumps per line (not jsonlines library)
 - [2.5]: Schema fixes: DAN 14→12 chapters, MAL 3→4 chapters, off-by-one corrections
+- [2.5]: Verse splitting: 67 Psalms superscriptions cleaned, 4 real splits
+- [2.5]: Validation passes 66/66 books with 0 discrepancies
 
 ### Pending Todos
 
@@ -84,5 +87,5 @@ Items acknowledged and carried forward from previous milestone close:
 ## Session Continuity
 
 Last session: 2026-05-29
-Stopped at: Phase 2 complete — ready for Phase 3
+Stopped at: Phase 2.5 complete — ready for Phase 3
 Resume file: None (phase complete)
