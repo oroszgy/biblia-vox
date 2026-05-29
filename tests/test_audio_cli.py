@@ -253,3 +253,38 @@ def test_seek_command_uses_index_and_wav_preview_primitives(
     assert captured["start_sample"] == 1600
     assert captured["end_sample"] == 3200
     assert output.exists()
+
+
+def test_seek_rejects_disallowed_absolute_output_path(tmp_path: Path) -> None:
+    prepared_root = tmp_path / "prepared"
+    index_path = prepared_root / "GEN" / "001.index.json"
+    wav_path = prepared_root / "GEN" / "001.wav"
+    index_path.parent.mkdir(parents=True, exist_ok=True)
+    wav_path.write_bytes(b"wav")
+    index_path.write_text(
+        '{"sample_rate":16000,"total_samples":32000,"duration_sec":2.0,'
+        '"wav_path":"' + str(wav_path) + '","book_usx":"GEN","chapter":1,'
+        '"created_at":"2026-05-29T00:00:00Z"}'
+    )
+
+    result = runner.invoke(
+        app,
+        [
+            "seek",
+            "--book",
+            "GEN",
+            "--chapter",
+            "1",
+            "--seconds",
+            "0.1",
+            "--duration-sec",
+            "0.1",
+            "--output",
+            "/etc/preview.wav",
+            "--prepared-root",
+            str(prepared_root),
+        ],
+    )
+
+    assert result.exit_code == 1
+    assert "Absolute output path is restricted" in result.output

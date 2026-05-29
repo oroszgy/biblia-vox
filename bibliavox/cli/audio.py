@@ -46,6 +46,28 @@ def _validate_index_payload(index_payload: dict[str, Any]) -> None:
         )
 
 
+def _is_within_root(path: Path, root: Path) -> bool:
+    resolved_path = path.resolve()
+    resolved_root = root.resolve()
+    try:
+        resolved_path.relative_to(resolved_root)
+        return True
+    except ValueError:
+        return False
+
+
+def _validate_seek_output_path(output_path: Path, prepared_root: Path) -> None:
+    if not output_path.is_absolute():
+        return
+
+    allowed_roots = [prepared_root, Path("/tmp")]
+    if not any(_is_within_root(output_path, root) for root in allowed_roots):
+        raise SeekIndexError(
+            "Absolute output path is restricted. Use a path under prepared root "
+            "or /tmp for preview output."
+        )
+
+
 def load_mek_playlist() -> str:
     """Fetch MEK M3U playlist text."""
     playlist_url = f"{BASE_AUDIO_URL}/biblia.m3u"
@@ -280,6 +302,7 @@ def seek(
         return
 
     try:
+        _validate_seek_output_path(output_path, prepared_root)
         payload = json.loads(index_path.read_text(encoding="utf-8"))
         if not isinstance(payload, dict):
             raise SeekIndexError("Invalid seek index: expected JSON object")

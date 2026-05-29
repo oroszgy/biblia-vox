@@ -60,7 +60,7 @@ def prepare_chapter(
             index_path=index_path,
         )
 
-    converted_wav = convert_to_wav(input_mp3, wav_path)
+    converted_wav = convert_to_wav(input_mp3, wav_path, force=force)
     metadata = probe_audio(converted_wav)
 
     meta_payload = {
