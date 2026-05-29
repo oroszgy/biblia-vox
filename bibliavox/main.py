@@ -1,0 +1,27 @@
+"""BibliaVox CLI entry point.
+
+Registers all sub-command groups and provides the main() entry point
+for the console_scripts entry in pyproject.toml.
+"""
+
+from __future__ import annotations
+
+import typer
+
+from bibliavox.cli.reference import app as reference_app
+
+app = typer.Typer(
+    name="bibliavox",
+    help="Catholic Bible verse-to-audio alignment tool",
+    no_args_is_help=True,
+)
+app.add_typer(reference_app, name="reference", help="Bible reference data operations")
+
+
+def main() -> None:
+    """CLI entry point."""
+    app()
+
+
+if __name__ == "__main__":
+    main()
