@@ -27,6 +27,12 @@ class TestHelp:
         result = runner.invoke(app, ["--help"])
         assert "reference" in result.output.lower()
 
+    def test_reference_help_shows_generate(self) -> None:
+        """bibliavox reference --help should show the generate subcommand."""
+        result = runner.invoke(app, ["reference", "--help"])
+        assert result.exit_code == 0
+        assert "generate" in result.output.lower()
+
 
 class TestReferenceList:
     """Tests for the `bibliavox reference list` command."""

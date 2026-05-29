@@ -32,8 +32,7 @@ class TestBibliavoxSettings:
         """Settings load from .env file."""
         env_file = tmp_path / ".env"
         env_file.write_text(
-            "BIBLIAVOX_DATA_DIR=/from/dotenv\n"
-            "BIBLIAVOX_CACHE_DIR=/from/dotenv/cache\n"
+            "BIBLIAVOX_DATA_DIR=/from/dotenv\nBIBLIAVOX_CACHE_DIR=/from/dotenv/cache\n"
         )
         settings = BibliavoxSettings(_env_file=env_file)
         assert settings.data_dir == Path("/from/dotenv")

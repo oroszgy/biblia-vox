@@ -1,9 +1,10 @@
 """Reference subcommand group for Bible book and versification lookups.
 
 Commands:
-    list   — List all 73 Catholic Bible books
-    lookup — Look up a book by Hungarian abbreviation
-    info   — Show detailed info including chapter/verse counts
+    list      — List all 73 Catholic Bible books
+    lookup    — Look up a book by Hungarian abbreviation
+    info      — Show detailed info including chapter/verse counts
+    generate  — Generate reference JSON files from szentiras.eu source
 """
 
 from __future__ import annotations
@@ -17,6 +18,7 @@ from bibliavox.reference.books import (
     lookup_by_abbreviation,
     lookup_by_usx_code,
 )
+from bibliavox.reference.generate import app as generate_app
 from bibliavox.reference.schema import (
     get_chapter_count,
     get_versification,
@@ -24,11 +26,12 @@ from bibliavox.reference.schema import (
 )
 
 app = typer.Typer(name="reference", help="Bible reference data operations")
+app.add_typer(generate_app, name="generate")
 console = Console()
 
 
-@app.command()
-def list(
+@app.command(name="list")
+def list_books(
     testament: str = typer.Option(
         None, "--testament", "-t", help="Filter by testament: OT or NT"
     ),

@@ -21,11 +21,19 @@ A CLI workflow (Taskfile + Python/uv/typer) that maps Hungarian Catholic Bible v
 ## Project Structure
 
 ```
-bibliavox/
-├── src/                    # Python package source
+cath-bible-voice/
+├── bibliavox/              # Python package (flat layout)
+│   ├── reference/          # Bible book catalog & versification
+│   │   ├── books.py        # 73-book Catholic Bible catalog
+│   │   ├── schema.py       # Chapter/verse counts per book
+│   │   └── generate.py     # CLI for generating reference JSON
+│   ├── cli/                # CLI subcommands
+│   ├── config.py           # Pydantic Settings configuration
+│   └── main.py             # Typer app entry point
 ├── tests/                  # Test suite
+├── data/                   # Reference data (not versioned)
+│   └── reference/          # books.json, versification.json
 ├── docker/                 # Dockerfiles for model stages
-├── data/                   # Downloaded text/audio (not versioned)
 ├── .planning/              # GSD planning documents
 ├── Taskfile.yml            # Task definitions
 ├── docker-compose.yml      # Docker orchestration
@@ -56,7 +64,7 @@ This project uses the Get Shit Done (GSD) workflow system. Planning documents ar
 ### Current State
 
 - **Phase:** 1 of 8 (Foundation & Versification Schema)
-- **Status:** Ready to plan
+- **Status:** Complete
 
 ### Workflow Commands
 

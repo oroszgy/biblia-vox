@@ -89,7 +89,9 @@ class TestBooks:
     def test_books_have_testament_field(self, books: list[Book]) -> None:
         """All books have a valid testament field."""
         for book in books:
-            assert book.testament in ("OT", "NT"), f"Invalid testament for {book.usx_code}"
+            assert book.testament in ("OT", "NT"), (
+                f"Invalid testament for {book.usx_code}"
+            )
 
     def test_ot_nt_counts(self, books: list[Book]) -> None:
         """OT has 46 books, NT has 27 books (73 total Catholic canon)."""

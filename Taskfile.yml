@@ -50,7 +50,7 @@ tasks:
   reference:generate:
     desc: Generate reference data JSON from szentiras.eu source
     cmds:
-      - uv run python scripts/generate_reference.py
+      - uv run bibliavox reference generate
     status:
       - test -f data/reference/books.json
       - test -f data/reference/versification.json
