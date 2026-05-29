@@ -1,4 +1,4 @@
-# AGENTS.md — Cath Bible Voice
+# AGENTS.md — BibliaVox
 
 ## Project Overview
 
@@ -21,7 +21,7 @@ A CLI workflow (Taskfile + Python/uv/typer) that maps Hungarian Catholic Bible v
 ## Project Structure
 
 ```
-cath-bible-voice/
+bibliavox/
 ├── src/                    # Python package source
 ├── tests/                  # Test suite
 ├── docker/                 # Dockerfiles for model stages
@@ -37,7 +37,7 @@ cath-bible-voice/
 ```bash
 # Development
 uv sync                     # Install dependencies
-uv run cath-bible-voice --help  # Run CLI
+uv run bibliavox --help  # Run CLI
 task --list                 # List available tasks
 
 # Quality

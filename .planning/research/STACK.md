@@ -1,6 +1,6 @@
 # Technology Stack
 
-**Project:** cath-bible-voice
+**Project:** bibliavox
 **Researched:** 2026-05-28
 **Overall confidence:** HIGH (core stack), MEDIUM (alignment model selection)
 

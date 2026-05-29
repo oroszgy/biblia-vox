@@ -1,4 +1,4 @@
-# Roadmap: Cath Bible Voice
+# Roadmap: BibliaVox
 
 ## Overview
 
@@ -27,7 +27,7 @@ Each phase delivers working Typer commands and Taskfile targets. Docker infrastr
   1. User can import a versification module that returns all 73 Catholic books (including 7 deuterocanonical) with Hungarian names, abbreviations, and USX codes
   2. User can look up any book by Hungarian abbreviation and receive the canonical USX code (e.g., "Ter" → "GEN")
   3. User can load project configuration from environment/dotenv with sensible defaults for all paths, model settings, and API keys
-  4. User can run `cath-bible-voice --help` and see the CLI with initial sub-command structure, and `task --list` shows available targets
+  4. User can run `bibliavox --help` and see the CLI with initial sub-command structure, and `task --list` shows available targets
 **Plans**: TBD
 
 ### Phase 2: Text Acquisition & Validation
@@ -35,10 +35,10 @@ Each phase delivers working Typer commands and Taskfile targets. Docker infrastr
 **Depends on**: Phase 1
 **Requirements**: TEXT-01, TEXT-02, TEXT-03, TEXT-05
 **Success Criteria** (what must be TRUE):
-  1. User can run `cath-bible-voice text fetch --book GEN --chapter 1` and see structured verse output from the szentiras.eu API
-  2. User can run `cath-bible-voice text parse-html --book GEN --chapter 1` and see matching verse text extracted from mek.oszk.hu
+  1. User can run `bibliavox text fetch --book GEN --chapter 1` and see structured verse output from the szentiras.eu API
+  2. User can run `bibliavox text parse-html --book GEN --chapter 1` and see matching verse text extracted from mek.oszk.hu
   3. User can run `task text:validate --book GEN --chapter 1` and receive a discrepancy report showing location and severity of any differences between sources
-  4. User can run `cath-bible-voice text normalize` on any Hungarian Bible verse text and get consistent diacritics (NFC), stripped abbreviations, and standardized verse reference formats
+  4. User can run `bibliavox text normalize` on any Hungarian Bible verse text and get consistent diacritics (NFC), stripped abbreviations, and standardized verse reference formats
 **Plans**: TBD
 
 ### Phase 3: Audio Pipeline
@@ -49,7 +49,7 @@ Each phase delivers working Typer commands and Taskfile targets. Docker infrastr
   1. User can run `task audio:download --book GEN --chapter 1` and see the MP3 downloaded with automatic retry on failure
   2. User can run `task audio:download --all` and see multiple chapters downloading in parallel with configurable concurrency and progress indicators
   3. User can run `task audio:convert --book GEN --chapter 1` and see the MP3 converted to WAV 16kHz mono with correct format verified
-  4. User can run `cath-bible-voice audio info --book GEN --chapter 1` and see duration, bitrate, sample rate metadata
+  4. User can run `bibliavox audio info --book GEN --chapter 1` and see duration, bitrate, sample rate metadata
   5. User can seek to a specific timestamp in the decoded WAV file and get accurate audio data (no VBR drift)
 **Plans**: TBD
 
@@ -105,7 +105,7 @@ Each phase delivers working Typer commands and Taskfile targets. Docker infrastr
 **Requirements**: OPS-01, OPS-02, OPS-03
 **Success Criteria** (what must be TRUE):
   1. User can run `task backup:rsync` and see the data directory synced to the configured remote SFTP host
-  2. User can run `cath-bible-voice status` and see a pipeline status report showing which chapters are processed, which failed, and an alignment quality summary
+  2. User can run `bibliavox status` and see a pipeline status report showing which chapters are processed, which failed, and an alignment quality summary
   3. User can interrupt a pipeline run mid-chapter and resume from the last successful chapter on next run (no re-processing completed work)
 **Plans**: TBD
 

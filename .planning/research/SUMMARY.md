@@ -1,6 +1,6 @@
 # Project Research Summary
 
-**Project:** cath-bible-voice
+**Project:** bibliavox
 **Domain:** Bible verse-to-audio alignment CLI (Hungarian Catholic Bible)
 **Researched:** 2026-05-28
 **Confidence:** HIGH (stack, architecture), MEDIUM (alignment model selection, Hungarian ASR quality)

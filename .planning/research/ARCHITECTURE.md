@@ -45,7 +45,7 @@ The tool is a **linear data pipeline with stage-based caching**. Each stage prod
 ### Module Organization (src-layout)
 
 ```
-src/cath_bible_voice/
+src/bibliavox/
 ├── __init__.py
 ├── main.py              # Typer app entry point
 ├── config.py            # Pydantic Settings, paths, model config
@@ -179,7 +179,7 @@ data/ ──(rsync)──▶ remote SFTP host
 **When:** Every stage that has expensive computation (alignment, audio conversion).
 **Example:**
 ```python
-from cath_bible_voice.cache.store import CacheStore
+from bibliavox.cache.store import CacheStore
 
 cache = CacheStore("data/.cache")
 
@@ -232,7 +232,7 @@ class HtmlTextSource:
 ```python
 # main.py
 import typer
-from cath_bible_voice.cli import text, audio, align, export, backup
+from bibliavox.cli import text, audio, align, export, backup
 
 app = typer.Typer(name="cbv", help="Catholic Bible Voice alignment tool")
 app.add_typer(text.app, name="text", help="Bible text operations")

@@ -1,4 +1,4 @@
-# Requirements: Cath Bible Voice
+# Requirements: BibliaVox
 
 **Defined:** 2026-05-28
 **Core Value:** Every verse of the Szent István Társulat Bible can be located in its audio recording — with precise timestamps and confidence metadata.
