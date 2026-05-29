@@ -5,14 +5,14 @@
 See: .planning/PROJECT.md (updated 2026-05-28)
 
 **Core value:** Every verse of the Szent István Társulat Bible can be located in its audio recording — with precise timestamps and confidence metadata.
-**Current focus:** Phase 1 — Foundation & Versification Schema
+**Current focus:** Phase 2 — Text Acquisition & Validation
 
 ## Current Position
 
-Phase: 1 of 8 (Foundation & Versification Schema)
-Plan: 2 of 2 in current phase
-Status: Phase complete
-Last activity: 2026-05-29 — Plan 01-02 completed (CLI reference subcommands & Taskfile)
+Phase: 2 of 8 (Text Acquisition & Validation)
+Plan: 0 of ? in current phase
+Status: Context gathered
+Last activity: 2026-05-29 — Phase 2 context gathered (SZIT JSON as primary source)
 
 Progress: [██░░░░░░░░] 25%
 
@@ -53,6 +53,12 @@ Recent decisions affecting current work:
 - [01-02]: Entry point changed from bibliavox.cli:app to bibliavox.main:main
 - [01-02]: CLI follows Pattern 4 (Typer Sub-Command Groups) from ARCHITECTURE.md
 - [01-02]: Taskfile uses go-task (task command not available, go-task is)
+- [02]: szentiras.eu API dropped — not viable without API key
+- [02]: Primary text source is peterpolgar/Biblia-json-xml (H_Kaldi_SZIT.json, Unlicense)
+- [02]: mek.oszk.hu HTML parser deferred — SZIT JSON is sole source for v1
+- [02]: Two-stage normalization: lightweight (NFC, whitespace) then schema matching
+- [02]: Reproducible pipeline: all steps in Taskfile, data in data/raw/ and data/processed/
+- [02]: Verse count validation against versification schema, JSON discrepancy reports
 
 ### Pending Todos
 
@@ -60,7 +66,7 @@ None yet.
 
 ### Blockers/Concerns
 
-- szentiras.eu API key requires emailing maintainers — availability unverified (affects Phase 2)
+- ~~szentiras.eu API key requires emailing maintainers~~ → Resolved: switched to peterpolgar/Biblia-json-xml (Unlicense)
 - mek.oszk.hu audio completeness for all 73 Catholic books unverified (affects Phase 3)
 - Hungarian Whisper LoRA performance on Bible narration (literary register) unverified (affects Phase 4)
 
@@ -75,5 +81,5 @@ Items acknowledged and carried forward from previous milestone close:
 ## Session Continuity
 
 Last session: 2026-05-29
-Stopped at: Completed 01-02-PLAN.md
-Resume file: None (Phase 1 complete)
+Stopped at: Phase 2 context gathered
+Resume file: .planning/phases/02-text-acquisition/02-CONTEXT.md
