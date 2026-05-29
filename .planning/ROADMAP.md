@@ -10,6 +10,7 @@ Each phase delivers working Typer commands and Taskfile targets. Docker infrastr
 
 - [x] **Phase 1: Foundation & Versification Schema** - Canonical reference data, project structure, CLI scaffolding, and configuration for the Catholic Bible domain
 - [x] **Phase 2: Text Acquisition & Validation** - Bible text fetched from SZIT JSON source, normalized, and validated against versification schema
+- [ ] **Phase 2.5: Data Quality & Correction** - JSONL conversion, verse splitting, and schema fixes for full validation (66/66 books)
 - [ ] **Phase 3: Audio Pipeline** - Chapter audio downloaded, decoded to WAV, and indexed for alignment
 - [ ] **Phase 4: Transcription-Based Alignment** - Whisper transcription + fuzzy matching locates verses in audio (includes Docker setup for GPU models)
 - [ ] **Phase 5: Forced Alignment & Alternatives** - MMS forced alignment tier plus VibeVoice and paid API exploration
@@ -48,6 +49,22 @@ Plans:
 Plans:
 - [x] 02-01-PLAN.md — Text source acquisition & book mapping (SZIT JSON download, English→USX mapping for 73 books)
 - [x] 02-02-PLAN.md — Normalization pipeline & validation (NFC normalization, verse count validation, JSON reports)
+
+### Phase 2.5: Data Quality & Correction
+**Goal**: Fix Bible text data quality issues: convert to JSONL format, split embedded verses, and correct versification schema errors — so that `bibliavox text validate --all` passes for all 66 SZIT books
+**Depends on**: Phase 2
+**Requirements**: TEXT-01, TEXT-05
+**Success Criteria** (what must be TRUE):
+  1. User can run `task text:convert-jsonl` and see szit.jsonl created in data/processed/text/ with one JSON line per verse (USX codes, NFC text)
+  2. User can run `task text:fix-verses` and see szit-fixed.jsonl created with embedded verse markers handled (63 Psalms cleanup, 4 splits)
+  3. User can run `task text:validate --all` and see validation pass for all 66 SZIT books (0 discrepancies)
+  4. versification.json has corrected counts: DAN 3 = 30 verses, MAL = 4 chapters, off-by-one books fixed
+**Plans**: 3 plans
+
+Plans:
+- [ ] 02.5-01-PLAN.md — JSONL Conversion (SZIT JSON → JSONL with USX codes, NFC normalization)
+- [ ] 02.5-02-PLAN.md — Verse Splitting (detect embedded verse markers, split or cleanup, validate 66/66)
+- [ ] 02.5-03-PLAN.md — Schema Fixes (correct versification.json for DAN, MAL, off-by-one books)
 
 ### Phase 3: Audio Pipeline
 **Goal**: Chapter audio is downloaded, decoded to WAV 16kHz mono (eliminating VBR timestamp inaccuracy), and indexed for precise timestamp access
@@ -120,26 +137,27 @@ Plans:
 ## Progress
 
 **Execution Order:**
-Phase 1 first. Then Phases 2 and 3 can execute in parallel. Phase 4 requires both 2 and 3. Then sequential: 4 → 5 → 6 → 7 → 8.
+Phase 1 first. Then Phases 2 and 3 can execute in parallel. Phase 2.5 fixes data quality after Phase 2. Phase 4 requires Phase 2.5 and Phase 3. Then sequential: 4 → 5 → 6 → 7 → 8.
 
 ```
 Phase 1 (Foundation)
-  ├── Phase 2 (Text)  ─┐
-  └── Phase 3 (Audio) ─┼── Phase 4 (Transcription Alignment + Docker)
-                        │         │
-                        │    Phase 5 (Forced Alignment & Alternatives)
-                        │         │
-                        │    Phase 6 (Calibration & Comparison)
-                        │         │
-                        │    Phase 7 (Export & Pipeline Integration)
-                        │         │
-                        └── Phase 8 (Operations & Hardening)
+  ├── Phase 2 (Text)  ─── Phase 2.5 (Data Quality) ─┐
+  └── Phase 3 (Audio) ───────────────────────────────┼── Phase 4 (Transcription Alignment + Docker)
+                                                      │         │
+                                                      │    Phase 5 (Forced Alignment & Alternatives)
+                                                      │         │
+                                                      │    Phase 6 (Calibration & Comparison)
+                                                      │         │
+                                                      │    Phase 7 (Export & Pipeline Integration)
+                                                      │         │
+                                                      └── Phase 8 (Operations & Hardening)
 ```
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation & Versification Schema | 2/2 | Complete | 2026-05-29 |
 | 2. Text Acquisition & Validation | 2/2 | Complete | 2026-05-29 |
+| 2.5. Data Quality & Correction | 0/3 | Not started | - |
 | 3. Audio Pipeline | 0/? | Not started | - |
 | 4. Transcription-Based Alignment | 0/? | Not started | - |
 | 5. Forced Alignment & Alternatives | 0/? | Not started | - |
