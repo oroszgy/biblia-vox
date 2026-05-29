@@ -134,7 +134,7 @@ Phase 1 (Foundation)
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation & Versification Schema | 0/? | Not started | - |
+| 1. Foundation & Versification Schema | 1/2 | In progress | - |
 | 2. Text Acquisition & Validation | 0/? | Not started | - |
 | 3. Audio Pipeline | 0/? | Not started | - |
 | 4. Transcription-Based Alignment | 0/? | Not started | - |

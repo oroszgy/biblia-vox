@@ -12,9 +12,9 @@ v1 is a **calibration release**: build the full pipeline, validate it on a gold 
 - [ ] **TEXT-01**: Fetch verse text from szentiras.eu API (SZIT translation) with API key authentication
 - [ ] **TEXT-02**: Parse mek.oszk.hu HTML pages as fallback/validation source
 - [ ] **TEXT-03**: Cross-validate API vs HTML sources, flag discrepancies with location and severity
-- [ ] **TEXT-04**: Define 73-book Catholic versification schema (including 7 deuterocanonical books)
+- [x] **TEXT-04**: Define 73-book Catholic versification schema (including 7 deuterocanonical books)
 - [ ] **TEXT-05**: Normalize Hungarian text (diacritics, abbreviations, verse reference formats)
-- [ ] **TEXT-06**: Map Hungarian book abbreviations to USX codes (GEN, EXO, MAT, etc.)
+- [x] **TEXT-06**: Map Hungarian book abbreviations to USX codes (GEN, EXO, MAT, etc.)
 
 ### Audio Pipeline
 
@@ -48,7 +48,7 @@ v1 is a **calibration release**: build the full pipeline, validate it on a gold 
 ### Infrastructure
 
 - [ ] **INF-01**: Docker images for model-heavy stages (Whisper, MMS, VibeVoice) to isolate CUDA/PyTorch dependencies
-- [ ] **INF-02**: Native Python for lightweight stages (text parsing, audio download, export)
+- [x] **INF-02**: Native Python for lightweight stages (text parsing, audio download, export)
 - [ ] **INF-03**: docker-compose.yml for orchestrating multi-stage pipeline
 - [ ] **INF-04**: Shared data volume between containers and host for intermediate files
 - [ ] **INF-05**: GPU passthrough configuration for Docker containers (NVIDIA Container Toolkit)
@@ -110,9 +110,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | TEXT-01 | Phase 2 | Pending |
 | TEXT-02 | Phase 2 | Pending |
 | TEXT-03 | Phase 2 | Pending |
-| TEXT-04 | Phase 1 | Pending |
+| TEXT-04 | Phase 1 | Complete |
 | TEXT-05 | Phase 2 | Pending |
-| TEXT-06 | Phase 1 | Pending |
+| TEXT-06 | Phase 1 | Complete |
 | AUD-01 | Phase 3 | Pending |
 | AUD-02 | Phase 3 | Pending |
 | AUD-03 | Phase 3 | Pending |
@@ -134,7 +134,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | EXP-04 | Phase 7 | Pending |
 | EXP-05 | Phase 7 | Pending |
 | INF-01 | Phase 4 | Pending |
-| INF-02 | Phase 1 | Pending |
+| INF-02 | Phase 1 | Complete |
 | INF-03 | Phase 4 | Pending |
 | INF-04 | Phase 4 | Pending |
 | INF-05 | Phase 4 | Pending |
