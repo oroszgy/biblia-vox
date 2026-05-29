@@ -8,7 +8,7 @@ Each phase delivers working Typer commands and Taskfile targets. Docker infrastr
 
 ## Phases
 
-- [ ] **Phase 1: Foundation & Versification Schema** - Canonical reference data, project structure, CLI scaffolding, and configuration for the Catholic Bible domain
+- [x] **Phase 1: Foundation & Versification Schema** - Canonical reference data, project structure, CLI scaffolding, and configuration for the Catholic Bible domain
 - [ ] **Phase 2: Text Acquisition & Validation** - Bible text fetched from two sources, normalized, and cross-validated
 - [ ] **Phase 3: Audio Pipeline** - Chapter audio downloaded, decoded to WAV, and indexed for alignment
 - [ ] **Phase 4: Transcription-Based Alignment** - Whisper transcription + fuzzy matching locates verses in audio (includes Docker setup for GPU models)
@@ -31,8 +31,8 @@ Each phase delivers working Typer commands and Taskfile targets. Docker infrastr
 **Plans**: 2 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — Reference data & project structure (73-book schema, config, generation script)
-- [ ] 01-02-PLAN.md — CLI scaffolding & Taskfile (reference subcommands, dev tasks)
+- [x] 01-01-PLAN.md — Reference data & project structure (73-book schema, config, generation script)
+- [x] 01-02-PLAN.md — CLI scaffolding & Taskfile (reference subcommands, dev tasks)
 
 ### Phase 2: Text Acquisition & Validation
 **Goal**: Verified Bible text is available from two independent sources (API + HTML), normalized, and cross-validated for completeness
@@ -134,7 +134,7 @@ Phase 1 (Foundation)
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation & Versification Schema | 1/2 | In progress | - |
+| 1. Foundation & Versification Schema | 2/2 | Complete | 2026-05-29 |
 | 2. Text Acquisition & Validation | 0/? | Not started | - |
 | 3. Audio Pipeline | 0/? | Not started | - |
 | 4. Transcription-Based Alignment | 0/? | Not started | - |

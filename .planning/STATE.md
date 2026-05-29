@@ -10,28 +10,28 @@ See: .planning/PROJECT.md (updated 2026-05-28)
 ## Current Position
 
 Phase: 1 of 8 (Foundation & Versification Schema)
-Plan: 1 of 2 in current phase
-Status: In progress
-Last activity: 2026-05-29 — Plan 01-01 completed (reference data & configuration)
+Plan: 2 of 2 in current phase
+Status: Phase complete
+Last activity: 2026-05-29 — Plan 01-02 completed (CLI reference subcommands & Taskfile)
 
-Progress: [█░░░░░░░░░] 12%
+Progress: [██░░░░░░░░] 25%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 1
-- Average duration: 10 min
-- Total execution time: 0.17 hours
+- Total plans completed: 2
+- Average duration: 8 min
+- Total execution time: 0.34 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 1. Foundation | 1/2 | 10 min | 10 min |
+| 1. Foundation | 2/2 | 13 min | 6.5 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (10 min)
-- Trend: N/A (too few data points)
+- Last 5 plans: 01-01 (10 min), 01-02 (3 min)
+- Trend: Improving (faster on second plan)
 
 *Updated after each plan completion*
 
@@ -50,6 +50,9 @@ Recent decisions affecting current work:
 - [01-01]: Module-level caches (_BOOKS, _SCHEMAS) with lazy loading on first access
 - [01-01]: Catholic Vulgate ordering for books (Daniel/Esther after minor prophets)
 - [01-01]: Empty szentiras_api_key default — requires manual setup for Phase 2
+- [01-02]: Entry point changed from bibliavox.cli:app to bibliavox.main:main
+- [01-02]: CLI follows Pattern 4 (Typer Sub-Command Groups) from ARCHITECTURE.md
+- [01-02]: Taskfile uses go-task (task command not available, go-task is)
 
 ### Pending Todos
 
@@ -72,5 +75,5 @@ Items acknowledged and carried forward from previous milestone close:
 ## Session Continuity
 
 Last session: 2026-05-29
-Stopped at: Completed 01-01-PLAN.md
-Resume file: .planning/phases/01-foundation/01-02-PLAN.md
+Stopped at: Completed 01-02-PLAN.md
+Resume file: None (Phase 1 complete)
