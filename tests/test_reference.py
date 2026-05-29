@@ -146,6 +146,6 @@ class TestVersification:
         """Esther (Catholic) has 16 chapters (includes deuterocanonical additions)."""
         assert get_chapter_count("EST", schemas) == 16
 
-    def test_daniel_has_14_chapters(self, schemas: list[BookSchema]) -> None:
-        """Daniel (Catholic) has 14 chapters (includes deuterocanonical additions)."""
-        assert get_chapter_count("DAN", schemas) == 14
+    def test_daniel_has_12_chapters(self, schemas: list[BookSchema]) -> None:
+        """Daniel (SZIT) has 12 chapters (no deuterocanonical additions in source)."""
+        assert get_chapter_count("DAN", schemas) == 12
