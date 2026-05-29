@@ -20,8 +20,8 @@ v1 is a **calibration release**: build the full pipeline, validate it on a gold 
 
 - [x] **AUD-01**: Download per-chapter MP3 files from mek.oszk.hu with retry and resume
 - [x] **AUD-02**: Parallel download of multiple chapters with configurable concurrency
-- [ ] **AUD-03**: Decode MP3 to WAV 16kHz mono (critical for VBR timestamp accuracy)
-- [ ] **AUD-04**: Extract audio metadata (bitrate, sample rate, duration) per file
+- [x] **AUD-03**: Decode MP3 to WAV 16kHz mono (critical for VBR timestamp accuracy)
+- [x] **AUD-04**: Extract audio metadata (bitrate, sample rate, duration) per file
 - [ ] **AUD-05**: Build seek index for accurate timestamp access in WAV files
 
 ### Alignment Engine (Calibration Mode)
@@ -115,8 +115,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | TEXT-06 | Phase 1 | Complete |
 | AUD-01 | Phase 3 | Complete |
 | AUD-02 | Phase 3 | Complete |
-| AUD-03 | Phase 3 | Pending |
-| AUD-04 | Phase 3 | Pending |
+| AUD-03 | Phase 3 | Complete |
+| AUD-04 | Phase 3 | Complete |
 | AUD-05 | Phase 3 | Pending |
 | ALN-01 | Phase 4 | Pending |
 | ALN-02 | Phase 4 | Pending |
