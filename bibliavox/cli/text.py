@@ -1,13 +1,16 @@
 """Text subcommand group for Bible text operations.
 
 Commands:
-    fetch      — Fetch and display Bible text by book/chapter
-    info       — Show book info including chapter/verse counts
-    validate   — Validate verse counts against versification schema
-    normalize  — Normalize Bible text (NFC, whitespace, line endings)
+    fetch         — Fetch and display Bible text by book/chapter
+    info          — Show book info including chapter/verse counts
+    validate      — Validate verse counts against versification schema
+    normalize     — Normalize Bible text (NFC, whitespace, line endings)
+    convert-jsonl — Convert SZIT JSON to JSONL format with USX codes
 """
 
 from __future__ import annotations
+
+from pathlib import Path
 
 import typer
 from rich.console import Console
@@ -320,3 +323,20 @@ def normalize(
         console.print(f"  ✓ {usx_code} → {output_path}")
 
     console.print("[green]Normalization complete[/green]")
+
+
+@app.command()
+def convert_jsonl(
+    output: Path = typer.Option(
+        Path("data/processed/text/szit.jsonl"),
+        "--output",
+        "-o",
+        help="Output JSONL path",
+    ),
+) -> None:
+    """Convert SZIT JSON to JSONL format with USX codes."""
+    from bibliavox.text.jsonl_converter import convert_to_jsonl
+
+    output.parent.mkdir(parents=True, exist_ok=True)
+    count = convert_to_jsonl(output)
+    console.print(f"[green]✓ Wrote {count} verses to {output}[/green]")

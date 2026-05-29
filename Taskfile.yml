@@ -81,6 +81,15 @@ tasks:
       - uv run bibliavox text validate --all
     deps: [text:fetch]
 
+  text:convert-jsonl:
+    desc: Convert SZIT JSON to JSONL format with USX codes
+    cmds:
+      - mkdir -p data/processed/text
+      - uv run bibliavox text convert-jsonl
+    status:
+      - test -f data/processed/text/szit.jsonl
+    deps: [text:fetch]
+
   sync:
     desc: Install/sync dependencies
     cmds:
