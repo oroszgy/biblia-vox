@@ -1,0 +1,70 @@
+version: '3'
+
+vars:
+  PACKAGE: bibliavox
+
+tasks:
+  default:
+    desc: Show available tasks
+    cmds:
+      - task --list
+
+  lint:
+    desc: Run ruff linter
+    cmds:
+      - uv run ruff check {{.PACKAGE}}/ tests/
+
+  format:
+    desc: Format code with ruff
+    cmds:
+      - uv run ruff format {{.PACKAGE}}/ tests/
+
+  format-check:
+    desc: Check formatting without modifying
+    cmds:
+      - uv run ruff format --check {{.PACKAGE}}/ tests/
+
+  typecheck:
+    desc: Run ty type checker
+    cmds:
+      - uv run ty check {{.PACKAGE}}/
+
+  test:
+    desc: Run test suite
+    cmds:
+      - uv run pytest tests/ -x -v
+
+  test-cov:
+    desc: Run tests with coverage
+    cmds:
+      - uv run pytest tests/ -x -v --cov={{.PACKAGE}} --cov-report=term-missing
+
+  quality:
+    desc: Run all quality checks (lint + format-check + typecheck + test)
+    cmds:
+      - task: lint
+      - task: format-check
+      - task: typecheck
+      - task: test
+
+  reference:generate:
+    desc: Generate reference data JSON from szentiras.eu source
+    cmds:
+      - uv run python scripts/generate_reference.py
+    status:
+      - test -f data/reference/books.json
+      - test -f data/reference/versification.json
+
+  sync:
+    desc: Install/sync dependencies
+    cmds:
+      - uv sync
+
+  clean:
+    desc: Clean generated files and caches
+    cmds:
+      - rm -rf data/.cache/
+      - rm -rf data/reference/*.json
+      - rm -rf .pytest_cache/
+      - rm -rf __pycache__/ {{.PACKAGE}}/__pycache__/ tests/__pycache__/
+      - find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null || true
