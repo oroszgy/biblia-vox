@@ -111,6 +111,12 @@ tasks:
     status:
       - test -f data/processed/text/mek.jsonl
 
+  text:cross-validate:
+    desc: Cross-validate SZIT vs MEK corpora, flagging all coverage and textual discrepancies
+    cmds:
+      - uv run bibliavox text cross-validate
+    deps: [text:fix-verses, text:ingest-mek]
+
   # NOTE: go-task parses task-level flags itself, so command flags like
   # `task audio:download --book GEN --chapter 1` are not supported.
   # Use task vars (BOOK/CHAPTER/WORKERS) intentionally for this contract.

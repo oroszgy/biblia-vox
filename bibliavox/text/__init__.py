@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from bibliavox.text.jsonl_converter import convert_to_jsonl
 from bibliavox.text.mapping import english_to_usx, load_book_mapping
+from bibliavox.text.cross_validator import cross_validate_corpora
 from bibliavox.text.mek_source import (
     build_mek_corpus,
     download_mek_book,
@@ -25,6 +26,7 @@ __all__ = [
     "Severity",
     "build_mek_corpus",
     "convert_to_jsonl",
+    "cross_validate_corpora",
     "detect_markers",
     "download_mek_book",
     "english_to_usx",

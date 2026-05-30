@@ -13,6 +13,9 @@ from bibliavox.text.source import get_chapter_verses, get_verse_text, load_szit_
 @pytest.fixture()
 def sample_data(tmp_path: Path) -> Path:
     """Create a minimal SZIT JSON sample for testing."""
+    import bibliavox.text.source
+
+    bibliavox.text.source._SZIT_DATA = None
     data = {
         "Genesis": {
             "1": {

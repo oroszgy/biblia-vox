@@ -11,6 +11,7 @@ Commands:
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 import typer
@@ -99,7 +100,7 @@ def fetch(
             table.add_column("Text")
 
             for verse_key in sorted(verses.keys(), key=int):
-                table.add_row(verse_key, verses[verse_key])
+                table.add_row(str(verse_key), verses[verse_key])
 
             console.print(table)
 
@@ -401,3 +402,127 @@ def ingest_mek(
     console.print("[cyan]Ingesting MEK alternate text source (all 73 books)...[/cyan]")
     count = build_mek_corpus(output)
     console.print(f"[green]✓ Successfully wrote {count} verses to {output}[/green]")
+
+
+@app.command()
+def cross_validate(
+    szit: Path = typer.Option(
+        Path("data/processed/text/szit-fixed.jsonl"),
+        "--szit",
+        "-s",
+        help="Path to fixed SZIT JSONL corpus",
+    ),
+    mek: Path = typer.Option(
+        Path("data/processed/text/mek.jsonl"),
+        "--mek",
+        "-m",
+        help="Path to parsed MEK JSONL corpus",
+    ),
+    output_diff: Path = typer.Option(
+        Path("data/processed/text/text-discrepancies.jsonl"),
+        "--output-diff",
+        "-o",
+        help="Path to output JSONL discrepancy file",
+    ),
+) -> None:
+    """Cross-validate SZIT vs MEK corpora, flagging all coverage and textual discrepancies."""
+    from bibliavox.text.cross_validator import cross_validate_corpora
+
+    if not szit.exists():
+        console.print(f"[red]Error: SZIT corpus not found at {szit}[/red]")
+        raise typer.Exit(code=1)
+    if not mek.exists():
+        console.print(f"[red]Error: MEK corpus not found at {mek}[/red]")
+        raise typer.Exit(code=1)
+
+    console.print("[cyan]Cross-validating corpora...[/cyan]")
+    console.print(f"  SZIT: {szit}")
+    console.print(f"  MEK:  {mek}")
+
+    discrepancies = cross_validate_corpora(szit, mek)
+
+    # 1. Compute summary counts by type/severity
+    summary = {
+        "missing_book": 0,
+        "missing_chapter": 0,
+        "missing_verse": 0,
+        "text_diff": 0,
+    }
+    for d in discrepancies:
+        t = d["type"]
+        if t in summary:
+            summary[t] += 1
+
+    # 2. Render Rich summary table
+    summary_table = Table(title="Discrepancy Summary by Type")
+    summary_table.add_column("Discrepancy Type", style="cyan")
+    summary_table.add_column("Severity", style="yellow")
+    summary_table.add_column("Count", justify="right", style="magenta")
+
+    for d_type, count in summary.items():
+        summary_table.add_row(d_type, d_type, str(count))
+
+    console.print(summary_table)
+
+    # 3. Write all discrepancies to JSONL output
+    output_diff.parent.mkdir(parents=True, exist_ok=True)
+    with open(output_diff, "w", encoding="utf-8") as f:
+        for d in discrepancies:
+            f.write(json.dumps(d, ensure_ascii=False) + "\n")
+
+    console.print(
+        f"[green]✓ Wrote {len(discrepancies)} discrepancy records to {output_diff}[/green]"
+    )
+
+    # 4. If discrepancies found, list detail rows in a beautiful Rich Table (limited to 100 rows)
+    if discrepancies:
+        detail_table = Table(title="Discrepancy Details (Showing first 100)")
+        detail_table.add_column("Book", style="cyan")
+        detail_table.add_column("Chapter", justify="right")
+        detail_table.add_column("Verse", justify="right")
+        detail_table.add_column("Type", style="yellow")
+        detail_table.add_column("Source Lacking", style="red")
+        detail_table.add_column("Details")
+
+        for d in discrepancies[:100]:
+            ref = f"{d['book']}"
+            ch_str = str(d["chapter"]) if d["chapter"] is not None else "—"
+            v_str = str(d["verse"]) if d["verse"] is not None else "—"
+
+            # Formulate friendly details
+            details_text = ""
+            if d["type"] == "missing_book":
+                details_text = (
+                    f"Book {d['book']} is completely missing in {d['source']}"
+                )
+            elif d["type"] == "missing_chapter":
+                details_text = f"Chapter {d['chapter']} is missing in {d['source']}"
+            elif d["type"] == "missing_verse":
+                details_text = f"Verse {d['verse']} is missing in {d['source']}"
+            elif d["type"] == "text_diff":
+                sz_short = (
+                    d["szit_text"][:25] + "..."
+                    if len(d["szit_text"]) > 25
+                    else d["szit_text"]
+                )
+                mk_short = (
+                    d["mek_text"][:25] + "..."
+                    if len(d["mek_text"]) > 25
+                    else d["mek_text"]
+                )
+                details_text = f"SZIT: {sz_short} | MEK: {mk_short}"
+
+            detail_table.add_row(
+                ref,
+                ch_str,
+                v_str,
+                d["type"],
+                d["source"],
+                details_text,
+            )
+
+        console.print(detail_table)
+        if len(discrepancies) > 100:
+            console.print(
+                f"[yellow]Note: Truncated {len(discrepancies) - 100} detailed rows from stdout view.[/yellow]"
+            )

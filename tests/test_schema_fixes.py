@@ -109,7 +109,6 @@ class TestSchemaIntegrity:
     def test_all_szit_books_have_versification(self, schemas):
         """All 66 SZIT books should have versification entries."""
         # SZIT has 66 books (no deuterocanonical in source)
-        schema_codes = {s.usx_code for s in schemas}
         # At minimum, the schema should have entries for all standard books
         assert len(schemas) >= 66
 
