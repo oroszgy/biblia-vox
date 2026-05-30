@@ -384,3 +384,20 @@ def fix_verses(
         f"{stats['split']} split, {stats['unchanged']} unchanged[/green]"
     )
     console.print(f"[green]✓ Output: {output}[/green]")
+
+
+@app.command()
+def ingest_mek(
+    output: Path = typer.Option(
+        Path("data/processed/text/mek.jsonl"),
+        "--output",
+        "-o",
+        help="Output JSONL path",
+    ),
+) -> None:
+    """Download and parse MEK HTML text into a flat JSONL corpus."""
+    from bibliavox.text.mek_source import build_mek_corpus
+
+    console.print("[cyan]Ingesting MEK alternate text source (all 73 books)...[/cyan]")
+    count = build_mek_corpus(output)
+    console.print(f"[green]✓ Successfully wrote {count} verses to {output}[/green]")

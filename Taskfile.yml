@@ -103,6 +103,14 @@ tasks:
       - test -f data/processed/text/szit-fixed.jsonl
     deps: [text:convert-jsonl]
 
+  text:ingest-mek:
+    desc: Download and parse MEK HTML text into processed JSONL corpus
+    cmds:
+      - mkdir -p data/processed/text
+      - uv run bibliavox text ingest-mek
+    status:
+      - test -f data/processed/text/mek.jsonl
+
   # NOTE: go-task parses task-level flags itself, so command flags like
   # `task audio:download --book GEN --chapter 1` are not supported.
   # Use task vars (BOOK/CHAPTER/WORKERS) intentionally for this contract.

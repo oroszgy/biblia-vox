@@ -111,7 +111,6 @@ def test_parse_mek_chapter() -> None:
 
 def test_build_mek_corpus(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     """Should download missing books, split, parse, and write flat JSONL corpus."""
-    raw_dir = tmp_path / "raw"
     processed_dir = tmp_path / "processed"
     output_path = processed_dir / "mek.jsonl"
 

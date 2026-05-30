@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import pytest
 
 from bibliavox.text.normalizer import normalize_chapter, normalize_text, normalize_verse
 

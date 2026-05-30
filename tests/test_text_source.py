@@ -61,7 +61,6 @@ class TestLoadSzitJson:
     def test_caches_loaded_data(self, sample_data: Path) -> None:
         """Should cache loaded data for subsequent calls."""
         # Clear cache first
-        from bibliavox.text.source import _SZIT_DATA
 
         import bibliavox.text.source
 
