@@ -5,6 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any, cast
 import json
+import time
 from threading import Lock
 
 import httpx
@@ -73,9 +74,18 @@ def _validate_seek_output_path(output_path: Path, prepared_root: Path) -> None:
 def load_mek_playlist() -> str:
     """Fetch MEK M3U playlist text."""
     playlist_url = f"{BASE_AUDIO_URL}/biblia.m3u"
-    response = httpx.get(playlist_url, timeout=30.0, follow_redirects=True)
-    response.raise_for_status()
-    return response.text
+    attempts = 5
+    timeout = httpx.Timeout(connect=30.0, read=60.0, write=30.0, pool=10.0)
+    for attempt in range(1, attempts + 1):
+        try:
+            response = httpx.get(playlist_url, timeout=timeout, follow_redirects=True)
+            response.raise_for_status()
+            return response.text
+        except httpx.HTTPError:
+            if attempt == attempts:
+                raise
+            time.sleep(min(2**attempt, 10))
+    raise RuntimeError("unreachable")
 
 
 @app.command()
