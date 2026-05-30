@@ -3,9 +3,9 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: ready_to_verify
-stopped_at: Completed 03-04-PLAN.md
-last_updated: "2026-05-30T04:47:54Z"
-last_activity: 2026-05-30 -- Phase 3 plan 03-04 executed (gap closure)
+stopped_at: Phase 3 runtime closure verified
+last_updated: "2026-05-30T13:38:42Z"
+last_activity: 2026-05-30 -- Phase 3 full-corpus audio runtime closure completed and verified
 progress:
   total_phases: 9
   completed_phases: 4
@@ -28,7 +28,7 @@ See: .planning/PROJECT.md (updated 2026-05-28)
 Phase: 4 of 8 (Transcription-Based Alignment) — READY
 Plan: 0 of ? in current phase
 Status: Ready for planning/execution
-Last activity: 2026-05-30 -- Phase 3 plan 03-04 executed (gap closure)
+Last activity: 2026-05-30 -- Phase 3 full-corpus audio runtime closure completed and verified
 
 Progress: [██████████] 100%
 
@@ -95,6 +95,9 @@ Recent decisions affecting current work:
 - [03-03]: Absolute seek output paths are restricted to prepared-root or /tmp for filesystem boundary safety
 - [03-04]: Batch download progress is callback-driven from downloader to CLI and preserves deterministic downloaded/skipped/failed summary output
 - [03-04]: Phase 3 acceptance commands are standardized to go-task variable syntax (BOOK/CHAPTER/WORKERS) because task-level flag parsing is unsupported
+- [03-runtime]: Discovery chapter parsing now supports `-fejezet` filenames, increasing mapped manifest coverage from 117 to 1175 chapters
+- [03-runtime]: Full corpus prepare completed with artifact parity (`1175` raw MP3 and `1175` WAV/meta/index triplets)
+- [03-runtime]: Phase 3 seek/output safety and downloader retry correctness gaps from review are fixed and covered by regression tests
 
 ### Pending Todos
 
@@ -117,5 +120,5 @@ Items acknowledged and carried forward from previous milestone close:
 ## Session Continuity
 
 Last session: 2026-05-30
-Stopped at: Completed 03-04-PLAN.md
+Stopped at: Phase 3 runtime closure verified
 Resume file: .planning/phases/04-transcription-alignment/
