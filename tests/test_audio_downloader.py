@@ -136,3 +136,52 @@ def test_download_all_applies_worker_limit_skip_and_failure_summary(
     assert len(summary["downloaded"]) == 1
     assert len(summary["skipped"]) == 1
     assert len(summary["failed"]) == 1
+
+
+def test_download_all_invokes_on_result_once_per_manifest_item(tmp_path: Path) -> None:
+    output_root = tmp_path / "data" / "raw"
+    existing = output_root / "GEN" / "001.mp3"
+    existing.parent.mkdir(parents=True, exist_ok=True)
+    existing.write_bytes(b"existing")
+
+    items = [
+        _sample_item("GEN", 1),
+        _sample_item("GEN", 2),
+        _sample_item("GEN", 3),
+    ]
+
+    clients = {
+        items[1]["url"]: _FakeClient([_FakeResponse(status_code=200, chunks=[b"ok"])]),
+    }
+
+    def _client_factory(url: str):
+        if url == items[2]["url"]:
+            return _FakeClient(
+                [_FakeResponse(status_code=500, chunks=[], should_raise=True)]
+            )
+        return clients[url]
+
+    seen: list[tuple[str, int, str]] = []
+
+    def _on_result(result):
+        seen.append((result["book_usx"], result["chapter"], result["status"]))
+
+    summary = download_all(
+        items,
+        output_root,
+        workers=2,
+        client_factory=_client_factory,
+        on_result=_on_result,
+    )
+
+    assert len(seen) == len(items)
+    assert sorted(seen) == sorted(
+        [
+            ("GEN", 1, "skipped"),
+            ("GEN", 2, "downloaded"),
+            ("GEN", 3, "failed"),
+        ]
+    )
+    assert len(summary["downloaded"]) == 1
+    assert len(summary["skipped"]) == 1
+    assert len(summary["failed"]) == 1

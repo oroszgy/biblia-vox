@@ -121,11 +121,14 @@ def test_download_all_dispatches_to_batch(monkeypatch, tmp_path: Path) -> None:
         lambda _: {"missing_vs_schema": {}, "extra_vs_schema": {}},
     )
 
-    def fake_download_all(manifest, output_root, workers=4, force=False):
+    def fake_download_all(
+        manifest, output_root, workers=4, force=False, on_result=None
+    ):
         captured["manifest"] = manifest
         captured["output_root"] = output_root
         captured["workers"] = workers
         captured["force"] = force
+        captured["on_result"] = on_result
         return {"downloaded": [], "skipped": [], "failed": []}
 
     monkeypatch.setattr("bibliavox.cli.audio.download_all", fake_download_all)
@@ -147,6 +150,160 @@ def test_download_all_dispatches_to_batch(monkeypatch, tmp_path: Path) -> None:
     assert captured["workers"] == 3
     assert captured["force"] is True
     assert captured["output_root"] == tmp_path
+    assert callable(captured["on_result"])
+
+
+def test_download_all_shows_progress_output(monkeypatch, tmp_path: Path) -> None:
+    monkeypatch.setattr("bibliavox.cli.audio.load_mek_playlist", lambda: "")
+    monkeypatch.setattr(
+        "bibliavox.cli.audio.parse_m3u",
+        lambda _: [
+            {
+                "relative_path": "otestamentum/01_teremtes/teremtes-konyve-01.mp3",
+                "extinf_sec": 387,
+            }
+        ],
+    )
+    monkeypatch.setattr(
+        "bibliavox.cli.audio.build_audio_manifest",
+        lambda _: [
+            {
+                "book_usx": "GEN",
+                "chapter": 1,
+                "url": "https://mek.oszk.hu/08800/08820/mp3/otestamentum/01_teremtes/teremtes-konyve-01.mp3",
+                "relative_path": "otestamentum/01_teremtes/teremtes-konyve-01.mp3",
+                "extinf_sec": 387,
+                "source": "mek.m3u",
+            }
+        ],
+    )
+    monkeypatch.setattr(
+        "bibliavox.cli.audio.inventory_report",
+        lambda _: {"missing_vs_schema": {}, "extra_vs_schema": {}},
+    )
+
+    def fake_download_all(
+        manifest, output_root, workers=4, force=False, on_result=None
+    ):
+        assert callable(on_result)
+        on_result(
+            {
+                "book_usx": "GEN",
+                "chapter": 1,
+                "target": str(output_root / "GEN" / "001.mp3"),
+                "status": "downloaded",
+                "error": None,
+            }
+        )
+        return {
+            "downloaded": [
+                {
+                    "book_usx": "GEN",
+                    "chapter": 1,
+                    "target": str(output_root / "GEN" / "001.mp3"),
+                    "status": "downloaded",
+                    "error": None,
+                }
+            ],
+            "skipped": [],
+            "failed": [],
+        }
+
+    monkeypatch.setattr("bibliavox.cli.audio.download_all", fake_download_all)
+
+    result = runner.invoke(
+        app,
+        [
+            "download",
+            "--all",
+            "--workers",
+            "3",
+            "--output-root",
+            str(tmp_path),
+        ],
+    )
+
+    assert result.exit_code == 0
+    assert "Batch progress" in result.output
+    assert "Batch complete" in result.output
+    assert "downloaded=1 skipped=0 failed=0" in result.output
+
+
+def test_download_all_exits_non_zero_when_failures_exist(
+    monkeypatch, tmp_path: Path
+) -> None:
+    monkeypatch.setattr("bibliavox.cli.audio.load_mek_playlist", lambda: "")
+    monkeypatch.setattr(
+        "bibliavox.cli.audio.parse_m3u",
+        lambda _: [
+            {
+                "relative_path": "otestamentum/01_teremtes/teremtes-konyve-01.mp3",
+                "extinf_sec": 387,
+            }
+        ],
+    )
+    monkeypatch.setattr(
+        "bibliavox.cli.audio.build_audio_manifest",
+        lambda _: [
+            {
+                "book_usx": "GEN",
+                "chapter": 1,
+                "url": "https://mek.oszk.hu/08800/08820/mp3/otestamentum/01_teremtes/teremtes-konyve-01.mp3",
+                "relative_path": "otestamentum/01_teremtes/teremtes-konyve-01.mp3",
+                "extinf_sec": 387,
+                "source": "mek.m3u",
+            }
+        ],
+    )
+    monkeypatch.setattr(
+        "bibliavox.cli.audio.inventory_report",
+        lambda _: {"missing_vs_schema": {}, "extra_vs_schema": {}},
+    )
+
+    def fake_download_all(
+        manifest, output_root, workers=4, force=False, on_result=None
+    ):
+        assert callable(on_result)
+        on_result(
+            {
+                "book_usx": "GEN",
+                "chapter": 1,
+                "target": str(output_root / "GEN" / "001.mp3"),
+                "status": "failed",
+                "error": "boom",
+            }
+        )
+        return {
+            "downloaded": [],
+            "skipped": [],
+            "failed": [
+                {
+                    "book_usx": "GEN",
+                    "chapter": 1,
+                    "target": str(output_root / "GEN" / "001.mp3"),
+                    "status": "failed",
+                    "error": "boom",
+                }
+            ],
+        }
+
+    monkeypatch.setattr("bibliavox.cli.audio.download_all", fake_download_all)
+
+    result = runner.invoke(
+        app,
+        [
+            "download",
+            "--all",
+            "--workers",
+            "3",
+            "--output-root",
+            str(tmp_path),
+        ],
+    )
+
+    assert result.exit_code == 1
+    assert "Batch complete" in result.output
+    assert "downloaded=0 skipped=0 failed=1" in result.output
 
 
 def test_prepare_command_defaults_to_skip_and_supports_force(monkeypatch) -> None:
