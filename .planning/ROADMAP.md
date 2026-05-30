@@ -82,6 +82,7 @@ Plans:
 - [x] 03-01-PLAN.md — Playlist discovery + resilient MP3 download (single + batch, retry/resume, mismatch diagnostics)
 - [x] 03-02-PLAN.md — MP3→WAV conversion + ffprobe metadata CLI (strict 16k mono PCM invariants)
 - [x] 03-03-PLAN.md — Seek index + prepare/seek workflows (sample-accurate WAV timestamp access)
+- [x] 03-04-PLAN.md — Gap closure: executable Taskfile command contract + batch progress indicators
 
 ### Phase 4: Transcription-Based Alignment
 **Goal**: Verses can be located in audio via faster-whisper transcription with Hungarian LoRA adapter, followed by fuzzy text matching against known verse text. Docker infrastructure for GPU models is set up as part of this phase.
@@ -163,7 +164,7 @@ Phase 1 (Foundation)
 | 1. Foundation & Versification Schema | 2/2 | Complete | 2026-05-29 |
 | 2. Text Acquisition & Validation | 2/2 | Complete | 2026-05-29 |
 | 2.5. Data Quality & Correction | 3/3 | Complete | 2026-05-29 |
-| 3. Audio Pipeline | 3/3 | Complete | 2026-05-29 |
+| 3. Audio Pipeline | 4/4 | Complete | 2026-05-30 |
 | 4. Transcription-Based Alignment | 0/? | Not started | - |
 | 5. Forced Alignment & Alternatives | 0/? | Not started | - |
 | 6. Calibration & Alignment Comparison | 0/? | Not started | - |

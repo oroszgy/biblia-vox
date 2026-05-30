@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: ready_to_verify
-stopped_at: Completed 03-03-PLAN.md
-last_updated: "2026-05-29T21:04:52Z"
-last_activity: 2026-05-29 -- Phase 3 plan 03-03 executed
+stopped_at: Completed 03-04-PLAN.md
+last_updated: "2026-05-30T04:47:54Z"
+last_activity: 2026-05-30 -- Phase 3 plan 03-04 executed (gap closure)
 progress:
   total_phases: 9
   completed_phases: 4
-  total_plans: 10
-  completed_plans: 10
+  total_plans: 11
+  completed_plans: 11
   percent: 100
 ---
 
@@ -28,7 +28,7 @@ See: .planning/PROJECT.md (updated 2026-05-28)
 Phase: 4 of 8 (Transcription-Based Alignment) — READY
 Plan: 0 of ? in current phase
 Status: Ready for planning/execution
-Last activity: 2026-05-29 -- Phase 3 plan 03-03 executed
+Last activity: 2026-05-30 -- Phase 3 plan 03-04 executed (gap closure)
 
 Progress: [██████████] 100%
 
@@ -36,9 +36,9 @@ Progress: [██████████] 100%
 
 **Velocity:**
 
-- Total plans completed: 10
-- Average duration: 7.0 min
-- Total execution time: 1.17 hours
+- Total plans completed: 11
+- Average duration: 6.5 min
+- Total execution time: 1.20 hours
 
 **By Phase:**
 
@@ -47,12 +47,12 @@ Progress: [██████████] 100%
 | 1. Foundation | 2/2 | 13 min | 6.5 min |
 | 2. Text Acquisition | 2/2 | 18 min | 9 min |
 | 2.5. Data Quality | 3/3 | 12 min | 4 min |
-| 3. Audio Pipeline | 3/3 | 17 min | 5.7 min |
+| 3. Audio Pipeline | 4/4 | 19 min | 4.8 min |
 
 **Recent Trend:**
 
-- Last 5 plans: 03-03 (6 min), 03-02 (4 min), 03-01 (7 min), 02-02 (10 min), 02.5-01 (3 min)
-- Trend: Stable 3-10 min per plan with Phase 3 fully complete
+- Last 5 plans: 03-04 (2 min), 03-03 (6 min), 03-02 (4 min), 03-01 (7 min), 02-02 (10 min)
+- Trend: Stable 2-10 min per plan with Phase 3 gap closure complete
 
 *Updated after each plan completion*
 
@@ -93,6 +93,8 @@ Recent decisions affecting current work:
 - [03-03]: Seek index sidecar persists sample_rate/total_samples/duration_sec and chapter identity under canonical prepared paths
 - [03-03]: audio seek computes preview ranges from WAV sample offsets and emits deterministic seek reports
 - [03-03]: Absolute seek output paths are restricted to prepared-root or /tmp for filesystem boundary safety
+- [03-04]: Batch download progress is callback-driven from downloader to CLI and preserves deterministic downloaded/skipped/failed summary output
+- [03-04]: Phase 3 acceptance commands are standardized to go-task variable syntax (BOOK/CHAPTER/WORKERS) because task-level flag parsing is unsupported
 
 ### Pending Todos
 
@@ -114,6 +116,6 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-05-29
-Stopped at: Completed 03-03-PLAN.md
+Last session: 2026-05-30
+Stopped at: Completed 03-04-PLAN.md
 Resume file: .planning/phases/04-transcription-alignment/
