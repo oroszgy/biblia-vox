@@ -99,6 +99,10 @@ Recent decisions affecting current work:
 - [03-runtime]: Full corpus prepare completed with artifact parity (`1175` raw MP3 and `1175` WAV/meta/index triplets)
 - [03-runtime]: Phase 3 seek/output safety and downloader retry correctness gaps from review are fixed and covered by regression tests
 
+### Roadmap Evolution
+
+- Phase 2.6 added: Add alternate Bible text source (mek.oszk.hu) ingestion and completeness cross-source comparison across all books and verses
+
 ### Pending Todos
 
 None yet.

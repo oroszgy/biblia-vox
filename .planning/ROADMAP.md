@@ -11,6 +11,7 @@ Each phase delivers working Typer commands and Taskfile targets. Docker infrastr
 - [x] **Phase 1: Foundation & Versification Schema** - Canonical reference data, project structure, CLI scaffolding, and configuration for the Catholic Bible domain
 - [x] **Phase 2: Text Acquisition & Validation** - Bible text fetched from SZIT JSON source, normalized, and validated against versification schema
 - [x] **Phase 2.5: Data Quality & Correction** - JSONL conversion, verse splitting, and schema fixes for full validation (66/66 books)
+- [ ] **Phase 2.6: Alternate Text Source & Cross-Source Coverage Validation** - MEK text ingestion plus cross-source comparison to ensure complete book/chapter/verse coverage
 - [x] **Phase 3: Audio Pipeline** - Chapter audio downloaded, decoded to WAV, and indexed for alignment
 - [ ] **Phase 4: Transcription-Based Alignment** - Whisper transcription + fuzzy matching locates verses in audio (includes Docker setup for GPU models)
 - [ ] **Phase 5: Forced Alignment & Alternatives** - MMS forced alignment tier plus VibeVoice and paid API exploration
@@ -65,6 +66,21 @@ Plans:
 - [ ] 02.5-01-PLAN.md — JSONL Conversion (SZIT JSON → JSONL with USX codes, NFC normalization)
 - [ ] 02.5-02-PLAN.md — Verse Splitting (detect embedded verse markers, split or cleanup, validate 66/66)
 - [ ] 02.5-03-PLAN.md — Schema Fixes (correct versification.json for DAN, MAL, off-by-one books)
+
+### Phase 2.6: Add alternate Bible text source (mek.oszk.hu) ingestion and completeness cross-source comparison across all books and verses
+**Goal**: Verify and ingest alternate Bible text from mek.oszk.hu into a flat, normalized JSONL corpus for cross-source validation against SZIT text.
+**Depends on**: Phase 2.5
+**Requirements**: TEXT-02, TEXT-03
+**Success Criteria** (what must be TRUE):
+  1. User can run `go-task text:ingest-mek` and see MEK text downloaded, parsed with BeautifulSoup, and written to `data/processed/text/mek.jsonl`
+  2. Raw chapter HTML files are cached in `data/raw/text/mek/` with format `{BOOK}_{CHAPTER}.html` for offline reproducibility
+  3. User can run `go-task text:cross-validate` and see a Rich summary table highlighting all missing books, chapters, verses, and textual differences between SZIT and MEK
+  4. All detected discrepancies are logged to `data/processed/text/text-discrepancies.jsonl` with correct severity level mapping
+**Plans**: 2 plans
+
+Plans:
+- [ ] 02.6-01-PLAN.md — MEK Text Ingestion & Parsing (BeautifulSoup parser, chapter caching, processed JSONL output)
+- [ ] 02.6-02-PLAN.md — Cross-Source Completeness & Validation CLI (cross-validator module, Rich summary CLI, JSONL diff output)
 
 ### Phase 3: Audio Pipeline
 **Goal**: Chapter audio is downloaded, decoded to WAV 16kHz mono (eliminating VBR timestamp inaccuracy), and indexed for precise timestamp access
@@ -143,12 +159,12 @@ Plans:
 ## Progress
 
 **Execution Order:**
-Phase 1 first. Then Phases 2 and 3 can execute in parallel. Phase 2.5 fixes data quality after Phase 2. Phase 4 requires Phase 2.5 and Phase 3. Then sequential: 4 → 5 → 6 → 7 → 8.
+Phase 1 first. Then Phases 2 and 3 can execute in parallel. Phase 2.5 fixes data quality after Phase 2. Phase 2.6 adds alternate text ingestion and cross-source completeness validation after Phase 2.5. Phase 4 requires text validation phases and Phase 3. Then sequential: 4 → 5 → 6 → 7 → 8.
 
 ```
 Phase 1 (Foundation)
-  ├── Phase 2 (Text)  ─── Phase 2.5 (Data Quality) ─┐
-  └── Phase 3 (Audio) ───────────────────────────────┼── Phase 4 (Transcription Alignment + Docker)
+  ├── Phase 2 (Text)  ─── Phase 2.5 (Data Quality) ─── Phase 2.6 (Alt Text + Coverage) ─┐
+  └── Phase 3 (Audio) ──────────────────────────────────────────────────────────────────────┼── Phase 4 (Transcription Alignment + Docker)
                                                       │         │
                                                       │    Phase 5 (Forced Alignment & Alternatives)
                                                       │         │
@@ -164,6 +180,7 @@ Phase 1 (Foundation)
 | 1. Foundation & Versification Schema | 2/2 | Complete | 2026-05-29 |
 | 2. Text Acquisition & Validation | 2/2 | Complete | 2026-05-29 |
 | 2.5. Data Quality & Correction | 3/3 | Complete | 2026-05-29 |
+| 2.6. Alternate Text Source & Cross-Source Coverage Validation | 2/2 | Planned | - |
 | 3. Audio Pipeline | 4/4 | Complete | 2026-05-30 |
 | 4. Transcription-Based Alignment | 0/? | Not started | - |
 | 5. Forced Alignment & Alternatives | 0/? | Not started | - |
