@@ -90,7 +90,11 @@ def _extract_book_and_chapter(relative_path: str) -> tuple[int, int] | None:
     if book_match is None:
         return None
 
-    chapter_match = re.search(r"-(\d+)\.mp3$", path.name, flags=re.IGNORECASE)
+    chapter_match = re.search(
+        r"-(\d+)(?:-fejezet)?\.mp3$",
+        path.name,
+        flags=re.IGNORECASE,
+    )
     if chapter_match is None:
         return None
 
