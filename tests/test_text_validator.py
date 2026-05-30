@@ -11,6 +11,7 @@ from bibliavox.text.validator import (
     Discrepancy,
     Severity,
     generate_report,
+    validate_book,
     validate_chapter,
 )
 
@@ -153,3 +154,54 @@ class TestGenerateReport:
         report = generate_report(discrepancies)
         parsed = json.loads(report)
         assert parsed[0]["verse"] is None
+
+
+def test_validate_book_strict_missing_chapters_reports_error() -> None:
+    schemas = [BookSchema(usx_code="GEN", chapter_count=2, chapters={1: 3, 2: 2})]
+    mapping = {"Genesis": "GEN"}
+    data = {
+        "Genesis": {
+            "1": {"1": "a", "2": "b", "3": "c"},
+        }
+    }
+
+    discrepancies = validate_book(
+        "GEN",
+        data,
+        mapping,
+        schemas,
+        strict_missing_chapters=True,
+    )
+
+    assert any(
+        d.severity == Severity.ERROR
+        and d.chapter == 2
+        and "Missing chapter 2" in d.details
+        for d in discrepancies
+    )
+
+
+def test_validate_book_strict_reports_extra_chapters_as_info() -> None:
+    schemas = [BookSchema(usx_code="GEN", chapter_count=1, chapters={1: 3})]
+    mapping = {"Genesis": "GEN"}
+    data = {
+        "Genesis": {
+            "1": {"1": "a", "2": "b", "3": "c"},
+            "2": {"1": "x"},
+        }
+    }
+
+    discrepancies = validate_book(
+        "GEN",
+        data,
+        mapping,
+        schemas,
+        strict_missing_chapters=True,
+    )
+
+    assert any(
+        d.severity == Severity.INFO
+        and d.chapter == 2
+        and "Extra chapter 2" in d.details
+        for d in discrepancies
+    )

@@ -129,6 +129,8 @@ def validate_book(
     book_data: dict,
     mapping: dict[str, str],
     schemas: list[BookSchema] | None = None,
+    *,
+    strict_missing_chapters: bool = False,
 ) -> list[Discrepancy]:
     """Validate all chapters in a book.
 
@@ -160,10 +162,49 @@ def validate_book(
         ]
 
     all_discrepancies: list[Discrepancy] = []
-    for chapter_str, verses_data in book_data[english_name].items():
+    book_schema = get_versification(usx_code, schemas)
+    if book_schema is None:
+        return [
+            Discrepancy(
+                book=usx_code,
+                chapter=0,
+                verse=None,
+                severity=Severity.ERROR,
+                details=f"Book {usx_code} not found in versification schema",
+            )
+        ]
+
+    source_chapter_map = book_data[english_name]
+    for chapter_str, verses_data in source_chapter_map.items():
         chapter = int(chapter_str)
         verses = {int(k): v for k, v in verses_data.items()}
         all_discrepancies.extend(validate_chapter(usx_code, chapter, verses, schemas))
+
+    if strict_missing_chapters:
+        expected = set(range(1, book_schema.chapter_count + 1))
+        actual = {int(ch) for ch in source_chapter_map.keys()}
+
+        for chapter in sorted(expected - actual):
+            all_discrepancies.append(
+                Discrepancy(
+                    book=usx_code,
+                    chapter=chapter,
+                    verse=None,
+                    severity=Severity.ERROR,
+                    details=f"Missing chapter {chapter} in source text for {usx_code}",
+                )
+            )
+
+        for chapter in sorted(actual - expected):
+            all_discrepancies.append(
+                Discrepancy(
+                    book=usx_code,
+                    chapter=chapter,
+                    verse=None,
+                    severity=Severity.INFO,
+                    details=f"Extra chapter {chapter} in source text for {usx_code}",
+                )
+            )
 
     return all_discrepancies
 

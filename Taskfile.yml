@@ -78,8 +78,13 @@ tasks:
   text:validate:
     desc: Validate verse counts against versification schema
     cmds:
-      - uv run bibliavox text validate --all
+      - uv run bibliavox text validate --all --strict-missing-chapters
     deps: [text:fetch]
+
+  data:coverage:
+    desc: Strict coverage audit with known source gap policy
+    cmds:
+      - uv run bibliavox data coverage --allow-deuterocanonical-missing --allow-known-source-gaps --fail-on-unclassified
 
   text:convert-jsonl:
     desc: Convert SZIT JSON to JSONL format with USX codes

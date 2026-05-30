@@ -50,6 +50,15 @@ class TestTextInfoCommand:
         assert "book" in result.output.lower()
 
 
+class TestTextValidateCommand:
+    """Tests for the text validate command."""
+
+    def test_validate_help_shows_strict_flag(self) -> None:
+        result = runner.invoke(app, ["validate", "--help"])
+        assert result.exit_code == 0
+        assert "strict-missing-chapters" in result.output
+
+
 class TestTextApp:
     """Tests for the text subcommand group."""
 

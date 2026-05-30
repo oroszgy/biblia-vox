@@ -135,6 +135,11 @@ def validate(
         None, "--chapter", "-c", help="Chapter number (omit for all)"
     ),
     all_books: bool = typer.Option(False, "--all", "-a", help="Validate all books"),
+    strict_missing_chapters: bool = typer.Option(
+        False,
+        "--strict-missing-chapters",
+        help="Fail when expected chapters are missing from source text",
+    ),
 ) -> None:
     """Validate verse counts against versification schema."""
     if not book and not all_books:
@@ -159,7 +164,13 @@ def validate(
                 continue
 
             books_checked += 1
-            discrepancies = validate_book(usx_code, szit_data, mapping, schemas)
+            discrepancies = validate_book(
+                usx_code,
+                szit_data,
+                mapping,
+                schemas,
+                strict_missing_chapters=strict_missing_chapters,
+            )
 
             if not discrepancies:
                 books_passed += 1
@@ -228,7 +239,13 @@ def validate(
         discrepancies = validate_chapter(book_obj.usx_code, chapter, verses, schemas)
     else:
         # Validate entire book
-        discrepancies = validate_book(book_obj.usx_code, szit_data, mapping, schemas)
+        discrepancies = validate_book(
+            book_obj.usx_code,
+            szit_data,
+            mapping,
+            schemas,
+            strict_missing_chapters=strict_missing_chapters,
+        )
 
     if not discrepancies:
         console.print(
