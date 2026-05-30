@@ -98,18 +98,23 @@ tasks:
       - test -f data/processed/text/szit-fixed.jsonl
     deps: [text:convert-jsonl]
 
+  # NOTE: go-task parses task-level flags itself, so command flags like
+  # `task audio:download --book GEN --chapter 1` are not supported.
+  # Use task vars (BOOK/CHAPTER/WORKERS) intentionally for this contract.
   audio:download:
-    desc: Download a single chapter MP3 (book/chapter required)
+    desc: Download a single chapter MP3 (requires BOOK and CHAPTER vars)
     cmds:
       - uv run bibliavox audio download --book {{.BOOK}} --chapter {{.CHAPTER}}{{if .FORCE}} --force{{end}}
 
   audio:download-all:
-    desc: Download all available chapter MP3s from playlist
+    desc: Download all available chapter MP3s from playlist (WORKERS var optional, default 4)
+    vars:
+      WORKERS: '{{default "4" .WORKERS}}'
     cmds:
       - uv run bibliavox audio download --all --workers {{.WORKERS}}{{if .FORCE}} --force{{end}}
 
   audio:convert:
-    desc: Convert one chapter MP3 to 16kHz mono PCM WAV (requires ffmpeg+ffprobe)
+    desc: Convert one chapter MP3 to 16kHz mono PCM WAV (requires BOOK/CHAPTER vars and ffmpeg+ffprobe)
     deps: [audio:download]
     cmds:
       - uv run bibliavox audio convert --book {{.BOOK}} --chapter {{.CHAPTER}}{{if .FORCE}} --force{{end}}

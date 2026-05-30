@@ -71,9 +71,9 @@ Plans:
 **Depends on**: Phase 1
 **Requirements**: AUD-01, AUD-02, AUD-03, AUD-04, AUD-05
 **Success Criteria** (what must be TRUE):
-  1. User can run `task audio:download --book GEN --chapter 1` and see the MP3 downloaded with automatic retry on failure
-  2. User can run `task audio:download --all` and see multiple chapters downloading in parallel with configurable concurrency and progress indicators
-  3. User can run `task audio:convert --book GEN --chapter 1` and see the MP3 converted to WAV 16kHz mono with correct format verified
+  1. User can run `task audio:download BOOK=GEN CHAPTER=1` and see the MP3 downloaded with automatic retry on failure
+  2. User can run `task audio:download-all WORKERS=4` and see multiple chapters downloading in parallel with configurable concurrency and progress indicators
+  3. User can run `task audio:convert BOOK=GEN CHAPTER=1` and see the MP3 converted to WAV 16kHz mono with correct format verified
   4. User can run `bibliavox audio info --book GEN --chapter 1` and see duration, bitrate, sample rate metadata
   5. User can seek to a specific timestamp in the decoded WAV file and get accurate audio data (no VBR drift)
 **Plans**: 3 plans
