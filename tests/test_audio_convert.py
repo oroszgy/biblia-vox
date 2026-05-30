@@ -125,3 +125,22 @@ def test_convert_to_wav_fails_with_setup_guidance_when_ffmpeg_missing(
 
     with pytest.raises(AudioConversionError, match="Install ffmpeg"):
         convert_to_wav(input_mp3, output_wav)
+
+
+def test_convert_to_wav_wraps_timeout_as_audio_conversion_error(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    input_mp3 = tmp_path / "in.mp3"
+    output_wav = tmp_path / "out.wav"
+    input_mp3.write_bytes(b"fake-mp3")
+
+    def fake_run(*_args, **_kwargs):
+        raise subprocess.TimeoutExpired(cmd="ffmpeg", timeout=300)
+
+    monkeypatch.setattr(
+        "bibliavox.audio.convert.shutil.which", lambda _: "/usr/bin/ffmpeg"
+    )
+    monkeypatch.setattr("bibliavox.audio.convert.subprocess.run", fake_run)
+
+    with pytest.raises(AudioConversionError, match="ffmpeg timed out"):
+        convert_to_wav(input_mp3, output_wav)

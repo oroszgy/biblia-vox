@@ -54,13 +54,18 @@ def convert_to_wav(input_mp3: Path, output_wav: Path, *, force: bool = False) ->
         str(output_wav),
     ]
 
-    process = subprocess.run(  # noqa: S603
-        command,
-        check=False,
-        capture_output=True,
-        text=True,
-        timeout=CONVERSION_TIMEOUT_SECONDS,
-    )
+    try:
+        process = subprocess.run(  # noqa: S603
+            command,
+            check=False,
+            capture_output=True,
+            text=True,
+            timeout=CONVERSION_TIMEOUT_SECONDS,
+        )
+    except subprocess.TimeoutExpired as exc:
+        raise AudioConversionError(
+            f"ffmpeg timed out after {CONVERSION_TIMEOUT_SECONDS}s for {input_mp3}"
+        ) from exc
 
     if process.returncode != 0:
         raise AudioConversionError(

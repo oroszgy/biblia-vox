@@ -73,9 +73,12 @@ def test_prepare_chapter_skips_when_all_sidecars_exist_without_force(
 
     prepared_dir = prepared_root / "GEN"
     prepared_dir.mkdir(parents=True, exist_ok=True)
-    (prepared_dir / "001.wav").write_bytes(b"wav")
-    (prepared_dir / "001.meta.json").write_text("{}")
-    (prepared_dir / "001.index.json").write_text("{}")
+    wav_path = prepared_dir / "001.wav"
+    wav_path.write_bytes(b"wav")
+    (prepared_dir / "001.meta.json").write_text(
+        '{"book_usx":"GEN","chapter":1,"wav_path":"' + str(wav_path) + '"}'
+    )
+    (prepared_dir / "001.index.json").write_text('{"wav_path":"' + str(wav_path) + '"}')
 
     result = prepare_chapter(
         "GEN",
@@ -138,3 +141,59 @@ def test_prepare_chapter_force_reprocesses_existing_artifacts(
 
     assert result["status"] == "prepared"
     assert captured["force"] is True
+
+
+def test_prepare_chapter_rebuilds_when_existing_sidecars_are_invalid(
+    monkeypatch, tmp_path: Path
+) -> None:
+    raw_root = tmp_path / "raw"
+    prepared_root = tmp_path / "prepared"
+    input_mp3 = raw_root / "GEN" / "001.mp3"
+    input_mp3.parent.mkdir(parents=True, exist_ok=True)
+    input_mp3.write_bytes(b"mp3")
+
+    prepared_dir = prepared_root / "GEN"
+    prepared_dir.mkdir(parents=True, exist_ok=True)
+    wav_path = prepared_dir / "001.wav"
+    wav_path.write_bytes(b"wav")
+    (prepared_dir / "001.meta.json").write_text(
+        '{"book_usx":"EXO","chapter":1,"wav_path":"/tmp/wrong.wav"}'
+    )
+    (prepared_dir / "001.index.json").write_text('{"wav_path":"/tmp/wrong.wav"}')
+
+    captured: dict[str, object] = {}
+
+    def fake_convert(
+        input_path: Path, output_path: Path, *, force: bool = False
+    ) -> Path:
+        captured["called"] = True
+        assert input_path == input_mp3
+        assert output_path == wav_path
+        output_path.write_bytes(b"new-wav")
+        return output_path
+
+    monkeypatch.setattr("bibliavox.audio.pipeline.convert_to_wav", fake_convert)
+    monkeypatch.setattr(
+        "bibliavox.audio.pipeline.probe_audio",
+        lambda _: {
+            "duration": 1.0,
+            "bit_rate": 256000,
+            "sample_rate": 16000,
+            "channels": 1,
+            "codec_name": "pcm_s16le",
+        },
+    )
+    monkeypatch.setattr(
+        "bibliavox.audio.pipeline.build_seek_index",
+        lambda wav, **_kwargs: wav.with_suffix(".index.json"),
+    )
+
+    result = prepare_chapter(
+        "GEN",
+        1,
+        raw_root=raw_root,
+        prepared_root=prepared_root,
+    )
+
+    assert captured["called"] is True
+    assert result["status"] == "prepared"

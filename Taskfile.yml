@@ -123,7 +123,7 @@ tasks:
     desc: Convert downloaded MP3 batch to WAV; idempotent unless FORCE=true (requires ffmpeg+ffprobe)
     deps: [audio:download-all]
     cmds:
-      - FORCE_FLAG="{{.FORCE}}"; FORCE_ARG=""; [ "${FORCE_FLAG,,}" = "true" ] && FORCE_ARG="--force"; rc=0; for mp3 in data/raw/audio/*/*.mp3; do [ -f "$mp3" ] || continue; usx=$(basename "$(dirname "$mp3")"); chapter=$(basename "$mp3" .mp3); wav="data/prepared/audio/$usx/$chapter.wav"; if [ -f "$wav" ] && [ "${FORCE_FLAG,,}" != "true" ]; then continue; fi; uv run bibliavox audio convert --book "$usx" --chapter "$((10#$chapter))" $FORCE_ARG || rc=$?; done; exit $rc
+      - FORCE_FLAG="{{.FORCE}}"; FORCE_ARG=""; [ "$FORCE_FLAG" = "true" ] && FORCE_ARG="--force"; rc=0; for mp3 in data/raw/audio/*/*.mp3; do [ -f "$mp3" ] || continue; usx=$(basename "$(dirname "$mp3")"); chapter=$(basename "$mp3" .mp3); wav="data/prepared/audio/$usx/$chapter.wav"; if [ -f "$wav" ] && [ "$FORCE_FLAG" != "true" ]; then continue; fi; uv run bibliavox audio convert --book "$usx" --chapter "$((10#$chapter))" $FORCE_ARG || rc=$?; done; exit $rc
 
   audio:info:
     desc: Inspect chapter audio metadata (requires ffprobe)
@@ -141,7 +141,43 @@ tasks:
     desc: Prepare all downloaded chapters; idempotent unless FORCE=true
     deps: [audio:download-all]
     cmds:
-      - FORCE_FLAG="{{.FORCE}}"; total=0; prepared=0; skipped=0; failed=0; rc=0; for mp3 in data/raw/audio/*/*.mp3; do [ -f "$mp3" ] || continue; total=$((total+1)); usx=$(basename "$(dirname "$mp3")"); chapter=$(basename "$mp3" .mp3); out=$(uv run bibliavox audio prepare --book "$usx" --chapter "$((10#$chapter))" $( [ "${FORCE_FLAG,,}" = "true" ] && printf %s "--force" ) 2>&1) || true; case "$out" in *"Prepared chapter artifacts"*) prepared=$((prepared+1));; *"Skipped existing prepared artifacts"*) skipped=$((skipped+1));; *) failed=$((failed+1)); rc=1;; esac; done; printf 'prepare-all summary total=%s prepared=%s skipped=%s failed=%s\n' "$total" "$prepared" "$skipped" "$failed"; exit $rc
+      - |
+        FORCE_FLAG="{{.FORCE}}"; export FORCE_FLAG
+        uv run python - <<'PY'
+        import os
+        import sys
+        from pathlib import Path
+
+        from bibliavox.audio.pipeline import prepare_chapter
+
+        force = os.environ.get("FORCE_FLAG", "") == "true"
+        prepared = 0
+        skipped = 0
+        failed = 0
+        files = sorted(Path("data/raw/audio").glob("*/*.mp3"))
+        total = len(files)
+
+        for mp3 in files:
+            book = mp3.parent.name
+            chapter = int(mp3.stem)
+            try:
+                result = prepare_chapter(book, chapter, force=force)
+            except Exception as exc:  # noqa: BLE001
+                failed += 1
+                print(f"failed {book} {chapter}: {exc}")
+                continue
+
+            if result["status"] == "prepared":
+                prepared += 1
+            else:
+                skipped += 1
+
+        print(
+            "prepare-all summary "
+            f"total={total} prepared={prepared} skipped={skipped} failed={failed}"
+        )
+        raise SystemExit(1 if failed else 0)
+        PY
 
   audio:seek:
     desc: Write WAV preview window from prepared seek index

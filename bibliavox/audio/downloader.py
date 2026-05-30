@@ -43,8 +43,8 @@ def _stream_download(
     client: Any,
     url: str,
     part_path: Path,
-    resume_from: int,
 ) -> None:
+    resume_from = part_path.stat().st_size if part_path.exists() else 0
     headers = {"Range": f"bytes={resume_from}-"} if resume_from > 0 else {}
     with client.stream("GET", url, headers=headers) as response:
         response.raise_for_status()
@@ -76,7 +76,6 @@ def download_chapter(
         )
 
     part_path = target.with_suffix(f"{target.suffix}.part")
-    resume_from = part_path.stat().st_size if part_path.exists() else 0
 
     owned_client = client is None
     http_client = client or httpx.Client(
@@ -86,7 +85,7 @@ def download_chapter(
     )
 
     try:
-        _stream_download(http_client, str(item["url"]), part_path, resume_from)
+        _stream_download(http_client, str(item["url"]), part_path)
         part_path.replace(target)
         return DownloadResult(
             book_usx=str(item["book_usx"]),

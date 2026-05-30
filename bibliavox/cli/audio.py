@@ -59,16 +59,23 @@ def _is_within_root(path: Path, root: Path) -> bool:
         return False
 
 
-def _validate_seek_output_path(output_path: Path, prepared_root: Path) -> None:
-    if not output_path.is_absolute():
-        return
+def _validate_seek_output_path(output_path: Path, prepared_root: Path) -> Path:
+    resolved_root = prepared_root.resolve()
+    candidate = (
+        output_path if output_path.is_absolute() else (resolved_root / output_path)
+    )
+    candidate = candidate.resolve()
 
-    allowed_roots = [prepared_root, Path("/tmp")]
-    if not any(_is_within_root(output_path, root) for root in allowed_roots):
+    if output_path.is_absolute():
+        allowed_roots = [resolved_root, Path("/tmp").resolve()]
+    else:
+        allowed_roots = [resolved_root]
+    if not any(_is_within_root(candidate, root) for root in allowed_roots):
         raise SeekIndexError(
-            "Absolute output path is restricted. Use a path under prepared root "
+            "Output path is restricted. Use a path under prepared root "
             "or /tmp for preview output."
         )
+    return candidate
 
 
 def load_mek_playlist() -> str:
@@ -355,7 +362,7 @@ def seek(
         return
 
     try:
-        _validate_seek_output_path(output_path, prepared_root)
+        validated_output_path = _validate_seek_output_path(output_path, prepared_root)
         payload = json.loads(index_path.read_text(encoding="utf-8"))
         if not isinstance(payload, dict):
             raise SeekIndexError("Invalid seek index: expected JSON object")
@@ -363,6 +370,10 @@ def seek(
         index_payload = cast(dict[str, Any], payload)
         _validate_index_payload(index_payload)
         wav_path = Path(str(index_payload["wav_path"]))
+        if not _is_within_root(wav_path, prepared_root):
+            raise SeekIndexError(
+                "Invalid seek index: wav_path must be under prepared root"
+            )
         start_sample, end_sample = resolve_sample_window(
             index_payload,
             seconds=seconds,
@@ -370,7 +381,7 @@ def seek(
         )
         written = write_seek_preview(
             wav_path,
-            output_path,
+            validated_output_path,
             start_sample=start_sample,
             end_sample=end_sample,
         )

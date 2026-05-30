@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+from typing import Iterable, cast
 
 from bibliavox.audio.downloader import download_all, download_chapter
 
@@ -25,7 +26,7 @@ class _FakeResponse:
         if self._should_raise:
             raise RuntimeError("request failed")
 
-    def iter_bytes(self) -> list[bytes]:
+    def iter_bytes(self) -> Iterable[bytes]:
         return self._chunks
 
 
@@ -129,7 +130,7 @@ def test_download_all_applies_worker_limit_skip_and_failure_summary(
         output_root,
         workers=2,
         client_factory=_client_factory,
-        executor_cls=_ExecutorSpy,
+        executor_cls=cast(type, _ExecutorSpy),
     )
 
     assert _ExecutorSpy.recorded_workers == 2
@@ -185,3 +186,33 @@ def test_download_all_invokes_on_result_once_per_manifest_item(tmp_path: Path) -
     assert len(summary["downloaded"]) == 1
     assert len(summary["skipped"]) == 1
     assert len(summary["failed"]) == 1
+
+
+def test_retry_recomputes_range_header_from_growing_part_file(tmp_path: Path) -> None:
+    item = _sample_item("GEN", 4)
+    target = tmp_path / "data" / "raw"
+    part_path = target / "GEN" / "004.mp3.part"
+    part_path.parent.mkdir(parents=True, exist_ok=True)
+    part_path.write_bytes(b"hello")
+
+    class _ChunkThenFailResponse(_FakeResponse):
+        def __init__(self):
+            super().__init__(status_code=206, chunks=[])
+
+        def iter_bytes(self):
+            yield b" world"
+            raise RuntimeError("midstream failure")
+
+    fake_client = _FakeClient(
+        [
+            _ChunkThenFailResponse(),
+            _FakeResponse(status_code=206, chunks=[b"!"]),
+        ]
+    )
+
+    result = download_chapter(item, target, client=fake_client)
+
+    assert result["status"] == "downloaded"
+    assert fake_client.calls[0]["headers"] == {"Range": "bytes=5-"}
+    assert fake_client.calls[1]["headers"] == {"Range": "bytes=11-"}
+    assert (target / "GEN" / "004.mp3").read_bytes() == b"hello world!"

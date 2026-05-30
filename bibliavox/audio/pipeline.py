@@ -30,6 +30,37 @@ def _now_iso_utc() -> str:
     )
 
 
+def _is_valid_existing_artifacts(
+    *,
+    meta_path: Path,
+    index_path: Path,
+    wav_path: Path,
+    expected_book: str,
+    expected_chapter: int,
+) -> bool:
+    try:
+        meta_payload = json.loads(meta_path.read_text(encoding="utf-8"))
+        index_payload = json.loads(index_path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return False
+
+    if not isinstance(meta_payload, dict) or not isinstance(index_payload, dict):
+        return False
+
+    meta_book = str(meta_payload.get("book_usx", "")).upper()
+    meta_chapter = int(meta_payload.get("chapter", -1))
+    if meta_book != expected_book or meta_chapter != expected_chapter:
+        return False
+
+    wav_from_meta = Path(str(meta_payload.get("wav_path", "")))
+    wav_from_index = Path(str(index_payload.get("wav_path", "")))
+    resolved_wav = wav_path.resolve()
+    return (
+        wav_from_meta.resolve() == resolved_wav
+        and wav_from_index.resolve() == resolved_wav
+    )
+
+
 def prepare_chapter(
     book_usx: str,
     chapter: int,
@@ -53,12 +84,19 @@ def prepare_chapter(
         raise FileNotFoundError(f"Input MP3 not found: {input_mp3}")
 
     if wav_path.exists() and meta_path.exists() and index_path.exists() and not force:
-        return PrepareChapterResult(
-            status="skipped",
-            wav_path=wav_path,
+        if _is_valid_existing_artifacts(
             meta_path=meta_path,
             index_path=index_path,
-        )
+            wav_path=wav_path,
+            expected_book=normalized_book,
+            expected_chapter=chapter,
+        ):
+            return PrepareChapterResult(
+                status="skipped",
+                wav_path=wav_path,
+                meta_path=meta_path,
+                index_path=index_path,
+            )
 
     converted_wav = convert_to_wav(input_mp3, wav_path, force=force)
     metadata = probe_audio(converted_wav)
