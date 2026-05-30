@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-import pytest
 
 from bibliavox.text.cross_validator import cross_validate_corpora
 
