@@ -10,6 +10,7 @@ import pytest
 import httpx
 from tenacity import RetryError
 
+from bibliavox.text import mek_source
 from bibliavox.text.mek_source import (
     USX_TO_MEK_PREFIX,
     build_mek_corpus,
@@ -140,20 +141,12 @@ def test_build_mek_corpus(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> No
         )
     ]
 
-    import bibliavox.text.mek_source as mek_source
-
     monkeypatch.setattr(
         mek_source, "download_mek_book", MagicMock(return_value=mock_book_html)
     )
 
-    # Mock load_books in the module
-    from bibliavox.text import mek_source as ms_mod
-
-    # Wait, let's see how load_books is used. If it's loaded via "from bibliavox.reference.books import load_books"
-    # we can monkeypatch it
-    import bibliavox.reference.books as books_mod
-
-    monkeypatch.setattr(books_mod, "load_books", MagicMock(return_value=mock_books))
+    # Mock load_books in the mek_source module directly
+    monkeypatch.setattr(mek_source, "load_books", MagicMock(return_value=mock_books))
 
     total_verses = build_mek_corpus(output_path=output_path, data_dir=tmp_path)
 
