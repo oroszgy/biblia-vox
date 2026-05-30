@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
-from typing import Any, TypedDict
+from typing import Any, Callable, TypedDict
 
 import httpx
 from tenacity import retry, stop_after_attempt, wait_exponential
@@ -114,6 +114,7 @@ def download_all(
     *,
     workers: int = 4,
     force: bool = False,
+    on_result: Callable[[DownloadResult], None] | None = None,
     client_factory: Any | None = None,
     executor_cls: type[ThreadPoolExecutor] = ThreadPoolExecutor,
 ) -> BatchSummary:
@@ -148,8 +149,14 @@ def download_all(
             if hasattr(client, "close"):
                 client.close()
 
+    def _run_one_with_callback(item: dict[str, Any]) -> DownloadResult:
+        result = _run_one(item)
+        if on_result is not None:
+            on_result(result)
+        return result
+
     with executor_cls(max_workers=safe_workers) as executor:
-        results = list(executor.map(_run_one, manifest))
+        results = list(executor.map(_run_one_with_callback, manifest))
 
     downloaded = [result for result in results if result["status"] == "downloaded"]
     skipped = [result for result in results if result["status"] == "skipped"]

@@ -5,10 +5,12 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any, cast
 import json
+from threading import Lock
 
 import httpx
 import typer
 from rich.console import Console
+from rich.progress import Progress, SpinnerColumn, TaskProgressColumn, TextColumn
 
 from bibliavox.audio.discovery import (
     BASE_AUDIO_URL,
@@ -16,7 +18,7 @@ from bibliavox.audio.discovery import (
     inventory_report,
     parse_m3u,
 )
-from bibliavox.audio.downloader import download_all, download_chapter
+from bibliavox.audio.downloader import DownloadResult, download_all, download_chapter
 from bibliavox.audio.convert import AudioConversionError, convert_to_wav
 from bibliavox.audio.metadata import AudioProbeError, format_audio_info, probe_audio
 from bibliavox.audio.pipeline import prepare_chapter
@@ -120,12 +122,53 @@ def download(
             if extra:
                 console.print(f"  extra_vs_schema: {extra}")
 
-        summary = download_all(
-            cast(list[dict[str, Any]], manifest),
-            output_root,
-            workers=workers,
-            force=force,
+        total_items = len(manifest)
+        status_lock = Lock()
+        counts = {"downloaded": 0, "skipped": 0, "failed": 0}
+
+        console.print("[cyan]Batch progress enabled[/cyan]")
+
+        progress = Progress(
+            SpinnerColumn(),
+            TextColumn("[progress.description]{task.description}"),
+            TaskProgressColumn(),
+            TextColumn("• {task.completed}/{task.total}"),
+            TextColumn(
+                "• d={task.fields[downloaded]} s={task.fields[skipped]} f={task.fields[failed]}"
+            ),
+            transient=True,
+            console=console,
         )
+
+        def _on_result(result: DownloadResult) -> None:
+            status = str(result["status"])
+            with status_lock:
+                if status in counts:
+                    counts[status] += 1
+                progress.advance(task_id, 1)
+                progress.update(
+                    task_id,
+                    downloaded=counts["downloaded"],
+                    skipped=counts["skipped"],
+                    failed=counts["failed"],
+                )
+
+        with progress:
+            task_id = progress.add_task(
+                "Batch progress",
+                total=total_items,
+                downloaded=0,
+                skipped=0,
+                failed=0,
+            )
+
+            summary = download_all(
+                cast(list[dict[str, Any]], manifest),
+                output_root,
+                workers=workers,
+                force=force,
+                on_result=_on_result,
+            )
         console.print(
             "[green]Batch complete[/green] "
             f"downloaded={len(summary['downloaded'])} "
