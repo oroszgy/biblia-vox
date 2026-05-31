@@ -204,6 +204,30 @@ tasks:
     cmds:
       - uv run bibliavox audio seek --book {{.BOOK}} --chapter {{.CHAPTER}} --seconds {{.SECONDS}} --duration-sec {{.DURATION_SEC}} --output {{.OUTPUT}}{{if .FORCE}} --force{{end}}
 
+  align:setup:
+    desc: Pre-download model weights specified in the gauntlet configuration
+    cmds:
+      - |
+        uv run python - <<'PY'
+        from bibliavox.config import get_settings
+        from huggingface_hub import snapshot_download
+        from pathlib import Path
+
+        settings = get_settings()
+        models_dir = settings.models_dir
+        
+        for model in settings.gauntlet.models:
+            print(f"Downloading {model.id}...")
+            local_dir = models_dir / model.id
+            local_dir.mkdir(parents=True, exist_ok=True)
+            snapshot_download(
+                repo_id=model.id,
+                local_dir=local_dir,
+                local_dir_use_symlinks=False
+            )
+            print(f"Finished {model.id}")
+        PY
+
   sync:
     desc: Install/sync dependencies
     cmds:
