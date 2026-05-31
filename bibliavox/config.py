@@ -15,7 +15,27 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from typing import Literal
+from pydantic import BaseModel
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+class ModelConfig(BaseModel):
+    """Configuration for a single alignment model."""
+
+    id: str
+    """Repository ID or path to the model."""
+    type: Literal["faster-whisper", "vibevoice"]
+    """Type of the model for selecting the appropriate pipeline."""
+
+
+class ModelGauntletSettings(BaseModel):
+    """Settings for the model gauntlet execution."""
+
+    models: list[ModelConfig] = [
+        ModelConfig(id="SZTAKI-HLT/hubert-base-cc-hu", type="vibevoice"),
+        ModelConfig(id="bofenghuang/whisper-large-v2-cv11-hu", type="faster-whisper"),
+    ]
 
 
 class BibliavoxSettings(BaseSettings):
@@ -43,6 +63,12 @@ class BibliavoxSettings(BaseSettings):
 
     reference_data_path: Path = Path("data/reference")
     """Path to the reference data directory (books.json, versification.json)."""
+
+    models_dir: Path = Path("data/models")
+    """Directory for downloaded model weights."""
+
+    gauntlet: ModelGauntletSettings = ModelGauntletSettings()
+    """Configuration for the model gauntlet."""
 
     # API keys
     szentiras_api_key: str = ""
