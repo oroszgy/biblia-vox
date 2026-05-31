@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import typer
 
+from bibliavox.cli.align import app as align_app
 from bibliavox.cli.audio import app as audio_app
 from bibliavox.cli.data import app as data_app
 from bibliavox.cli.reference import app as reference_app
@@ -22,6 +23,7 @@ app.add_typer(reference_app, name="reference", help="Bible reference data operat
 app.add_typer(text_app, name="text", help="Bible text operations")
 app.add_typer(audio_app, name="audio", help="Bible audio operations")
 app.add_typer(data_app, name="data", help="Dataset coverage operations")
+app.add_typer(align_app, name="align", help="Text-to-audio alignment operations")
 
 
 def main() -> None:
