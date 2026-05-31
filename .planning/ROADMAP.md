@@ -110,7 +110,12 @@ Plans:
   3. User can run `task align:match --book GEN --chapter 1` and see per-verse match scores from RapidFuzz sliding-window matching against known verse text
   4. User can verify that silent segments produce no phantom verses (VAD-based silence detection working)
   5. User can inspect per-verse alignment results showing start_sec and end_sec timestamps for a test chapter
-**Plans**: TBD
+**Plans**: 3 plans
+
+Plans:
+- [x] 04-01-PLAN.md — Docker GPU Base & Model Gauntlet config — Complete
+- [x] 04-02-PLAN.md — Transcription Service — Complete
+- [x] 04-03-PLAN.md — Fuzzy Matching Service — Complete
 
 ### Phase 5: Forced Alignment & Alternatives
 **Goal**: Secondary alignment tier (MMS forced alignment) and exploratory approaches (VibeVoice, paid APIs) are available for comparison, with CTC drift compensation for long chapters
@@ -182,7 +187,7 @@ Phase 1 (Foundation)
 | 2.5. Data Quality & Correction | 3/3 | Complete | 2026-05-29 |
 | 2.6. Alternate Text Source & Cross-Source Coverage Validation | 2/2 | Planned | - |
 | 3. Audio Pipeline | 4/4 | Complete | 2026-05-30 |
-| 4. Transcription-Based Alignment | 0/? | Not started | - |
+| 4. Transcription-Based Alignment | 3/3 | Complete | 2026-05-31 |
 | 5. Forced Alignment & Alternatives | 0/? | Not started | - |
 | 6. Calibration & Alignment Comparison | 0/? | Not started | - |
 | 7. Export & Pipeline Integration | 0/? | Not started | - |

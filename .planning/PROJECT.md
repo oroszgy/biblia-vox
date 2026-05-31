@@ -82,6 +82,9 @@ Every verse of the Szent István Társulat Bible can be located in its audio rec
 | Per-chapter MP3 granularity | Matches mek.oszk.hu source structure | — Pending |
 | JSONL output with full metadata | Flexible for downstream consumers, includes confidence scores | — Pending |
 | Taskfile for workflow | Granular tasks, reproducible, standard tooling | — Pending |
+| Separate Docker alignment container with GPU | Isolate heavy model dependencies like faster-whisper and VibeVoice while keeping native host Python clean | — Success |
+| Whisper VAD filter for silence dropping | Built-in vad_filter skips silences to avoid producing phantom verses or misaligned timestamps | — Success |
+| RapidFuzz sliding window alignment | Slide verse text over transcribed words joined as strings to accurately map characters back to word indices | — Success |
 
 ## Evolution
 
@@ -101,4 +104,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-05-30 after Phase 2.6*
+*Last updated: 2026-05-31 after Phase 4*
