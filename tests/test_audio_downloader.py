@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Iterable, cast
+from typing import Any, Iterable, cast
 
 from bibliavox.audio.downloader import download_all, download_chapter
 
@@ -130,7 +130,7 @@ def test_download_all_applies_worker_limit_skip_and_failure_summary(
         output_root,
         workers=2,
         client_factory=_client_factory,
-        executor_cls=cast(type, _ExecutorSpy),
+        executor_cls=cast(Any, _ExecutorSpy),
     )
 
     assert _ExecutorSpy.recorded_workers == 2

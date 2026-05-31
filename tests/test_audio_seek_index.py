@@ -44,7 +44,7 @@ def test_build_seek_index_writes_required_schema(tmp_path: Path) -> None:
 
 
 def test_resolve_sample_window_is_deterministic_and_clamped() -> None:
-    index = {
+    index: dict[str, object] = {
         "sample_rate": 16_000,
         "total_samples": 32_000,
         "duration_sec": 2.0,

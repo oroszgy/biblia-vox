@@ -10,8 +10,8 @@ v1 is a **calibration release**: build the full pipeline, validate it on a gold 
 ### Text Pipeline
 
 - [ ] **TEXT-01**: Fetch verse text from szentiras.eu API (SZIT translation) with API key authentication
-- [ ] **TEXT-02**: Parse mek.oszk.hu HTML pages as fallback/validation source
-- [ ] **TEXT-03**: Cross-validate API vs HTML sources, flag discrepancies with location and severity
+- [x] **TEXT-02**: Parse mek.oszk.hu HTML pages as fallback/validation source
+- [x] **TEXT-03**: Cross-validate API vs HTML sources, flag discrepancies with location and severity
 - [x] **TEXT-04**: Define 73-book Catholic versification schema (including 7 deuterocanonical books)
 - [ ] **TEXT-05**: Normalize Hungarian text (diacritics, abbreviations, verse reference formats)
 - [x] **TEXT-06**: Map Hungarian book abbreviations to USX codes (GEN, EXO, MAT, etc.)
@@ -108,8 +108,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | Requirement | Phase | Status |
 |-------------|-------|--------|
 | TEXT-01 | Phase 2 | Pending |
-| TEXT-02 | Phase 2 | Pending |
-| TEXT-03 | Phase 2 | Pending |
+| TEXT-02 | Phase 2 | Complete |
+| TEXT-03 | Phase 2 | Complete |
 | TEXT-04 | Phase 1 | Complete |
 | TEXT-05 | Phase 2 | Pending |
 | TEXT-06 | Phase 1 | Complete |

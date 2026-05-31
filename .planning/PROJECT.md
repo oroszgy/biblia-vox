@@ -73,8 +73,12 @@ Every verse of the Szent István Társulat Bible can be located in its audio rec
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
 | Start with Szent István Társulat only | Same translation for text and audio avoids cross-translation alignment complexity | — Pending |
-| szentiras.eu API as primary text source | Structured JSON, SZIT available, no scraping needed | — Pending |
-| mek.oszk.hu HTML as fallback/validation | Cross-validate API data, ensure completeness | — Pending |
+| Use Biblia-json-xml as primary text source | szentiras.eu API requires email keys and is non-viable; Biblia-json-xml has clean offline SZIT database | — Success |
+| Ingest MEK HTML as alternate/validation | Cross-validate corpora to discover book/chapter/verse and text discrepancies | — Success |
+| Cache raw MEK HTML at chapter level | Avoids redundant network requests and ensures fully offline reproducible parses | — Success |
+| Combine verse suffixes into integer indices | Suffixes like '12a' are space-joined under verse index '12' to align with canonical versification | — Success |
+| Whitespace collapse & NFC normalization | NFC normalizes and collapses all whitespaces and newlines to eliminate formatting differences | — Success |
+| Output detailed discrepancy Rich table cap | Caps stdout to 100 entries to prevent terminal flooding and potential DOS | — Success |
 | Per-chapter MP3 granularity | Matches mek.oszk.hu source structure | — Pending |
 | JSONL output with full metadata | Flexible for downstream consumers, includes confidence scores | — Pending |
 | Taskfile for workflow | Granular tasks, reproducible, standard tooling | — Pending |
@@ -97,4 +101,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-05-28 after initialization*
+*Last updated: 2026-05-30 after Phase 2.6*

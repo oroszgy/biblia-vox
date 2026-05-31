@@ -2,7 +2,13 @@
 
 from __future__ import annotations
 
-from bibliavox.audio.discovery import build_audio_manifest, inventory_report, parse_m3u
+from bibliavox.audio.discovery import (
+    ManifestItem,
+    ParsedPlaylistItem,
+    build_audio_manifest,
+    inventory_report,
+    parse_m3u,
+)
 
 
 def test_parse_m3u_extracts_extinf_and_normalized_mp3_path() -> None:
@@ -23,7 +29,7 @@ def test_parse_m3u_extracts_extinf_and_normalized_mp3_path() -> None:
 
 
 def test_build_audio_manifest_maps_playlist_entries_to_book_chapter_records() -> None:
-    entries = [
+    entries: list[ParsedPlaylistItem] = [
         {
             "relative_path": "otestamentum/01_teremtes/teremtes-konyve-01.mp3",
             "extinf_sec": 387,
@@ -57,7 +63,7 @@ def test_build_audio_manifest_maps_playlist_entries_to_book_chapter_records() ->
 
 
 def test_inventory_report_returns_missing_and_extra_diagnostics() -> None:
-    manifest = [
+    manifest: list[ManifestItem] = [
         {
             "book_usx": "GEN",
             "chapter": 1,

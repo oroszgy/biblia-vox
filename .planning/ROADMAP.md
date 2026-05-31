@@ -11,7 +11,7 @@ Each phase delivers working Typer commands and Taskfile targets. Docker infrastr
 - [x] **Phase 1: Foundation & Versification Schema** - Canonical reference data, project structure, CLI scaffolding, and configuration for the Catholic Bible domain
 - [x] **Phase 2: Text Acquisition & Validation** - Bible text fetched from SZIT JSON source, normalized, and validated against versification schema
 - [x] **Phase 2.5: Data Quality & Correction** - JSONL conversion, verse splitting, and schema fixes for full validation (66/66 books)
-- [ ] **Phase 2.6: Alternate Text Source & Cross-Source Coverage Validation** - MEK text ingestion plus cross-source comparison to ensure complete book/chapter/verse coverage
+- [x] **Phase 2.6: Alternate Text Source & Cross-Source Coverage Validation** - MEK text ingestion plus cross-source comparison to ensure complete book/chapter/verse coverage
 - [x] **Phase 3: Audio Pipeline** - Chapter audio downloaded, decoded to WAV, and indexed for alignment
 - [ ] **Phase 4: Transcription-Based Alignment** - Whisper transcription + fuzzy matching locates verses in audio (includes Docker setup for GPU models)
 - [ ] **Phase 5: Forced Alignment & Alternatives** - MMS forced alignment tier plus VibeVoice and paid API exploration
@@ -63,9 +63,9 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 02.5-01-PLAN.md — JSONL Conversion (SZIT JSON → JSONL with USX codes, NFC normalization)
-- [ ] 02.5-02-PLAN.md — Verse Splitting (detect embedded verse markers, split or cleanup, validate 66/66)
-- [ ] 02.5-03-PLAN.md — Schema Fixes (correct versification.json for DAN, MAL, off-by-one books)
+- [x] 02.5-01-PLAN.md — JSONL Conversion (SZIT JSON → JSONL with USX codes, NFC normalization)
+- [x] 02.5-02-PLAN.md — Verse Splitting (detect embedded verse markers, split or cleanup, validate 66/66)
+- [x] 02.5-03-PLAN.md — Schema Fixes (correct versification.json for DAN, MAL, off-by-one books)
 
 ### Phase 2.6: Add alternate Bible text source (mek.oszk.hu) ingestion and completeness cross-source comparison across all books and verses
 **Goal**: Verify and ingest alternate Bible text from mek.oszk.hu into a flat, normalized JSONL corpus for cross-source validation against SZIT text.
@@ -79,8 +79,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 02.6-01-PLAN.md — MEK Text Ingestion & Parsing (BeautifulSoup parser, chapter caching, processed JSONL output)
-- [ ] 02.6-02-PLAN.md — Cross-Source Completeness & Validation CLI (cross-validator module, Rich summary CLI, JSONL diff output)
+- [x] 02.6-01-PLAN.md — MEK Text Ingestion & Parsing (BeautifulSoup parser, chapter caching, processed JSONL output)
+- [x] 02.6-02-PLAN.md — Cross-Source Completeness & Validation CLI (cross-validator module, Rich summary CLI, JSONL diff output)
 
 ### Phase 3: Audio Pipeline
 **Goal**: Chapter audio is downloaded, decoded to WAV 16kHz mono (eliminating VBR timestamp inaccuracy), and indexed for precise timestamp access

@@ -34,7 +34,7 @@ class TestBibliavoxSettings:
         env_file.write_text(
             "BIBLIAVOX_DATA_DIR=/from/dotenv\nBIBLIAVOX_CACHE_DIR=/from/dotenv/cache\n"
         )
-        settings = BibliavoxSettings(_env_file=env_file)
+        settings = BibliavoxSettings(_env_file=env_file)  # type: ignore
         assert settings.data_dir == Path("/from/dotenv")
         assert settings.cache_dir == Path("/from/dotenv/cache")
 

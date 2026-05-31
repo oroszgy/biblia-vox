@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: ready_to_verify
-stopped_at: Phase 3 runtime closure verified
-last_updated: "2026-05-30T13:38:42Z"
-last_activity: 2026-05-30 -- Phase 3 full-corpus audio runtime closure completed and verified
+status: ready_to_plan
+stopped_at: Phase 2.6 complete
+last_updated: "2026-05-30T21:10:00Z"
+last_activity: 2026-05-30 -- Phase 2.6 completed and verified
 progress:
-  total_phases: 9
-  completed_phases: 4
-  total_plans: 11
-  completed_plans: 11
+  total_phases: 10
+  completed_phases: 5
+  total_plans: 13
+  completed_plans: 13
   percent: 100
 ---
 
@@ -21,14 +21,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-28)
 
 **Core value:** Every verse of the Szent István Társulat Bible can be located in its audio recording — with precise timestamps and confidence metadata.
-**Current focus:** Phase 4 — Transcription-Based Alignment (READY)
+**Current focus:** Phase 4 — Transcription-Based Alignment
 
 ## Current Position
 
 Phase: 4 of 8 (Transcription-Based Alignment) — READY
 Plan: 0 of ? in current phase
-Status: Ready for planning/execution
-Last activity: 2026-05-30 -- Phase 3 full-corpus audio runtime closure completed and verified
+Status: Ready to plan
+Last activity: 2026-05-30 -- Phase 2.6 completed and verified
 
 Progress: [██████████] 100%
 
@@ -36,7 +36,7 @@ Progress: [██████████] 100%
 
 **Velocity:**
 
-- Total plans completed: 11
+- Total plans completed: 13
 - Average duration: 6.5 min
 - Total execution time: 1.20 hours
 
@@ -48,6 +48,7 @@ Progress: [██████████] 100%
 | 2. Text Acquisition | 2/2 | 18 min | 9 min |
 | 2.5. Data Quality | 3/3 | 12 min | 4 min |
 | 3. Audio Pipeline | 4/4 | 19 min | 4.8 min |
+| 02.6-add-alternate-bible-text-source-mek-oszk-hu-ingestion-and-co | 2 | - | - |
 
 **Recent Trend:**
 
@@ -98,6 +99,11 @@ Recent decisions affecting current work:
 - [03-runtime]: Discovery chapter parsing now supports `-fejezet` filenames, increasing mapped manifest coverage from 117 to 1175 chapters
 - [03-runtime]: Full corpus prepare completed with artifact parity (`1175` raw MP3 and `1175` WAV/meta/index triplets)
 - [03-runtime]: Phase 3 seek/output safety and downloader retry correctness gaps from review are fixed and covered by regression tests
+- [02.6-01]: Cached raw MEK HTML at chapter level under `data/raw/text/mek/` with `{BOOK}_{CHAPTER}.html` filename pattern
+- [02.6-01]: Merged MEK verse suffixes into single integer verse index with space-separated text to align with target schema
+- [02.6-02]: Performed NFC normalization and whitespace collapse before text comparison to avoid formatting false-positives
+- [02.6-02]: Handled line-by-line JSONDecodeError gracefully when reading corpora files to prevent crashes from malformed lines
+- [02.6-02]: Limited detailed discrepancy table in stdout to first 100 rows to prevent Denial of Service
 
 ### Roadmap Evolution
 
