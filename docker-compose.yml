@@ -1,0 +1,16 @@
+services:
+  align:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.align
+    working_dir: /app
+    volumes:
+      - .:/app
+      - ./data:/app/data
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
