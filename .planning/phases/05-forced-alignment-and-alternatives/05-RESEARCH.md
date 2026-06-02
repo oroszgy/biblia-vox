@@ -568,7 +568,7 @@ def evaluate_whisper_api(audio_path: str) -> dict:
 | A5 | OpenAI Whisper API handles Hungarian well | Pattern 4 | WER may be high; timestamps may be inaccurate |
 | A6 | torchaudio 2.8.0 MMS_FA API is backward compatible with 2.3.0 Docker base | Pitfall 5 | API changes may require Dockerfile update |
 
-## Open Questions
+## Open Questions (RESOLVED)
 
 1. **Hungarian text normalization for MMS_FA** (RESOLVED)
    - What we know: MMS_FA expects normalized, potentially romanized text
@@ -580,15 +580,15 @@ def evaluate_whisper_api(audio_path: str) -> dict:
    - What's unclear: Whether VibeVoice's built-in timestamps are precise enough for verse-level alignment, or if ASR+RapidFuzz matching is more accurate
    - Resolution: Implement both paths per D-09 (already locked in CONTEXT.md). Compare on gold chapters in Phase 6 comparison framework (D-10). No single-path decision needed now.
 
-3. **Docker base image upgrade**
+3. **Docker base image upgrade** (RESOLVED)
    - What we know: Current Dockerfile uses PyTorch 2.3.0, host has 2.8.0
    - What's unclear: Whether MMS_FA API changed between versions; whether upgrading breaks existing Phase 4 code
-   - Recommendation: Test MMS_FA on current Docker base first; upgrade only if API incompatible
+   - Resolution: Test MMS_FA on current Docker base first (Plan 05-01 task 1); upgrade only if API incompatible. No preemptive image upgrade.
 
-4. **CTC drift threshold**
+4. **CTC drift threshold** (RESOLVED)
    - What we know: Drift accumulates on audio >10-15 minutes
    - What's unclear: Exact chapter duration where drift becomes unacceptable
-   - Recommendation: Test on known long chapters (Genesis 1 = ~30 min); measure drift at chapter end
+   - Resolution: Test empirically on known long chapters (Genesis 1 = ~30 min). Plan 05-02 implements VAD-based chunking as general solution regardless of exact threshold.
 
 ## Environment Availability
 
