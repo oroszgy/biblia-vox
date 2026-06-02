@@ -150,12 +150,16 @@ Plans:
 **Depends on**: Phase 6
 **Requirements**: EXP-01, EXP-02, EXP-03, EXP-04, EXP-05
 **Success Criteria** (what must be TRUE):
-  1. User can run `task export:jsonl --gold` and see JSONL output where every line contains: verse_ref, audio_file, start_sec, end_sec, source, translation, confidence
-  2. User can run `task pipeline:run --gold` and see the full pipeline (text fetch → audio prep → alignment → export) execute on gold subset chapters in a single command
+  1. User can run `task export:jsonl GOLD=true` and see JSONL output where every line contains: verse_ref, audio_file, start_sec, end_sec, source, translation, confidence, canonical_text, matched_text, wer, cer
+  2. User can run `task export:run GOLD=true` and see the full pipeline (text fetch → audio prep → alignment → export) execute on gold subset chapters in a single command
   3. User can verify that every verse in the gold subset chapters has a corresponding JSONL entry with non-null timestamps
   4. User sees Rich progress bars with stage indicators and ETA during the full pipeline run
-  5. User can re-run the pipeline and see idempotent behavior (already-completed chapters are skipped unless --force is passed)
-**Plans**: TBD
+  5. User can re-run the pipeline and see idempotent behavior (already-completed chapters are skipped unless FORCE=true)
+**Plans**: 2 plans
+
+Plans:
+- [ ] 07-01-PLAN.md — Export module & CLI (JSONL writer, export subcommand, gold chapters config)
+- [ ] 07-02-PLAN.md — Pipeline orchestration (Taskfile targets for end-to-end pipeline)
 
 ### Phase 8: Operations & Pipeline Hardening
 **Goal**: Pipeline has rsync backup, status reporting, and checkpoint/resume for reliable unattended operation
