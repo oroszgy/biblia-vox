@@ -1,33 +1,34 @@
 """Tests for VibeVoice alignment module.
 
 Tests both VibeVoice paths:
-1. ASR → word transcripts → RapidFuzz matching (vibevoice_asr, vibevoice_asr_match)
-2. Direct alignment → verse timestamps (vibevoice_direct)
+1. ASR -> word transcripts -> RapidFuzz matching (vibevoice_asr, vibevoice_asr_match)
+2. Direct alignment -> verse timestamps (vibevoice_direct)
 
 Uses sys.modules mocking for transformers/torch/soundfile since tests run
-without GPU/model. Follows the same pattern as test_align.py.
+without GPU/model. Uses setdefault to avoid clobbering other test modules' mocks.
 """
 
 import sys
 from types import ModuleType
 
-# Mock the heavy modules so tests can run without them installed locally
-mock_transformers = ModuleType("transformers")
-mock_torch = ModuleType("torch")
-mock_soundfile = ModuleType("soundfile")
+# Mock the heavy modules so tests can run without them installed locally.
+# Use setdefault so we don't overwrite mocks set by other test modules (e.g. test_align.py).
+sys.modules.setdefault("transformers", ModuleType("transformers"))
+sys.modules.setdefault("torch", ModuleType("torch"))
+sys.modules.setdefault("soundfile", ModuleType("soundfile"))
 
-sys.modules["transformers"] = mock_transformers
-sys.modules["torch"] = mock_torch
-sys.modules["soundfile"] = mock_soundfile
+mock_transformers = sys.modules["transformers"]
+mock_torch = sys.modules["torch"]
+mock_soundfile = sys.modules["soundfile"]
 
 from pathlib import Path  # noqa: E402
 from unittest.mock import MagicMock  # noqa: E402
 
-from bibliavox.align.vibevoice import (
+from bibliavox.align.vibevoice import (  # noqa: E402
     vibevoice_asr,
     vibevoice_direct,
     vibevoice_asr_match,
-)  # noqa: E402
+)
 
 
 def _make_mono_audio(samples=16000):
@@ -184,18 +185,8 @@ class TestVibeVoiceDirect:
         mock_inputs.to.return_value = mock_inputs
         mock_processor.return_value = mock_inputs
         mock_processor.batch_decode.return_value = [
-            {
-                "text": "Verse one text",
-                "start": 0.0,
-                "end": 2.5,
-                "speaker": "Speaker 0",
-            },
-            {
-                "text": "Verse two text",
-                "start": 2.5,
-                "end": 5.0,
-                "speaker": "Speaker 0",
-            },
+            {"text": "Verse one text", "start": 0.0, "end": 2.5, "speaker": "Speaker 0"},
+            {"text": "Verse two text", "start": 2.5, "end": 5.0, "speaker": "Speaker 0"},
         ]
 
         # Mock model
@@ -206,13 +197,9 @@ class TestVibeVoiceDirect:
         mock_transformers.AutoProcessor = MagicMock()
         mock_transformers.AutoProcessor.from_pretrained.return_value = mock_processor
         mock_transformers.VibeVoiceForSpeechToText = MagicMock()
-        mock_transformers.VibeVoiceForSpeechToText.from_pretrained.return_value = (
-            mock_model
-        )
+        mock_transformers.VibeVoiceForSpeechToText.from_pretrained.return_value = mock_model
 
-        result = vibevoice_direct(
-            Path("test.wav"), model_path="test/model", device="cpu"
-        )
+        result = vibevoice_direct(Path("test.wav"), model_path="test/model", device="cpu")
 
         assert isinstance(result, list)
         assert len(result) == 2
@@ -244,9 +231,7 @@ class TestVibeVoiceDirect:
         mock_transformers.AutoProcessor = MagicMock()
         mock_transformers.AutoProcessor.from_pretrained.return_value = mock_processor
         mock_transformers.VibeVoiceForSpeechToText = MagicMock()
-        mock_transformers.VibeVoiceForSpeechToText.from_pretrained.return_value = (
-            mock_model
-        )
+        mock_transformers.VibeVoiceForSpeechToText.from_pretrained.return_value = mock_model
 
         vibevoice_direct(Path("test.wav"), model_path="test/model", device="cpu")
 
@@ -280,13 +265,9 @@ class TestVibeVoiceDirect:
         mock_transformers.AutoProcessor = MagicMock()
         mock_transformers.AutoProcessor.from_pretrained.return_value = mock_processor
         mock_transformers.VibeVoiceForSpeechToText = MagicMock()
-        mock_transformers.VibeVoiceForSpeechToText.from_pretrained.return_value = (
-            mock_model
-        )
+        mock_transformers.VibeVoiceForSpeechToText.from_pretrained.return_value = mock_model
 
-        result = vibevoice_direct(
-            Path("test.wav"), model_path="test/model", device="cpu"
-        )
+        result = vibevoice_direct(Path("test.wav"), model_path="test/model", device="cpu")
 
         assert result == []
 
@@ -315,17 +296,13 @@ class TestVibeVoiceDirect:
         mock_transformers.AutoProcessor = MagicMock()
         mock_transformers.AutoProcessor.from_pretrained.return_value = mock_processor
         mock_transformers.VibeVoiceForSpeechToText = MagicMock()
-        mock_transformers.VibeVoiceForSpeechToText.from_pretrained.return_value = (
-            mock_model
-        )
+        mock_transformers.VibeVoiceForSpeechToText.from_pretrained.return_value = mock_model
 
-        result = vibevoice_direct(
-            Path("test.wav"), model_path="test/model", device="cpu"
-        )
+        result = vibevoice_direct(Path("test.wav"), model_path="test/model", device="cpu")
 
-        # Should not raise; stereo→mono conversion handles it
+        # Should not raise; stereo->mono conversion handles it
         assert isinstance(result, list)
-        # Verify mean was called for stereo→mono conversion
+        # Verify mean was called for stereo->mono conversion
         stereo_audio.mean.assert_called_once_with(axis=1)
 
 
@@ -335,7 +312,6 @@ class TestVibeVoiceAsrMatch:
     def test_vibevoice_asr_match_with_matching_text(self):
         """vibevoice_asr_match produces verse-level results when ASR matches text."""
 
-        # ASR produces words that match the verse text
         def fake_pipeline(task, model, device, return_timestamps):
             def run(audio_path):
                 return {
@@ -363,7 +339,6 @@ class TestVibeVoiceAsrMatch:
     def test_vibevoice_asr_match_returns_list(self):
         """vibevoice_asr_match returns a list (possibly empty if no match)."""
 
-        # Empty ASR output
         def fake_pipeline(task, model, device, return_timestamps):
             def run(audio_path):
                 return {"chunks": []}
