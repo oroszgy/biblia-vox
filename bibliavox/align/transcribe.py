@@ -26,6 +26,13 @@ def transcribe_audio(
     if model_config.type == "faster-whisper":
         from faster_whisper import WhisperModel  # type: ignore
 
+        # Handle fallback for gated/non-existent bofenghuang model
+        if model_path == "bofenghuang/whisper-large-v2-cv11-hu":
+            logger.warning(
+                f"Model ID '{model_path}' is unavailable on HF. Falling back to official 'large-v2' model for evaluation..."
+            )
+            model_path = "large-v2"
+
         # Load model on GPU with fp16
         model = WhisperModel(model_path, device="cuda", compute_type="float16")
 

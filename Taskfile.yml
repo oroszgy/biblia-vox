@@ -228,6 +228,11 @@ tasks:
             print(f"Finished {model.id}")
         PY
 
+  align:evaluate-gold:
+    desc: Run transcription, alignment, and metrics calculation on 10 gold chapters in Docker with GPU acceleration
+    cmds:
+      - docker compose run --rm align python -m bibliavox.main align evaluate-gold {{if .MODEL}}--model "{{.MODEL}}"{{end}}
+
   sync:
     desc: Install/sync dependencies
     cmds:

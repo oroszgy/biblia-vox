@@ -20,6 +20,12 @@ RUN pip install --no-cache-dir \
     librosa \
     torchaudio \
     typer \
-    pydantic-settings
+    pydantic-settings \
+    tenacity \
+    beautifulsoup4 \
+    httpx \
+    rich \
+    transformers \
+    accelerate
 
 CMD ["bash"]
