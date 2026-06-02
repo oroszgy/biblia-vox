@@ -193,6 +193,11 @@ tasks:
     cmds:
       - docker compose run --rm vibevoice python -m bibliavox.main align vibevoice --book {{.BOOK}} --chapter {{.CHAPTER}} --path both
 
+  align:evaluate:
+    desc: Evaluate and compare alignment approaches (use --gold for gold chapters)
+    cmds:
+      - docker compose run --rm align python -m bibliavox.main align evaluate {{if .BOOK}}--book {{.BOOK}}{{end}} {{if .CHAPTER}}--chapter {{.CHAPTER}}{{end}} {{if .GOLD}}--gold{{end}}
+
   sync:
     desc: Install/sync dependencies
     cmds:
