@@ -129,10 +129,10 @@ Plans:
 **Plans**: 4 plans
 
 Plans:
-- [ ] 05-01-PLAN.md — Gauntlet config + MMS_FA forced alignment (ALN-03)
-- [ ] 05-02-PLAN.md — CTC drift compensation with VAD chunking (ALN-09)
-- [ ] 05-03-PLAN.md — VibeVoice integration with both paths (ALN-04)
-- [ ] 05-04-PLAN.md — Paid API evaluation + evaluation engine (ALN-05)
+- [x] 05-01-PLAN.md — Gauntlet config + MMS_FA forced alignment (ALN-03)
+- [x] 05-02-PLAN.md — CTC drift compensation with VAD chunking (ALN-09)
+- [x] 05-03-PLAN.md — VibeVoice integration with both paths (ALN-04)
+- [x] 05-04-PLAN.md — Paid API evaluation + evaluation engine (ALN-05)
 
 ### Phase 6: Calibration & Alignment Comparison
 **Goal**: Alignment approaches are compared on a gold-standard subset with documented quality metrics (WER, timestamp accuracy), and per-verse confidence scores are calibrated
@@ -194,7 +194,7 @@ Phase 1 (Foundation)
 | 2.6. Alternate Text Source & Cross-Source Coverage Validation | 2/2 | Complete | 2026-06-02 |
 | 3. Audio Pipeline | 4/4 | Complete | 2026-05-30 |
 | 4. Transcription-Based Alignment | 3/3 | Complete | 2026-05-31 |
-| 5. Forced Alignment & Alternatives | 0/? | Not started | - |
+| 5. Forced Alignment & Alternatives | 4/4 | Complete | 2026-06-02 |
 | 6. Calibration & Alignment Comparison | 0/? | Not started | - |
 | 7. Export & Pipeline Integration | 0/? | Not started | - |
 | 8. Operations & Pipeline Hardening | 0/? | Not started | - |

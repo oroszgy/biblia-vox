@@ -192,8 +192,8 @@ def test_evaluate_gold_command(monkeypatch, tmp_path):
         summary = json.load(sf)
 
     # Assert model keys are present in summary
-    assert "bofenghuang/whisper-large-v2-cv11-hu" in summary
-    model_sum = summary["bofenghuang/whisper-large-v2-cv11-hu"]
+    assert "systran/faster-whisper-large-v3" in summary
+    model_sum = summary["systran/faster-whisper-large-v3"]
     assert model_sum["total_canonical"] == 10
     assert model_sum["total_aligned"] == 10
     assert model_sum["overall_coverage_pct"] == 100.0

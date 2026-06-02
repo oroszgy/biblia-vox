@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: ready_to_plan
-stopped_at: "Phase 5 context gathered"
-last_updated: "2026-06-02T12:00:00Z"
-last_activity: 2026-06-02 -- Phase 5 context gathered (39 decisions across 8 areas)
+stopped_at: "Phase 5 completed"
+last_updated: "2026-06-02T15:00:00Z"
+last_activity: 2026-06-02 -- Phase 5 completed (4 plans, 28 min total)
 progress:
   total_phases: 10
   completed_phases: 6
-  total_plans: 16
-  completed_plans: 16
+  total_plans: 20
+  completed_plans: 20
   percent: 100
 ---
 
@@ -25,10 +25,10 @@ See: .planning/PROJECT.md (updated 2026-05-31)
 
 ## Current Position
 
-Phase: 5 of 8 (Forced Alignment & Alternatives) — READY
-Plan: 0 of 3 in current phase
-Status: Ready to plan
-Last activity: 2026-05-31 -- Phase 4 completed and verified
+Phase: 5 of 8 (Forced Alignment & Alternatives) — COMPLETE
+Plan: 4 of 4 in current phase
+Status: Ready to plan Phase 6
+Last activity: 2026-06-02 -- Phase 5 completed and verified
 
 Progress: [██████████] 100%
 
@@ -63,6 +63,14 @@ Progress: [██████████] 100%
 
 Decisions are logged in PROJECT.md Key Decisions table.
 Recent decisions affecting current work:
+
+- [05-01]: Updated model gauntlet to replace incorrect hubert-base-cc-hu with proper audio models (mms-1b-fl102, wav2vec2-large-xlsr-53-hungarian)
+- [05-01]: MMS_FA forced alignment provides phone-level and word-level timestamps via torchaudio pipeline
+- [05-02]: CTC drift compensation uses silero-vad for chunking with confidence-based overlap merge
+- [05-02]: drift.py is a library module, not a standalone CLI — consumed by GPU-hosted callers
+- [05-03]: VibeVoice integrated with both ASR+RapidFuzz matching and direct alignment paths
+- [05-04]: OpenAI Whisper API evaluation provides reference baseline at $0.006/min
+- [05-04]: Evaluation engine stores results as JSONL with Rich table display
 
 - [Roadmap]: 8-phase structure; Docker absorbed into alignment phases, CLI/Taskfile distributed across all phases
 - [Roadmap]: Phases 2/3 are parallelizable after Phase 1; Phase 4 is the convergence point
