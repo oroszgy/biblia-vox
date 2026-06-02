@@ -1,5 +1,6 @@
 import sys
 from types import ModuleType
+from unittest.mock import MagicMock
 
 # Mock the heavy modules so tests can run without them installed locally
 mock_faster_whisper = ModuleType("faster_whisper")
@@ -81,35 +82,31 @@ def test_transcribe_audio_faster_whisper(monkeypatch, tmp_path):
 
 
 def test_transcribe_audio_vibevoice(monkeypatch, tmp_path):
-    # Mock soundfile with shape support
-    class FakeAudio:
-        def __init__(self):
-            self._data = [0.0] * 16000
-            self.shape = (16000,)
+    class FakeInputs(dict):
+        def to(self, *args, **kwargs):
+            return self
 
-        def mean(self, axis):
-            return self._data
-
-    mock_sf = ModuleType("soundfile")
-    mock_sf.read = lambda path: (FakeAudio(), 16000)
-    sys.modules["soundfile"] = mock_sf
+        def __getitem__(self, key):
+            if key == "input_ids":
+                fake_ids = MagicMock()
+                fake_ids.shape = [1, 10]
+                return fake_ids
+            return super().__getitem__(key)
 
     class FakeProcessor:
-        def __call__(self, audio, sampling_rate, return_tensors):
-            class Inputs(dict):
-                def to(self, *args, **kwargs):
-                    return self
+        def apply_transcription_request(self, audio):
+            return FakeInputs()
 
-            return Inputs()
-
-        def batch_decode(self, ids, skip_special_tokens=False):
+        def decode(self, ids, return_format="raw"):
             return [
-                {
-                    "speaker": "Speaker 0",
-                    "start": 0.0,
-                    "end": 2.0,
-                    "content": "Kezdetben teremtette",
-                },
+                [
+                    {
+                        "Speaker": 0,
+                        "Start": 0.0,
+                        "End": 2.0,
+                        "Content": "Kezdetben teremtette",
+                    },
+                ],
             ]
 
     class FakeModel:
@@ -119,8 +116,18 @@ def test_transcribe_audio_vibevoice(monkeypatch, tmp_path):
         def to(self, *args, **kwargs):
             return self
 
+        @property
+        def device(self):
+            return "cpu"
+
+        @property
+        def dtype(self):
+            return "bfloat16"
+
         def generate(self, **kwargs):
-            return [[0, 1, 2]]
+            mock_output = MagicMock()
+            mock_output.__getitem__ = MagicMock(return_value=MagicMock())
+            return mock_output
 
     mock_transformers.AutoProcessor = type(
         "AutoProcessor",

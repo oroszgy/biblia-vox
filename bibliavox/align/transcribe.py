@@ -60,7 +60,6 @@ def transcribe_audio(
 
     elif model_config.type == "vibevoice":
         import torch
-        import soundfile as sf
         from transformers import AutoProcessor, VibeVoiceAsrForConditionalGeneration  # type: ignore
 
         processor = AutoProcessor.from_pretrained(model_path)
@@ -68,26 +67,25 @@ def transcribe_audio(
             model_path, torch_dtype=torch.bfloat16
         ).to("cuda:0")
 
-        audio, sr = sf.read(str(audio_path))
-        if len(audio.shape) > 1:
-            audio = audio.mean(axis=1)
-
-        inputs = processor(audio, sampling_rate=sr, return_tensors="pt").to(
-            "cuda:0", dtype=torch.bfloat16
-        )
+        inputs = processor.apply_transcription_request(
+            audio=str(audio_path),
+        ).to(model.device, model.dtype)
 
         with torch.no_grad():
-            generated_ids = model.generate(**inputs, max_new_tokens=4096)
+            output_ids = model.generate(**inputs)
 
-        transcription = processor.batch_decode(generated_ids, skip_special_tokens=True)
+        generated_ids = output_ids[:, inputs["input_ids"].shape[1] :]
+        transcription = processor.decode(generated_ids, return_format="parsed")[0]
 
         words = []
         if isinstance(transcription, list):
             for seg in transcription:
                 if isinstance(seg, dict):
-                    content = seg.get("content", seg.get("text", ""))
-                    start = seg.get("start", 0.0)
-                    end = seg.get("end", 0.0)
+                    content = seg.get(
+                        "Content", seg.get("content", seg.get("text", ""))
+                    )
+                    start = float(seg.get("Start", seg.get("start", 0.0)))
+                    end = float(seg.get("End", seg.get("end", 0.0)))
                     if content:
                         seg_words = content.strip().split()
                         if seg_words and end > start:
