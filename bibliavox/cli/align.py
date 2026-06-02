@@ -6,6 +6,7 @@ import typer
 from rich.console import Console
 from rich.table import Table
 
+from bibliavox.align.forced import align_chapter, save_forced_alignment
 from bibliavox.align.match import match_verses
 from bibliavox.align.transcribe import transcribe_audio
 from bibliavox.config import get_settings
@@ -127,6 +128,85 @@ def match_command(
         console.print(
             f"[green]Saved {len(matched_verses)} matched verses to {out_path}[/green]"
         )
+
+
+@app.command("forced")
+def forced_command(
+    book: str = typer.Option(..., help="USX book code (e.g. GEN)"),
+    chapter: int = typer.Option(..., help="Chapter number"),
+    use_star: bool = typer.Option(
+        True, help="Use <star> token for mismatch absorption"
+    ),
+) -> None:
+    """Run MMS_FA forced alignment for a chapter."""
+    settings = get_settings()
+
+    audio_path = settings.data_dir / "prepared" / "audio" / book / f"{chapter:03d}.wav"
+    if not audio_path.exists():
+        console.print(f"[red]Error: Audio file not found at {audio_path}[/red]")
+        raise typer.Exit(1)
+
+    # Load verses from MEK JSONL corpus (D-04)
+    mek_path = settings.data_dir / "processed" / "text" / "mek.jsonl"
+    if not mek_path.exists():
+        console.print(f"[red]Error: Text corpus not found at {mek_path}[/red]")
+        raise typer.Exit(1)
+
+    verses = []
+    with open(mek_path, "r", encoding="utf-8") as f:
+        for line in f:
+            if not line.strip():
+                continue
+            verse = json.loads(line)
+            if verse.get("book") == book and verse.get("chapter") == chapter:
+                verses.append(
+                    {"verse_id": str(verse.get("verse")), "text": verse.get("text", "")}
+                )
+
+    if not verses:
+        console.print(
+            f"[red]Error: No verses found for {book} {chapter} in MEK corpus[/red]"
+        )
+        raise typer.Exit(1)
+
+    console.print(
+        f"[cyan]Running MMS_FA forced alignment for {book} {chapter}...[/cyan]"
+    )
+    console.print(f"[cyan]  Verses: {len(verses)}, Audio: {audio_path}[/cyan]")
+
+    try:
+        results = align_chapter(audio_path, verses, device="cuda", use_star=use_star)
+    except Exception as e:
+        console.print(f"[red]Forced alignment failed: {e}[/red]")
+        raise typer.Exit(1)
+
+    # Save results to data/aligned/mms_fa/{book}/
+    aligned_dir = settings.data_dir / "aligned" / "mms_fa" / book
+    verse_path, phones_path = save_forced_alignment(results, aligned_dir, book, chapter)
+
+    # Display results table
+    table = Table(title=f"MMS_FA Forced Alignment: {book} {chapter}")
+    table.add_column("Verse", justify="left")
+    table.add_column("Start (s)", justify="right")
+    table.add_column("End (s)", justify="right")
+    table.add_column("Words", justify="right")
+
+    for r in results:
+        word_count = len(r.get("words", []))
+        table.add_row(
+            r["verse_id"],
+            f"{r['start_sec']:.2f}",
+            f"{r['end_sec']:.2f}",
+            str(word_count),
+        )
+
+    console.print(table)
+
+    # Phone-level summary
+    total_phones = sum(len(r.get("phones", [])) for r in results)
+    console.print(f"[green]Phone-level tokens: {total_phones}[/green]")
+    console.print(f"[green]Saved verse-level alignment to {verse_path}[/green]")
+    console.print(f"[green]Saved phone-level alignment to {phones_path}[/green]")
 
 
 @app.command("evaluate-gold")
