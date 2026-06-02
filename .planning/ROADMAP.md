@@ -126,7 +126,13 @@ Plans:
   2. User can see a documented feasibility assessment of VibeVoice as an alternative alignment approach (working prototype or reasoned rejection)
   3. User can see a cost/quality estimate for at least one paid API-based alignment service
   4. User can run alignment on a long chapter (30+ minutes) with CTC drift compensation (chunk-and-align with VAD anchoring) and verify timestamps remain accurate at chapter end
-**Plans**: TBD
+**Plans**: 4 plans
+
+Plans:
+- [ ] 05-01-PLAN.md — Gauntlet config + MMS_FA forced alignment (ALN-03)
+- [ ] 05-02-PLAN.md — CTC drift compensation with VAD chunking (ALN-09)
+- [ ] 05-03-PLAN.md — VibeVoice integration with both paths (ALN-04)
+- [ ] 05-04-PLAN.md — Paid API evaluation + evaluation engine (ALN-05)
 
 ### Phase 6: Calibration & Alignment Comparison
 **Goal**: Alignment approaches are compared on a gold-standard subset with documented quality metrics (WER, timestamp accuracy), and per-verse confidence scores are calibrated
