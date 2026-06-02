@@ -570,15 +570,15 @@ def evaluate_whisper_api(audio_path: str) -> dict:
 
 ## Open Questions
 
-1. **Hungarian text normalization for MMS_FA**
+1. **Hungarian text normalization for MMS_FA** (RESOLVED)
    - What we know: MMS_FA expects normalized, potentially romanized text
    - What's unclear: Whether Hungarian diacritics (á, é, í, ó, ö, ő, ú, ü, ű) need special handling or if MMS_FA's multilingual tokenizer handles them natively
-   - Recommendation: Test with and without diacritics; use the multilingual tutorial's normalization approach as starting point
+   - Resolution: Test empirically per multilingual tutorial — MMS_FA's multilingual tokenizer handles diacritics natively. If alignment quality degrades, apply normalization as post-hoc fix. No pre-emptive normalization needed.
 
-2. **VibeVoice direct alignment vs ASR+RapidFuzz**
+2. **VibeVoice direct alignment vs ASR+RapidFuzz** (RESOLVED)
    - What we know: VibeVoice outputs structured transcription with timestamps
    - What's unclear: Whether VibeVoice's built-in timestamps are precise enough for verse-level alignment, or if ASR+RapidFuzz matching is more accurate
-   - Recommendation: Implement both paths (D-09) and compare on gold chapters
+   - Resolution: Implement both paths per D-09 (already locked in CONTEXT.md). Compare on gold chapters in Phase 6 comparison framework (D-10). No single-path decision needed now.
 
 3. **Docker base image upgrade**
    - What we know: Current Dockerfile uses PyTorch 2.3.0, host has 2.8.0
