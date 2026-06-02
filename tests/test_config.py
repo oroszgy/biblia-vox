@@ -6,7 +6,12 @@ from pathlib import Path
 
 import pytest
 
-from bibliavox.config import BibliavoxSettings, get_settings, reset_settings
+from bibliavox.config import (
+    BibliavoxSettings,
+    get_settings,
+    parse_gold_chapters,
+    reset_settings,
+)
 
 
 class TestBibliavoxSettings:
@@ -58,3 +63,57 @@ class TestBibliavoxSettings:
     def test_env_prefix_is_bibliavox(self) -> None:
         """The env_prefix is BIBLIAVOX_."""
         assert BibliavoxSettings.model_config.get("env_prefix") == "BIBLIAVOX_"
+
+
+class TestParseGoldChapters:
+    """Tests for parse_gold_chapters()."""
+
+    def test_default_string_parses_to_10_tuples(self) -> None:
+        """Default gold chapters string parses to 10 (book, chapter) tuples."""
+        default = "TIT 1,TIT 2,TIT 3,TOB 1,TOB 2,TOB 3,TOB 4,ZEP 1,ZEP 2,ZEP 3"
+        result = parse_gold_chapters(default)
+        assert len(result) == 10
+        assert result[0] == ("TIT", 1)
+        assert result[9] == ("ZEP", 3)
+
+    def test_custom_string(self) -> None:
+        """Custom string parses correctly."""
+        result = parse_gold_chapters("GEN 1,GEN 2")
+        assert result == [("GEN", 1), ("GEN", 2)]
+
+    def test_strips_whitespace(self) -> None:
+        """Whitespace around commas and pairs is stripped."""
+        result = parse_gold_chapters("TIT 1 , TIT 2")
+        assert result == [("TIT", 1), ("TIT", 2)]
+
+    def test_invalid_format_raises_value_error(self) -> None:
+        """Invalid format raises ValueError."""
+        with pytest.raises(ValueError, match="Invalid gold chapter format"):
+            parse_gold_chapters("INVALID")
+
+    def test_invalid_chapter_number_raises_value_error(self) -> None:
+        """Non-integer chapter raises ValueError."""
+        with pytest.raises(ValueError, match="Invalid chapter number"):
+            parse_gold_chapters("TIT abc")
+
+    def test_empty_string_returns_empty_list(self) -> None:
+        """Empty string returns empty list."""
+        result = parse_gold_chapters("")
+        assert result == []
+
+
+class TestGoldChaptersConfig:
+    """Tests for gold_chapters setting in BibliavoxSettings."""
+
+    def test_default_gold_chapters(self) -> None:
+        """Default gold_chapters setting has 10 chapters."""
+        settings = BibliavoxSettings()
+        chapters = parse_gold_chapters(settings.gold_chapters)
+        assert len(chapters) == 10
+
+    def test_gold_chapters_env_override(self, monkeypatch: pytest.MonkeyPatch) -> None:
+        """BIBLIAVOX_GOLD_CHAPTERS env var overrides default."""
+        monkeypatch.setenv("BIBLIAVOX_GOLD_CHAPTERS", "GEN 1,GEN 2")
+        settings = BibliavoxSettings()
+        chapters = parse_gold_chapters(settings.gold_chapters)
+        assert chapters == [("GEN", 1), ("GEN", 2)]

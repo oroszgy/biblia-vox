@@ -357,3 +357,209 @@ class TestIsChapterComplete:
         export_path.write_text("\n".join(lines) + "\n")
         assert is_chapter_complete(export_path, "model/a") is True
         assert is_chapter_complete(export_path, "model/b") is False
+
+
+class TestExportChapterJsonlEdgeCases:
+    """Edge case tests for export_chapter_jsonl()."""
+
+    def _make_matched_json(
+        self,
+        tmp_path: Path,
+        verses: list[dict],
+        chapter: str = "TIT 1",
+        model: str = "test/model",
+    ) -> Path:
+        """Create a minimal matched JSON file."""
+        data = {
+            "chapter": chapter,
+            "model": model,
+            "metrics": {"canonical_verses": len(verses), "aligned_verses": len(verses)},
+            "verses": verses,
+        }
+        path = tmp_path / "matched.json"
+        path.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+        return path
+
+    def _make_mek_jsonl(self, tmp_path: Path, verses: list[dict]) -> None:
+        """Create a minimal mek.jsonl file."""
+        mek_dir = tmp_path / "processed" / "text"
+        mek_dir.mkdir(parents=True)
+        mek_file = mek_dir / "mek.jsonl"
+        lines = [json.dumps(v, ensure_ascii=False) for v in verses]
+        mek_file.write_text("\n".join(lines) + "\n")
+
+    def test_all_failed_verses(self, tmp_path: Path) -> None:
+        """All verses with no timestamps get null timestamps and 0 confidence."""
+        self._make_mek_jsonl(
+            tmp_path,
+            [
+                {"book": "TIT", "chapter": 1, "verse": 1, "text": "A"},
+                {"book": "TIT", "chapter": 1, "verse": 2, "text": "B"},
+            ],
+        )
+        matched = self._make_matched_json(
+            tmp_path,
+            [
+                {
+                    "verse_id": "1",
+                    "confidence_score": 0,
+                    "canonical_text": "A",
+                    "matched_text": "",
+                },
+                {
+                    "verse_id": "2",
+                    "confidence_score": 0,
+                    "canonical_text": "B",
+                    "matched_text": "",
+                },
+            ],
+        )
+
+        output_file = tmp_path / "output.jsonl"
+        count = export_chapter_jsonl(
+            matched, "audio.wav", "SZIT", output_file, tmp_path
+        )
+
+        assert count == 2
+        lines = output_file.read_text().strip().split("\n")
+        for line in lines:
+            row = json.loads(line)
+            assert row["start_sec"] is None
+            assert row["end_sec"] is None
+            assert row["confidence"] == 0.0
+
+    def test_mixed_success_failure(self, tmp_path: Path) -> None:
+        """Successful verses have timestamps, failed have null."""
+        self._make_mek_jsonl(
+            tmp_path,
+            [
+                {"book": "TIT", "chapter": 1, "verse": 1, "text": "A"},
+                {"book": "TIT", "chapter": 1, "verse": 2, "text": "B"},
+            ],
+        )
+        matched = self._make_matched_json(
+            tmp_path,
+            [
+                {
+                    "verse_id": "1",
+                    "start_sec": 1.0,
+                    "end_sec": 5.0,
+                    "confidence_score": 90.0,
+                    "canonical_text": "A",
+                    "matched_text": "A",
+                },
+                {
+                    "verse_id": "2",
+                    "confidence_score": 0,
+                    "canonical_text": "B",
+                    "matched_text": "",
+                },
+            ],
+        )
+
+        output_file = tmp_path / "output.jsonl"
+        export_chapter_jsonl(matched, "audio.wav", "SZIT", output_file, tmp_path)
+
+        lines = output_file.read_text().strip().split("\n")
+        row1 = json.loads(lines[0])
+        row2 = json.loads(lines[1])
+
+        assert row1["start_sec"] == 1.0
+        assert row1["end_sec"] == 5.0
+        assert row1["confidence"] == 1.0  # 90/90
+
+        assert row2["start_sec"] is None
+        assert row2["end_sec"] is None
+        assert row2["confidence"] == 0.0
+
+    def test_canonical_text_from_mek_jsonl(self, tmp_path: Path) -> None:
+        """canonical_text comes from mek.jsonl, not from matched data."""
+        self._make_mek_jsonl(
+            tmp_path,
+            [
+                {"book": "TIT", "chapter": 1, "verse": 1, "text": "From mek.jsonl"},
+            ],
+        )
+        matched = self._make_matched_json(
+            tmp_path,
+            [
+                {
+                    "verse_id": "1",
+                    "start_sec": 1.0,
+                    "end_sec": 5.0,
+                    "confidence_score": 100.0,
+                    "canonical_text": "From matched JSON",
+                    "matched_text": "Transcribed",
+                },
+            ],
+        )
+
+        output_file = tmp_path / "output.jsonl"
+        export_chapter_jsonl(matched, "audio.wav", "SZIT", output_file, tmp_path)
+
+        row = json.loads(output_file.read_text().strip())
+        # Should use mek.jsonl text, not the matched JSON's canonical_text
+        assert row["canonical_text"] == "From mek.jsonl"
+
+    def test_wer_cer_computation(self, tmp_path: Path) -> None:
+        """WER and CER are computed correctly from canonical vs matched text."""
+        self._make_mek_jsonl(
+            tmp_path,
+            [
+                {"book": "TIT", "chapter": 1, "verse": 1, "text": "hello world"},
+            ],
+        )
+        matched = self._make_matched_json(
+            tmp_path,
+            [
+                {
+                    "verse_id": "1",
+                    "start_sec": 1.0,
+                    "end_sec": 5.0,
+                    "confidence_score": 100.0,
+                    "canonical_text": "hello world",
+                    "matched_text": "hello word",
+                },
+            ],
+        )
+
+        output_file = tmp_path / "output.jsonl"
+        export_chapter_jsonl(matched, "audio.wav", "SZIT", output_file, tmp_path)
+
+        row = json.loads(output_file.read_text().strip())
+        # "hello world" vs "hello word" — 1 substitution out of 2 words = WER 0.5
+        assert row["wer"] == 0.5
+        # CER: "hello world" (11 chars) vs "hello word" (10 chars)
+        assert row["cer"] > 0.0
+
+    def test_is_chapter_complete_partial_export(self, tmp_path: Path) -> None:
+        """Partial export (some verses have timestamps, some don't) returns False."""
+        export_path = tmp_path / "export.jsonl"
+        lines = [
+            json.dumps(
+                {
+                    "verse_ref": "TIT 1:1",
+                    "source": "test/model",
+                    "start_sec": 1.0,
+                    "end_sec": 5.0,
+                }
+            ),
+            json.dumps(
+                {
+                    "verse_ref": "TIT 1:2",
+                    "source": "test/model",
+                    "start_sec": None,
+                    "end_sec": None,
+                }
+            ),
+            json.dumps(
+                {
+                    "verse_ref": "TIT 1:3",
+                    "source": "test/model",
+                    "start_sec": 10.0,
+                    "end_sec": 15.0,
+                }
+            ),
+        ]
+        export_path.write_text("\n".join(lines) + "\n")
+        assert is_chapter_complete(export_path, "test/model") is False
