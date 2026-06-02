@@ -3,6 +3,9 @@ FROM pytorch/pytorch:2.3.0-cuda12.1-cudnn8-runtime
 ENV DEBIAN_FRONTEND=noninteractive
 ENV PYTHONUNBUFFERED=1
 
+# NOTE: torchaudio MMS_FA requires torchaudio >= 2.1.0. Current base image (PyTorch 2.3.0) should be compatible.
+# If API incompatibility occurs, upgrade base image to pytorch/pytorch:2.8.0-cuda12.1-cudnn8-runtime
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ffmpeg \
     git \

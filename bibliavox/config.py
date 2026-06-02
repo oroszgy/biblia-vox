@@ -25,7 +25,7 @@ class ModelConfig(BaseModel):
 
     id: str
     """Repository ID or path to the model."""
-    type: Literal["faster-whisper", "vibevoice"]
+    type: Literal["faster-whisper", "vibevoice", "mms-fa", "ctc"]
     """Type of the model for selecting the appropriate pipeline."""
 
 
@@ -33,8 +33,10 @@ class ModelGauntletSettings(BaseModel):
     """Settings for the model gauntlet execution."""
 
     models: list[ModelConfig] = [
-        ModelConfig(id="SZTAKI-HLT/hubert-base-cc-hu", type="vibevoice"),
-        ModelConfig(id="bofenghuang/whisper-large-v2-cv11-hu", type="faster-whisper"),
+        ModelConfig(id="systran/faster-whisper-large-v3", type="faster-whisper"),
+        ModelConfig(id="microsoft/VibeVoice-ASR-7B", type="vibevoice"),
+        ModelConfig(id="facebook/mms-1b-fl102", type="mms-fa"),
+        ModelConfig(id="sarpba/wav2vec2-large-xlsr-53-hungarian", type="ctc"),
     ]
 
 
@@ -73,6 +75,9 @@ class BibliavoxSettings(BaseSettings):
     # API keys
     szentiras_api_key: str = ""
     """API key for szentiras.eu. Empty by default (requires manual setup)."""
+
+    openai_api_key: str = ""
+    """API key for OpenAI Whisper API evaluation. Empty by default."""
 
     # Model/audio/concurrency settings deferred to later phases
 
