@@ -5,6 +5,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from collections.abc import Generator
+
 import pytest
 
 from bibliavox.export.writer import (
@@ -12,7 +14,16 @@ from bibliavox.export.writer import (
     is_chapter_complete,
     load_canonical_text,
     normalize_confidence,
+    reset_canonical_text_cache,
 )
+
+
+@pytest.fixture(autouse=True)
+def _reset_cache() -> Generator[None]:
+    """Reset canonical text cache between tests."""
+    reset_canonical_text_cache()
+    yield
+    reset_canonical_text_cache()
 
 
 class TestLoadCanonicalText:
