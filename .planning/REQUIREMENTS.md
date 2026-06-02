@@ -40,8 +40,8 @@ v1 is a **calibration release**: build the full pipeline, validate it on a gold 
 ### Export & CLI
 
 - [ ] **EXP-01**: JSONL output format: `{verse_ref, audio_file, start_sec, end_sec, source, translation, confidence}`
-- [ ] **EXP-02**: Typer sub-commands: `text`, `audio`, `align`, `export`, `backup`
-- [ ] **EXP-03**: Taskfile targets for each pipeline stage (download-text, download-audio, parse, align, export, backup)
+- [ ] **EXP-02**: Typer sub-commands: `text`, `audio`, `align`, `export` (`backup` moved to OPS-01 — operations concern)
+- [ ] **EXP-03**: Taskfile targets for each pipeline stage (download-text, download-audio, parse, align, export; `backup` target moved to OPS-01)
 - [ ] **EXP-04**: Rich progress display with stage indicators and ETA
 - [ ] **EXP-05**: Pipeline runs end-to-end on gold subset chapters only (configurable chapter list)
 
@@ -55,7 +55,7 @@ v1 is a **calibration release**: build the full pipeline, validate it on a gold 
 
 ### Operations
 
-- [ ] **OPS-01**: Rsync backup of data directory to remote SFTP host
+- [ ] **OPS-01**: Rsync backup of data directory to remote SFTP host (includes `backup` Typer sub-command and `backup:rsync` Taskfile target)
 - [ ] **OPS-02**: Pipeline status reporting (which chapters processed, alignment quality summary)
 - [ ] **OPS-03**: Checkpoint and resume (restart from last successful chapter on failure)
 
