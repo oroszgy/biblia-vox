@@ -84,7 +84,7 @@ tasks:
   data:coverage:
     desc: Strict coverage audit with known source gap policy
     cmds:
-      - uv run bibliavox data coverage --allow-deuterocanonical-missing --allow-known-source-gaps --fail-on-unclassified
+      - uv run bibliavox data coverage --allow-known-source-gaps --fail-on-unclassified
 
   text:convert-jsonl:
     desc: Convert SZIT JSON to JSONL format with USX codes

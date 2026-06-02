@@ -73,14 +73,14 @@ def match_command(
     """Match transcribed words to Bible verse canonical text."""
     settings = get_settings()
 
-    # Read SZIT text
-    szit_path = settings.data_dir / "processed" / "text" / "szit.jsonl"
-    if not szit_path.exists():
-        console.print(f"[red]Error: Text corpus not found at {szit_path}[/red]")
+    # Read MEK text (primary canonical source)
+    mek_path = settings.data_dir / "processed" / "text" / "mek.jsonl"
+    if not mek_path.exists():
+        console.print(f"[red]Error: Text corpus not found at {mek_path}[/red]")
         raise typer.Exit(1)
 
     verses = []
-    with open(szit_path, "r", encoding="utf-8") as f:
+    with open(mek_path, "r", encoding="utf-8") as f:
         for line in f:
             if not line.strip():
                 continue
@@ -92,7 +92,7 @@ def match_command(
 
     if not verses:
         console.print(
-            f"[red]Error: No verses found for {book} {chapter} in SZIT corpus[/red]"
+            f"[red]Error: No verses found for {book} {chapter} in MEK corpus[/red]"
         )
         raise typer.Exit(1)
 
@@ -134,9 +134,6 @@ def evaluate_gold_command(
     model: str = typer.Option(
         None, help="Specific model ID to run (defaults to all in gauntlet)"
     ),
-    use_fixed: bool = typer.Option(
-        True, help="Whether to use the szit-fixed.jsonl canonical reference"
-    ),
 ) -> None:
     """Run transcription, alignment, and metrics calculation on 10 gold chapters."""
     settings = get_settings()
@@ -155,9 +152,8 @@ def evaluate_gold_command(
         ("TOB", 4),
     ]
 
-    # Load canonical verses
-    text_filename = "szit-fixed.jsonl" if use_fixed else "szit.jsonl"
-    text_path = settings.data_dir / "processed" / "text" / text_filename
+    # Load canonical verses from MEK (primary source: all 73 books)
+    text_path = settings.data_dir / "processed" / "text" / "mek.jsonl"
     if not text_path.exists():
         console.print(f"[red]Error: Text corpus not found at {text_path}[/red]")
         raise typer.Exit(1)
@@ -176,26 +172,6 @@ def evaluate_gold_command(
                     "text": verse.get("text", ""),
                 }
             )
-
-    # Fall back to mek.jsonl for missing books (e.g. TOB is missing in SZIT)
-    mek_path = settings.data_dir / "processed" / "text" / "mek.jsonl"
-    if mek_path.exists():
-        primary_books = {v["book"] for v in all_verses}
-        with open(mek_path, "r", encoding="utf-8") as f:
-            for line in f:
-                if not line.strip():
-                    continue
-                verse = json.loads(line)
-                book_code = verse.get("book", "")
-                if book_code not in primary_books:
-                    all_verses.append(
-                        {
-                            "book": book_code,
-                            "chapter": int(verse.get("chapter", 0)),
-                            "verse_id": str(verse.get("verse", "")),
-                            "text": verse.get("text", ""),
-                        }
-                    )
 
     models_to_run = settings.gauntlet.models
     if model:

@@ -134,7 +134,7 @@ def test_evaluate_gold_command(monkeypatch, tmp_path):
     # Create dummy canonical verses
     text_dir = tmp_path / "processed" / "text"
     text_dir.mkdir(parents=True)
-    fixed_path = text_dir / "szit-fixed.jsonl"
+    mek_path = text_dir / "mek.jsonl"
 
     gold_chapters = [
         ("TIT", 1),
@@ -149,7 +149,7 @@ def test_evaluate_gold_command(monkeypatch, tmp_path):
         ("TOB", 4),
     ]
 
-    with open(fixed_path, "w", encoding="utf-8") as f:
+    with open(mek_path, "w", encoding="utf-8") as f:
         for book, ch in gold_chapters:
             # Add one verse per chapter
             f.write(
