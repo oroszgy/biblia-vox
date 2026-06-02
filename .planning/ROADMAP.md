@@ -16,7 +16,7 @@ Each phase delivers working Typer commands and Taskfile targets. Docker infrastr
 - [ ] **Phase 4: Transcription-Based Alignment** - Whisper transcription + fuzzy matching locates verses in audio (includes Docker setup for GPU models)
 - [ ] **Phase 5: Forced Alignment & Alternatives** - MMS forced alignment tier plus VibeVoice and paid API exploration
 - [ ] **Phase 6: Calibration & Alignment Comparison** - Gold-standard set built, approaches compared with quality metrics
-- [ ] **Phase 7: Export & Pipeline Integration** - JSONL output with full metadata, end-to-end pipeline on gold subset
+- [x] **Phase 7: Export & Pipeline Integration** - JSONL output with full metadata, end-to-end pipeline on gold subset
 - [ ] **Phase 8: Operations & Pipeline Hardening** - Backup, status reporting, and checkpoint/resume for reliable operation
 
 ## Phase Details
@@ -158,8 +158,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 07-01-PLAN.md — Export module & CLI (JSONL writer, export subcommand, gold chapters config)
-- [ ] 07-02-PLAN.md — Pipeline orchestration (Taskfile targets for end-to-end pipeline)
+- [x] 07-01-PLAN.md — Export module & CLI (JSONL writer, export subcommand, gold chapters config)
+- [x] 07-02-PLAN.md — Pipeline orchestration (Taskfile targets for end-to-end pipeline)
 
 ### Phase 8: Operations & Pipeline Hardening
 **Goal**: Pipeline has rsync backup, status reporting, and checkpoint/resume for reliable unattended operation
@@ -200,5 +200,5 @@ Phase 1 (Foundation)
 | 4. Transcription-Based Alignment | 3/3 | Complete | 2026-05-31 |
 | 5. Forced Alignment & Alternatives | 4/4 | Complete | 2026-06-02 |
 | 6. Calibration & Alignment Comparison | 0/? | Not started | - |
-| 7. Export & Pipeline Integration | 0/? | Not started | - |
+| 7. Export & Pipeline Integration | 2/2 | Complete | 2026-06-02 |
 | 8. Operations & Pipeline Hardening | 0/? | Not started | - |

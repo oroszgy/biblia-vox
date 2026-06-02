@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: ready_to_plan
-stopped_at: "Phase 7 context gathered"
-last_updated: "2026-06-02T16:00:00Z"
-last_activity: 2026-06-02 -- Phase 7 context gathered (discuss-phase)
+stopped_at: "Phase 7 complete"
+last_updated: "2026-06-02T20:45:00Z"
+last_activity: 2026-06-02 -- Phase 7 complete (execute-phase)
 progress:
   total_phases: 10
-  completed_phases: 6
-  total_plans: 20
-  completed_plans: 20
+  completed_phases: 7
+  total_plans: 22
+  completed_plans: 22
   percent: 100
 ---
 
@@ -21,14 +21,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-31)
 
 **Core value:** Every verse of the Szent István Társulat Bible can be located in its audio recording — with precise timestamps and confidence metadata.
-**Current focus:** Phase 7 — Export & Pipeline Integration
+**Current focus:** Phase 8 — Operations & Pipeline Hardening
 
 ## Current Position
 
-Phase: 7 of 8 (Export & Pipeline Integration)
-Plan: 0 plans (context gathered)
-Status: Ready to plan Phase 7
-Last activity: 2026-06-02 -- Phase 7 context gathered
+Phase: 8 of 8 (Operations & Pipeline Hardening)
+Plan: 0 plans (not yet started)
+Status: Ready to plan Phase 8
+Last activity: 2026-06-02 -- Phase 7 complete
 
 Progress: [██████████] 100%
 
@@ -36,9 +36,9 @@ Progress: [██████████] 100%
 
 **Velocity:**
 
-- Total plans completed: 13
-- Average duration: 6.5 min
-- Total execution time: 1.20 hours
+- Total plans completed: 15
+- Average duration: 6.0 min
+- Total execution time: 1.35 hours
 
 **By Phase:**
 
@@ -49,11 +49,12 @@ Progress: [██████████] 100%
 | 2.5. Data Quality | 3/3 | 12 min | 4 min |
 | 3. Audio Pipeline | 4/4 | 19 min | 4.8 min |
 | 02.6-add-alternate-bible-text-source-mek-oszk-hu-ingestion-and-co | 2 | - | - |
+| 7. Export & Pipeline Integration | 2/2 | 7 min | 3.5 min |
 
 **Recent Trend:**
 
-- Last 5 plans: 03-04 (2 min), 03-03 (6 min), 03-02 (4 min), 03-01 (7 min), 02-02 (10 min)
-- Trend: Stable 2-10 min per plan with Phase 3 gap closure complete
+- Last 5 plans: 07-02 (3 min), 07-01 (4 min), 03-04 (2 min), 03-03 (6 min), 03-02 (4 min)
+- Trend: Stable 2-6 min per plan with Phase 7 export pipeline complete
 
 *Updated after each plan completion*
 
@@ -71,6 +72,11 @@ Recent decisions affecting current work:
 - [05-03]: VibeVoice integrated with both ASR+RapidFuzz matching and direct alignment paths
 - [05-04]: OpenAI Whisper API evaluation provides reference baseline at $0.006/min
 - [05-04]: Evaluation engine stores results as JSONL with Rich table display
+- [07-01]: JSONL export uses write mode (not append) — --force replaces file, idempotency gated by CLI
+- [07-01]: Audio file path uses settings.data_dir for BIBLIAVOX_DATA_DIR override support
+- [07-01]: Export writer validates required keys in matched JSON before access
+- [07-02]: export:run passes MODEL and FORCE only (GOLD hardcoded in export:jsonl)
+- [07-02]: export:align status check verifies summary.json contains all gold chapters
 
 - [Roadmap]: 8-phase structure; Docker absorbed into alignment phases, CLI/Taskfile distributed across all phases
 - [Roadmap]: Phases 2/3 are parallelizable after Phase 1; Phase 4 is the convergence point
@@ -120,6 +126,7 @@ Recent decisions affecting current work:
 ### Roadmap Evolution
 
 - Phase 2.6 added: Add alternate Bible text source (mek.oszk.hu) ingestion and completeness cross-source comparison across all books and verses
+- Phase 7 completed: Export module, CLI, config, Taskfile targets — 41 tests, 7 commits
 
 ### Pending Todos
 
@@ -143,5 +150,5 @@ Items acknowledged and carried forward from previous milestone close:
 ## Session Continuity
 
 Last session: 2026-06-02
-Stopped at: Phase 7 context gathered, ready to plan Phase 7
-Resume file: .planning/phases/07-export-and-pipeline-integration/07-CONTEXT.md
+Stopped at: Phase 7 complete, ready to plan Phase 8
+Resume file: .planning/phases/08-operations-and-pipeline-hardening/
