@@ -367,3 +367,27 @@ def evaluate_gold_command(
     console.print(
         f"[green]Successfully saved master evaluation summary to {summary_path}[/green]"
     )
+
+
+@app.command("setup")
+def setup_command() -> None:
+    """Pre-download model weights specified in the gauntlet configuration."""
+    from huggingface_hub import snapshot_download  # type: ignore[import-untyped]
+
+    settings = get_settings()
+    models_dir = settings.models_dir
+
+    for model in settings.gauntlet.models:
+        console.print(f"[cyan]Downloading {model.id}...[/cyan]")
+        local_dir = models_dir / model.id
+        local_dir.mkdir(parents=True, exist_ok=True)
+        try:
+            snapshot_download(
+                repo_id=model.id,
+                local_dir=local_dir,
+                local_dir_use_symlinks=False,
+            )
+            console.print(f"[green]Successfully downloaded {model.id}[/green]")
+        except Exception as exc:
+            console.print(f"[red]Failed to download {model.id}: {exc}[/red]")
+            raise typer.Exit(1)

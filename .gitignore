@@ -18,6 +18,9 @@ build/
 *.swp
 *.swo
 
+# OpenCode
+.opencode/
+
 # OS
 .DS_Store
 Thumbs.db

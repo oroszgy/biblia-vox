@@ -319,6 +319,127 @@ def prepare(
     console.print(f"index={result['index_path']}")
 
 
+@app.command("convert-all")
+def convert_all(
+    force: bool = typer.Option(False, "--force", help="Re-convert existing WAVs"),
+    raw_root: Path = typer.Option(
+        Path("data/raw/audio"),
+        "--raw-root",
+        help="Raw audio root path",
+    ),
+    prepared_root: Path = typer.Option(
+        Path("data/prepared/audio"),
+        "--prepared-root",
+        help="Prepared audio root path",
+    ),
+) -> None:
+    """Convert all downloaded MP3s to WAV format."""
+    if not raw_root.exists():
+        console.print(f"[red]Raw audio root not found: {raw_root}[/red]")
+        raise typer.Exit(code=1)
+
+    mp3_files = sorted(raw_root.glob("*/*.mp3"))
+    if not mp3_files:
+        console.print("[yellow]No raw MP3 files found to convert.[/yellow]")
+        return
+
+    converted = 0
+    skipped = 0
+    failed = 0
+
+    for mp3 in mp3_files:
+        book_usx = mp3.parent.name
+        try:
+            chapter = int(mp3.stem)
+        except ValueError:
+            console.print(f"[yellow]Skipping invalid chapter filename: {mp3}[/yellow]")
+            failed += 1
+            continue
+
+        output_wav = prepared_root / book_usx / f"{chapter:03d}.wav"
+        if output_wav.exists() and not force:
+            skipped += 1
+            continue
+
+        output_wav.parent.mkdir(parents=True, exist_ok=True)
+        try:
+            convert_to_wav(mp3, output_wav, force=force)
+            converted += 1
+        except AudioConversionError as exc:
+            failed += 1
+            console.print(f"[red]Failed {book_usx} {chapter:03d}: {exc}[/red]")
+
+    console.print(
+        "[green]convert-all completed:[/green] "
+        f"total={len(mp3_files)} converted={converted} skipped={skipped} failed={failed}"
+    )
+    if failed > 0:
+        raise typer.Exit(code=1)
+
+
+@app.command("prepare-all")
+def prepare_all(
+    force: bool = typer.Option(
+        False, "--force", help="Recreate existing prepared artifacts"
+    ),
+    raw_root: Path = typer.Option(
+        Path("data/raw/audio"),
+        "--raw-root",
+        help="Raw audio root path",
+    ),
+    prepared_root: Path = typer.Option(
+        Path("data/prepared/audio"),
+        "--prepared-root",
+        help="Prepared audio root path",
+    ),
+) -> None:
+    """Prepare all downloaded chapters: WAV, metadata, and seek index sidecars."""
+    if not raw_root.exists():
+        console.print(f"[red]Raw audio root not found: {raw_root}[/red]")
+        raise typer.Exit(code=1)
+
+    mp3_files = sorted(raw_root.glob("*/*.mp3"))
+    if not mp3_files:
+        console.print("[yellow]No raw MP3 files found to prepare.[/yellow]")
+        return
+
+    prepared = 0
+    skipped = 0
+    failed = 0
+
+    for mp3 in mp3_files:
+        book_usx = mp3.parent.name
+        try:
+            chapter = int(mp3.stem)
+        except ValueError:
+            console.print(f"[yellow]Skipping invalid chapter filename: {mp3}[/yellow]")
+            failed += 1
+            continue
+
+        try:
+            result = prepare_chapter(
+                book_usx,
+                chapter,
+                raw_root=raw_root,
+                prepared_root=prepared_root,
+                force=force,
+            )
+            if result["status"] == "prepared":
+                prepared += 1
+            else:
+                skipped += 1
+        except Exception as exc:
+            failed += 1
+            console.print(f"[red]Failed {book_usx} {chapter:03d}: {exc}[/red]")
+
+    console.print(
+        "[green]prepare-all completed:[/green] "
+        f"total={len(mp3_files)} prepared={prepared} skipped={skipped} failed={failed}"
+    )
+    if failed > 0:
+        raise typer.Exit(code=1)
+
+
 @app.command()
 def seek(
     book: str = typer.Option(..., "--book", "-b", help="USX book code"),
