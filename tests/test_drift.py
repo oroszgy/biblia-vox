@@ -152,7 +152,6 @@ class TestChunkAudioByVad:
         segments = [(0, 160000), (192000, 480000)]  # 0-10s, 12-30s
         mock_hub = _mock_torch_hub_load(segments)
         overlap_ms = 500
-        overlap_samples = int(overlap_ms * 16000 / 1000)  # 8000 samples
 
         mock_torch.hub.load = mock_hub
         result = chunk_audio_by_vad(
@@ -303,9 +302,10 @@ class TestSnapToVad:
 
         result = snap_to_vad(words, vad_segments)
 
-        # Word midpoint is 3.25, closest segment is 5.0-8.0
-        assert result[0]["start"] >= 5.0 - 0.1
-        assert result[0]["end"] >= 5.0
+        # Word midpoint is 3.25; distance to (0,2) edge=1.25, to (5,8) edge=1.75
+        # Closest segment is (0.0, 2.0) — word is after it, so snaps to end
+        assert result[0]["end"] == pytest.approx(2.0, abs=0.1)
+        assert result[0]["start"] <= 2.0
 
     def test_empty_vad_segments_returns_words_unchanged(self):
         """No VAD segments returns words as-is."""
