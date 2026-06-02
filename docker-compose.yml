@@ -14,3 +14,21 @@ services:
             - driver: nvidia
               count: all
               capabilities: [gpu]
+
+  vibevoice:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.align
+    working_dir: /app
+    volumes:
+      - .:/app
+      - ./data:/app/data
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all

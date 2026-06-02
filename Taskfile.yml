@@ -188,6 +188,11 @@ tasks:
     cmds:
       - docker compose run --rm align python -m bibliavox.main align forced --all
 
+  align:vibevoice:
+    desc: Run VibeVoice alignment on a chapter (requires BOOK/CHAPTER vars)
+    cmds:
+      - docker compose run --rm vibevoice python -m bibliavox.main align vibevoice --book {{.BOOK}} --chapter {{.CHAPTER}} --path both
+
   sync:
     desc: Install/sync dependencies
     cmds:

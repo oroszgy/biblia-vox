@@ -9,6 +9,7 @@ from rich.table import Table
 from bibliavox.align.forced import align_chapter, save_forced_alignment
 from bibliavox.align.match import match_verses
 from bibliavox.align.transcribe import transcribe_audio
+from bibliavox.align.vibevoice import vibevoice_asr_match, vibevoice_direct
 from bibliavox.config import get_settings
 
 app = typer.Typer(help="Alignment commands for text to audio synchronization.")
@@ -207,6 +208,115 @@ def forced_command(
     console.print(f"[green]Phone-level tokens: {total_phones}[/green]")
     console.print(f"[green]Saved verse-level alignment to {verse_path}[/green]")
     console.print(f"[green]Saved phone-level alignment to {phones_path}[/green]")
+
+
+@app.command("vibevoice")
+def vibevoice_command(
+    book: str = typer.Option(..., help="USX book code (e.g. GEN)"),
+    chapter: int = typer.Option(..., help="Chapter number"),
+    path: str = typer.Option(
+        "both",
+        help="Which path: 'asr' (ASR+RapidFuzz), 'direct', or 'both'",
+    ),
+) -> None:
+    """Run VibeVoice alignment (ASR+RapidFuzz and/or direct)."""
+    settings = get_settings()
+
+    audio_path = settings.data_dir / "prepared" / "audio" / book / f"{chapter:03d}.wav"
+    if not audio_path.exists():
+        console.print(f"[red]Error: Audio file not found at {audio_path}[/red]")
+        raise typer.Exit(1)
+
+    # Load verses from MEK JSONL corpus
+    mek_path = settings.data_dir / "processed" / "text" / "mek.jsonl"
+    if not mek_path.exists():
+        console.print(f"[red]Error: Text corpus not found at {mek_path}[/red]")
+        raise typer.Exit(1)
+
+    verses = []
+    with open(mek_path, "r", encoding="utf-8") as f:
+        for line in f:
+            if not line.strip():
+                continue
+            verse = json.loads(line)
+            if verse.get("book") == book and verse.get("chapter") == chapter:
+                verses.append(
+                    {"verse_id": str(verse.get("verse")), "text": verse.get("text", "")}
+                )
+
+    if not verses:
+        console.print(
+            f"[red]Error: No verses found for {book} {chapter} in MEK corpus[/red]"
+        )
+        raise typer.Exit(1)
+
+    # Save results to data/aligned/vibevoice/{book}/
+    aligned_dir = settings.data_dir / "aligned" / "vibevoice" / book
+    aligned_dir.mkdir(parents=True, exist_ok=True)
+
+    if path in ("asr", "both"):
+        console.print(
+            f"[cyan]Running VibeVoice ASR+RapidFuzz for {book} {chapter}...[/cyan]"
+        )
+        try:
+            asr_results = vibevoice_asr_match(audio_path, verses)
+        except Exception as e:
+            console.print(f"[red]VibeVoice ASR+RapidFuzz failed: {e}[/red]")
+            raise typer.Exit(1)
+
+        asr_path = aligned_dir / f"{chapter:03d}_asr.json"
+        with open(asr_path, "w", encoding="utf-8") as f:
+            json.dump(asr_results, f, ensure_ascii=False, indent=2)
+
+        table = Table(title=f"VibeVoice ASR+RapidFuzz: {book} {chapter}")
+        table.add_column("Verse", justify="left")
+        table.add_column("Start (s)", justify="right")
+        table.add_column("End (s)", justify="right")
+        table.add_column("Confidence", justify="right")
+
+        for r in asr_results:
+            table.add_row(
+                r["verse_id"],
+                f"{r['start_sec']:.2f}",
+                f"{r['end_sec']:.2f}",
+                f"{r['confidence_score']:.1f}",
+            )
+
+        console.print(table)
+        console.print(f"[green]Saved ASR+RapidFuzz results to {asr_path}[/green]")
+
+    if path in ("direct", "both"):
+        console.print(
+            f"[cyan]Running VibeVoice direct alignment for {book} {chapter}...[/cyan]"
+        )
+        try:
+            direct_results = vibevoice_direct(audio_path)
+        except Exception as e:
+            console.print(f"[red]VibeVoice direct alignment failed: {e}[/red]")
+            raise typer.Exit(1)
+
+        direct_path = aligned_dir / f"{chapter:03d}_direct.json"
+        with open(direct_path, "w", encoding="utf-8") as f:
+            json.dump(direct_results, f, ensure_ascii=False, indent=2)
+
+        table = Table(title=f"VibeVoice Direct: {book} {chapter}")
+        table.add_column("Text", justify="left")
+        table.add_column("Start (s)", justify="right")
+        table.add_column("End (s)", justify="right")
+        table.add_column("Speaker", justify="left")
+
+        for r in direct_results:
+            # Truncate text for display
+            display_text = r["text"][:60] + "..." if len(r["text"]) > 60 else r["text"]
+            table.add_row(
+                display_text,
+                f"{r['start']:.2f}",
+                f"{r['end']:.2f}",
+                r.get("speaker", ""),
+            )
+
+        console.print(table)
+        console.print(f"[green]Saved direct alignment results to {direct_path}[/green]")
 
 
 @app.command("evaluate-gold")
