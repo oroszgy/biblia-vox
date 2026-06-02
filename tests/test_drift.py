@@ -11,6 +11,9 @@ from unittest.mock import MagicMock
 # Mock torch so drift.py can be imported without a real PyTorch installation
 mock_torch = ModuleType("torch")
 
+sys.modules.setdefault("torch", mock_torch)
+mock_torch = sys.modules["torch"]
+
 
 # Create a Tensor-like class for isinstance checks and type hints
 class _FakeTensor:

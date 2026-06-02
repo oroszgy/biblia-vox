@@ -34,7 +34,7 @@ class ModelGauntletSettings(BaseModel):
 
     models: list[ModelConfig] = [
         ModelConfig(id="systran/faster-whisper-large-v3", type="faster-whisper"),
-        ModelConfig(id="microsoft/VibeVoice-ASR-7B", type="vibevoice"),
+        ModelConfig(id="microsoft/VibeVoice-ASR-HF", type="vibevoice"),
         ModelConfig(id="facebook/mms-1b-fl102", type="mms-fa"),
         ModelConfig(id="sarpba/wav2vec2-large-xlsr-53-hungarian", type="ctc"),
     ]

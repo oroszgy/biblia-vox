@@ -52,6 +52,41 @@ def compute_wer(reference: str, hypothesis: str) -> float:
     return d[n][m] / n
 
 
+def compute_cer(reference: str, hypothesis: str) -> float:
+    """Compute Character Error Rate between reference and hypothesis text.
+
+    Uses edit distance at character level.
+    Returns CER as float (0.0 = perfect match, 1.0 = completely wrong).
+    """
+    ref_chars = list(reference)
+    hyp_chars = list(hypothesis)
+
+    n = len(ref_chars)
+    if n == 0:
+        return 0.0
+
+    m = len(hyp_chars)
+
+    d = [[0] * (m + 1) for _ in range(n + 1)]
+    for i in range(n + 1):
+        d[i][0] = i
+    for j in range(m + 1):
+        d[0][j] = j
+
+    for i in range(1, n + 1):
+        for j in range(1, m + 1):
+            if ref_chars[i - 1] == hyp_chars[j - 1]:
+                d[i][j] = d[i - 1][j - 1]
+            else:
+                d[i][j] = min(
+                    d[i - 1][j] + 1,
+                    d[i][j - 1] + 1,
+                    d[i - 1][j - 1] + 1,
+                )
+
+    return d[n][m] / n
+
+
 def compute_timestamp_accuracy(
     predicted: list[dict[str, Any]],
     gold: list[dict[str, Any]],

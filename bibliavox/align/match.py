@@ -65,12 +65,17 @@ def match_verses(
         start_sec = word_transcripts[start_word_idx]["start"]
         end_sec = word_transcripts[end_word_idx]["end"]
 
+        # Extract matched transcribed text from the alignment range
+        matched_text = joined_text[dest_start : dest_end + 1].strip()
+
         results.append(
             {
                 "verse_id": verse_id,
                 "start_sec": start_sec,
                 "end_sec": end_sec,
                 "confidence_score": score,
+                "canonical_text": text,
+                "matched_text": matched_text,
             }
         )
 

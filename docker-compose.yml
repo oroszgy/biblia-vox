@@ -7,6 +7,10 @@ services:
     volumes:
       - .:/app
       - ./data:/app/data
+      - ./data/.hf-cache:/root/.cache/huggingface
+      - ./data/.torch-cache:/root/.cache/torch
+    environment:
+      - HF_HOME=/root/.cache/huggingface
     deploy:
       resources:
         reservations:
@@ -23,6 +27,11 @@ services:
     volumes:
       - .:/app
       - ./data:/app/data
+      - ./data/.hf-cache:/root/.cache/huggingface
+      - ./data/.torch-cache:/root/.cache/torch
+    environment:
+      - HF_HOME=/root/.cache/huggingface
+      - NVIDIA_VISIBLE_DEVICES=all
     deploy:
       resources:
         reservations:
@@ -30,5 +39,3 @@ services:
             - driver: nvidia
               count: all
               capabilities: [gpu]
-    environment:
-      - NVIDIA_VISIBLE_DEVICES=all

@@ -59,8 +59,62 @@ def transcribe_audio(
         return words
 
     elif model_config.type == "vibevoice":
-        # Note: True VibeVoice integration requires a specific transformers pipeline.
-        # This is the branching path per D-05.
+        import torch
+        import soundfile as sf
+        from transformers import AutoProcessor, VibeVoiceAsrForConditionalGeneration  # type: ignore
+
+        processor = AutoProcessor.from_pretrained(model_path)
+        model = VibeVoiceAsrForConditionalGeneration.from_pretrained(
+            model_path, torch_dtype=torch.bfloat16
+        ).to("cuda:0")
+
+        audio, sr = sf.read(str(audio_path))
+        if len(audio.shape) > 1:
+            audio = audio.mean(axis=1)
+
+        inputs = processor(audio, sampling_rate=sr, return_tensors="pt").to(
+            "cuda:0", dtype=torch.bfloat16
+        )
+
+        with torch.no_grad():
+            generated_ids = model.generate(**inputs, max_new_tokens=4096)
+
+        transcription = processor.batch_decode(generated_ids, skip_special_tokens=True)
+
+        words = []
+        if isinstance(transcription, list):
+            for seg in transcription:
+                if isinstance(seg, dict):
+                    content = seg.get("content", seg.get("text", ""))
+                    start = seg.get("start", 0.0)
+                    end = seg.get("end", 0.0)
+                    if content:
+                        seg_words = content.strip().split()
+                        if seg_words and end > start:
+                            word_dur = (end - start) / len(seg_words)
+                            for i, w in enumerate(seg_words):
+                                words.append(
+                                    {
+                                        "word": w,
+                                        "start": start + i * word_dur,
+                                        "end": start + (i + 1) * word_dur,
+                                        "probability": 1.0,
+                                    }
+                                )
+                elif isinstance(seg, str):
+                    for w in seg.strip().split():
+                        words.append(
+                            {
+                                "word": w,
+                                "start": 0.0,
+                                "end": 0.0,
+                                "probability": 0.5,
+                            }
+                        )
+        return words
+
+    elif model_config.type == "ctc":
+        import torch
         from transformers import pipeline  # type: ignore
 
         pipe = pipeline(
@@ -77,7 +131,6 @@ def transcribe_audio(
             for chunk in result["chunks"]:
                 if not isinstance(chunk, dict):
                     continue
-                # pipeline chunks typically contain text, timestamp (start, end)
                 if (
                     isinstance(chunk.get("timestamp"), (tuple, list))
                     and len(chunk["timestamp"]) == 2
@@ -88,10 +141,16 @@ def transcribe_audio(
                             "word": chunk.get("text", "").strip(),
                             "start": start,
                             "end": end,
-                            "probability": 1.0,  # Pipeline might not provide probability
+                            "probability": 1.0,
                         }
                     )
         return words
+
+    elif model_config.type == "mms-fa":
+        raise ValueError(
+            f"Model type 'mms-fa' requires forced alignment, not transcription. "
+            f"Use 'bibliavox align forced' or the evaluate-gold command which handles it separately."
+        )
 
     else:
         raise ValueError(f"Unknown model type: {model_config.type}")

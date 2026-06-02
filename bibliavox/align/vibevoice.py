@@ -13,13 +13,13 @@ logger = logging.getLogger(__name__)
 
 def vibevoice_asr(
     audio_path: Path,
-    model_path: str = "microsoft/VibeVoice-ASR-7B",
+    model_path: str = "microsoft/VibeVoice-ASR-HF",
     device: str = "cuda:0",
 ) -> list[dict[str, Any]]:
     """Run VibeVoice ASR to get word-level transcripts.
 
-    Uses transformers pipeline with return_timestamps="word".
-    VibeVoice processes audio in 60-second chunks internally.
+    Uses VibeVoiceAsrForConditionalGeneration for structured output
+    with speaker, timestamps, and content per segment.
 
     Args:
         audio_path: Path to WAV file.
@@ -29,41 +29,69 @@ def vibevoice_asr(
     Returns:
         List of {"word": str, "start": float, "end": float, "probability": float}.
     """
-    from transformers import pipeline  # type: ignore
+    import torch
+    import soundfile as sf
+    from transformers import AutoProcessor, VibeVoiceAsrForConditionalGeneration  # type: ignore
 
-    pipe = pipeline(
-        "automatic-speech-recognition",
-        model=model_path,
-        device=device,
-        return_timestamps="word",
+    processor = AutoProcessor.from_pretrained(model_path)
+    model = VibeVoiceAsrForConditionalGeneration.from_pretrained(
+        model_path, torch_dtype=torch.bfloat16
+    ).to(device)
+
+    # Load audio
+    audio, sr = sf.read(str(audio_path))
+    if len(audio.shape) > 1:
+        audio = audio.mean(axis=1)  # mono
+
+    inputs = processor(audio, sampling_rate=sr, return_tensors="pt").to(
+        device, dtype=torch.bfloat16
     )
 
-    result = pipe(str(audio_path))
+    with torch.no_grad():
+        generated_ids = model.generate(**inputs, max_new_tokens=4096)
 
+    transcription = processor.batch_decode(generated_ids, skip_special_tokens=True)
+
+    # Parse structured output into word-level timestamps
     words = []
-    if isinstance(result, dict) and "chunks" in result:
-        for chunk in result["chunks"]:
-            if not isinstance(chunk, dict):
-                continue
-            if (
-                isinstance(chunk.get("timestamp"), (tuple, list))
-                and len(chunk["timestamp"]) == 2
-            ):
-                start, end = chunk["timestamp"]
-                words.append(
-                    {
-                        "word": chunk.get("text", "").strip(),
-                        "start": start,
-                        "end": end,
-                        "probability": 1.0,
-                    }
-                )
+    if isinstance(transcription, list):
+        for seg in transcription:
+            if isinstance(seg, dict):
+                # Structured output: {speaker, start, end, content}
+                content = seg.get("content", seg.get("text", ""))
+                start = seg.get("start", 0.0)
+                end = seg.get("end", 0.0)
+                if content:
+                    # Split content into words and distribute timestamps
+                    seg_words = content.strip().split()
+                    if seg_words and end > start:
+                        word_dur = (end - start) / len(seg_words)
+                        for i, w in enumerate(seg_words):
+                            words.append(
+                                {
+                                    "word": w,
+                                    "start": start + i * word_dur,
+                                    "end": start + (i + 1) * word_dur,
+                                    "probability": 1.0,
+                                }
+                            )
+            elif isinstance(seg, str):
+                # Plain text output — no timestamps available
+                for w in seg.strip().split():
+                    words.append(
+                        {
+                            "word": w,
+                            "start": 0.0,
+                            "end": 0.0,
+                            "probability": 0.5,
+                        }
+                    )
     return words
 
 
 def vibevoice_direct(
     audio_path: Path,
-    model_path: str = "microsoft/VibeVoice-ASR-7B",
+    model_path: str = "microsoft/VibeVoice-ASR-HF",
     device: str = "cuda:0",
 ) -> list[dict[str, Any]]:
     """Run VibeVoice direct alignment for verse-level timestamps.
@@ -78,13 +106,13 @@ def vibevoice_direct(
     Returns:
         List of {"text": str, "start": float, "end": float, "speaker": str}.
     """
-    from transformers import AutoProcessor, VibeVoiceForSpeechToText  # type: ignore
+    from transformers import AutoProcessor, VibeVoiceAsrForConditionalGeneration  # type: ignore
     import torch
     import soundfile as sf
 
     processor = AutoProcessor.from_pretrained(model_path)
-    model = VibeVoiceForSpeechToText.from_pretrained(
-        model_path, torch_dtype=torch.float16
+    model = VibeVoiceAsrForConditionalGeneration.from_pretrained(
+        model_path, torch_dtype=torch.bfloat16
     ).to(device)
 
     # Load audio
@@ -117,7 +145,7 @@ def vibevoice_direct(
 def vibevoice_asr_match(
     audio_path: Path,
     verses: list[dict[str, str]],
-    model_path: str = "microsoft/VibeVoice-ASR-7B",
+    model_path: str = "microsoft/VibeVoice-ASR-HF",
     device: str = "cuda:0",
 ) -> list[dict[str, Any]]:
     """VibeVoice ASR + RapidFuzz matching path.

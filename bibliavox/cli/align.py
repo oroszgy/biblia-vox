@@ -9,6 +9,7 @@ from rich.table import Table
 
 from bibliavox.align.evaluate import (
     build_comparison_table,
+    compute_cer,
     compute_timestamp_accuracy,
     compute_wer,
     load_cached_result,
@@ -395,6 +396,8 @@ def evaluate_gold_command(
         table.add_column("Canonical Verses", justify="right")
         table.add_column("Aligned Verses", justify="right")
         table.add_column("Coverage (%)", justify="right")
+        table.add_column("WER", justify="right")
+        table.add_column("CER", justify="right")
         table.add_column("Avg Conf", justify="right")
         table.add_column("Median Conf", justify="right")
         table.add_column("Chrono Violations", justify="right")
@@ -404,6 +407,8 @@ def evaluate_gold_command(
         total_canonical = 0
         total_aligned = 0
         all_confidences = []
+        all_wers = []
+        all_cers = []
         total_violations = 0
         total_time = 0.0
 
@@ -430,8 +435,44 @@ def evaluate_gold_command(
             start_time = time.perf_counter()
 
             try:
-                words = transcribe_audio(audio_path, model_config, settings.models_dir)
-                matched = match_verses(chapter_verses, words)
+                if model_config.type == "mms-fa":
+                    # MMS_FA uses forced alignment with known verse text
+                    raw_results = align_chapter(
+                        audio_path, chapter_verses, device="cuda"
+                    )
+                    # Transform to match format
+                    matched = []
+                    for r in raw_results:
+                        word_scores = [w.get("score", 0.0) for w in r.get("words", [])]
+                        avg_score = (
+                            sum(word_scores) / len(word_scores) * 100.0
+                            if word_scores
+                            else 0.0
+                        )
+                        matched.append(
+                            {
+                                "verse_id": r["verse_id"],
+                                "start_sec": r["start_sec"],
+                                "end_sec": r["end_sec"],
+                                "confidence_score": avg_score,
+                                "canonical_text": next(
+                                    (
+                                        v["text"]
+                                        for v in chapter_verses
+                                        if v["verse_id"] == r["verse_id"]
+                                    ),
+                                    "",
+                                ),
+                                "matched_text": " ".join(
+                                    w.get("word", "") for w in r.get("words", [])
+                                ),
+                            }
+                        )
+                else:
+                    words = transcribe_audio(
+                        audio_path, model_config, settings.models_dir
+                    )
+                    matched = match_verses(chapter_verses, words)
             except Exception as e:
                 console.print(f"[red]  Failed to process {book} {chapter}: {e}[/red]")
                 continue
@@ -459,16 +500,46 @@ def evaluate_gold_command(
                     violations += 1
                 prev_start = s_sec
 
+            # Compute WER and CER per verse, then average across chapter
+            chapter_wers = []
+            chapter_cers = []
+            for m in matched:
+                canonical = m.get("canonical_text", "")
+                matched_t = m.get("matched_text", "")
+                if canonical:
+                    chapter_wers.append(compute_wer(canonical, matched_t))
+                    chapter_cers.append(compute_cer(canonical, matched_t))
+            chapter_wer = sum(chapter_wers) / len(chapter_wers) if chapter_wers else 0.0
+            chapter_cer = sum(chapter_cers) / len(chapter_cers) if chapter_cers else 0.0
+
             # Save matched verses to filesystem
             out_path = eval_dir / f"{book}_{chapter:03d}_{model_safe_name}_matched.json"
+            chapter_output = {
+                "chapter": f"{book} {chapter}",
+                "model": model_config.id,
+                "metrics": {
+                    "canonical_verses": num_canonical,
+                    "aligned_verses": num_aligned,
+                    "coverage_pct": coverage,
+                    "wer": chapter_wer,
+                    "cer": chapter_cer,
+                    "avg_confidence": avg_conf,
+                    "median_confidence": med_conf,
+                    "chronological_violations": violations,
+                    "time_sec": elapsed,
+                },
+                "verses": matched,
+            }
             with open(out_path, "w", encoding="utf-8") as out_f:
-                json.dump(matched, out_f, ensure_ascii=False, indent=2)
+                json.dump(chapter_output, out_f, ensure_ascii=False, indent=2)
 
             table.add_row(
                 f"{book} {chapter}",
                 str(num_canonical),
                 str(num_aligned),
                 f"{coverage:.1f}%",
+                f"{chapter_wer:.3f}",
+                f"{chapter_cer:.3f}",
                 f"{avg_conf:.1f}",
                 f"{med_conf:.1f}",
                 str(violations),
@@ -479,6 +550,8 @@ def evaluate_gold_command(
             total_canonical += num_canonical
             total_aligned += num_aligned
             all_confidences.extend(confidences)
+            all_wers.extend(chapter_wers)
+            all_cers.extend(chapter_cers)
             total_violations += violations
             total_time += elapsed
 
@@ -489,6 +562,8 @@ def evaluate_gold_command(
                     "canonical_verses": num_canonical,
                     "aligned_verses": num_aligned,
                     "coverage_pct": coverage,
+                    "wer": chapter_wer,
+                    "cer": chapter_cer,
                     "avg_confidence": avg_conf,
                     "median_confidence": med_conf,
                     "chronological_violations": violations,
@@ -507,6 +582,8 @@ def evaluate_gold_command(
         overall_med_conf = (
             statistics.median(all_confidences) if all_confidences else 0.0
         )
+        overall_wer = sum(all_wers) / len(all_wers) if all_wers else 0.0
+        overall_cer = sum(all_cers) / len(all_cers) if all_cers else 0.0
 
         table.add_section()
         table.add_row(
@@ -514,6 +591,8 @@ def evaluate_gold_command(
             str(total_canonical),
             str(total_aligned),
             f"{overall_coverage:.1f}%",
+            f"{overall_wer:.3f}",
+            f"{overall_cer:.3f}",
             f"{overall_avg_conf:.1f}",
             f"{overall_med_conf:.1f}",
             str(total_violations),
@@ -527,6 +606,8 @@ def evaluate_gold_command(
             "total_canonical": total_canonical,
             "total_aligned": total_aligned,
             "overall_coverage_pct": overall_coverage,
+            "overall_wer": overall_wer,
+            "overall_cer": overall_cer,
             "overall_avg_confidence": overall_avg_conf,
             "overall_median_confidence": overall_med_conf,
             "total_chronological_violations": total_violations,
@@ -672,10 +753,44 @@ def evaluate_command(
                 console.print(f"  Processing {bk} Chapter {ch}...")
                 start_time = time.perf_counter()
                 try:
-                    words = transcribe_audio(
-                        audio_path, model_config, settings.models_dir
-                    )
-                    matched = match_verses(chapter_verses, words)
+                    if model_config.type == "mms-fa":
+                        raw_results = align_chapter(
+                            audio_path, chapter_verses, device="cuda"
+                        )
+                        matched = []
+                        for r in raw_results:
+                            word_scores = [
+                                w.get("score", 0.0) for w in r.get("words", [])
+                            ]
+                            avg_score = (
+                                sum(word_scores) / len(word_scores) * 100.0
+                                if word_scores
+                                else 0.0
+                            )
+                            matched.append(
+                                {
+                                    "verse_id": r["verse_id"],
+                                    "start_sec": r["start_sec"],
+                                    "end_sec": r["end_sec"],
+                                    "confidence_score": avg_score,
+                                    "canonical_text": next(
+                                        (
+                                            v["text"]
+                                            for v in chapter_verses
+                                            if v["verse_id"] == r["verse_id"]
+                                        ),
+                                        "",
+                                    ),
+                                    "matched_text": " ".join(
+                                        w.get("word", "") for w in r.get("words", [])
+                                    ),
+                                }
+                            )
+                    else:
+                        words = transcribe_audio(
+                            audio_path, model_config, settings.models_dir
+                        )
+                        matched = match_verses(chapter_verses, words)
                 except Exception as e:
                     console.print(f"[red]  Failed: {e}[/red]")
                     model_error = str(e)

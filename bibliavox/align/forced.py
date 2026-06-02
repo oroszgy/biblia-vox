@@ -54,8 +54,8 @@ def align_verse(
     if not words_list:
         return {"words": [], "phones": [], "text": verse_text}
 
-    # Tokenize at word level — each word produces a list of character tokens
-    tokens = tokenizer(words_list)
+    # MMS_FA tokenizer is lowercase-only — tokenize lowercased words
+    tokens = tokenizer([w.lower() for w in words_list])
 
     # Compute emission and align
     with torch.inference_mode():

@@ -5,8 +5,31 @@ from types import ModuleType
 mock_faster_whisper = ModuleType("faster_whisper")
 mock_transformers = ModuleType("transformers")
 
+_torch = ModuleType("torch")
+_torch.bfloat16 = "bfloat16"
+
+from contextlib import contextmanager
+
+
+@contextmanager
+def _no_grad():
+    yield
+
+
+_torch.no_grad = _no_grad
+
 sys.modules["faster_whisper"] = mock_faster_whisper
 sys.modules["transformers"] = mock_transformers
+# Use setdefault to avoid clobbering mocks from other test files
+sys.modules.setdefault("torch", _torch)
+
+# Get the actual mock in sys.modules (may be ours or another file's)
+mock_torch = sys.modules["torch"]
+# Ensure bfloat16 and no_grad exist on whichever mock is active
+if not hasattr(mock_torch, "bfloat16"):
+    mock_torch.bfloat16 = "bfloat16"
+if not hasattr(mock_torch, "no_grad"):
+    mock_torch.no_grad = _no_grad
 
 import json  # noqa: E402
 from bibliavox.config import ModelConfig  # noqa: E402
@@ -58,21 +81,57 @@ def test_transcribe_audio_faster_whisper(monkeypatch, tmp_path):
 
 
 def test_transcribe_audio_vibevoice(monkeypatch, tmp_path):
-    def fake_pipeline(task, model, device, return_timestamps):
-        assert task == "automatic-speech-recognition"
-        assert model == str(tmp_path / "models" / "mock-vibevoice")
+    # Mock soundfile with shape support
+    class FakeAudio:
+        def __init__(self):
+            self._data = [0.0] * 16000
+            self.shape = (16000,)
 
-        def run(audio_path):
-            return {
-                "chunks": [
-                    {"text": "Kezdetben", "timestamp": (0.0, 1.0)},
-                    {"text": "teremtette", "timestamp": (1.0, 2.0)},
-                ]
-            }
+        def mean(self, axis):
+            return self._data
 
-        return run
+    mock_sf = ModuleType("soundfile")
+    mock_sf.read = lambda path: (FakeAudio(), 16000)
+    sys.modules["soundfile"] = mock_sf
 
-    mock_transformers.pipeline = fake_pipeline
+    class FakeProcessor:
+        def __call__(self, audio, sampling_rate, return_tensors):
+            class Inputs(dict):
+                def to(self, *args, **kwargs):
+                    return self
+
+            return Inputs()
+
+        def batch_decode(self, ids, skip_special_tokens=False):
+            return [
+                {
+                    "speaker": "Speaker 0",
+                    "start": 0.0,
+                    "end": 2.0,
+                    "content": "Kezdetben teremtette",
+                },
+            ]
+
+    class FakeModel:
+        def __init__(self, *args, **kwargs):
+            pass
+
+        def to(self, *args, **kwargs):
+            return self
+
+        def generate(self, **kwargs):
+            return [[0, 1, 2]]
+
+    mock_transformers.AutoProcessor = type(
+        "AutoProcessor",
+        (),
+        {"from_pretrained": staticmethod(lambda path: FakeProcessor())},
+    )
+    mock_transformers.VibeVoiceAsrForConditionalGeneration = type(
+        "VibeVoiceAsrForConditionalGeneration",
+        (),
+        {"from_pretrained": staticmethod(lambda path, **kw: FakeModel())},
+    )
 
     audio_path = tmp_path / "test.wav"
     audio_path.write_bytes(b"mock_wav")
