@@ -722,6 +722,7 @@ def evaluate_command(
         model_safe_name = model_config.id.replace("/", "_")
 
         model_wers: list[float] = []
+        model_cers: list[float] = []
         model_start_devs: list[float] = []
         model_end_devs: list[float] = []
         model_confidences: list[float] = []
@@ -808,16 +809,38 @@ def evaluate_command(
             model_aligned += num_aligned
             model_total += num_canonical
 
-            # WER: compare transcribed text to canonical text
-            transcribed_text = " ".join(m.get("verse_id", "") for m in matched)
-            canonical_text = " ".join(v["verse_id"] for v in chapter_verses)
-            # Use actual verse text for WER if available
-            if matched and "text" in matched[0]:
-                transcribed_text = " ".join(m.get("text", "") for m in matched)
-                canonical_text = " ".join(v["text"] for v in chapter_verses)
-
-            wer = compute_wer(canonical_text, transcribed_text)
+            # Compute WER and CER per verse (canonical vs matched text), then average
+            chapter_wers = []
+            chapter_cers = []
+            for m in matched:
+                canonical = m.get("canonical_text", "")
+                matched_t = m.get("matched_text", "")
+                if canonical:
+                    chapter_wers.append(compute_wer(canonical, matched_t))
+                    chapter_cers.append(compute_cer(canonical, matched_t))
+            wer = sum(chapter_wers) / len(chapter_wers) if chapter_wers else 0.0
+            cer = sum(chapter_cers) / len(chapter_cers) if chapter_cers else 0.0
             model_wers.append(wer)
+            model_cers.append(cer)
+
+            # Save per-chapter JSON with canonical/matched text
+            out_path = eval_dir / f"{bk}_{ch:03d}_{model_safe_name}_matched.json"
+            chapter_output = {
+                "chapter": f"{bk} {ch}",
+                "model": model_config.id,
+                "metrics": {
+                    "canonical_verses": num_canonical,
+                    "aligned_verses": num_aligned,
+                    "coverage_pct": (num_aligned / num_canonical * 100.0)
+                    if num_canonical > 0
+                    else 0.0,
+                    "wer": wer,
+                    "cer": cer,
+                },
+                "verses": matched,
+            }
+            with open(out_path, "w", encoding="utf-8") as out_f:
+                json.dump(chapter_output, out_f, ensure_ascii=False, indent=2)
 
             # Timestamp accuracy (against self for now — gold standard needed)
             if len(matched) >= 2:
@@ -864,6 +887,7 @@ def evaluate_command(
             continue
 
         avg_wer = sum(model_wers) / len(model_wers) if model_wers else 0.0
+        avg_cer = sum(model_cers) / len(model_cers) if model_cers else 0.0
         avg_start_dev = (
             sum(model_start_devs) / len(model_start_devs) if model_start_devs else 0.0
         )
@@ -881,6 +905,7 @@ def evaluate_command(
             "book": book or "gold",
             "chapter": chapter or 0,
             "wer": avg_wer,
+            "cer": avg_cer,
             "mean_start_deviation": avg_start_dev,
             "mean_end_deviation": avg_end_dev,
             "avg_confidence": avg_conf,

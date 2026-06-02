@@ -182,6 +182,7 @@ def build_comparison_table(
     table = Table(title="Alignment Model Comparison")
     table.add_column("Model", justify="left")
     table.add_column("WER", justify="right")
+    table.add_column("CER", justify="right")
     table.add_column("Start Dev (s)", justify="right")
     table.add_column("End Dev (s)", justify="right")
     table.add_column("Avg Conf", justify="right")
@@ -193,6 +194,7 @@ def build_comparison_table(
         table.add_row(
             r["model"],
             f"{r['wer']:.3f}",
+            f"{r.get('cer', 0.0):.3f}",
             f"{r['mean_start_deviation']:.2f}",
             f"{r['mean_end_deviation']:.2f}",
             f"{r['avg_confidence']:.1f}",

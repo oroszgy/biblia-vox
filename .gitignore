@@ -36,3 +36,7 @@ data/.cache/
 
 # Keep reference data (static, small, version-controlled)
 # data/reference/ is NOT ignored
+
+# Cache
+data/.hf-cache
+data/.torch-cache
