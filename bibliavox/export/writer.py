@@ -106,12 +106,24 @@ def export_chapter_jsonl(
     Returns:
         Number of lines written
     """
-    with open(matched_path, "r", encoding="utf-8") as f:
-        data = json.load(f)
+    try:
+        with open(matched_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except json.JSONDecodeError as e:
+        raise ValueError(f"Malformed matched JSON at {matched_path}: {e}") from e
+
+    required_keys = ("model", "chapter", "verses")
+    missing = [k for k in required_keys if k not in data]
+    if missing:
+        raise ValueError(f"Matched JSON {matched_path} missing keys: {missing}")
 
     model = data["model"]
     chapter = data["chapter"]  # e.g., "TIT 1"
     parts = chapter.split()
+    if len(parts) != 2:
+        raise ValueError(
+            f"Invalid chapter format in {matched_path}: {chapter!r}. Expected 'BOOK CHAPTER'."
+        )
     book = parts[0]
     ch_num = int(parts[1])
 
@@ -124,7 +136,7 @@ def export_chapter_jsonl(
     normalized_scores = normalize_confidence(raw_scores)
 
     lines_written = 0
-    with open(output_file, "a", encoding="utf-8") as out:
+    with open(output_file, "w", encoding="utf-8") as out:
         for i, v in enumerate(verses):
             verse_id = v["verse_id"]
 

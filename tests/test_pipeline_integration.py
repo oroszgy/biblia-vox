@@ -185,10 +185,10 @@ def test_export_jsonl_force_overwrites_complete(tmp_path: Path) -> None:
     result3 = runner.invoke(app, ["export", "jsonl", "--gold", "--force"])
     assert result3.exit_code == 0
 
-    # File should have doubled lines (appended)
+    # File should have same line count (replaced, not appended)
     final_line_count = len(jsonl_files[0].read_text().strip().split("\n"))
-    assert final_line_count > first_line_count, (
-        f"--force did not re-export: expected >{first_line_count} lines, got {final_line_count}"
+    assert final_line_count == first_line_count, (
+        f"--force should replace, not append: expected {first_line_count} lines, got {final_line_count}"
     )
 
 

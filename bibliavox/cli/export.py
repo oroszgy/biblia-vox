@@ -123,7 +123,13 @@ def jsonl_command(
 
         for matched_path, book, chapter_num, model_safe in matched_files:
             # Compute output paths
-            audio_file = f"data/prepared/audio/{book}/{chapter_num:03d}.wav"
+            audio_file = str(
+                settings.data_dir
+                / "prepared"
+                / "audio"
+                / book
+                / f"{chapter_num:03d}.wav"
+            )
             output_file = export_dir / f"{book}_{chapter_num:03d}_{model_safe}.jsonl"
 
             # Check idempotency (D-13, D-14)
