@@ -1,0 +1,133 @@
+{
+  "chapter": "TIT 3",
+  "model": "sarpba/wav2vec2-large-xlsr-53-hungarian",
+  "metrics": {
+    "canonical_verses": 15,
+    "aligned_verses": 15,
+    "coverage_pct": 100.0,
+    "wer": 0.6152700661911188,
+    "cer": 0.16196866855362657
+  },
+  "verses": [
+    {
+      "verse_id": "1",
+      "start_sec": 1.06,
+      "end_sec": 16.2,
+      "confidence_score": 92.5,
+      "canonical_text": "Figyelmeztesd őket, hogy vessék alá magukat a fölöttes hatóságoknak, engedelmeskedjenek, és legyenek készen minden jóra.",
+      "matched_text": "tfigyelmeztesdőket hogy vessék alamagukat a fölöttes hatósagoknak engedelmeskedjenek és legyenek készen minden jórasenkét"
+    },
+    {
+      "verse_id": "2",
+      "start_sec": 13.26,
+      "end_sec": 27.74,
+      "confidence_score": 92.03539823008849,
+      "canonical_text": "Senkit ne szidalmazzanak, legyenek békeszeretők és barátságosak, s tanúsítsanak kellő szelídséget mindenki iránt.",
+      "matched_text": "senkét neszi dalmazzanak legyenek béke szeretők és barátságosak és tanosítsanak kellőszelítséget mindenki iránthis"
+    },
+    {
+      "verse_id": "3",
+      "start_sec": 24.4,
+      "end_sec": 49.26,
+      "confidence_score": 90.52132701421802,
+      "canonical_text": "Hiszen egykor mi magunk is balgák, engedetlenek és tévelygők voltunk, mindenféle szenvedély és gyönyör hatalmában tartott bennünket; gonoszságunk, irigységünk miatt utálatra méltók voltunk, és gyűlöltük egymást.",
+      "matched_text": "i iránthiszen egykormi magunk is balgk engedetlenek és tévegők voltunk mindenféles szenvedélyi és gyönyör a hatalmában tartott bennünketgonosságunk irítségünk miat utálatra méltók voltunk és gyülöltükegymásmikor"
+    },
+    {
+      "verse_id": "4",
+      "start_sec": 45.74,
+      "end_sec": 59.22,
+      "confidence_score": 93.6842105263158,
+      "canonical_text": "Amikor azonban üdvözítő Istenünk kinyilvánította jóságát és emberszeretetét, megmentett minket.",
+      "matched_text": "ásmikor azonban üdvöztő istenünk kinyilvanított a jóságát és ember szeretetét megmentett minketn"
+    },
+    {
+      "verse_id": "5",
+      "start_sec": 57.2,
+      "end_sec": 70.66,
+      "confidence_score": 94.26229508196722,
+      "canonical_text": "Nem azért, mert igazak voltak tetteink, hanem irgalmasságból, s a Szentlélekben való újjászületés és megújulás fürdőjében,",
+      "matched_text": "em az ért mert igazak voltak a tetteink hanem irgalmasságból és a szentélekben való újjászületés és megújulás fürdőjébenaki"
+    },
+    {
+      "verse_id": "6",
+      "start_sec": 68.44,
+      "end_sec": 75.44,
+      "confidence_score": 84.7457627118644,
+      "canonical_text": "akit Üdvözítőnk, Jézus Krisztus által bőven árasztott ránk,",
+      "matched_text": "ébenakit üdvözítőnk jézusrisztus által bőven arasztott rang"
+    },
+    {
+      "verse_id": "7",
+      "start_sec": 75.0,
+      "end_sec": 85.64,
+      "confidence_score": 89.6103896103896,
+      "canonical_text": "hogy kegyelmével megigazuljunk, s az örök élet reménybeli örököseivé váljunk.",
+      "matched_text": "ng hogy kegyelmével megigazójunk és az örök élet reménybeli örököseivévaiunkig"
+    },
+    {
+      "verse_id": "8",
+      "start_sec": 81.48,
+      "end_sec": 103.92,
+      "confidence_score": 85.44303797468355,
+      "canonical_text": "Igaz beszéd ez, s kívánom, hogy erről megbizonyosodj: Akik hisznek az Istenben, igyekezzenek a jóban példát adni. Ez válik az embereknek javukra és hasznukra.",
+      "matched_text": "nkigaz beszéd ez és kiváno hogy erül megbizonyosogyakik hisznek az stenben igyekezzenek a jóban béldat adniez válik az embereknek javára és használrkerült azon"
+    },
+    {
+      "verse_id": "9",
+      "start_sec": 100.8,
+      "end_sec": 116.96,
+      "confidence_score": 84.21052631578947,
+      "canonical_text": "Kerüld azonban az oktalan vitát, a nemzetségfákat, a veszekedést, a törvényen való szóharcot, mert ez hiábavaló és haszontalan dolog.",
+      "matched_text": "használrkerült azonban az oktalan bitat a nemzetségfákat a beszekedés a törvényen való szóharc mertesz iába való és hazontalana tévta"
+    },
+    {
+      "verse_id": "10",
+      "start_sec": 113.32,
+      "end_sec": 120.12,
+      "confidence_score": 95.74468085106383,
+      "canonical_text": "A tévtanítót néhány figyelmeztetés után kerüld,",
+      "matched_text": "a tévtanítót néhány figyelmesztetés után kerüld"
+    },
+    {
+      "verse_id": "11",
+      "start_sec": 119.62,
+      "end_sec": 130.62,
+      "confidence_score": 87.5,
+      "canonical_text": "hiszen tudod, hogy az ilyen ember megromlott, bűnben él és saját magát ítéli el.",
+      "matched_text": "d hiszent tudot hogy az ilyenember megromlott bümben él és saját magát idélielha"
+    },
+    {
+      "verse_id": "12",
+      "start_sec": 126.9,
+      "end_sec": 142.5,
+      "confidence_score": 85.12396694214877,
+      "canonical_text": "Ha majd elküldöm Artemászt vagy Tichikuszt, azonnal gyere hozzám Nikopoliszba, mert az a tervem, hogy a telet ott töltöm.",
+      "matched_text": "lha majd elküldön artemazt vagy tihiguszt azonnal gyere hozzan nikopoliszba mert aza terven hogy a telet ott töltönzénázt"
+    },
+    {
+      "verse_id": "13",
+      "start_sec": 139.22,
+      "end_sec": 151.72,
+      "confidence_score": 84.84848484848484,
+      "canonical_text": "Zénászt, a törvénytudót és Apollót lásd el mindennel az útra, hogy ne szenvedjenek hiányt semmiben.",
+      "matched_text": "öltönzénázt a törvény tudót és apollot lársdel mindennel az utr hogy neszenmedgyenek hiánd semmibent"
+    },
+    {
+      "verse_id": "14",
+      "start_sec": 149.08,
+      "end_sec": 162.64,
+      "confidence_score": 92.85714285714286,
+      "canonical_text": "Tanulják meg a mieink is, hogy másokkal a kényszerítő szükségben jót tegyenek, különben gyümölcstelenek lesznek.",
+      "matched_text": "mmibentanuljak meg a mieinkis hogy msokkal a kényszerítőszükségben jót tegyenek különben gyümölcstelenek lesznekk"
+    },
+    {
+      "verse_id": "15",
+      "start_sec": 159.84,
+      "end_sec": 172.02,
+      "confidence_score": 88.68778280542986,
+      "canonical_text": "Köszöntenek mindnyájan, akik itt vannak. Köszöntsd azokat, akik szeretnek minket a hitben! Kegyelem mindnyájatokkal!",
+      "matched_text": "öszöntenek minnyaaljanakik itt vannakköszönst azokat akik szeretnek minket a hidbenkegyelem minyájatokkal"
+    }
+  ]
+}

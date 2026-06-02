@@ -1,0 +1,125 @@
+{
+  "chapter": "TOB 2",
+  "model": "microsoft/VibeVoice-ASR-HF",
+  "metrics": {
+    "canonical_verses": 14,
+    "aligned_verses": 14,
+    "coverage_pct": 100.0,
+    "wer": 0.9425055835115054,
+    "cer": 0.6019193597296246
+  },
+  "verses": [
+    {
+      "verse_id": "1",
+      "start_sec": 2.7239999999999998,
+      "end_sec": 19.435000000000002,
+      "confidence_score": 69.87951807228916,
+      "canonical_text": "Asszarhaddon uralkodása idején visszatértem házamba, és visszakaptam feleségemet, Annát, meg fiamat, Tóbiást. Pünkösdkor [a hetek ünnepén] jó ebéd volt. Leültem enni.",
+      "matched_text": "szarhadon király idejében lementem a házamba, és visszakaptam a feleségemet, Annát és a fiamat, Tóbiást. Pünköstkor, ünnepnapunkon, mely a hetektől szent, jó ebéden v"
+    },
+    {
+      "verse_id": "2",
+      "start_sec": 23.693333333333335,
+      "end_sec": 48.36,
+      "confidence_score": 54.27509293680297,
+      "canonical_text": "Elém tették az ételt, különféle fogásokat hoztak. Azt mondtam Tóbiásnak, a fiamnak: \"Eredj, gyermekem, aztán ha nélkülözőre akadsz a testvérek körében, akiket ide hurcoltak Ninivébe, hozd ide, s ha derék ember, neki is jut az ételből. Megvárlak fiam, amíg visszatérsz!\"",
+      "matched_text": "asztalt, és nagyon sok fogást láttam rajta. És mondtam a fiamnak, Tóbiásnak, menj, és bárki szegényt találsz a testvéreim közül, akik fogjak Ninivében, aki teljes szívében gondol az Úrra, hozd ide, és egyen velünk együtt, íme én megvárlak téged, fiam, amíg visszatérsz."
+    },
+    {
+      "verse_id": "3",
+      "start_sec": 49.31540540540541,
+      "end_sec": 74.12254237288136,
+      "confidence_score": 46.51162790697675,
+      "canonical_text": "Tóbiás el is ment, hogy testvéreink közt egy szegényt keressen, de visszajött, s így szólt: \"Apám!\" \"Na mi van, fiam?\" - feleltem neki. \"Apám - folytatta -, valakit megöltek a mieink közül, megfojtották, aztán odadobták a piactérre, még most is ott fekszik.\"",
+      "matched_text": "Tóbiás keresni egy szegényt a testvéreink közül, és visszatérve mondta nekem, atyám, És én mondtam neki, íme itt vagyok, fiam. És válaszolván szólt, íme, egyet a nemzetségünkből megöltek, és a piacon fekszik, ahol kötéllel megfojtották. És kiszaladván ott ha"
+    },
+    {
+      "verse_id": "4",
+      "start_sec": 73.44440677966101,
+      "end_sec": 87.68525423728813,
+      "confidence_score": 62.4,
+      "canonical_text": "Nem kellett az étel, fölkeltem, elhoztam az embert a térről és bevittem egy házba, hogy ha majd lenyugszik a nap, eltemessem.",
+      "matched_text": "m az ebédet, mielőtt bármit ízleltem volna belőle, és bevittem őt a térről egy házba, hogy majd napnyugta után eltemessem. És"
+    },
+    {
+      "verse_id": "5",
+      "start_sec": 86.32898305084746,
+      "end_sec": 93.11033898305085,
+      "confidence_score": 72.3076923076923,
+      "canonical_text": "Aztán hazamentem, megmosakodtam, és szomorúan ettem a kenyeremet.",
+      "matched_text": "em. És hazatérve megmosdottam, és gyászolva ettem a kenyeremet. És"
+    },
+    {
+      "verse_id": "6",
+      "start_sec": 93.11033898305085,
+      "end_sec": 104.6386440677966,
+      "confidence_score": 61.71875,
+      "canonical_text": "Eszembe jutott, amit Ámosz próféta Bételről mondott: \"Ünnepeitek gyásszá változnak és ujjongástok siratóénekké.\" Sírva fakadtam.",
+      "matched_text": "ztem Ámosz proféta szaváról, melyet Bételben mondott, ünnepeitek mind gyászá változnak, és összes énekeitek siratóvá. És sírtam."
+    },
+    {
+      "verse_id": "7",
+      "start_sec": 105.9949152542373,
+      "end_sec": 111.94153846153846,
+      "confidence_score": 75.0,
+      "canonical_text": "Napnyugta után aztán elmentem, sírt ástam és eltemettem.",
+      "matched_text": "lenyugodott a nap, mentem, sírtástam, és eltemettem őt. É"
+    },
+    {
+      "verse_id": "8",
+      "start_sec": 111.94153846153846,
+      "end_sec": 130.83304347826086,
+      "confidence_score": 47.03196347031964,
+      "canonical_text": "A szomszédok kicsúfoltak és azt mondták: \"Na, ez már megint nem fél? [Nem szabad elfelejteni, hogy ilyenek miatt díjat tűztek ki a fejemre.] A múltkor el kellett menekülnie, és lám, most már megint temeti a halottakat!\"",
+      "matched_text": "szomszédaim kinevettek engem mondván, Még mindig nem fél ez az ember, már keresik emiatt, hogy megöljék és elmenekült, és íme ismét halottak a temet. És megmosdottam éjszaka, miután eltemettem őt, és bementem az udvarom"
+    },
+    {
+      "verse_id": "9",
+      "start_sec": 126.26260869565218,
+      "end_sec": 136.54608695652172,
+      "confidence_score": 53.98230088495575,
+      "canonical_text": "Éjszaka megfürödtem, kimentem az udvarra és lefeküdtem a fal tövébe. Mivel meleg volt, nem takartam be a fejemet.",
+      "matched_text": "jszaka, miután eltemettem őt, és bementem az udvaromba, és elaludtam az udvarfala mellett, és az arcon fedetlen vo"
+    },
+    {
+      "verse_id": "10",
+      "start_sec": 142.72884615384615,
+      "end_sec": 177.51,
+      "confidence_score": 56.99208443271768,
+      "canonical_text": "Nem tudtam, hogy verebek fészkelnek fölöttem a falon. Meleg ürülék hullott a szemembe. Fehér foltok keletkeztek rajtam, úgyhogy orvoshoz kellett fordulnom. Minél több kenőcsöt használtam el, annál vaksibbá váltam a foltoktól, végül egészen megvakultam. Négy évig nem láttam, sajnáltak is nagyon a testvéreim. Két évig Achikár gondoskodott eltartásomról, amíg Elümaiszba nem ment.",
+      "matched_text": "m verebek vannak, melyeknek Meleg ürüléke a szemembe hullott, és elérte a szemem fehérjét. És orvosokhoz mentem, hogy meggyógyuljak, és minél több gyógyszert adtak, a szemeim annál inkább elhomályosultak, míg nem teljesen megvakultam. És négy évig nem tudtam használni a szememet, és minden testvérem sajnálkozott rajtam. Két évig a hikár gondoskodott rólam, mielőtt Elumaiszba me"
+    },
+    {
+      "verse_id": "11",
+      "start_sec": 178.78047619047618,
+      "end_sec": 185.99857142857144,
+      "confidence_score": 64.28571428571428,
+      "canonical_text": "Akkor a feleségem kétkezi munkába fogott: gyapjút font, vásznat szőtt,",
+      "matched_text": "a feleségem Anna pénzért szolgált. Gyapjut font és vásznat szőtt, és v"
+    },
+    {
+      "verse_id": "12",
+      "start_sec": 185.99857142857144,
+      "end_sec": 206.40967213114754,
+      "confidence_score": 45.98214285714286,
+      "canonical_text": "megrendelésre dolgozott és pénzt kapott érte. Egyszer március hetedikén elkészült az egyik darabbal és átadta a megrendelőknek. Ezek mind kifizették, amivel tartoztak, aztán ráadásul még egy kecskegidával is megajándékozták.",
+      "matched_text": "roknak, és azok pénzt adtak neki. Düsztri hónap hetedik napján pedig levette a vásznat, és elvitte az uraknak, és megadták neki a teljes bért, és adtak neki a vászonért egy kecskegidát. És amikor bejött hozzám a gida, mekegni"
+    },
+    {
+      "verse_id": "13",
+      "start_sec": 205.31262295081967,
+      "end_sec": 222.86540983606557,
+      "confidence_score": 55.00000000000001,
+      "canonical_text": "Amikor a közelembe ért, elkezdett mekegni. Szóltam a feleségemnek, és megkérdeztem tőle: \"Honnan van a gida? Talán csak nem lopott jószág? Add vissza a gazdájának! Lopott jószágot nem szabad megenni.\"",
+      "matched_text": "gida, mekegni kezdett. És szólítottam a feleségemet, és mondtam, hannét való ez a gida? Nehogy véletlenül lopott legyen, add vissza a gazdáinak, mi ugyanis nem ehetünk semmi lopott jószágot. És ő mondt"
+    },
+    {
+      "verse_id": "14",
+      "start_sec": 222.31688524590163,
+      "end_sec": 248.29,
+      "confidence_score": 48.07017543859649,
+      "canonical_text": "Azt felelte: \"Ráadásul kaptam, a munkámért járó pénzen kívül.\" De nem hittem el neki, és ráparancsoltam, hogy vigye vissza a gazdájának. [Egészen kipirultam a méregtől.] De ő sem maradt adós a felelettel: \"Mire mentél az alamizsnáddal és a jótéteményeddel? Csak rád kell nézni és meglátszik, mennyit értek!\"",
+      "matched_text": "ta nekem, ajándékba adták a béren felül. És én nem hittem neki, hanem mondogattam, hogy adja vissza a gazdáinak, és szégyenkeztem előtte e dolog miatt. És válaszolva mondta nekem, hol vannak alamizsnáid, hol van a te igazságosságod, íme mindezekről csak te tudsz."
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "chapter": "TIT 2",
+  "model": "microsoft/VibeVoice-ASR-HF",
+  "metrics": {
+    "canonical_verses": 15,
+    "aligned_verses": 15,
+    "coverage_pct": 100.0,
+    "wer": 0.2376275576275576,
+    "cer": 0.05875329212559667
+  },
+  "verses": [
+    {
+      "verse_id": "1",
+      "start_sec": 2.1328571428571426,
+      "end_sec": 8.53142857142857,
+      "confidence_score": 100.0,
+      "canonical_text": "Te ellenben azt hirdesd, ami az üdvös tanításnak megfelel.",
+      "matched_text": "Te ellenben azt hirdesd, ami az üdvös tanításnak megfelel."
+    },
+    {
+      "verse_id": "2",
+      "start_sec": 8.53142857142857,
+      "end_sec": 17.43642857142857,
+      "confidence_score": 97.97979797979798,
+      "canonical_text": "Az idős férfiak józanok, tisztességesek, megfontoltak legyenek a hitben, szeretetben és türelemben.",
+      "matched_text": "Az idős férfiak, józanok, tisztességesek megfontoltak legyenek a hitben, Szeretetben és türelemben."
+    },
+    {
+      "verse_id": "3",
+      "start_sec": 17.43642857142857,
+      "end_sec": 32.02181818181818,
+      "confidence_score": 98.50746268656717,
+      "canonical_text": "Az idős asszonyok hasonlóképpen legyenek komoly magaviseletűek, senkit se rágalmazzanak, ne igyanak sok bort, hanem tanítsanak a jóra.",
+      "matched_text": "Az idős asszonyok hasonlóképpen legyenek komoly maga viseletűek, senkit se rágalmazzanak, ne ígyanak sok bort, hanem tanítsanak a jóra."
+    },
+    {
+      "verse_id": "4",
+      "start_sec": 32.02181818181818,
+      "end_sec": 39.47681818181818,
+      "confidence_score": 97.77777777777777,
+      "canonical_text": "A fiatal asszonyokat tanítsák arra, hogy ragaszkodjanak férjükhöz, szeressék gyermekeiket,",
+      "matched_text": "A fiatal asszonyokat tanítsák arra, hogy ragaszkodjanak a férjükhöz, szeressék gyermekeiket"
+    },
+    {
+      "verse_id": "5",
+      "start_sec": 38.79909090909091,
+      "end_sec": 53.47105263157895,
+      "confidence_score": 91.30434782608697,
+      "canonical_text": "legyenek komolyak, tiszták, háziasak, gyöngédek, a férjük iránt engedelmesek, nehogy az Isten szavát káromlás érje.",
+      "matched_text": "legyenek komolyak, tiszták, háziak, gyöngédek, a férjük iránt engedelmesek, nehogy Isten igéjét káromlás érje. Az i"
+    },
+    {
+      "verse_id": "6",
+      "start_sec": 52.15,
+      "end_sec": 58.09473684210526,
+      "confidence_score": 83.87096774193549,
+      "canonical_text": "Buzdítsd az ifjakat is, hogy mindenben fegyelmezetten éljenek.",
+      "matched_text": "z ifjakat is buzdítsd, hogy mindenben fegyelmezetten éljenek. M"
+    },
+    {
+      "verse_id": "7",
+      "start_sec": 57.43421052631579,
+      "end_sec": 64.7,
+      "confidence_score": 98.57142857142858,
+      "canonical_text": "Magad járj elöl jó példával, a tanításban légy kifogástalan és komoly.",
+      "matched_text": "Magad járj elől jó példával, a tanításban légy kifogástalan és komoly."
+    },
+    {
+      "verse_id": "8",
+      "start_sec": 65.42470588235294,
+      "end_sec": 76.0038888888889,
+      "confidence_score": 95.6896551724138,
+      "canonical_text": "Beszéded legyen találó, megcáfolhatatlan, hadd valljon szégyent az ellenfél, mivel semmi rosszat nem tud ránk fogni.",
+      "matched_text": "beszédet legyen találó, megcafolhatatlan, hadd vajjon szégyent az ellenfél, mivel semmi rosszat nem tud ránk fogni. A"
+    },
+    {
+      "verse_id": "9",
+      "start_sec": 75.23,
+      "end_sec": 82.96888888888888,
+      "confidence_score": 96.55172413793103,
+      "canonical_text": "A szolgák mindenben engedelmeskedjenek gazdáiknak, keressék kedvüket, ne ellenkezzenek,",
+      "matched_text": "A szolgák mindenben engedelmeskedjenek gazdáiknak, keresik a kedvüket, ne ellenkezzenek,"
+    },
+    {
+      "verse_id": "10",
+      "start_sec": 82.96888888888888,
+      "end_sec": 96.38,
+      "confidence_score": 98.49624060150376,
+      "canonical_text": "ne okozzanak kárt, hanem tanúsítsanak mindenben igaz hűséget, hogy minden tekintetben díszére váljanak üdvözítő Istenünk tanításának.",
+      "matched_text": "ne okozzanak kárt, hanem tanusítsanak mindenben igaz hűséget, hogy minden tekintetben diszére váljanak üdvözítő Istenünk tanításának."
+    },
+    {
+      "verse_id": "11",
+      "start_sec": 97.57,
+      "end_sec": 103.198,
+      "confidence_score": 100.0,
+      "canonical_text": "Megjelent ugyanis megváltó Istenünk kegyelme minden ember számára,",
+      "matched_text": "Megjelent ugyanis megváltó Istenünk kegyelme minden ember számára,"
+    },
+    {
+      "verse_id": "12",
+      "start_sec": 102.4945,
+      "end_sec": 118.96333333333334,
+      "confidence_score": 97.10144927536231,
+      "canonical_text": "s arra tanít minket, hogy szakítsunk az istentelenséggel és az evilági vágyakkal, éljünk fegyelmezetten, szentül és buzgón ezen a világon.",
+      "matched_text": "és arra tanít minket, hogy szakítsunk az istentelenséggel és az evilági vágyakkal, éljünk fegyelmezetten, szentül és buzgón ebben a világb"
+    },
+    {
+      "verse_id": "13",
+      "start_sec": 118.96333333333334,
+      "end_sec": 130.34058823529412,
+      "confidence_score": 95.65217391304348,
+      "canonical_text": "Várjuk reményünk boldog beteljesülését: a nagy Istennek és Üdvözítőnknek, Jézus Krisztusnak dicsőséges eljövetelét,",
+      "matched_text": "Várjuk reményünk boldog beteljesülését, a nagyistennek és üdvözítőnknek Jézus Krisztusnak dicsőséges eljövetelét, ak"
+    },
+    {
+      "verse_id": "14",
+      "start_sec": 129.4894117647059,
+      "end_sec": 143.40533333333335,
+      "confidence_score": 98.44961240310077,
+      "canonical_text": "aki önmagát adta értünk, hogy minden gonoszságtól megváltson, megtisztítson, és jótettekben buzgólkodó, választott népévé tegyen.",
+      "matched_text": "ki önmagát adta értünk, hogy minden gonoszságtól megváltson, megtisztítson, és jó tettekben buzgolkodó, választott népévé tegyen."
+    },
+    {
+      "verse_id": "15",
+      "start_sec": 142.526,
+      "end_sec": 153.66,
+      "confidence_score": 95.55555555555556,
+      "canonical_text": "Erről beszélj, erre buzdíts és figyelmeztess teljes határozottsággal. Senki meg ne vessen!",
+      "matched_text": ". Erről beszélj, erre buzdíts, és figyelmeztes teljes határozottsággal. Senki megnevessen."
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "chapter": "ZEP 3",
+  "model": "systran/faster-whisper-large-v3",
+  "metrics": {
+    "canonical_verses": 20,
+    "aligned_verses": 20,
+    "coverage_pct": 100.0,
+    "wer": 0.8947145314740809,
+    "cer": 0.6046943891805919
+  },
+  "verses": [
+    {
+      "verse_id": "1",
+      "start_sec": 4.46,
+      "end_sec": 11.68,
+      "confidence_score": 42.85714285714286,
+      "canonical_text": "Jaj a lázadó és tisztátalan városnak, a hatalmaskodónak!",
+      "matched_text": "rlő és beszenyezett, Erőszakos város! Nem hallotta meg a"
+    },
+    {
+      "verse_id": "2",
+      "start_sec": 10.1,
+      "end_sec": 21.8,
+      "confidence_score": 73.07692307692308,
+      "canonical_text": "Nem hallgatott a szóra, nem fogadta el a figyelmeztetést. Nem bízott az Úrban, Istenéhez nem közeledett!",
+      "matched_text": "Nem hallotta meg a hangot, Nem fogadta el a fegyelmet, Az úrban nem bizott, Istenéhez nem közeledett. A f"
+    },
+    {
+      "verse_id": "3",
+      "start_sec": 20.4,
+      "end_sec": 31.26,
+      "confidence_score": 60.747663551401864,
+      "canonical_text": "A főemberek olyanok ott, mint az ordító oroszlánok. Bírái, mint az esti farkas: reggel nincs min rágódniuk.",
+      "matched_text": "A fejedelmei a közepében olyanok, Mint az ordító oroszlánok, A bírái pusztai farkasok, Csontot nem hagynak r"
+    },
+    {
+      "verse_id": "4",
+      "start_sec": 34.76,
+      "end_sec": 44.56,
+      "confidence_score": 49.504950495049506,
+      "canonical_text": "Prófétái fennhéjázók és gonosztevők, papjai megszentségtelenítik, ami szent, és megszegik a törvényt.",
+      "matched_text": "amisságot szóló férfiak, A papjai beszenyezték a szentét, Igazságtalanul cselekedtek a törvény ellen."
+    },
+    {
+      "verse_id": "5",
+      "start_sec": 42.34,
+      "end_sec": 59.19,
+      "confidence_score": 45.033112582781456,
+      "canonical_text": "Csak az Úr igaz ott, aki nem művel semmi gonoszat: minden reggel kihirdeti törvényét, egyetlen hajnalban sem mulasztja el, és a gonoszságot nem ismeri.",
+      "matched_text": "cselekedtek a törvény ellen. Az igaz úr a körében Nem fog gonoszságot cselekedni. Reggel, kora reggel adja majd a maga ítéletét, Mint a fényt, Amely nem"
+    },
+    {
+      "verse_id": "6",
+      "start_sec": 67.5,
+      "end_sec": 82.92,
+      "confidence_score": 49.66442953020134,
+      "canonical_text": "Elpusztítottam a népeket, bástyáik leomlottak: kihalttá tettem utcáikat, nem jár ott senki sem. Városaikat kifosztották, nincs ember, aki lakja őket.",
+      "matched_text": "szúrtam a nemzeteket, Kirabolták a szegleteiket, Pusztává tettem utaikat annyira, Hogy nincs, aki átmenjen. A városaik elnéptelenedtek, Nem maradt ben"
+    },
+    {
+      "verse_id": "7",
+      "start_sec": 84.6,
+      "end_sec": 103.68,
+      "confidence_score": 55.62130177514793,
+      "canonical_text": "Azt gondoltam: \"Te majd félsz engem, megfogadod az intelmet; nem tévesztheti szem elől, hogy hányszor meglátogattam.\" De nem! Sietve tovább folytatták gonosz üzelmeiket.",
+      "matched_text": "Mondtam, Most majd férfiak, Ha félsz, elfogadod a fegyelmet, És nem vész el a szemei elől mindaz, Amivel meglátogattam őt. Ennek ellenére Még gyorsabban tették rosszá Mi"
+    },
+    {
+      "verse_id": "8",
+      "start_sec": 106.68,
+      "end_sec": 128.72,
+      "confidence_score": 63.594470046082954,
+      "canonical_text": "Azért várjatok csak rám - mondja az Úr -, a napra, amelyen felállok és vádat emelek. Mert elhatároztam, hogy egybegyűjtöm a népeket, összegyűjtöm az országokat, hogy rájuk zúdítsam haragomat, indulatomnak egész hevét.",
+      "matched_text": "zért várjál rám, Mondja az úr, Azon a napon, Amelyen föltelek, mint tanú. Mert az én ítéletem az, Hogy összegyűjtöm a nemzeteket, És összeszedem az országokat, Hogy rájuk zúdítsam méltatlankodásomat, Dühömnek minden ha"
+    },
+    {
+      "verse_id": "9",
+      "start_sec": 138.6,
+      "end_sec": 150.7,
+      "confidence_score": 56.48854961832062,
+      "canonical_text": "Igen, akkor majd tiszta ajkat adok a népeknek, hogy mindannyian segítségül hívhassák az Úr nevét, és egy szívvel szolgáljanak neki.",
+      "matched_text": "kkor visszaadom majd A népeknek a tiszta ajkat, Hogy valamennyien az úr nevében Hívjanak segítségül, És válvetve szolgáljanak neki."
+    },
+    {
+      "verse_id": "10",
+      "start_sec": 151.48,
+      "end_sec": 160.3,
+      "confidence_score": 55.223880597014926,
+      "canonical_text": "Etiópia folyóin túlról is hoznak majd nekem áldozatot az én híveim.",
+      "matched_text": "Etiópia folyóin túlról, Onnan valók, Akik könyörögnek hozzám, A szét"
+    },
+    {
+      "verse_id": "11",
+      "start_sec": 165.26,
+      "end_sec": 185.18,
+      "confidence_score": 64.43298969072164,
+      "canonical_text": "Azon a napon nem kell majd szégyenkezned a tetteid miatt, amelyeket ellenem elkövettél. Mert akkor majd eltávolítom körödből, akik gőgösek s hivalkodnak. Nem fogsz többé kérkedni szent hegyemen.",
+      "matched_text": "n a napon nem fogsz szégyenkezni Egyetlen tetted miatt sem, Melyen lázadoztál ellenem. Mert akkor elveszem majd, A körödből gőgös nagyotmondóidat, És többé nem fogsz kérkedni Az én szent hegyemen"
+    },
+    {
+      "verse_id": "12",
+      "start_sec": 187.24,
+      "end_sec": 196.46,
+      "confidence_score": 47.61904761904761,
+      "canonical_text": "Nem hagyok meg belőled, csak egy szerény kis népet, amely az Úr nevében reménykedik:",
+      "matched_text": "agyom a körödben A szegény és szükölködő népet. És remélni fognak majd Az úr nevében"
+    },
+    {
+      "verse_id": "13",
+      "start_sec": 195.9,
+      "end_sec": 212.18,
+      "confidence_score": 63.95348837209303,
+      "canonical_text": "Izrael maradékát. Nem művelnek többé gonoszságot, nem beszélnek hazugságot, nem lelsz majd csalfa nyelvet a szájukban. Legelnek, letanyáznak, és senki sem zavarja meg őket.",
+      "matched_text": "Izrael maradékai. Nem tesznek majd gonosságot, És nem beszélnek hazugságot. Nem lesz a szájukban álnok nyelv, Mert ott fognak legelni és lepihenni, És nem lesz, aki fölrias"
+    },
+    {
+      "verse_id": "14",
+      "start_sec": 215.61,
+      "end_sec": 224.27,
+      "confidence_score": 79.7872340425532,
+      "canonical_text": "Dalolj, Sion leánya, zengj éneket, Izrael! Örülj és ujjongj egész szívedből Jeruzsálem leánya!",
+      "matched_text": "eted, Sion leánya, Újjongjatok, Izrael! Örvendj és újjongj egész szívedben, Jeruzsálem leánya!"
+    },
+    {
+      "verse_id": "15",
+      "start_sec": 223.01,
+      "end_sec": 236.79,
+      "confidence_score": 56.666666666666664,
+      "canonical_text": "Nem hajtja végre rajtad az ítéletet az Úr, elűzte ellenségedet, Izraelnek az Úr a királya, ne félj többé semmi rossztól!",
+      "matched_text": "em leánya! Elhagyta az Úr a te ítéletedet, Elfordította ellenségedet. Az Úr, Izrael királya a körödben, Többé nem fogsz é"
+    },
+    {
+      "verse_id": "16",
+      "start_sec": 238.47,
+      "end_sec": 246.03,
+      "confidence_score": 72.15189873417722,
+      "canonical_text": "Azon a napon így szólnak majd Jeruzsálemhez: Ne félj, Sion! Ne lankadjon kezed!",
+      "matched_text": "zon a napon mondják majd Jeruzsálemnek, Ne félj, Sion, ne erőtlenedjen el a keze"
+    },
+    {
+      "verse_id": "17",
+      "start_sec": 245.59,
+      "end_sec": 262.35,
+      "confidence_score": 54.74452554744526,
+      "canonical_text": "Veled van az Úr, a te Istened, az erős Szabadító! Örül majd neked nagy örömmel, újjáéleszt szeretetével, örül majd neked ujjongó örömmel,",
+      "matched_text": "d. Az Úr, a te Istened a körödben van, Maga az erős fog megszabadítani. Örülni fog neked örvendezéssel, Megindultan a szeretetében. Újjong"
+    },
+    {
+      "verse_id": "18",
+      "start_sec": 263.41,
+      "end_sec": 273.55,
+      "confidence_score": 43.18181818181818,
+      "canonical_text": "mintha ünnepet ülne.\nA balsorsot elfordítottam tőled, hogy ne viseld többé a gyalázatot.",
+      "matched_text": "Mint az összejövetel napján. Elveszem tőled a szerencsétlenséget, Hogy többé ne szégyenk"
+    },
+    {
+      "verse_id": "19",
+      "start_sec": 294.87,
+      "end_sec": 315.55,
+      "confidence_score": 51.5,
+      "canonical_text": "Lám, büntetéssel sújtom minden elnyomódat. Abban az időben megmentem a sántát, összegyűjtöm a számkivetetteket. Dicsőséget és hírnevet szerzek nekik az egész földön, amikor majd jóra fordítom sorukat.",
+      "matched_text": "Abban az időben, amikor ide vezetlek titeket, És abban az időben, amikor összegyűjtelek benneteket. Mert néppé és dicséretté teszlek titeket A föld minden számára. Amikor majd megfordítom a sorsotokat"
+    },
+    {
+      "verse_id": "20",
+      "start_sec": 298.49,
+      "end_sec": 320.65,
+      "confidence_score": 70.14218009478674,
+      "canonical_text": "Abban az időben hazavezetlek titeket, abban az időben összegyűjtlek benneteket. Dicsőséget és hírnevet szerzek nektek a föld népei között, amikor majd jóra fordítom sorsotokat, a szemetek láttára - mondja az Úr.",
+      "matched_text": "tlek titeket, És abban az időben, amikor összegyűjtelek benneteket. Mert néppé és dicséretté teszlek titeket A föld minden számára. Amikor majd megfordítom a sorsotokat, A tulajdon szemetek láttára, Mondja az Úr."
+    }
+  ]
+}

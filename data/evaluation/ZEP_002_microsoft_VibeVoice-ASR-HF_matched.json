@@ -1,0 +1,133 @@
+{
+  "chapter": "ZEP 2",
+  "model": "microsoft/VibeVoice-ASR-HF",
+  "metrics": {
+    "canonical_verses": 15,
+    "aligned_verses": 15,
+    "coverage_pct": 100.0,
+    "wer": 0.9502027240107213,
+    "cer": 0.5876598233646095
+  },
+  "verses": [
+    {
+      "verse_id": "1",
+      "start_sec": 128.7263157894737,
+      "end_sec": 137.34526315789475,
+      "confidence_score": 42.622950819672134,
+      "canonical_text": "Szállj magadba, térj magadba, ó, szeretetre méltatlan nemzet!",
+      "matched_text": "Az én népem maradékai fogják kifosztani, és az én nemzetem ma"
+    },
+    {
+      "verse_id": "2",
+      "start_sec": 4.032,
+      "end_sec": 20.16,
+      "confidence_score": 57.51633986928104,
+      "canonical_text": "Mielőtt elűznének benneteket, s eltűnnétek, mint a pelyva; mielőtt rátok zúdulna az Úr izzó haragja, [mielőtt elérkezne hozzátok az Úr haragjának napja]:",
+      "matched_text": ", nem kedves nemzetség, mielőtt szétszóródnátok átvonulva, mint a por, mielőtt eljön rátok az úr dühének haragja, mielőtt eljön rátok az úr dühének napja."
+    },
+    {
+      "verse_id": "3",
+      "start_sec": 20.62,
+      "end_sec": 39.49183673469388,
+      "confidence_score": 65.11627906976744,
+      "canonical_text": "keressétek az Urat ti, szegényei a földnek, akik teljesítitek parancsait. Keressétek az igazságot, keressétek az alázatot, talán menedéket találtok az Úr haragjának napján.",
+      "matched_text": "ssétek az urat mind, földnek szelídjei, akik megtettétek az ő ítéletét. Keressétek az igazságosságot, keressétek a szelítséget, hát, ha elrejtőzhettek az Úr dühének napján."
+    },
+    {
+      "verse_id": "4",
+      "start_sec": 40.27816326530612,
+      "end_sec": 53.64571428571429,
+      "confidence_score": 60.3448275862069,
+      "canonical_text": "Gáza bizony lakatlanná válik, Askelon meg pusztasággá. Asdodot fényes nappal űzik el, Ekront pedig tövestül kitépik.",
+      "matched_text": "gáza pusztává lesz, és askalon elhagyatottá. Asdodot fényes nappal fogják kivetni, és ekront gyökerestől tépik ki. Ja"
+    },
+    {
+      "verse_id": "5",
+      "start_sec": 54.432040816326534,
+      "end_sec": 70.76538461538462,
+      "confidence_score": 58.62068965517242,
+      "canonical_text": "Jaj a tengerpart lakóinak, és a krétaiak nemzetségének! Ezt mondja az Úr nektek: \"Megalázlak, filiszteusok földje, lerombollak, kiirtom lakóidat.",
+      "matched_text": "a tengerparton laktok, Grétaia nemzetsége. Az Úr igéje rólatok, Kánaán, Filiszteusok földje. Szétszorlak téged úgy, hogy nem lesz, aki benned lak"
+    },
+    {
+      "verse_id": "6",
+      "start_sec": 69.31346153846154,
+      "end_sec": 76.57307692307693,
+      "confidence_score": 63.07692307692307,
+      "canonical_text": "Legelő lesz belőled, tengerpart, pásztorok mezeje, és juhok akla.",
+      "matched_text": "enned lakjon. És a tengerpartvidéke, pásztorok tanyája és juhok ka"
+    },
+    {
+      "verse_id": "7",
+      "start_sec": 75.84711538461539,
+      "end_sec": 96.9,
+      "confidence_score": 53.233830845771145,
+      "canonical_text": "Osztályrészül jutsz majd annak, aki megmarad Júda házából. Kihajtanak oda legeltetni, este pedig lepihennek Askelon házai között, mert az Úr, az ő Istenük meglátogatja őket, és jóra fordítja sorsukat.\"",
+      "matched_text": "karámja lesz. És a tengerpart, Júda házának maradékáé lesz. Ott fognak legeltetni. Esténként askalon házaiban fognak megpihenni, mert meglátogatja őket az ő uruk, istenük, és megfordítja az ő sorsukat."
+    },
+    {
+      "verse_id": "8",
+      "start_sec": 98.56,
+      "end_sec": 109.33368421052631,
+      "confidence_score": 75.70093457943925,
+      "canonical_text": "Hallottam, amint Moáb gyalázkodott, és Ammon fiai káromkodtak: gyalázták népemet, és kérkedtek határaikkal.",
+      "matched_text": "allottam Moab gyalászkodását, és Ammon fiainak káromlásait, akik meggyalázták az én népemet, és kérkedtek a"
+    },
+    {
+      "verse_id": "9",
+      "start_sec": 109.33368421052631,
+      "end_sec": 139.5,
+      "confidence_score": 67.42424242424244,
+      "canonical_text": "Ezért - amint igaz, hogy élek! - mondja a Seregek Ura, Izrael Istene: Moáb olyan lesz, mind Szodoma, Ammon fiai pedig, mint Gomorra: a bogáncs birodalmává, sóhalmazzá, pusztasággá mindörökre. Népem maradéka kifosztja őket, aki fennmarad a népből, tulajdonul kapja.",
+      "matched_text": ". Ezért... Élek én, mondja a seregek ura, Izrael istene, hogy Moab olyan lesz, mint szodoma, és Ammon fiai, mint gomorra, tövisek birodalma, és sóhalmok, és pusztaság mindörökre. Az én népem maradékai fogják kifosztani, és az én nemzetem maradékai fogják azokat bir"
+    },
+    {
+      "verse_id": "10",
+      "start_sec": 140.84,
+      "end_sec": 152.84900000000002,
+      "confidence_score": 48.97959183673469,
+      "canonical_text": "Kevélységükért ezt kapják majd, mivel gyalázkodtak és hatalmaskodtak a Seregek Urának népe fölött.",
+      "matched_text": "ez, A gőgjük miatt éri majd őket, mert káromolták a seregek urának népét, és fölébe kerekedtek. Ret"
+    },
+    {
+      "verse_id": "11",
+      "start_sec": 151.17125000000001,
+      "end_sec": 168.905,
+      "confidence_score": 63.51351351351351,
+      "canonical_text": "Rettenetes lesz az Úr hozzájuk. Amikor majd kipusztítja a föld minden istenét, leborulnak előtte, mindenki a maga hazájában, a népek minden szigete.",
+      "matched_text": ". Rettenetes az Úr ő fölöttük, mert elgyengíti majd a föld minden istenét, és imádni fogja őt mindegyik a maga helyéről, a nemzetek minden szigete. D"
+    },
+    {
+      "verse_id": "12",
+      "start_sec": 168.236,
+      "end_sec": 174.257,
+      "confidence_score": 58.53658536585367,
+      "canonical_text": "És ti is, etiópok: átjárja őket a kardom.",
+      "matched_text": "e titeket is, etiópok, Az én kardom fog me"
+    },
+    {
+      "verse_id": "13",
+      "start_sec": 174.926,
+      "end_sec": 184.961,
+      "confidence_score": 61.224489795918366,
+      "canonical_text": "Kinyújtja kezét észak ellen, romba dönti Asszíriát; Ninivét pusztasággá teszi, kiaszott sivataggá.",
+      "matched_text": "inyújtja a kezét éjszak fölé, és elveszejti a szíriát. És Ninivét elhagyatottá teszi, és szárazzá,"
+    },
+    {
+      "verse_id": "14",
+      "start_sec": 187.637,
+      "end_sec": 207.59,
+      "confidence_score": 56.68449197860963,
+      "canonical_text": "Nyáj tanyázik benne, mindenféle állat a völgyből; a pelikán és a sündisznó is szobrai között éjszakázik. Az ablakban bagoly huhog, és a holló a küszöbön, mert cédrus(burkolat)át levették.",
+      "matched_text": "nyájak fognak leheveredni a közepében mindenféle állatok. Pelikán és bagoly tanyázik majd az oszlopfőin. Madár énekel az ablakban. Holló a küszöbön, mert a cédrus favorítást elvitték. Ez a"
+    },
+    {
+      "verse_id": "15",
+      "start_sec": 206.38,
+      "end_sec": 227.23999999999998,
+      "confidence_score": 60.0,
+      "canonical_text": "Ez volna a virágzó város, amely biztonságot élvezett? Amely így szólt szívében: \"Csak én! Rajtam kívül nincsen más!\" Lám, romhalmazzá vált, vadak tanyájává. Aki csak arra jár, fütyül és a kezét rázza.",
+      "matched_text": "Ez az az ujjongó város, amely biztonságban lakott, mely azt mondogatta a szívében, én vagyok, és rajtam kívül nincs más. Mi kényt lett pusztává, vadállatok tanyájává. Mindaz, aki átmegy rajta, sziszegn"
+    }
+  ]
+}

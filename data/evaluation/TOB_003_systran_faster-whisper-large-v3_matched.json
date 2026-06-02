@@ -1,0 +1,141 @@
+{
+  "chapter": "TOB 3",
+  "model": "systran/faster-whisper-large-v3",
+  "metrics": {
+    "canonical_verses": 16,
+    "aligned_verses": 16,
+    "coverage_pct": 100.0,
+    "wer": 0.961375520602978,
+    "cer": 0.6791717458819633
+  },
+  "verses": [
+    {
+      "verse_id": "1",
+      "start_sec": 187.23,
+      "end_sec": 194.75,
+      "confidence_score": 43.18181818181818,
+      "canonical_text": "Erre nagyot sóhajtottam és keserves sírásra fakadtam, majd ebbe a panaszos imába fogtam:",
+      "matched_text": "ves lányod volt, És az fölakasztotta magát keserűségében, És szomorúsággal vigyem öreg at"
+    },
+    {
+      "verse_id": "2",
+      "start_sec": 11.31,
+      "end_sec": 22.13,
+      "confidence_score": 68.36734693877551,
+      "canonical_text": "\"Igazságos vagy Uram! Tetteid igazságosak, s minden utad irgalom és hűség. Te vagy a világ bírája.",
+      "matched_text": "Igazságos vagy, uram, és minden tetted igazságos, És minden utad irgalmasság és igazság, És te íté"
+    },
+    {
+      "verse_id": "3",
+      "start_sec": 26.43,
+      "end_sec": 38.09,
+      "confidence_score": 55.072463768115945,
+      "canonical_text": "Jussak hát eszedbe, Uram, tekints rám! Ne büntess bűneimért, sem tévelygéseimért, sem pedig atyám vétkeiért! Mert vétkeztünk színed előtt,",
+      "matched_text": "meg rólam, És tekints reám. Ne állj, boszút, rajtam a büneimért, És a hanyagságaimért, És a szüleim büneiért, Melyekkel védkeztek előtted,"
+    },
+    {
+      "verse_id": "4",
+      "start_sec": 39.21,
+      "end_sec": 52.87,
+      "confidence_score": 46.57534246575342,
+      "canonical_text": "megszegtük parancsaidat. Ezért aztán megengedted, hogy kifosszanak bennünket, fogságba hurcoljanak és megöljenek; hogy szóbeszéd és gúny tárgya meg intő példa legyünk a népek számára, amelyek közé szétszórtál bennünket.",
+      "matched_text": "m engedelmeskedtünk parancsaidnak, És odaadtál minket kifosztásra, És fogságra, és halálra. Példabeszéd és mese, és gyalázat tárgyául Az összes nyelven, és a szüleimben, És a szüleimben, és a szüleimben, És a szüleimben,"
+    },
+    {
+      "verse_id": "5",
+      "start_sec": 59.61,
+      "end_sec": 75.01,
+      "confidence_score": 49.693251533742334,
+      "canonical_text": "Ítéleteid igazságosak, vétkeim és atyáim bűnei miatt végrehajthattad őket rajtam. Hiszen nem vettük figyelembe parancsaidat, és nem jártunk igaz úton színed előtt.",
+      "matched_text": "igaz ítéleted, Melyeket tőlem követelsz a saját büneim, És szüleim bünei miatt, Mert nem a parancsait szerint cselekedtünk, És nem jártunk őszintén te előtted. És"
+    },
+    {
+      "verse_id": "6",
+      "start_sec": 75.61,
+      "end_sec": 119.49,
+      "confidence_score": 55.838641188959656,
+      "canonical_text": "Bánj velem úgy, ahogy neked tetszik. Parancsold meg, és elszáll a lelkem, meghalok és porrá leszek. Mert jobb meghalnom, mintsem élnem, hiszen rágalmat és gyalázkodást kell hallanom és nagyon nagy a bánatom. Uram, várom, hogy elhatározásod megszabadít ettől a megpróbáltatástól. Hadd menjek már az örök hazába! Ne fordítsd el, Uram, arcodat tőlem! Mert jobb meghalni, mint élni, ha ilyen kegyetlen rossz sora van az embernek. Belefáradtam már a gyalázkodás hallgatásába.\"",
+      "matched_text": "égy velem, ahogy neked tetszik, És vedd vissza a lelkemet, Hogy elmehessek a föld színén, És földé váljak, Mert jobb nekem meghalni, mint élni, Mert hazug szidalmat hallottam, És nagy bennem a szomorúság. Parancsold, uram, hogy elmehessek Ebből a megpróbáltatásból, És bocsáss be engem az örök helyre, És ne fordítsd el arcodat tőlem, uram, Mert jobb nekem meghalni, Mint ekkora nyomorúságot látni életemben, És ne hajjak több. Szidalmat. Ugyanezen a napon történt Sárával"
+    },
+    {
+      "verse_id": "7",
+      "start_sec": 112.89,
+      "end_sec": 126.87,
+      "confidence_score": 55.855855855855864,
+      "canonical_text": "Ugyanezen a napon történt Médiában, Ekbatanában, hogy Ráguel lányát, Sárát kicsúfolta apjának egyik szolgálója.",
+      "matched_text": "lmat. Ugyanezen a napon történt Sárával, Ráguell leányával, Aki a médiai egbatánában élt, Hogy ő is szidalmakat"
+    },
+    {
+      "verse_id": "8",
+      "start_sec": 129.37,
+      "end_sec": 154.73,
+      "confidence_score": 55.263157894736835,
+      "canonical_text": "Sárát ugyanis már hét férfihez is feleségül adták, de Azmodeus, a gonosz szellem mindegyiket megölte, mielőtt még mint jó házastársak, összekerültek volna. Azt mondta neki a cselédlány: \"Te ölöd meg a férjeidet: már hét urad is volt, de egyikkel sem volt szerencséd.",
+      "matched_text": "hét férfihoz adták feleségül, És a nagyon gonosz démon, Azmódeus, Mindegyiket megölte, Még mielőtt együtt lettek volna vele, Ahogyan ez az asszonyoknál szokás. És mondta neki a szolgáló leány, Te vagy az, aki megfojtod a férjeidet. Íme már hét férfihoz adtak feleség"
+    },
+    {
+      "verse_id": "9",
+      "start_sec": 154.81,
+      "end_sec": 166.37,
+      "confidence_score": 49.62962962962963,
+      "canonical_text": "S ha meghaltak is, ez még nem ok arra, hogy minket büntess. Halj meg te is utánuk, ne lássunk tőled soha az életben se fiút, se lányt!\"",
+      "matched_text": "egyikben sem telt örömed. Miért ostorozol minket a férjeid miatt, Hogy meghaltak? Menj utánuk, És soha ne lássunk tőled fiút vagy leány"
+    },
+    {
+      "verse_id": "10",
+      "start_sec": 168.71,
+      "end_sec": 207.89,
+      "confidence_score": 55.28089887640449,
+      "canonical_text": "Amikor Sára ezt meghallotta, nagyon elkeseredett, sírva fakadt, s bement az apja szobájába, hogy felakassza magát. De aztán meggondolta a dolgot: \"Szégyent hozzak apámra? Azt mondják majd neki: Mennyire szeretted azt az egy szem lányodat, s keserűségében az is felakasztotta magát! Nem szomorítom meg apámat, nem viszem sírba. Nem akasztom fel magam, inkább majd az Urat kérem, hogy vegye el az életemet, s ne kelljen több csúfolódást hallanom.\"",
+      "matched_text": "Azon a napon elszomorodott a leány lelke és sírt, És fölment atya házának egy magasabb helységébe, Hogy fölakassza magát. De ismét meggondolta és mondta, Nehogy gyalázzák atyámat, És mondják, Egyetlen kedves lányod volt, És az fölakasztotta magát keserűségében, És szomorúsággal vigyem öreg atyámat az alvilágba. Jobb lesz nekem, ha nem akasztom föl magamat, Hanem megkérlelem az Urat, Hogy halljak meg, És ne halljak több szidalmat életemben. Ug"
+    },
+    {
+      "verse_id": "11",
+      "start_sec": 207.89,
+      "end_sec": 222.09,
+      "confidence_score": 50.0,
+      "canonical_text": "Aztán az ablaknál állva kitárta kezét, és így fohászkodott: \"Légy áldott, irgalomnak Istene! Legyen áldott a neved örökre! Dicsőítsen minden alkotásod örökkön-örökké!",
+      "matched_text": "az időben, Kinyújtván kezét az ablak felé, Könyörgött és mondta, Áldott vagy, irgalmas Uramistenem, És áldotta te szent neved, És dicséretes, mint örökké! Áldjanak tég"
+    },
+    {
+      "verse_id": "12",
+      "start_sec": 75.01,
+      "end_sec": 80.59,
+      "confidence_score": 47.61904761904761,
+      "canonical_text": "Uram, most fölemeltem tekintetemet és rád szegeztem a szememet.",
+      "matched_text": "most, tégy velem, ahogy neked tetszik, És vedd vissza a lelkemet"
+    },
+    {
+      "verse_id": "13",
+      "start_sec": 231.37,
+      "end_sec": 238.15,
+      "confidence_score": 50.70422535211267,
+      "canonical_text": "Szólíts el erről a földről, hogy ne kelljen több gyalázkodást hallanom!",
+      "matched_text": "elmenjek a földről, És ne halljak több szidalmat. Te tudod, Uram, hogy"
+    },
+    {
+      "verse_id": "14",
+      "start_sec": 236.81,
+      "end_sec": 243.39,
+      "confidence_score": 59.70149253731343,
+      "canonical_text": "Tudod, Uram, hogy tiszta maradtam, nem érintett egyetlen férfi sem.",
+      "matched_text": "udod, Uram, hogy tiszta vagyok Minden férfiúi tisztátalanságtól. És"
+    },
+    {
+      "verse_id": "15",
+      "start_sec": 244.77,
+      "end_sec": 268.03,
+      "confidence_score": 44.8512585812357,
+      "canonical_text": "Sem a magam nevére, sem az apáméra nem hoztam szégyent itt, a fogság földjén. Egyetlen lánya vagyok apámnak. Nem marad neki másik gyereke, aki örökölhetne utána, sem közeli rokona. S nincs olyan sem a rokonságban, aki miatt életben kellene maradnom, hogy a felesége legyek. Hetet már elvesztettem, mi értelme van hát az életemnek? De ha mégsem akarod elvenni az életemet, tekints rám és szánj meg: ne kelljen több gyalázatot elviselnem.\"",
+      "matched_text": "Sem az én nevemet, sem atyám nevét Fogságon földjén. Atyám egyetlen gyermeke vagyok, És nincs másik fia, Aki birtokolhatná minket. Uramistenem, áldott a te szent neved, Mint örökké! Áldjanak téged minden műveid, Mint örökké! Áldjanak téged minden férfiúi tisztátalanságtól. És nem szennyeztem be Sem az én nevemet, Sem közeli testvér vagy rokona nincs, Hogy őrizzen magamat annak feleségül. Már heten meghaltak nekem, Mire való még élnem?"
+    },
+    {
+      "verse_id": "16",
+      "start_sec": 282.71,
+      "end_sec": 317.49,
+      "confidence_score": 55.92515592515592,
+      "canonical_text": "Mindkettőjük imáját meghallgatta a fölséges Isten. Elküldte Ráfaelt, hogy gyógyítsa meg mindkettőjüket: Tobit szeméről távolítsa el a fehér foltokat, hadd lássa szemével az Isten világát, Sárát meg, Ráguel lányát adja hozzá Tobit fiához, Tóbiáshoz, és szabadítsa meg a rossz szellemtől, Azmodeustól. Mert minden más kérővel szemben Tóbiást illette a jog, hogy elnyerje. Tobit visszatért, és belépett házába, ugyanabban a pillanatban Ráguel lánya, Sára is elindult a fenti szobából.",
+      "matched_text": "időben meghallgatást nyert Mindkettőjű könyörgése Isten nagy szemére. És elköldetett Ráfael angyal, Hogy gyógyítsa meg mindkettőt, Hogy Tóbiás szeméről eltávolítsa a hályogot, Hogy szemével lássa Isten világosságát, És Ráguel leányát, Sárát adja feleségül Tóbiás fiához, Tóbiáshoz, És kötözze meg a nagyon gonosz démont, Azmodeust. Mert Tóbiást illette, Hogy övése a szemére, És a szemére, És a szemére, És a szemére, És a szemére, És a szemére, És a szemére, És a szemére, És a sze"
+    }
+  ]
+}

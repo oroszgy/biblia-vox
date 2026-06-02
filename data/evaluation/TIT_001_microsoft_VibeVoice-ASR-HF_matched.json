@@ -1,0 +1,141 @@
+{
+  "chapter": "TIT 1",
+  "model": "microsoft/VibeVoice-ASR-HF",
+  "metrics": {
+    "canonical_verses": 16,
+    "aligned_verses": 16,
+    "coverage_pct": 100.0,
+    "wer": 0.22859445470465206,
+    "cer": 0.055702406457896855
+  },
+  "verses": [
+    {
+      "verse_id": "1",
+      "start_sec": 6.195,
+      "end_sec": 22.759999999999998,
+      "confidence_score": 95.1048951048951,
+      "canonical_text": "Pál, Isten szolgája és Jézus Krisztus apostola - hogy az Isten választottait a hitre és az igazság megismerésére vezesse, az istenfélelem révén",
+      "matched_text": ". Pál, Isten szolgája és Jézus Krisztus apostola, hogy Isten választottait a hitre és az igazság megismerésére vezesse az Isten félelem révén és"
+    },
+    {
+      "verse_id": "2",
+      "start_sec": 22.09,
+      "end_sec": 30.8,
+      "confidence_score": 98.7012987012987,
+      "canonical_text": "és az örök élet reményében, amelyet az igazmondó Isten ősidők előtt megígért,",
+      "matched_text": "és az örök élet reményében, amelyet az igazmondó Isten ős idők előtt megígért."
+    },
+    {
+      "verse_id": "3",
+      "start_sec": 30.8,
+      "end_sec": 43.805882352941175,
+      "confidence_score": 98.11320754716981,
+      "canonical_text": "s amikor elérkezett a meghatározott idő, kinyilatkoztatta tanítását az evangélium hirdetése útján, amelyre üdvözítő Istenünk rendelkezéséből megbízást kaptam -",
+      "matched_text": "amikor elérkezett a meghatározott idő, kinyilatkoztatta tanítását az evangélium hirdetése útján, amelyre üdvözítő Istenünk rendelkezéséből megbizást kaptam. Ti"
+    },
+    {
+      "verse_id": "4",
+      "start_sec": 42.19,
+      "end_sec": 57.02,
+      "confidence_score": 96.06299212598425,
+      "canonical_text": "Titusznak, a közös hitben szeretett fiának. Kegyelem és békesség Istentől, az Atyától és Krisztus Jézustól, a mi Üdvözítőnktől!",
+      "matched_text": ". Titusnak, a közös hitben szeretett fiának. Kegyelem és békesség Istentől, az atyától és Krisztus Jézustól, ami üdvözítőnktől."
+    },
+    {
+      "verse_id": "5",
+      "start_sec": 58.23,
+      "end_sec": 69.07054054054053,
+      "confidence_score": 97.3913043478261,
+      "canonical_text": "Azért hagytalak Kréta szigetén, hogy pótold, ami hiányzik, s a városokba presbitereket rendelj utasításaim szerint.",
+      "matched_text": "zért hagytalak Kréta-szigetén, hogy pótolld, ami hiányzik, és a városokba presbitereket rendelj utasításaim szerint."
+    },
+    {
+      "verse_id": "6",
+      "start_sec": 69.07054054054053,
+      "end_sec": 83.7827027027027,
+      "confidence_score": 95.68345323741008,
+      "canonical_text": "Olyat keress, aki feddhetetlen, és csak egyszer nősült, akinek gyermekei hisznek, s nem vádolhatók könnyelmű élettel vagy engedetlenséggel.",
+      "matched_text": "Olyat keres, aki fethetetlen, csak egyszer nősült, akinek gyermekei hisznek, s nem vádolhatók könnyelmű élettel vagy engedetlenséggel. A püs"
+    },
+    {
+      "verse_id": "7",
+      "start_sec": 81.45972972972973,
+      "end_sec": 94.405,
+      "confidence_score": 93.5483870967742,
+      "canonical_text": "A püspök ugyanis, mint az Isten megbízottja, legyen feddhetetlen, ne legyen önhitt, ingerlékeny, iszákos, erőszakos, kapzsi,",
+      "matched_text": "gel. A püspök ugyanis, mint Isten megbizotja, legyen fethetetlen, ne legyen önhitt, ingerlékeny, iszákos, erőszakos, kabzsi,"
+    },
+    {
+      "verse_id": "8",
+      "start_sec": 94.405,
+      "end_sec": 101.09388888888888,
+      "confidence_score": 100.0,
+      "canonical_text": "hanem legyen vendégszerető, jóakaratú, megfontolt, igaz, tisztességes, fegyelmezett.",
+      "matched_text": "hanem legyen vendégszerető, jóakaratú, megfontolt, igaz, tisztességes, fegyelmezett."
+    },
+    {
+      "verse_id": "9",
+      "start_sec": 101.09388888888888,
+      "end_sec": 116.98,
+      "confidence_score": 99.28057553956835,
+      "canonical_text": "Álljon szilárdan a hiteles tanítás alapján, hogy éppúgy képes legyen az egészséges tanítással buzdítani, mint az ellentmondókat megcáfolni.",
+      "matched_text": "Álljon szilárdan a hiteles tanítás alapján, hogy épp úgy képes legyen az egészséges tanítással buzdítani, mint az ellentmondókat megcáfolni."
+    },
+    {
+      "verse_id": "10",
+      "start_sec": 117.12,
+      "end_sec": 127.34666666666668,
+      "confidence_score": 94.56521739130434,
+      "canonical_text": "Akad ugyanis számos elégedetlenkedő, fecsegő és ámító ember, főképp a körülmetéltek sorában.",
+      "matched_text": "kad ugyanis számos elégedetlenkedő, fecsegő és álmító ember, főleg a körülmet éltek sorában."
+    },
+    {
+      "verse_id": "11",
+      "start_sec": 127.34666666666668,
+      "end_sec": 138.36,
+      "confidence_score": 99.11504424778761,
+      "canonical_text": "Ezeket el kell hallgattatni, mert egész családokat feldúlnak, s aljas haszonlesésből ártalmas dolgokat tanítanak.",
+      "matched_text": "zeket el kell hallgattatni, mert egész családokat feldúlnak, és aljas haszonlesésből ártalmas dolgokat tanítanak."
+    },
+    {
+      "verse_id": "12",
+      "start_sec": 137.57333333333335,
+      "end_sec": 151.3844262295082,
+      "confidence_score": 86.8421052631579,
+      "canonical_text": "Saját prófétáik közül az egyik már megállapította: \"A krétaiak örök hazugok, gonosz fenevadak és falánk naplopók.\"",
+      "matched_text": "Saját profétáik közül az egyik már mondta, a krétaiak örök hazugok, gonosz fenevadak és falánk naplopók. Ez a tanú"
+    },
+    {
+      "verse_id": "13",
+      "start_sec": 148.86770491803279,
+      "end_sec": 157.67622950819674,
+      "confidence_score": 96.1038961038961,
+      "canonical_text": "Ez a tanúság igaz. Ezért intsd őket szigorúan, hogy a hitben erősek legyenek!",
+      "matched_text": "Ez a tanúság igaz. Ezért incs dőket szigorúan, hogy a hitben erősek legyenek."
+    },
+    {
+      "verse_id": "14",
+      "start_sec": 157.67622950819674,
+      "end_sec": 165.22639344262296,
+      "confidence_score": 100.0,
+      "canonical_text": "Ne hallgassanak zsidó mesékre, és ne kövessék az igazságtól elfordult emberek parancsait.",
+      "matched_text": "Ne hallgassanak zsidó mesékre, és ne kövessék az igazságtól elfordult emberek parancsait."
+    },
+    {
+      "verse_id": "15",
+      "start_sec": 165.22639344262296,
+      "end_sec": 177.81,
+      "confidence_score": 99.23076923076923,
+      "canonical_text": "A tisztának minden tiszta, a tisztátalannak és a hitetlennek pedig semmi sem tiszta, mert romlott az értelmük és a lelkiismeretük.",
+      "matched_text": "A tisztának minden tiszta, A tisztátalannak és a hitetlennek pedig semmi sem tiszta, mert romlott az értelmük és a lelkiismeretük."
+    },
+    {
+      "verse_id": "16",
+      "start_sec": 177.18081967213115,
+      "end_sec": 191.09,
+      "confidence_score": 95.7983193277311,
+      "canonical_text": "Hangoztatják, hogy ismerik az Istent, de tetteikkel megtagadják, mert utálatra méltók, konokok, semmi jóra nem képesek.",
+      "matched_text": "Angosztatják, hogy ismerik Istent, de tetteikkel megtagadják, mert utálatra méltók, konokok, semmi jóra nem képesek. [S"
+    }
+  ]
+}

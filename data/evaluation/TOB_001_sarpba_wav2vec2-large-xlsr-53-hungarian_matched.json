@@ -1,0 +1,189 @@
+{
+  "chapter": "TOB 1",
+  "model": "sarpba/wav2vec2-large-xlsr-53-hungarian",
+  "metrics": {
+    "canonical_verses": 22,
+    "aligned_verses": 22,
+    "coverage_pct": 100.0,
+    "wer": 0.9745111041917626,
+    "cer": 0.6950792325261136
+  },
+  "verses": [
+    {
+      "verse_id": "1",
+      "start_sec": 10.22,
+      "end_sec": 24.36,
+      "confidence_score": 48.14814814814815,
+      "canonical_text": "Ez a könyv Tobit története, Tóbiel fiáé, aki Ananielnek volt a fia, az meg Babael fiáé, Aduelé, Aziel nemzetségéből, Naftali törzséből.",
+      "matched_text": "bilnek volt a fia aki ananilfiaaki a duelfia aki babael fia aki rafael fiaki az azl mag vabol vaó raguelnek volt a fia aftali törzséből"
+    },
+    {
+      "verse_id": "2",
+      "start_sec": 22.06,
+      "end_sec": 43.22,
+      "confidence_score": 45.55555555555556,
+      "canonical_text": "Szalmanasszárnak, az asszírok királyának idejében Tibéből fogságba hurcolták. Ez Galileának felső részén, Kádes-Naftalitól délre fekszik, Hacor fölött nyugatra és Sefattól északra.",
+      "matched_text": "a fia aftali törzséből akit fogsabavíttek asszília királyanak salmanaszrnak anapjaiban tizsbéből amely navtalikadesétőljobra felsőgaliléában hacarfölö t nyugatra fogoltól balra feks"
+    },
+    {
+      "verse_id": "3",
+      "start_sec": 44.94,
+      "end_sec": 65.52,
+      "confidence_score": 52.406417112299465,
+      "canonical_text": "Én, Tobit, egész életemben igaz úton jártam, s a jót tettem. Bőven osztottam alamizsnát testvéreimnek és azoknak az embereknek, akik velem együtt kerültek az asszírok országába, Ninivébe.",
+      "matched_text": "azsaguttjainiartan és igazsagosakban életem mindennapjn és sokirglma sago gyakoroltam a testvéreinmel és a nemzetségbeliettl akik velemegyütt mentek foksaka az assziraktarományaba ninivbeé"
+    },
+    {
+      "verse_id": "4",
+      "start_sec": 60.66,
+      "end_sec": 99.96,
+      "confidence_score": 54.82866043613708,
+      "canonical_text": "Amikor még hazámban, Izrael országában éltem - akkor még fiatal voltam -, atyámnak, Naftalinak egész törzse elszakadt Dávid házától és Jeruzsálemtől, noha Izrael összes törzse közül rá esett a választás, hogy minden törzs ott mutassa be az áldozatot. A templom, az Isten lakóhelye minden törzs számára épült, örök időkre.",
+      "matched_text": "a ninivbeés amikor még a tartományban izrael fölgyén voltan és viatalak voltan atyámnak nvtlinak egésztrzse elsakat atyamnag davídnak hazató és jeruzsalemvarosatól mey kivlasztatott izrael összestörzsekezülés vlszenteltetett isten lakóhelyének temploma és elébítettékbenn ay izrael öszestörzse aldozatot mutasanbe minden n"
+    },
+    {
+      "verse_id": "5",
+      "start_sec": 95.52,
+      "end_sec": 110.86,
+      "confidence_score": 63.1578947368421,
+      "canonical_text": "Testvéreim és Naftali háza a borjúnak áldoztak, amelyet Izrael királya, Jerobeám állított Dánban, Galilea hegyein.",
+      "matched_text": "estvéren és atyamnaknavtalinak egészhaza a borjúnak áldozot amelyet jeroboan izrael király damban készített galilea"
+    },
+    {
+      "verse_id": "6",
+      "start_sec": 110.96,
+      "end_sec": 134.66,
+      "confidence_score": 50.0,
+      "canonical_text": "Gyakran elzarándokoltam - egymagam - az ünnepekre Jeruzsálembe, amint egész Izraelnek előírja egy örök időkre szóló törvény, az első terméssel és az állatok elsőszülötteivel, a jószág tizedével és a birka első gyapjával.",
+      "matched_text": "pedg néha egyedül mentem jeruzsálembe ünnepnapokon mig ént irvavan egész izraelben örökparancsolattla zsengéket és az elsőszülötteket és a barmak és a joszagok tizedét és a juho nyiras anak elsejét magmmalvittenyeruzsale"
+    },
+    {
+      "verse_id": "7",
+      "start_sec": 127.98,
+      "end_sec": 159.44,
+      "confidence_score": 52.459016393442624,
+      "canonical_text": "Odaadtam Áron fiainak, a papoknak, hogy tegyék az áldozati oltárra. A bor és a gabona, az olaj, a gránátalma és az egyéb gyümölcs tizedét Lévi fiainak adtam át, akik Jeruzsálemben teljesítettek szolgálatot. A második tizedet hat egymás utáni éven át eladtam, aztán elmentem és felhasználtam Jeruzsálemben.",
+      "matched_text": "és a joszagok tizedét és a juho nyiras anak elsejét magmmalvittenyeruzsalenbe és odaadtamapapoknak aronfiinak az oltarlaés a bz és a barés az lai és a granatalma és a többi gyümölcsdizedét lévi jeruzsalemben szolgaló fiainak és hat év második vizett pénzbenszamóltan és menten és lerotan az jeruzsalemben m"
+    },
+    {
+      "verse_id": "8",
+      "start_sec": 159.56,
+      "end_sec": 189.68,
+      "confidence_score": 51.74825174825175,
+      "canonical_text": "A harmadikat az árváknak, özvegyeknek és idegeneknek adtam, akik Izrael fiai között élnek. Minden harmadik esztendőben megajándékoztam őket vele, s megettük Mózes törvényének előírásaihoz híven, ahogyan apai nagyanyám, Debora tanított bennünket. Apám ugyanis meghalt, és árván maradtam.",
+      "matched_text": "odaatamaz arvaknak és az özvegyeknek és az izrael fiai között élő prozelietaknak bevi temés odaktan nekik a harmadik esztendbens ettük ezeket a parandsolat szerint mely rlukszólt mozeskönyvébenés a parancsok szerint melyeket atyainagyanyan deboraparancsólt mert atyan arvn hagyott ngemé"
+    },
+    {
+      "verse_id": "9",
+      "start_sec": 52.04,
+      "end_sec": 65.94,
+      "confidence_score": 44.53125,
+      "canonical_text": "Amikor elértem a férfikort, apám nemzetségéből vettem feleséget, Annának hívták. Született tőle egy fiam, Tóbiásnak neveztem el.",
+      "matched_text": "glma sago gyakoroltam a testvéreinmel és a nemzetségbeliettl akik velemegyütt mentek foksaka az assziraktarományaba ninivbeés ami"
+    },
+    {
+      "verse_id": "10",
+      "start_sec": 206.94,
+      "end_sec": 219.56,
+      "confidence_score": 54.33070866141732,
+      "canonical_text": "Amikor engem is elhurcoltak Asszíriába, Ninivébe kerültem. Testvéreim és a nemzetségemből valók mind ettek a pogányok ételéből,",
+      "matched_text": "em az asszírokhoz a foglyokkal együtt nénivébekerültenés összes testvérein és akik a nemzetségenből voltak a nemzetetkenyeréböle"
+    },
+    {
+      "verse_id": "11",
+      "start_sec": 220.86,
+      "end_sec": 228.3,
+      "confidence_score": 43.103448275862064,
+      "canonical_text": "én azonban óvakodtam tőle, hogy egyem a pogányok ételéből.",
+      "matched_text": "g megürisztemaleltemet hogy neegyen a nemzetetkenyeréblés m"
+    },
+    {
+      "verse_id": "12",
+      "start_sec": 228.04,
+      "end_sec": 232.56,
+      "confidence_score": 44.680851063829785,
+      "canonical_text": "Mivel szívvel-lélekkel ragaszkodtam Istenemhez,",
+      "matched_text": "mivel megemlékeztem az én istenemrő teljes lelte"
+    },
+    {
+      "verse_id": "13",
+      "start_sec": 230.82,
+      "end_sec": 239.64,
+      "confidence_score": 44.44444444444444,
+      "canonical_text": "a Magasságbeli Szalmanasszár kegyeibe juttatott, úgyhogy én lettem a bevásárlója.",
+      "matched_text": "na magaskbeli kedvesétettengen szalmanasszarnal s vasarolta neki mindentamirecsak"
+    },
+    {
+      "verse_id": "14",
+      "start_sec": 242.38,
+      "end_sec": 258.74,
+      "confidence_score": 49.62962962962963,
+      "canonical_text": "Médiába mentem, s a haláláig vásároltam neki, és a médiai Rágesban Gábaelnél, Gábri testvérénél tíz talentum ezüstöt helyeztem letétbe.",
+      "matched_text": "médijába iárt a mindadi amí meg nem haltés letétben helyeztem ralgesban dbri testvérénél gabaelnél médiatatományban tíztalentumezüstőtés"
+    },
+    {
+      "verse_id": "15",
+      "start_sec": 259.2,
+      "end_sec": 273.22,
+      "confidence_score": 56.91056910569105,
+      "canonical_text": "Amikor Szalmanasszár meghalt, fia, Szancherib lett helyette a király. A Médiába vezető utak nem voltak többé biztonságosak,",
+      "matched_text": "meghalt salmanasszar és a fia szanheiblet helyette a kirya mdiai utaknak védelett és ma nem udtamelmeni médiabés szalmanasza"
+    },
+    {
+      "verse_id": "16",
+      "start_sec": 266.18,
+      "end_sec": 276.54,
+      "confidence_score": 65.55555555555556,
+      "canonical_text": "így nem utazhattam oda. Szalmanasszár idejében bőséges alamizsnát osztottam testvéreimnek.",
+      "matched_text": "t és ma nem udtamelmeni médiabés szalmanaszanapjaiban bősges alamizsnatattama tesvéreimnek"
+    },
+    {
+      "verse_id": "17",
+      "start_sec": 278.68,
+      "end_sec": 294.48,
+      "confidence_score": 53.74149659863945,
+      "canonical_text": "Kenyeremet az éhezőknek, ruhámat a rongyosaknak adtam. Ha láttam, hogy meghalt valaki a nemzetségemből és odadobták Ninive fala tövébe, eltemettem.",
+      "matched_text": "oltakenyeremet attam az éhezőknek uhat a mezíteleneknek és a ki latamomkhalt és ivetették nénive falai megé a népenből eltemettenés amikor megölt va"
+    },
+    {
+      "verse_id": "18",
+      "start_sec": 290.66,
+      "end_sec": 320.74,
+      "confidence_score": 51.64473684210527,
+      "canonical_text": "Azokat is eltemettem, akiket Szancherib ölt meg. [Amikor Júdeából menekülésszerűen visszatért azután, hogy az ég Királya megbüntette a káromlót, Szancherib sokat megöletett Izrael fiai közül haragjában.] Titokban fogtam a holttesteket, és eltemettem őket. Amikor aztán a király kereste őket, nem találta.",
+      "matched_text": "mettenés amikor megölt valakit szanhelib király azok közül akik judia ból jöttek menekülve az itélet napjaiban melyet az ékiraja ült fölötte a karonasakét melyekel karomkodottzraelfiai közülgyen is sok akat megölt halagyaban é megöngyöltem a testketés eltemettem üeté erestazok a szanhelib és nem talaltas"
+    },
+    {
+      "verse_id": "19",
+      "start_sec": 316.4,
+      "end_sec": 338.66,
+      "confidence_score": 48.1651376146789,
+      "canonical_text": "Akkor egy ninivei ember elment, és tudtára adta a királynak, hogy én vagyok az, aki titokban eltemetem őket. Mihelyt neszét vettem, hogy a királynak tudomása van tetteimről és meg akar öletni, félelmemben elmenekültem.",
+      "matched_text": "stazok a szanhelib és nem talaltas elment valaki a nnéveijel közül és jelentette rólamairálnak agy intemettemeltets elrejtőzten és a miko mettudtamogy a király tudrólam és keres hogy megöljön féltem és elmenekltens raga"
+    },
+    {
+      "verse_id": "20",
+      "start_sec": 338.06,
+      "end_sec": 355.08,
+      "confidence_score": 56.75675675675676,
+      "canonical_text": "Erre minden vagyonomat elkobozták, mindent lefoglaltak az államkincstár számára, és feleségemen, Annán meg fiamon, Tóbiáson kívül nem maradt semmim.",
+      "matched_text": "minden vagyonomatés nem maradt semmé amit elnevittekblna a kiralyincstarba afeleségemen nnan és a fiamon tóiasonkvlés nem múltlnegyvennak amikor ktv"
+    },
+    {
+      "verse_id": "21",
+      "start_sec": 352.16,
+      "end_sec": 377.42,
+      "confidence_score": 50.0,
+      "canonical_text": "De negyven nap sem telt bele, és két fia megölte Szancheribet, aztán az Ararát-hegységbe menekültek. Helyette Asszarhaddon lett a király. Achikárt, Anael nevű testvérem fiát tette meg főkincstárosnak és kormányzónak.",
+      "matched_text": "nem múltlnegyvennak amikor ktvia megöltevt és az ararat hegységbemenekültekés a fia aszrhadta let elyettekray és a testvérem anaeliak akiartállította orszgna egész adószetése fölé és neki hatalmavolt mindentartomány f"
+    },
+    {
+      "verse_id": "22",
+      "start_sec": 377.52,
+      "end_sec": 403.62,
+      "confidence_score": 45.41666666666667,
+      "canonical_text": "Achikár szólt az érdekemben, így aztán visszatérhettem Ninivébe. Achikár volt ugyanis a főpohárnok és a pecsétőr, a kancellár és az államkincstár vezetője. Asszarhaddon meghagyta hivatalaiban. A rokonságomból származott, az unokaöcsém volt.",
+      "matched_text": "rtérten és élementennévébehikar volt ugyan is az elöl jaró apoharnokok völött tndelkezett a győrüfölöt és helytartó és végrhtó volt az asszírokirálya sanhelivalaés asszarhaddon megelősítette ta testvérein közül és a rokonsagon bol való volt"
+    }
+  ]
+}

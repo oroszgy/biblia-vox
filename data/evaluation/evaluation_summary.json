@@ -1,0 +1,61 @@
+{
+  "total_models": 4,
+  "results": [
+    {
+      "model": "systran/faster-whisper-large-v3",
+      "book": "gold",
+      "chapter": 0,
+      "wer": 0.717628487914957,
+      "cer": 0.44234568686480225,
+      "mean_start_deviation": 18.60820987654321,
+      "mean_end_deviation": 18.88901234567901,
+      "avg_confidence": 68.23647562416477,
+      "cost_usd": 0.0,
+      "time_sec": 161.1446188588743,
+      "aligned_verses": 172,
+      "total_verses": 172
+    },
+    {
+      "model": "microsoft/VibeVoice-ASR-HF",
+      "book": "gold",
+      "chapter": 0,
+      "wer": 0.6948367594561577,
+      "cer": 0.43375783580714417,
+      "mean_start_deviation": 21.90300770200788,
+      "mean_end_deviation": 22.372155244268757,
+      "avg_confidence": 69.24060951853022,
+      "cost_usd": 0.0,
+      "time_sec": 455.40317814215086,
+      "aligned_verses": 172,
+      "total_verses": 172
+    },
+    {
+      "model": "facebook/mms-1b-fl102",
+      "book": "gold",
+      "chapter": 0,
+      "wer": 1.0,
+      "mean_start_deviation": 0.0,
+      "mean_end_deviation": 0.0,
+      "avg_confidence": 0.0,
+      "cost_usd": 0.0,
+      "time_sec": 0.0,
+      "aligned_verses": 0,
+      "total_verses": 0,
+      "error": "'á'"
+    },
+    {
+      "model": "sarpba/wav2vec2-large-xlsr-53-hungarian",
+      "book": "gold",
+      "chapter": 0,
+      "wer": 0.8558853308053639,
+      "cer": 0.508497482686853,
+      "mean_start_deviation": 20.680246913580245,
+      "mean_end_deviation": 21.234938271604943,
+      "avg_confidence": 63.57818115147469,
+      "cost_usd": 0.0,
+      "time_sec": 54.21051776391687,
+      "aligned_verses": 172,
+      "total_verses": 172
+    }
+  ]
+}

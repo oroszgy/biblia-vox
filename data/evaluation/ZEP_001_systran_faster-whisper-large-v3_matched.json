@@ -1,0 +1,157 @@
+{
+  "chapter": "ZEP 1",
+  "model": "systran/faster-whisper-large-v3",
+  "metrics": {
+    "canonical_verses": 18,
+    "aligned_verses": 18,
+    "coverage_pct": 100.0,
+    "wer": 0.9047597112939442,
+    "cer": 0.5555999432966651
+  },
+  "verses": [
+    {
+      "verse_id": "1",
+      "start_sec": 0.0,
+      "end_sec": 17.98,
+      "confidence_score": 60.790273556231,
+      "canonical_text": "Az Úr szózata, amelyet Szofoniáshoz, Kusi fiához intézett, Júda királyának, Jozijának, Ámon fiának idejében. Kusi Gedaljának, az meg Amarjának, az meg Hiszkijának volt a fia.",
+      "matched_text": "Szofonniás proféta könyve Az első fejezet Az úr igéje, amely lőn Szofonniáshoz, Kusi fiához, Aki Gedaliának, az meg Amariának, Az meg Hiszkiának volt a fia,"
+    },
+    {
+      "verse_id": "2",
+      "start_sec": 42.57,
+      "end_sec": 48.85,
+      "confidence_score": 74.57627118644068,
+      "canonical_text": "Bizony, elpusztítok mindent a föld színéről - mondja az Úr.",
+      "matched_text": "z, És elpusztítom az embereket A föld színéről, mondja az Úr"
+    },
+    {
+      "verse_id": "3",
+      "start_sec": 33.55,
+      "end_sec": 48.33,
+      "confidence_score": 67.12328767123287,
+      "canonical_text": "Elpusztítok embert, állatot, elpusztítom az ég madarait, a tenger halait; elbuktatom a gonoszt, eltörlöm az embert a föld színéről - mondja az Úr.",
+      "matched_text": "z embert és a barmot, Elveszem az égmadarait és a tengerhalait, És a gonoszok romlása lesz, És elpusztítom az embereket A föld színéről, mondja az"
+    },
+    {
+      "verse_id": "4",
+      "start_sec": 50.21,
+      "end_sec": 64.37,
+      "confidence_score": 72.18543046357617,
+      "canonical_text": "Kinyújtom kezemet Júda ellen, és Jeruzsálem minden lakója ellen. Eltörlöm erről a helyről Baalt maradéktalanul, szolgáinak nevével és papjaival együtt.",
+      "matched_text": "nyújtom a kezemet Júda fölé, És Jeruzsálem minden lakója fölé, És kipusztítom erről a helyről Bál maradékait, És a szentélyek neveit A papokkal együtt."
+    },
+    {
+      "verse_id": "5",
+      "start_sec": 65.71,
+      "end_sec": 77.71,
+      "confidence_score": 51.58730158730158,
+      "canonical_text": "Azokat, akik a tetőkön leborulnak az ég serege előtt; azokat, akik bár az Úr előtt borulnak le, mégis Milkom nevére esküsznek;",
+      "matched_text": "zokat, akik a tetőkön Imádják az ég seregét, És imádják az Urat, És esküsznek rá, És esküsznek Milkomra, És akik hátat fordítan"
+    },
+    {
+      "verse_id": "6",
+      "start_sec": 74.45,
+      "end_sec": 82.39,
+      "confidence_score": 67.07317073170731,
+      "canonical_text": "azokat, akik elfordulnak az Úrtól, akik nem keresik az Urat, és nem törődnek vele.",
+      "matched_text": ", És akik hátat fordítanak az Úrnak, És akik nem keresik az Urat, És a nyomában sem"
+    },
+    {
+      "verse_id": "7",
+      "start_sec": 86.53,
+      "end_sec": 100.09,
+      "confidence_score": 69.6969696969697,
+      "canonical_text": "Hallgassatok el az Úr, az Isten előtt, mert közel van az Úr napja. Igen, az Úr készített áldozatot, ő szentelte meg a meghívottakat.",
+      "matched_text": "gtaláltatok. Az Úristen arca előtt, Mert közel van az Úr napja, Mert áldozatot készített elő az Úr, Megszentelte az Ő meghívottait. É"
+    },
+    {
+      "verse_id": "8",
+      "start_sec": 100.73,
+      "end_sec": 110.55,
+      "confidence_score": 72.22222222222221,
+      "canonical_text": "Az Úr áldozatának napján meglátogatom a vezetőket, a király háza népét, azokat, akik idegen ruhába öltöznek.",
+      "matched_text": "z Úr áldozatának napján, Meglátogatom a fejedelmeket, És a király fiait, És mindazokat, Akik zarándok ruhába"
+    },
+    {
+      "verse_id": "9",
+      "start_sec": 112.71,
+      "end_sec": 124.13,
+      "confidence_score": 49.54128440366973,
+      "canonical_text": "Meglátogatom azon a napon mind, akik átlépik a küszöböt, akik uruk házát erőszakkal és csalással töltik tele.",
+      "matched_text": "glátogatok mindent, Aki erőszakosan lép át a küszöbön azon a napon, Aki megtölti Urának házát Gonossággal és á"
+    },
+    {
+      "verse_id": "10",
+      "start_sec": 125.99,
+      "end_sec": 142.39,
+      "confidence_score": 59.44055944055944,
+      "canonical_text": "Azon a napon - mondja az Úr - harsány kiáltás hallatszik majd a Hal-kapu felől, jajveszékelés az Újváros felől, félelmetes zaj a magaslatokról.",
+      "matched_text": "n azon a napon, mondja az Úr, Kiáltás hangja a halak kapuja felől, És jajgatás az újvárosból, És nagy romlás a dombok felől. Jajgassatok píl a l"
+    },
+    {
+      "verse_id": "11",
+      "start_sec": 137.35,
+      "end_sec": 152.89,
+      "confidence_score": 48.62385321100917,
+      "canonical_text": "Jajgassatok, akik a völgyben laktok, mert elpusztult minden kereskedő nép, eltűnt mind, aki az ezüstöt mérte.",
+      "matched_text": "dombok felől. Jajgassatok píl a lakói, Mert elveszett Kánaán egész népe. Így ezüstbe voltak öltözve. És lésze"
+    },
+    {
+      "verse_id": "12",
+      "start_sec": 152.35,
+      "end_sec": 171.77,
+      "confidence_score": 57.2192513368984,
+      "canonical_text": "Abban az időben lámpással átkutatom majd Jeruzsálemet, és megbüntetem az embereket, akik poshadnak, mint a bor sepreje. Akik azt mondják szívükben: \"Az Úr nem tehet sem jót, sem rosszat.\"",
+      "matched_text": "en abban az időben, Megvizsgálom Jeruzsálemet mécsesekkel, És meglátom a férfiakat, Akik a saját piszkukban ülnek, Akik mondják a szívükben, Nem tesz jót az Úr, és nem tesz rosszat, És a g"
+    },
+    {
+      "verse_id": "13",
+      "start_sec": 171.77,
+      "end_sec": 185.53,
+      "confidence_score": 61.36363636363637,
+      "canonical_text": "Akkor majd prédává lesz kincsük, házuk meg pusztasággá. Házat építettek? Nem fogják lakni! Szőlőt ültettek? Nem fogják inni a borát!",
+      "matched_text": "mányjá lesz, És a házuk pusztaság. És építenek majd házakat, És nem fogják lakni, Telepítenek szőlőket, És nem fogják inni azok borát"
+    },
+    {
+      "verse_id": "14",
+      "start_sec": 186.81,
+      "end_sec": 203.53,
+      "confidence_score": 48.529411764705884,
+      "canonical_text": "Közel van már az Úr napja, közel bizony, hamarosan elérkezik. Mily szörnyű kiáltozás az Úr napján! Mintha harcos hallatna csatakiáltást.",
+      "matched_text": "Közel van az Úr nagy napja, Közel van, és nagyon gyors. Az Úr napjának hangja keserű, Szorongatott lesz ott az erős. A harag napja az a n"
+    },
+    {
+      "verse_id": "15",
+      "start_sec": 197.29,
+      "end_sec": 223.13,
+      "confidence_score": 64.14141414141415,
+      "canonical_text": "Az a nap a haragnak a napja, a szorongatásnak és a gyötrelemnek a napja, a pusztításnak és a fosztogatásnak a napja, a sötétségnek és a homálynak a napja, a felhőknek és a komor fellegeknek a napja.",
+      "matched_text": "esz ott az erős. A harag napja az a nap, A szorongatás és a sanyargatás, A pusztítás és a rombolás napja, A sötétség és a homály napja, A felhő és a forgószél napja, A kürt és a harsona napja, A mege"
+    },
+    {
+      "verse_id": "16",
+      "start_sec": 213.41,
+      "end_sec": 225.73,
+      "confidence_score": 56.363636363636374,
+      "canonical_text": "Olyan nap, amelyen harsog a kürt és felhangzik a csatakiáltás a megerősített városok és a magas bástyák ellen.",
+      "matched_text": "ály napja, A felhő és a forgószél napja, A kürt és a harsona napja, A megerősített városok fölött, És a szöglet"
+    },
+    {
+      "verse_id": "17",
+      "start_sec": 227.67,
+      "end_sec": 242.77,
+      "confidence_score": 65.16129032258064,
+      "canonical_text": "Veszedelmet hozok az emberekre, botorkálnak majd, mint a vakok, [mert vétkeztek az Úr ellen]. Vérük kiloccsan, mintha por volna, holttestük, mintha szemét.",
+      "matched_text": "s meg fogom zavarni az embereket, És úgy fognak botorkálni, mint a vakok, Mert vétettek az Úr ellen. És kiömlik a vérük, mint a por, A belsejük, mint a trág"
+    },
+    {
+      "verse_id": "18",
+      "start_sec": 244.77,
+      "end_sec": 261.27,
+      "confidence_score": 61.111111111111114,
+      "canonical_text": "Ezüstjük, aranyuk nem mentheti meg őket. Az Úr haragjának napján, féltékenysége tüzében elpusztul az egész föld, mert megsemmisíti, kiirtja a föld minden lakóját.",
+      "matched_text": "züstjük és az aranyuk Sem lesz képes megszabadítani őket Az Úr haragjának napján. Féltős szeretetének tüzében Elhamvad az egész föld, Mert sietséggel fog véget vet"
+    }
+  ]
+}
