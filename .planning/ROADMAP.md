@@ -185,7 +185,7 @@ Phase 1 (Foundation)
 | 1. Foundation & Versification Schema | 2/2 | Complete | 2026-05-29 |
 | 2. Text Acquisition & Validation | 2/2 | Complete | 2026-05-29 |
 | 2.5. Data Quality & Correction | 3/3 | Complete | 2026-05-29 |
-| 2.6. Alternate Text Source & Cross-Source Coverage Validation | 2/2 | Planned | - |
+| 2.6. Alternate Text Source & Cross-Source Coverage Validation | 2/2 | Complete | 2026-06-02 |
 | 3. Audio Pipeline | 4/4 | Complete | 2026-05-30 |
 | 4. Transcription-Based Alignment | 3/3 | Complete | 2026-05-31 |
 | 5. Forced Alignment & Alternatives | 0/? | Not started | - |

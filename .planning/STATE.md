@@ -104,6 +104,10 @@ Recent decisions affecting current work:
 - [02.6-02]: Performed NFC normalization and whitespace collapse before text comparison to avoid formatting false-positives
 - [02.6-02]: Handled line-by-line JSONDecodeError gracefully when reading corpora files to prevent crashes from malformed lines
 - [02.6-02]: Limited detailed discrepancy table in stdout to first 100 rows to prevent Denial of Service
+- [housekeep]: Migrated Taskfile inline Python/bash to native CLI commands (convert-all, prepare-all, setup)
+- [housekeep]: Swapped primary text source from SZIT to MEK (mek.jsonl) — MEK has all 73 books vs SZIT's 66
+- [housekeep]: Identified SZTAKI-HLT/hubert-base-cc as text BERT, not audio HuBERT — must be replaced in gauntlet
+- [housekeep]: Documented model research for Phase 5: faster-whisper-large-v3, VibeVoice-ASR-7B, MMS_FA, wav2vec2 XLS-R
 
 ### Roadmap Evolution
 
@@ -116,8 +120,9 @@ None yet.
 ### Blockers/Concerns
 
 - ~~szentiras.eu API key requires emailing maintainers~~ → Resolved: switched to peterpolgar/Biblia-json-xml (Unlicense)
-- mek.oszk.hu audio completeness for all 73 Catholic books unverified (affects Phase 3)
+- ~~mek.oszk.hu audio completeness for all 73 Catholic books unverified~~ → Resolved: MEK has all 73 books (35,350 verses)
 - Hungarian Whisper LoRA performance on Bible narration (literary register) unverified (affects Phase 4)
+- ~~SZTAKI-HLT/hubert-base-cc-hu in gauntlet is text BERT, not audio model~~ → Resolved: documented in 04-RESEARCH.md, must be replaced
 
 ## Deferred Items
 
