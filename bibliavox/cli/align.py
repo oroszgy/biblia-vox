@@ -361,7 +361,6 @@ def setup_command() -> None:
             snapshot_download(
                 repo_id=model.id,
                 local_dir=local_dir,
-                local_dir_use_symlinks=False,
             )
             console.print(f"[green]Successfully downloaded {model.id}[/green]")
         except Exception as exc:
