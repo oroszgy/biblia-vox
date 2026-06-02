@@ -18,8 +18,8 @@ def vibevoice_asr(
 ) -> list[dict[str, Any]]:
     """Run VibeVoice ASR to get word-level transcripts.
 
-    Uses VibeVoiceAsrForConditionalGeneration for structured output
-    with speaker, timestamps, and content per segment.
+    Uses VibeVoiceAsrForConditionalGeneration with apply_transcription_request
+    for structured output with speaker, timestamps, and content per segment.
 
     Args:
         audio_path: Path to WAV file.
@@ -30,7 +30,6 @@ def vibevoice_asr(
         List of {"word": str, "start": float, "end": float, "probability": float}.
     """
     import torch
-    import soundfile as sf
     from transformers import AutoProcessor, VibeVoiceAsrForConditionalGeneration  # type: ignore
 
     processor = AutoProcessor.from_pretrained(model_path)
@@ -38,31 +37,25 @@ def vibevoice_asr(
         model_path, torch_dtype=torch.bfloat16
     ).to(device)
 
-    # Load audio
-    audio, sr = sf.read(str(audio_path))
-    if len(audio.shape) > 1:
-        audio = audio.mean(axis=1)  # mono
-
-    inputs = processor(audio, sampling_rate=sr, return_tensors="pt").to(
-        device, dtype=torch.bfloat16
-    )
+    inputs = processor.apply_transcription_request(
+        audio=str(audio_path),
+    ).to(model.device, model.dtype)
 
     with torch.no_grad():
-        generated_ids = model.generate(**inputs, max_new_tokens=4096)
+        output_ids = model.generate(**inputs)
 
-    transcription = processor.batch_decode(generated_ids, skip_special_tokens=True)
+    generated_ids = output_ids[:, inputs["input_ids"].shape[1] :]
+    transcription = processor.decode(generated_ids, return_format="parsed")[0]
 
     # Parse structured output into word-level timestamps
     words = []
     if isinstance(transcription, list):
         for seg in transcription:
             if isinstance(seg, dict):
-                # Structured output: {speaker, start, end, content}
-                content = seg.get("content", seg.get("text", ""))
-                start = seg.get("start", 0.0)
-                end = seg.get("end", 0.0)
+                content = seg.get("Content", seg.get("content", seg.get("text", "")))
+                start = float(seg.get("Start", seg.get("start", 0.0)))
+                end = float(seg.get("End", seg.get("end", 0.0)))
                 if content:
-                    # Split content into words and distribute timestamps
                     seg_words = content.strip().split()
                     if seg_words and end > start:
                         word_dur = (end - start) / len(seg_words)
@@ -76,7 +69,6 @@ def vibevoice_asr(
                                 }
                             )
             elif isinstance(seg, str):
-                # Plain text output — no timestamps available
                 for w in seg.strip().split():
                     words.append(
                         {
@@ -96,7 +88,8 @@ def vibevoice_direct(
 ) -> list[dict[str, Any]]:
     """Run VibeVoice direct alignment for verse-level timestamps.
 
-    Uses return_format="parsed" for structured speaker/timestamp/content output.
+    Uses apply_transcription_request with return_format="parsed" for
+    structured speaker/timestamp/content output.
 
     Args:
         audio_path: Path to WAV file.
@@ -108,24 +101,21 @@ def vibevoice_direct(
     """
     from transformers import AutoProcessor, VibeVoiceAsrForConditionalGeneration  # type: ignore
     import torch
-    import soundfile as sf
 
     processor = AutoProcessor.from_pretrained(model_path)
     model = VibeVoiceAsrForConditionalGeneration.from_pretrained(
         model_path, torch_dtype=torch.bfloat16
     ).to(device)
 
-    # Load audio
-    audio, sr = sf.read(str(audio_path))
-    if len(audio.shape) > 1:
-        audio = audio.mean(axis=1)  # mono
-
-    inputs = processor(audio, sampling_rate=sr, return_tensors="pt").to(device)
+    inputs = processor.apply_transcription_request(
+        audio=str(audio_path),
+    ).to(model.device, model.dtype)
 
     with torch.no_grad():
-        generated_ids = model.generate(**inputs, max_new_tokens=4096)
+        output_ids = model.generate(**inputs)
 
-    transcription = processor.batch_decode(generated_ids, return_format="parsed")
+    generated_ids = output_ids[:, inputs["input_ids"].shape[1] :]
+    transcription = processor.decode(generated_ids, return_format="parsed")[0]
 
     segments = []
     if isinstance(transcription, list):
@@ -133,10 +123,14 @@ def vibevoice_direct(
             if isinstance(seg, dict):
                 segments.append(
                     {
-                        "text": seg.get("text", "").strip(),
-                        "start": seg.get("start", 0.0),
-                        "end": seg.get("end", 0.0),
-                        "speaker": seg.get("speaker", "Speaker 0"),
+                        "text": seg.get(
+                            "Content", seg.get("content", seg.get("text", ""))
+                        ).strip(),
+                        "start": float(seg.get("Start", seg.get("start", 0.0))),
+                        "end": float(seg.get("End", seg.get("end", 0.0))),
+                        "speaker": str(
+                            seg.get("Speaker", seg.get("speaker", "Speaker 0"))
+                        ),
                     }
                 )
     return segments
