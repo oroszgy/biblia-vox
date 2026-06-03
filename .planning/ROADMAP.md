@@ -6,6 +6,71 @@ Build a calibration-first pipeline that maps every verse of the Szent István T�
 
 Each phase delivers working Typer commands and Taskfile targets. Docker infrastructure is built incrementally when alignment phases need it.
 
+## Pipeline Data Flow
+
+Each pipeline step has explicit inputs and outputs. Stages communicate through files in the `data/` directory tree.
+
+| # | Step | Task | Input | Output | Deps |
+|---|------|------|-------|--------|------|
+| 1 | Reference Generation | `reference:generate` | szentiras.eu tdverse.csv | `data/reference/books.json`, `data/reference/versification.json` | — |
+| 2 | Text Ingestion (MEK) | `text:ingest-mek` | mek.oszk.hu HTML pages | `data/raw/text/mek/{BOOK}_{CHAPTER}.html`, `data/processed/text/mek.jsonl` | — |
+| 3 | Text Ingestion (SZIT) | `experiment:text-fetch` | GitHub raw JSON | `data/raw/text/H_Kaldi_SZIT.json` | — |
+| 4 | Text Normalize (SZIT) | `experiment:text-normalize` | `data/raw/text/H_Kaldi_SZIT.json` | (in-memory) | 3 |
+| 5 | Text Validate (SZIT) | `experiment:text-validate` | `data/raw/text/H_Kaldi_SZIT.json` + `versification.json` | Validation report (stdout) | 3 |
+| 6 | Text JSONL Convert | `experiment:text-convert-jsonl` | `data/raw/text/H_Kaldi_SZIT.json` | `data/processed/text/szit.jsonl` | 3 |
+| 7 | Text Verse Fix | `experiment:text-fix-verses` | `data/processed/text/szit.jsonl` | `data/processed/text/szit-fixed.jsonl` | 6 |
+| 8 | Text Cross-Validate | `experiment:text-cross-validate` | `szit-fixed.jsonl`, `mek.jsonl` | `data/processed/text/text-discrepancies.jsonl` | 7, 2 |
+| 9 | Data Coverage | `data:coverage` | All text + audio artifacts | Coverage report (stdout) | — |
+| 10 | Audio Download (single) | `audio:download` | mek.oszk.hu MP3 URL | `data/raw/audio/{USX}/{ch:03d}.mp3` | — |
+| 11 | Audio Download (batch) | `audio:download-all` | mek.oszk.hu M3U playlist | `data/raw/audio/{USX}/{ch:03d}.mp3` (all) | — |
+| 12 | Audio Convert (single) | `audio:convert` | `data/raw/audio/{USX}/{ch:03d}.mp3` | `data/prepared/audio/{USX}/{ch:03d}.wav` | 10 |
+| 13 | Audio Convert (batch) | `audio:convert-all` | All MP3s in `data/raw/audio/` | All WAVs in `data/prepared/audio/` | 11 |
+| 14 | Audio Prepare (single) | `audio:prepare` | `data/raw/audio/{USX}/{ch:03d}.mp3` | `.wav`, `.meta.json`, `.index.json` | 10 |
+| 15 | Audio Prepare (batch) | `audio:prepare-all` | All MP3s in `data/raw/audio/` | All WAVs + meta + index | 11 |
+| 16 | Audio Seek | `audio:seek` | `.wav`, `.index.json` | WAV preview file | 14 |
+| 17 | Audio Info | `audio:info` | `data/raw/audio/{USX}/{ch:03d}.mp3` | Metadata report (stdout) | 10 |
+| 18 | Alignment Setup | `align:setup` | Model config (gauntlet) | Model weights in cache | — |
+| 19 | Alignment Evaluate Gold | `align:evaluate-gold` | Prepared WAVs + text JSONL | `data/evaluation/{BOOK}_{CH}_{MODEL}_matched.json` | 15, 2 |
+| 20 | Alignment VibeVoice | `align:vibevoice` | Prepared WAVs + text JSONL | `data/aligned/microsoft_VibeVoice-ASR-HF/{BOOK}_{CH}.json` | 14, 2 |
+| 21 | Alignment Evaluate | `align:evaluate` | Prepared WAVs + text JSONL | Evaluation report (stdout) | 15, 2 |
+| 22 | Export Fetch Text | `export:fetch-text` | (delegates to text:ingest-mek) | `data/processed/text/mek.jsonl` | 2 |
+| 23 | Export Prepare Audio | `export:prepare-audio` | (delegates to audio:prepare-all) | All prepared audio | 15 |
+| 24 | Export Align | `export:align` | Prepared WAVs + text JSONL | `data/aligned/{MODEL}/` matched JSON | 15, 2 |
+| 25 | Export Align Gold | `export:align-gold` | Prepared WAVs + text JSONL (gold) | `data/aligned/{MODEL}/` matched JSON (gold) | 15, 2 |
+| 26 | Export JSONL | `export:jsonl` | `data/aligned/{MODEL}/` + `mek.jsonl` | `data/export/{BOOK}_{CH}_{MODEL}.jsonl` | 22, 24 |
+| 27 | Export Run | `export:run` | Orchestrates: text → audio → align → export | All pipeline artifacts | 23, 24, 26 |
+| 28 | Export Run Gold | `export:run-gold` | Orchestrates gold subset | Gold pipeline artifacts | 23, 25, 26 |
+
+### Data Directory Layout
+
+```
+data/
+├── reference/          # Git-versioned: books.json, versification.json, known_gaps.json
+├── raw/
+│   ├── text/           # SZIT JSON, MEK HTML cache
+│   └── audio/          # Downloaded MP3s: {USX}/{chapter:03d}.mp3
+├── prepared/
+│   └── audio/          # Converted WAVs + metadata: {USX}/{chapter:03d}.{wav,meta.json,index.json}
+├── processed/
+│   ├── text/           # JSONL corpora: mek.jsonl, szit.jsonl, discrepancies
+│   └── evaluation/     # Gold evaluation results
+├── aligned/            # Alignment results by model: {MODEL}/{BOOK}_{CHAPTER}.json
+├── export/             # JSONL export outputs: {BOOK}_{CHAPTER}_{MODEL}.jsonl
+├── evaluation/         # Gold chapter evaluation: matched JSON + summary
+├── .hf-cache/          # HuggingFace model cache
+├── .torch-cache/       # PyTorch model cache
+└── .cache/             # Intermediate artifact cache
+```
+
+### Clean Tiers
+
+| Command | Clears | Preserves |
+|---------|--------|-----------|
+| `clean` | Python caches, `.pytest_cache/` | All data |
+| `clean:processed` | `data/processed/`, `data/aligned/`, `data/export/`, `data/evaluation/` | Raw, prepared, reference |
+| `clean:raw` | `data/raw/`, `data/prepared/`, `data/.hf-cache/`, `data/.torch-cache/`, `data/.cache/` | Processed, reference |
+| `clean:all` | All generated data | `data/reference/` (git-versioned) |
+
 ## Phases
 
 - [x] **Phase 1: Foundation & Versification Schema** - Canonical reference data, project structure, CLI scaffolding, and configuration for the Catholic Bible domain
