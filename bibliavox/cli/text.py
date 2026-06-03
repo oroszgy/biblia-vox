@@ -1,12 +1,16 @@
 """Text subcommand group for Bible text operations.
 
 Commands:
-    fetch         — Fetch and display Bible text by book/chapter
     info          — Show book info including chapter/verse counts
-    validate      — Validate verse counts against versification schema
-    normalize     — Normalize Bible text (NFC, whitespace, line endings)
-    convert-jsonl — Convert SZIT JSON to JSONL format with USX codes
-    fix-verses    — Fix embedded verse markers in JSONL
+    ingest-mek    — Download and parse MEK HTML text into a flat JSONL corpus
+
+Experimental (SZIT source):
+    fetch         — [EXPERIMENTAL] Fetch and display Bible text by book/chapter
+    validate      — [EXPERIMENTAL] Validate verse counts against versification schema
+    normalize     — [EXPERIMENTAL] Normalize Bible text (NFC, whitespace, line endings)
+    convert-jsonl — [EXPERIMENTAL] Convert SZIT JSON to JSONL format with USX codes
+    fix-verses    — [EXPERIMENTAL] Fix embedded verse markers in JSONL
+    cross-validate — [EXPERIMENTAL] Cross-validate SZIT vs MEK corpora
 """
 
 from __future__ import annotations
@@ -49,7 +53,7 @@ def fetch(
         None, "--chapter", "-c", help="Chapter number (omit for all)"
     ),
 ) -> None:
-    """Fetch and display Bible text."""
+    """[EXPERIMENTAL] Fetch and display Bible text from SZIT source."""
     # Resolve book
     book_obj = _resolve_book(book)
 
@@ -142,7 +146,7 @@ def validate(
         help="Fail when expected chapters are missing from source text",
     ),
 ) -> None:
-    """Validate verse counts against versification schema."""
+    """[EXPERIMENTAL] Validate verse counts against versification schema."""
     if not book and not all_books:
         console.print("[red]Specify --book or --all[/red]")
         raise typer.Exit(code=1)
@@ -287,7 +291,7 @@ def normalize(
     ),
     all_books: bool = typer.Option(False, "--all", "-a", help="Normalize all books"),
 ) -> None:
-    """Normalize Bible text (NFC, whitespace, line endings)."""
+    """[EXPERIMENTAL] Normalize Bible text (NFC, whitespace, line endings)."""
     if not book and not all_books:
         console.print("[red]Specify --book or --all[/red]")
         raise typer.Exit(code=1)
@@ -353,7 +357,7 @@ def convert_jsonl(
         help="Output JSONL path",
     ),
 ) -> None:
-    """Convert SZIT JSON to JSONL format with USX codes."""
+    """[EXPERIMENTAL] Convert SZIT JSON to JSONL format with USX codes."""
     from bibliavox.text.jsonl_converter import convert_to_jsonl
 
     output.parent.mkdir(parents=True, exist_ok=True)
@@ -376,7 +380,7 @@ def fix_verses(
         help="Output JSONL path",
     ),
 ) -> None:
-    """Fix embedded verse markers in JSONL file."""
+    """[EXPERIMENTAL] Fix embedded verse markers in JSONL file."""
     from bibliavox.text.splitter import fix_verses as split_verses
 
     stats = split_verses(input_path, output)
@@ -425,7 +429,7 @@ def cross_validate(
         help="Path to output JSONL discrepancy file",
     ),
 ) -> None:
-    """Cross-validate SZIT vs MEK corpora, flagging all coverage and textual discrepancies."""
+    """[EXPERIMENTAL] Cross-validate SZIT vs MEK corpora, flagging all coverage and textual discrepancies."""
     from bibliavox.text.cross_validator import cross_validate_corpora
 
     if not szit.exists():

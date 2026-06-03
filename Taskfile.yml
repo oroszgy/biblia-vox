@@ -55,53 +55,53 @@ tasks:
       - test -f data/reference/books.json
       - test -f data/reference/versification.json
 
-  text:fetch:
-    desc: Download SZIT Bible JSON from GitHub
+  experiment:text-fetch:
+    desc: "[EXPERIMENTAL] Download SZIT Bible JSON from GitHub"
     cmds:
       - mkdir -p data/raw/text
       - curl -L -o data/raw/text/H_Kaldi_SZIT.json https://raw.githubusercontent.com/peterpolgar/Biblia-json-xml/main/bibles_json_dict/full_bibles/H_Kaldi_SZIT.json
     status:
       - test -f data/raw/text/H_Kaldi_SZIT.json
 
-  text:test:
-    desc: Test text fetch with sample chapter
+  experiment:text-test:
+    desc: "[EXPERIMENTAL] Test text fetch with sample chapter"
     cmds:
       - uv run bibliavox text fetch --book GEN --chapter 1
-    deps: [text:fetch]
+    deps: [experiment:text-fetch]
 
-  text:normalize:
-    desc: Normalize all Bible text
+  experiment:text-normalize:
+    desc: "[EXPERIMENTAL] Normalize all Bible text"
     cmds:
       - uv run bibliavox text normalize --all
-    deps: [text:fetch]
+    deps: [experiment:text-fetch]
 
-  text:validate:
-    desc: Validate verse counts against versification schema
+  experiment:text-validate:
+    desc: "[EXPERIMENTAL] Validate verse counts against versification schema"
     cmds:
       - uv run bibliavox text validate --all --strict-missing-chapters
-    deps: [text:fetch]
+    deps: [experiment:text-fetch]
 
   data:coverage:
     desc: Strict coverage audit with known source gap policy
     cmds:
       - uv run bibliavox data coverage --allow-known-source-gaps --fail-on-unclassified
 
-  text:convert-jsonl:
-    desc: Convert SZIT JSON to JSONL format with USX codes
+  experiment:text-convert-jsonl:
+    desc: "[EXPERIMENTAL] Convert SZIT JSON to JSONL format with USX codes"
     cmds:
       - mkdir -p data/processed/text
       - uv run bibliavox text convert-jsonl
     status:
       - test -f data/processed/text/szit.jsonl
-    deps: [text:fetch]
+    deps: [experiment:text-fetch]
 
-  text:fix-verses:
-    desc: Fix embedded verse markers in JSONL
+  experiment:text-fix-verses:
+    desc: "[EXPERIMENTAL] Fix embedded verse markers in JSONL"
     cmds:
       - uv run bibliavox text fix-verses
     status:
       - test -f data/processed/text/szit-fixed.jsonl
-    deps: [text:convert-jsonl]
+    deps: [experiment:text-convert-jsonl]
 
   text:ingest-mek:
     desc: Download and parse MEK HTML text into processed JSONL corpus
@@ -111,11 +111,11 @@ tasks:
     status:
       - test -f data/processed/text/mek.jsonl
 
-  text:cross-validate:
-    desc: Cross-validate SZIT vs MEK corpora, flagging all coverage and textual discrepancies
+  experiment:text-cross-validate:
+    desc: "[EXPERIMENTAL] Cross-validate SZIT vs MEK corpora"
     cmds:
       - uv run bibliavox text cross-validate
-    deps: [text:fix-verses, text:ingest-mek]
+    deps: [experiment:text-fix-verses, text:ingest-mek]
 
   # NOTE: go-task parses task-level flags itself, so command flags like
   # `task audio:download --book GEN --chapter 1` are not supported.
@@ -177,16 +177,6 @@ tasks:
     desc: Run transcription, alignment, and metrics calculation on 10 gold chapters in Docker with GPU acceleration
     cmds:
       - docker compose run --rm align python -m bibliavox.main align evaluate-gold {{if .MODEL}}--model "{{.MODEL}}"{{end}}
-
-  align:forced:
-    desc: Run MMS_FA forced alignment on a chapter (requires BOOK/CHAPTER vars)
-    cmds:
-      - docker compose run --rm align python -m bibliavox.main align forced --book {{.BOOK}} --chapter {{.CHAPTER}}
-
-  align:forced-all:
-    desc: Run MMS_FA forced alignment on all prepared chapters
-    cmds:
-      - docker compose run --rm align python -m bibliavox.main align forced --all
 
   align:vibevoice:
     desc: Run VibeVoice alignment on a chapter (requires BOOK/CHAPTER vars)
