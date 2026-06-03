@@ -3,7 +3,6 @@ FROM pytorch/pytorch:2.5.1-cuda12.1-cudnn9-runtime
 ENV DEBIAN_FRONTEND=noninteractive
 ENV PYTHONUNBUFFERED=1
 
-# NOTE: torchaudio MMS_FA requires torchaudio >= 2.1.0. Base image PyTorch 2.5.1 is compatible.
 # transformers >= 4.44 requires PyTorch >= 2.4 for proper model loading.
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -21,7 +20,6 @@ RUN pip install --no-cache-dir \
     huggingface-hub \
     soundfile \
     librosa \
-    torchaudio \
     typer \
     pydantic-settings \
     tenacity \

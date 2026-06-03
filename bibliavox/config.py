@@ -8,7 +8,6 @@ Usage:
 
     settings = get_settings()
     print(settings.data_dir)  # Path("data")
-    print(settings.szentiras_api_key)  # "" (empty by default)
 """
 
 from __future__ import annotations
@@ -25,7 +24,7 @@ class ModelConfig(BaseModel):
 
     id: str
     """Repository ID or path to the model."""
-    type: Literal["faster-whisper", "vibevoice", "mms-fa", "ctc"]
+    type: Literal["faster-whisper", "vibevoice", "ctc"]
     """Type of the model for selecting the appropriate pipeline."""
 
 
@@ -35,7 +34,6 @@ class ModelGauntletSettings(BaseModel):
     models: list[ModelConfig] = [
         ModelConfig(id="systran/faster-whisper-large-v3", type="faster-whisper"),
         ModelConfig(id="microsoft/VibeVoice-ASR-HF", type="vibevoice"),
-        ModelConfig(id="facebook/mms-1b-fl102", type="mms-fa"),
         ModelConfig(id="sarpba/wav2vec2-large-xlsr-53-hungarian", type="ctc"),
     ]
 
@@ -47,7 +45,6 @@ class BibliavoxSettings(BaseSettings):
     - BIBLIAVOX_DATA_DIR
     - BIBLIAVOX_CACHE_DIR
     - BIBLIAVOX_REFERENCE_DATA_PATH
-    - BIBLIAVOX_SZENTIRAS_API_KEY
     """
 
     model_config = SettingsConfigDict(
@@ -71,13 +68,6 @@ class BibliavoxSettings(BaseSettings):
 
     gauntlet: ModelGauntletSettings = ModelGauntletSettings()
     """Configuration for the model gauntlet."""
-
-    # API keys
-    szentiras_api_key: str = ""
-    """API key for szentiras.eu. Empty by default (requires manual setup)."""
-
-    openai_api_key: str = ""
-    """API key for OpenAI Whisper API evaluation. Empty by default."""
 
     # Gold chapter configuration (D-12)
     gold_chapters: str = "TIT 1,TIT 2,TIT 3,TOB 1,TOB 2,TOB 3,TOB 4,ZEP 1,ZEP 2,ZEP 3"
