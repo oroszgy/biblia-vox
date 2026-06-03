@@ -437,7 +437,7 @@ def evaluate_gold_command(
             )
             raise typer.Exit(1)
 
-    eval_dir = settings.data_dir / "processed" / "evaluation"
+    eval_dir = settings.data_dir / "evaluation"
     eval_dir.mkdir(parents=True, exist_ok=True)
 
     summary_data = {}

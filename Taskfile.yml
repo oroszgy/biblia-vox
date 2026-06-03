@@ -250,7 +250,9 @@ tasks:
           GOLD: "true"
     deps:
       - export:prepare-audio
-      - export:align-gold
+      - task: export:align-gold
+        vars:
+          MODEL: "{{.MODEL}}"
 
   sync:
     desc: Install/sync dependencies

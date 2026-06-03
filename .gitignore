@@ -28,6 +28,7 @@ Thumbs.db
 # Data (large files, downloaded content)
 data/raw/
 data/parsed/
+data/evaluation
 data/processed/
 data/aligned/
 data/export/
