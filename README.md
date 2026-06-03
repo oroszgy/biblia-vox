@@ -6,9 +6,9 @@ Hungarian Catholic Bible verse-to-audio alignment tool. Maps every verse of the 
 
 BibliaVox solves a specific problem: locating any verse of the Hungarian Catholic Bible (Szent István Társulat translation) within audio recordings. The pipeline:
 
-1. **Acquires text** from multiple sources (SZIT JSON, MEK HTML) covering all 73 Catholic Bible books
+1. **Acquires text** from MEK HTML (primary, all 73 Catholic books)
 2. **Downloads and prepares audio** from mek.oszk.hu per-chapter MP3 recordings
-3. **Aligns text to audio** using speech recognition models (VibeVoice, faster-whisper, MMS_FA)
+3. **Aligns text to audio** using speech recognition models (VibeVoice, faster-whisper, wav2vec2 CTC)
 4. **Exports JSONL** with precise timestamps, confidence scores, and text matching metrics
 
 **Core value:** Every verse can be located in its audio recording — with timestamps and quality metadata.
@@ -19,10 +19,7 @@ BibliaVox solves a specific problem: locating any verse of the Hungarian Catholi
 graph TB
     subgraph "Text Pipeline"
         T1[mek.oszk.hu HTML] -->|text:ingest-mek| T2[mek.jsonl]
-        T3[peterpolgar/Biblia-json-xml] -->|text:fetch| T4[H_Kaldi_SZIT.json]
-        T4 -->|text:normalize| T5[szit.jsonl]
         T2 --> T6[Verse Lookup]
-        T5 --> T6
     end
 
     subgraph "Audio Pipeline"
@@ -33,7 +30,7 @@ graph TB
     subgraph "Alignment Pipeline"
         A3 -->|align:run-all| AL1[VibeVoice ASR]
         A3 -->|align:run-all| AL2[faster-whisper]
-        A3 -->|align:run-all| AL3[MMS_FA]
+        A3 -->|align:run-all| AL3[wav2vec2 CTC]
         T6 --> AL1
         T6 --> AL2
         T6 --> AL3
@@ -82,7 +79,7 @@ go-task export:run MODEL=microsoft/VibeVoice-ASR-HF
 | Command | Description | Input | Output |
 |---------|-------------|-------|--------|
 | `go-task text:ingest-mek` | Download and parse MEK HTML text corpus | mek.oszk.hu | `data/processed/text/mek.jsonl` |
-| `go-task text:cross-validate` | Cross-validate SZIT vs MEK text coverage | `data/processed/text/*.jsonl` | Terminal |
+| `go-task data:coverage` | Strict coverage audit | `data/processed/text/mek.jsonl`, audio | Terminal |
 
 ### Audio Pipeline
 
@@ -107,6 +104,19 @@ go-task export:run MODEL=microsoft/VibeVoice-ASR-HF
 | `go-task export:run-gold` | Full pipeline on gold chapters only | Same as above (filtered) | `data/export/*_{MODEL}.jsonl` |
 | `go-task export:jsonl` | Export alignment to JSONL | `data/evaluation/*_matched.json` | `data/export/{BOOK}_{CHAPTER}_{MODEL}.jsonl` |
 | `go-task export:align` | Run alignment on all chapters | `data/prepared/audio/` | `data/aligned/{MODEL}/{BOOK}/{CHAPTER}.json` |
+
+### Experimental Tasks (SZIT Source)
+
+These tasks use the alternative SZIT text source (66 books only, vs MEK's 73 books). The main pipeline uses MEK exclusively.
+
+| Command | Description |
+|---------|-------------|
+| `go-task experiment:text-fetch` | Download SZIT Bible JSON from GitHub |
+| `go-task experiment:text-convert-jsonl` | Convert SZIT JSON to JSONL |
+| `go-task experiment:text-fix-verses` | Fix embedded verse markers |
+| `go-task experiment:text-cross-validate` | Cross-validate SZIT vs MEK corpora |
+| `go-task experiment:text-validate` | Validate SZIT verse counts |
+| `go-task experiment:text-normalize` | Normalize SZIT text |
 
 **Variables:**
 - `MODEL=` — Model ID (default: `microsoft/VibeVoice-ASR-HF`)
@@ -135,12 +145,10 @@ Each line in the output JSONL contains:
 
 ## Data Sources
 
-| Source | Content | Coverage |
-|--------|---------|----------|
-| **mek.oszk.hu** | Audio MP3s + HTML text | 73 books, 1175 chapters |
-| **peterpolgar/Biblia-json-xml** | SZIT JSON (H_Kaldi_SZIT.json) | 66 books |
-
-> **Note:** The szentiras.eu API was considered as a text source but requires an API key. The peterpolgar/Biblia-json-xml GitHub repo provides the same SZIT translation in a more accessible format.
+| Source | Content | Coverage | Role |
+|--------|---------|----------|------|
+| **mek.oszk.hu** | Audio MP3s + HTML text | 73 books, 1175 chapters | Primary |
+| **peterpolgar/Biblia-json-xml** | SZIT JSON (H_Kaldi_SZIT.json) | 66 books | Experimental |
 
 ## Dependencies
 
@@ -163,9 +171,9 @@ Each line in the output JSONL contains:
 
 | Model | Type | Use Case |
 |-------|------|----------|
-| `microsoft/VibeVoice-ASR-HF` | ASR + RapidFuzz | Best quality, Hungarian Bible |
-| `systran/faster-whisper-large-v3` | Whisper | General purpose |
-| `facebook/mms-1b-fl102` | Forced alignment | Phone-level timestamps |
+| `microsoft/VibeVoice-ASR-HF` | ASR + RapidFuzz | Best quality (WER: 0.69) |
+| `systran/faster-whisper-large-v3` | Whisper | General purpose (WER: 0.72) |
+| `sarpba/wav2vec2-large-xlsr-53-hungarian` | CTC | Fastest (WER: 0.86) |
 
 ## Project Structure
 

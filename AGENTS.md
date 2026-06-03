@@ -63,8 +63,8 @@ This project uses the Get Shit Done (GSD) workflow system. Planning documents ar
 
 ### Current State
 
-- **Phase:** 1 of 8 (Foundation & Versification Schema)
-- **Status:** Complete
+- **Phase:** 8 of 8 (Operations & Pipeline Hardening)
+- **Status:** Ready to plan
 
 ### Workflow Commands
 
@@ -88,20 +88,27 @@ This project uses the Get Shit Done (GSD) workflow system. Planning documents ar
 
 ## Data Sources
 
-- **Text (primary):** szentiras.eu API (SZIT translation) — needs API key
-- **Text (fallback):** mek.oszk.hu HTML scraping
+- **Text (primary):** mek.oszk.hu HTML scraping (all 73 Catholic books)
+- **Text (experimental):** peterpolgar/Biblia-json-xml (SZIT translation, 66 books only)
 - **Audio:** mek.oszk.hu per-chapter MP3s (Szent István Társulat)
+
+## Alignment Models
+
+| Model | Type | Status |
+|-------|------|--------|
+| `microsoft/VibeVoice-ASR-HF` | ASR + RapidFuzz | Working (best WER: 0.69) |
+| `systran/faster-whisper-large-v3` | Whisper | Working (WER: 0.72) |
+| `sarpba/wav2vec2-large-xlsr-53-hungarian` | CTC | Working (WER: 0.86, fastest) |
 
 ## Key Decisions
 
-- Start with Szent István Társulat only (same translation for text and audio)
-- Transcribe-then-match architecture (faster-whisper + RapidFuzz)
-- torchaudio MMS_FA as secondary forced alignment tier
+- MEK as primary text source (covers all 73 Catholic books)
+- SZIT text pipeline kept as experimental (only 66 books)
+- Transcribe-then-match architecture (ASR + RapidFuzz)
 - Docker for model-heavy stages only, native Python for lightweight stages
 - Each phase delivers working Typer commands and Taskfile targets
 
 ## Known Blockers
 
-- szentiras.eu API key requires emailing maintainers
 - mek.oszk.hu audio completeness for all 73 Catholic books unverified
 - Hungarian Whisper LoRA performance on Bible narration unverified
