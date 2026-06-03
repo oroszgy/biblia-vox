@@ -19,7 +19,7 @@ BibliaVox solves a specific problem: locating any verse of the Hungarian Catholi
 graph TB
     subgraph "Text Pipeline"
         T1[mek.oszk.hu HTML] -->|text:ingest-mek| T2[mek.jsonl]
-        T3[szentiras.eu API] -->|text:fetch| T4[H_Kaldi_SZIT.json]
+        T3[peterpolgar/Biblia-json-xml] -->|text:fetch| T4[H_Kaldi_SZIT.json]
         T4 -->|text:normalize| T5[szit.jsonl]
         T2 --> T6[Verse Lookup]
         T5 --> T6
@@ -138,8 +138,9 @@ Each line in the output JSONL contains:
 | Source | Content | Coverage |
 |--------|---------|----------|
 | **mek.oszk.hu** | Audio MP3s + HTML text | 73 books, 1175 chapters |
-| **szentiras.eu** | SZIT JSON (via API) | 66 books |
-| **peterpolgar/Biblia-json-xml** | SZIT JSON (GitHub) | 66 books |
+| **peterpolgar/Biblia-json-xml** | SZIT JSON (H_Kaldi_SZIT.json) | 66 books |
+
+> **Note:** The szentiras.eu API was considered as a text source but requires an API key. The peterpolgar/Biblia-json-xml GitHub repo provides the same SZIT translation in a more accessible format.
 
 ## Dependencies
 
