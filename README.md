@@ -17,50 +17,73 @@ BibliaVox solves a specific problem: locating any verse of the Hungarian Catholi
 
 ```mermaid
 graph TB
-    subgraph "Text Pipeline"
-        T1[mek.oszk.hu HTML] -->|text:ingest-mek| T2[mek.jsonl]
-        T2 --> T6[Verse Lookup]
+    subgraph "Shared Setup"
+        T1[/"mek.oszk.hu HTML"/] -->|text:ingest-mek| T2([mek.jsonl])
+        A1[/"mek.oszk.hu MP3s"/] -->|audio:download-all| A2([Raw MP3s])
+        A2 -->|audio:prepare-all| A3([16kHz WAV])
     end
 
-    subgraph "Audio Pipeline"
-        A1[mek.oszk.hu MP3s] -->|audio:download-all| A2[Raw MP3s]
-        A2 -->|audio:prepare-all| A3[16kHz WAV + Metadata]
+    T2 -->|export:align| X1
+    A3 -->|export:align| X1
+    T2 -->|align:evaluate-gold| E1
+    A3 -->|align:evaluate-gold| E1
+
+    subgraph EVAL["1. Evaluate"]
+        E1([Evaluation Summary<br/><i>WER · CER · Confidence</i>])
     end
 
-    subgraph "Alignment Pipeline"
-        A3 -->|align:run-all| AL1[VibeVoice ASR]
-        A3 -->|align:run-all| AL2[faster-whisper]
-        A3 -->|align:run-all| AL3[wav2vec2 CTC]
-        T6 --> AL1
-        T6 --> AL2
-        T6 --> AL3
-        AL1 --> AL4[Matched Verses]
-        AL2 --> AL4
-        AL3 --> AL4
-    end
-
-    subgraph "Export Pipeline"
-        AL4 -->|export:jsonl| E1[JSONL with timestamps]
-        E1 --> E2[data/export/*.jsonl]
+    subgraph EXPORT["2. Export"]
+        X1([Matched verses])
+        X1 -->|export:jsonl| X2([Verse-to-Audio JSONL])
     end
 
     style T1 fill:#e1f5fe
     style A1 fill:#e1f5fe
-    style E2 fill:#c8e6c9
+    style E1 fill:#fff3e0
+    style X2 fill:#c8e6c9
 ```
 
-## Quick Start
+## Use Cases
+
+### 1. Evaluate a Model
+
+Compare alignment models on a small set of "gold" chapters to check quality before committing to a full run.
 
 ```bash
 # Install dependencies
 uv sync
 
-# Run full pipeline on gold chapters (fast, for testing)
-go-task export:run-gold MODEL=microsoft/VibeVoice-ASR-HF
+# Pre-download model weights
+go-task align:setup
 
-# Run full pipeline on all 1175 chapters
-go-task export:run MODEL=microsoft/VibeVoice-ASR-HF
+# Run ALL gauntlet models on 10 gold chapters (no MODEL= specified)
+go-task align:evaluate-gold
+
+# Or run a single model
+go-task align:evaluate-gold MODEL=microsoft/VibeVoice-ASR-HF
 ```
+
+Results are saved to `data/evaluation/` with WER, CER, and confidence metrics per verse.
+
+### 2. Generate Verse-to-Audio Mappings
+
+Run the full pipeline to produce JSONL output mapping every verse to its audio timestamp.
+
+```bash
+# Install dependencies
+uv sync
+
+# Run on gold chapters only (fast, ~30 chapters)
+go-task export:run-gold
+
+# Run on all 1175 chapters
+go-task export:run
+
+# Use a different model
+go-task export:run MODEL=systran/faster-whisper-large-v3
+```
+
+Output is written to `data/export/`. See [JSONL Output Format](#jsonl-output-format) for the schema.
 
 ## Taskfile Commands
 
@@ -118,10 +141,13 @@ These tasks use the alternative SZIT text source (66 books only, vs MEK's 73 boo
 | `go-task experiment:text-validate` | Validate SZIT verse counts |
 | `go-task experiment:text-normalize` | Normalize SZIT text |
 
-**Variables:**
-- `MODEL=` — Model ID (default: `microsoft/VibeVoice-ASR-HF`)
-- `GOLD=true` — Restrict to gold chapters (TIT 1-3, TOB 1-4, ZEP 1-3)
-- `FORCE=true` — Force re-run, skip cache
+### Common Variables
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `MODEL=` | *(all gauntlet models)* | Model ID to use for alignment. Omit to run all models. |
+| `GOLD=true` | — | Restrict to gold chapters (TIT 1-3, TOB 1-4, ZEP 1-3) |
+| `FORCE=true` | — | Force re-run, skip cache |
 
 ## JSONL Output Format
 
