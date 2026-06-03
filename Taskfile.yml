@@ -175,6 +175,11 @@ tasks:
 
   align:evaluate-gold:
     desc: Run transcription, alignment, and metrics calculation on 10 gold chapters in Docker with GPU acceleration
+    deps:
+      - text:ingest-mek
+      - audio:download-all
+      - audio:convert-all
+      - audio:prepare-all
     cmds:
       - docker compose run --rm align python -m bibliavox.main align evaluate-gold {{if .MODEL}}--model "{{.MODEL}}"{{end}}
 
@@ -252,11 +257,33 @@ tasks:
     cmds:
       - uv sync
 
-  clean:
-    desc: Clean generated files and caches
+  clean:python:
+    desc: Clear Python caches and test artifacts only
     cmds:
-      - rm -rf data/.cache/
-      - rm -rf data/reference/*.json
       - rm -rf .pytest_cache/
-      - rm -rf __pycache__/ {{.PACKAGE}}/__pycache__/ tests/__pycache__/
       - find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null || true
+
+  clean:processed:
+    desc: Clear prepared, and processed pipeline outputs (JSONL, evaluation, alignment, export, MP3s, WAVs, model caches)
+    cmds:
+      - rm -rf data/processed/
+      - rm -rf data/aligned/
+      - rm -rf data/export/
+      - rm -rf data/evaluation/
+      - rm -rf data/prepared/
+
+  clean:raw:
+    desc: Clear raw downloads
+    cmds:
+      - rm -rf data/raw/
+
+  clean:cache:
+    desc: Clear caches (huggingface, torch, general) - use if you want to free up disk but keep processed data
+    cmds:
+      - rm -rf data/.hf-cache/
+      - rm -rf data/.torch-cache/
+      - rm -rf data/.cache/
+
+  clean:all:
+    desc: Clear all generated data (reference data is git-versioned, preserved)
+    deps: [clean:processed, clean:raw, clean:cache, clean:python]
