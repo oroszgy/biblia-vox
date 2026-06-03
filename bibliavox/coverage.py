@@ -17,8 +17,6 @@ from bibliavox.audio.discovery import (
 )
 from bibliavox.reference.books import Book, get_all_books
 from bibliavox.reference.schema import BookSchema, load_versification
-from bibliavox.text.mapping import load_book_mapping
-from bibliavox.text.source import load_szit_json
 
 
 @dataclass(frozen=True, slots=True)
@@ -122,6 +120,25 @@ def _classify_book_gaps(
     return "none"
 
 
+def _load_mek_text_coverage(mek_jsonl_path: Path) -> dict[str, set[int]]:
+    """Load MEK JSONL and return mapping of USX code to set of chapter numbers."""
+    coverage: dict[str, set[int]] = {}
+    if not mek_jsonl_path.exists():
+        return coverage
+    with open(mek_jsonl_path, encoding="utf-8") as f:
+        for line in f:
+            if not line.strip():
+                continue
+            verse = json.loads(line)
+            book = verse.get("book", "")
+            chapter = verse.get("chapter")
+            if book and chapter is not None:
+                if book not in coverage:
+                    coverage[book] = set()
+                coverage[book].add(int(chapter))
+    return coverage
+
+
 def _fetch_remote_manifest() -> list[ManifestItem]:
     playlist_url = f"{BASE_AUDIO_URL}/biblia.m3u"
     timeout = httpx.Timeout(connect=30.0, read=60.0, write=30.0, pool=10.0)
@@ -138,23 +155,19 @@ def audit_coverage(
     known_gaps_path: Path = Path("data/reference/known_gaps.json"),
     raw_audio_root: Path = Path("data/raw/audio"),
     prepared_audio_root: Path = Path("data/prepared/audio"),
-    raw_text_dir: Path = Path("data/raw/text"),
+    mek_jsonl_path: Path = Path("data/processed/text/mek.jsonl"),
     include_remote_audio: bool = True,
     schemas: list[BookSchema] | None = None,
     books: list[Book] | None = None,
-    mapping: dict[str, str] | None = None,
-    szit_data: dict | None = None,
     remote_manifest: list[ManifestItem] | None = None,
 ) -> dict[str, object]:
     """Run strict coverage audit and return structured report."""
     schemas = schemas or load_versification()
     books = books or get_all_books()
-    mapping = mapping or load_book_mapping()
-    szit_data = szit_data or load_szit_json(raw_text_dir)
+    mek_coverage = _load_mek_text_coverage(mek_jsonl_path)
     known = load_known_gaps(known_gaps_path)
 
     by_book = {book.usx_code: book for book in books}
-    rev_mapping = {usx: eng for eng, usx in mapping.items()}
     scoped_schemas = [
         schema
         for schema in schemas
@@ -192,10 +205,7 @@ def audit_coverage(
         usx = schema.usx_code
         expected = set(range(1, schema.chapter_count + 1))
 
-        english_name = rev_mapping.get(usx)
-        actual_text_chapters: set[int] = set()
-        if english_name is not None and english_name in szit_data:
-            actual_text_chapters = {int(ch) for ch in szit_data[english_name].keys()}
+        actual_text_chapters = mek_coverage.get(usx, set())
 
         missing_text_chapters = sorted(expected - actual_text_chapters)
         extra_text_chapters = sorted(actual_text_chapters - expected)
