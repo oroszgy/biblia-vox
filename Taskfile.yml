@@ -206,29 +206,31 @@ tasks:
       - test -f data/processed/text/mek.jsonl
 
   export:prepare-audio:
-    desc: Prepare audio for gold chapters (download + convert + index)
+    desc: Prepare audio for all chapters (download + convert + index)
     cmds:
       - task: audio:prepare-all
 
   export:align:
-    desc: Run alignment on gold chapters in Docker with GPU
+    desc: Run alignment on all prepared chapters in Docker with GPU
+    cmds:
+      - docker compose run --rm align python -m bibliavox.main align run-all {{if .MODEL}}--model "{{.MODEL}}"{{end}}{{if .FORCE}} --force{{end}}
+
+  export:align-gold:
+    desc: Run alignment on gold chapters only (for evaluation)
     cmds:
       - docker compose run --rm align python -m bibliavox.main align evaluate-gold {{if .MODEL}}--model "{{.MODEL}}"{{end}}
-    status:
-      # Skip if evaluation data exists with all gold chapters covered and not forced
-      - '{{if .FORCE}}false{{else}}uv run python -c "import json, sys; s=json.load(open(\"data/evaluation/summary.json\")); chapters={e.get(\"chapter\",\"\") for e in (s if isinstance(s,list) else s.get(\"chapters\",s.get(\"results\",[])))}; gold=[\"TIT 1\",\"TIT 2\",\"TIT 3\",\"TOB 1\",\"TOB 2\",\"TOB 3\",\"TOB 4\",\"ZEP 1\",\"ZEP 2\",\"ZEP 3\"]; sys.exit(0 if all(g in chapters for g in gold) else 1)"{{end}}'
 
   export:jsonl:
-    desc: Export alignment results to JSONL (GOLD=true for gold chapters, MODEL=... to override)
+    desc: Export alignment results to JSONL (use GOLD=true for gold chapters only)
     vars:
       MODEL: '{{default "microsoft/VibeVoice-ASR-HF" .MODEL}}'
     cmds:
-      - uv run bibliavox export jsonl --gold --model "{{.MODEL}}"{{if .FORCE}} --force{{end}}
+      - uv run bibliavox export jsonl {{if .GOLD}}--gold{{end}} --model "{{.MODEL}}"{{if .FORCE}} --force{{end}}
     deps:
       - export:fetch-text
 
   export:run:
-    desc: Run full pipeline on gold chapters (text → audio → align → export)
+    desc: Run full pipeline on all chapters (text → audio → align → export)
     vars:
       MODEL: '{{default "microsoft/VibeVoice-ASR-HF" .MODEL}}'
     cmds:
@@ -236,9 +238,24 @@ tasks:
         vars:
           MODEL: "{{.MODEL}}"
           FORCE: "{{.FORCE}}"
+          GOLD: "{{.GOLD}}"
     deps:
       - export:prepare-audio
       - export:align
+
+  export:run-gold:
+    desc: Run full pipeline on gold chapters only (for evaluation)
+    vars:
+      MODEL: '{{default "microsoft/VibeVoice-ASR-HF" .MODEL}}'
+    cmds:
+      - task: export:jsonl
+        vars:
+          MODEL: "{{.MODEL}}"
+          FORCE: "{{.FORCE}}"
+          GOLD: "true"
+    deps:
+      - export:prepare-audio
+      - export:align-gold
 
   sync:
     desc: Install/sync dependencies

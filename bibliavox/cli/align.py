@@ -5,6 +5,13 @@ from typing import Any
 
 import typer
 from rich.console import Console
+from rich.progress import (
+    BarColumn,
+    Progress,
+    SpinnerColumn,
+    TextColumn,
+    TimeRemainingColumn,
+)
 from rich.table import Table
 
 from bibliavox.align.evaluate import (
@@ -327,6 +334,168 @@ def vibevoice_command(
 
         console.print(table)
         console.print(f"[green]Saved direct alignment results to {direct_path}[/green]")
+
+
+@app.command("run-all")
+def run_all_command(
+    model: str = typer.Option(
+        None, help="Specific model ID to run (defaults to all in gauntlet)"
+    ),
+    force: bool = typer.Option(False, help="Force re-run even if cached"),
+) -> None:
+    """Run alignment on all prepared chapters with caching."""
+    settings = get_settings()
+
+    # Load canonical verses from MEK (primary source: all 73 books)
+    text_path = settings.data_dir / "processed" / "text" / "mek.jsonl"
+    if not text_path.exists():
+        console.print(f"[red]Error: Text corpus not found at {text_path}[/red]")
+        raise typer.Exit(1)
+
+    # Build verse lookup by (book, chapter)
+    verse_lookup: dict[tuple[str, int], list[dict[str, Any]]] = {}
+    with open(text_path, "r", encoding="utf-8") as f:
+        for line in f:
+            if not line.strip():
+                continue
+            verse = json.loads(line)
+            key = (verse.get("book", ""), int(verse.get("chapter", 0)))
+            if key not in verse_lookup:
+                verse_lookup[key] = []
+            verse_lookup[key].append(
+                {
+                    "verse_id": str(verse.get("verse", "")),
+                    "text": verse.get("text", ""),
+                }
+            )
+
+    # Find all prepared audio files
+    audio_dir = settings.data_dir / "prepared" / "audio"
+    if not audio_dir.exists():
+        console.print(f"[red]Error: Audio directory not found at {audio_dir}[/red]")
+        raise typer.Exit(1)
+
+    chapters: list[tuple[str, int]] = []
+    for book_dir in sorted(audio_dir.iterdir()):
+        if not book_dir.is_dir():
+            continue
+        for wav_file in sorted(book_dir.glob("*.wav")):
+            chapter_num = int(wav_file.stem)
+            chapters.append((book_dir.name, chapter_num))
+
+    console.print(f"[cyan]Found {len(chapters)} prepared chapters[/cyan]")
+
+    # Select models
+    models_to_run = settings.gauntlet.models
+    if model:
+        models_to_run = [m for m in models_to_run if m.id == model]
+        if not models_to_run:
+            console.print(
+                f"[red]Error: Model {model} not found in gauntlet configuration[/red]"
+            )
+            raise typer.Exit(1)
+
+    eval_dir = settings.data_dir / "evaluation"
+    eval_dir.mkdir(parents=True, exist_ok=True)
+
+    total_exported = 0
+    total_skipped = 0
+    total_failed = 0
+
+    for model_config in models_to_run:
+        model_safe_name = model_config.id.replace("/", "_")
+        console.print(f"\n[bold cyan]Processing model: {model_config.id}[/bold cyan]")
+
+        with Progress(
+            SpinnerColumn(),
+            TextColumn("[bold blue]{task.description}"),
+            BarColumn(),
+            TextColumn("[progress.percentage]{task.percentage:>3.0f}%"),
+            TimeRemainingColumn(),
+            console=console,
+        ) as progress:
+            task = progress.add_task(
+                f"Aligning {model_config.id}...", total=len(chapters)
+            )
+
+            for book, chapter in chapters:
+                # Check cache
+                if not force:
+                    cached = load_cached_result(
+                        model_safe_name, book, chapter, settings.data_dir
+                    )
+                    if cached is not None:
+                        total_skipped += 1
+                        progress.advance(task)
+                        continue
+
+                # Get verses for this chapter
+                chapter_verses = verse_lookup.get((book, chapter), [])
+                if not chapter_verses:
+                    progress.advance(task)
+                    continue
+
+                audio_path = audio_dir / book / f"{chapter:03d}.wav"
+                if not audio_path.exists():
+                    progress.advance(task)
+                    continue
+
+                # Run alignment
+                try:
+                    if model_config.type == "mms-fa":
+                        raw_results = align_chapter(
+                            audio_path, chapter_verses, device="cuda"
+                        )
+                        matched = []
+                        for r in raw_results:
+                            word_scores = [
+                                w.get("score", 0.0) for w in r.get("words", [])
+                            ]
+                            avg_score = (
+                                sum(word_scores) / len(word_scores) * 100.0
+                                if word_scores
+                                else 0.0
+                            )
+                            matched.append(
+                                {
+                                    "verse_id": r["verse_id"],
+                                    "start_sec": r["start_sec"],
+                                    "end_sec": r["end_sec"],
+                                    "confidence_score": avg_score,
+                                    "canonical_text": next(
+                                        (
+                                            v["text"]
+                                            for v in chapter_verses
+                                            if v["verse_id"] == r["verse_id"]
+                                        ),
+                                        "",
+                                    ),
+                                    "matched_text": " ".join(
+                                        w.get("word", "") for w in r.get("words", [])
+                                    ),
+                                }
+                            )
+                    else:
+                        words = transcribe_audio(
+                            audio_path, model_config, settings.models_dir
+                        )
+                        matched = match_verses(chapter_verses, words)
+
+                    save_cached_result(
+                        matched, model_safe_name, book, chapter, settings.data_dir
+                    )
+                    total_exported += 1
+
+                except Exception as e:
+                    console.print(f"[red]  Failed {book} {chapter}: {e}[/red]")
+                    total_failed += 1
+
+                progress.advance(task)
+
+    console.print("\n[green]Alignment complete![/green]")
+    console.print(f"  Chapters processed: {total_exported}")
+    console.print(f"  Chapters skipped (cached): {total_skipped}")
+    console.print(f"  Chapters failed: {total_failed}")
 
 
 @app.command("evaluate-gold")

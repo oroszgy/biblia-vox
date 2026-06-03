@@ -35,7 +35,7 @@ _MATCHED_FILE_PATTERN = re.compile(r"^([A-Z0-9]+)_(\d+)_(.+)_matched\.json$")
 
 @app.command("jsonl")
 def jsonl_command(
-    gold: bool = typer.Option(False, help="Export gold chapters only"),
+    gold: bool = typer.Option(False, help="Export gold chapters only (for evaluation)"),
     model: str = typer.Option(
         None, help="Specific model ID to export (defaults to all evaluated)"
     ),
@@ -43,19 +43,6 @@ def jsonl_command(
 ) -> None:
     """Export alignment results to JSONL format with full metadata."""
     settings = get_settings()
-
-    if not gold:
-        console.print(
-            "[red]Error: Must specify --gold (single chapter export not yet supported)[/red]"
-        )
-        raise typer.Exit(1)
-
-    # Parse gold chapters from config (D-12)
-    try:
-        gold_chapters = parse_gold_chapters(settings.gold_chapters)
-    except ValueError as e:
-        console.print(f"[red]Error parsing gold chapters: {e}[/red]")
-        raise typer.Exit(1)
 
     # Create output directory
     export_dir = settings.data_dir / "export"
@@ -67,8 +54,20 @@ def jsonl_command(
         console.print(f"[red]Error: Evaluation directory not found at {eval_dir}[/red]")
         raise typer.Exit(1)
 
-    # Build gold chapter lookup for fast filtering
-    gold_set = set(gold_chapters)
+    # Determine chapters to export
+    if gold:
+        # Parse gold chapters from config (D-12)
+        try:
+            gold_chapters = parse_gold_chapters(settings.gold_chapters)
+        except ValueError as e:
+            console.print(f"[red]Error parsing gold chapters: {e}[/red]")
+            raise typer.Exit(1)
+        chapter_filter = set(gold_chapters)
+        console.print("[cyan]Exporting gold chapters only[/cyan]")
+    else:
+        # Export all chapters with alignment results
+        chapter_filter = None
+        console.print("[cyan]Exporting all chapters[/cyan]")
 
     # Find all matched files
     matched_files = []
@@ -84,8 +83,8 @@ def jsonl_command(
         chapter_num = int(match.group(2))
         model_safe = match.group(3)
 
-        # Filter by gold chapters
-        if (book, chapter_num) not in gold_set:
+        # Filter by chapters if gold mode
+        if chapter_filter is not None and (book, chapter_num) not in chapter_filter:
             continue
 
         # Filter by model if specified
@@ -98,10 +97,10 @@ def jsonl_command(
         matched_files.append((f, book, chapter_num, model_safe))
 
     if not matched_files:
-        console.print(
-            "[yellow]No matching evaluation files found for gold chapters[/yellow]"
-        )
+        console.print("[yellow]No matching evaluation files found[/yellow]")
         raise typer.Exit(0)
+
+    console.print(f"[cyan]Found {len(matched_files)} chapters to export[/cyan]")
 
     # Reset canonical text cache to ensure fresh load
     reset_canonical_text_cache()
