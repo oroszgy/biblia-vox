@@ -236,7 +236,9 @@ tasks:
           GOLD: "{{.GOLD}}"
     deps:
       - export:prepare-audio
-      - export:align
+      - task: export:align
+        vars:
+          MODEL: "{{.MODEL}}"
 
   export:run-gold:
     desc: Run full pipeline on gold chapters only (for evaluation)
