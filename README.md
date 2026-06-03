@@ -69,48 +69,48 @@ go-task export:run MODEL=microsoft/VibeVoice-ASR-HF
 
 ### Development
 
-| Command | Description |
-|---------|-------------|
-| `go-task lint` | Run ruff linter |
-| `go-task format` | Auto-format code with ruff |
-| `go-task typecheck` | Run ty type checker |
-| `go-task test` | Run test suite |
-| `go-task quality` | All checks (lint + format + typecheck + test) |
+| Command | Description | Input | Output |
+|---------|-------------|-------|--------|
+| `go-task lint` | Run ruff linter | `bibliavox/`, `tests/` | Terminal |
+| `go-task format` | Auto-format code with ruff | `bibliavox/`, `tests/` | In-place |
+| `go-task typecheck` | Run ty type checker | `bibliavox/` | Terminal |
+| `go-task test` | Run test suite | `tests/` | Terminal |
+| `go-task quality` | All checks (lint + format + typecheck + test) | `bibliavox/`, `tests/` | Terminal |
 
 ### Text Pipeline
 
-| Command | Description |
-|---------|-------------|
-| `go-task text:ingest-mek` | Download and parse MEK HTML text corpus |
-| `go-task text:cross-validate` | Cross-validate SZIT vs MEK text coverage |
+| Command | Description | Input | Output |
+|---------|-------------|-------|--------|
+| `go-task text:ingest-mek` | Download and parse MEK HTML text corpus | mek.oszk.hu | `data/processed/text/mek.jsonl` |
+| `go-task text:cross-validate` | Cross-validate SZIT vs MEK text coverage | `data/processed/text/*.jsonl` | Terminal |
 
 ### Audio Pipeline
 
-| Command | Description |
-|---------|-------------|
-| `go-task audio:download-all` | Download all chapter MP3s from MEK |
-| `go-task audio:prepare-all` | Convert MP3s to 16kHz WAV with metadata |
+| Command | Description | Input | Output |
+|---------|-------------|-------|--------|
+| `go-task audio:download-all` | Download all chapter MP3s from MEK | mek.oszk.hu playlist | `data/raw/audio/{BOOK}/{CHAPTER}.mp3` |
+| `go-task audio:prepare-all` | Convert MP3s to 16kHz WAV with metadata | `data/raw/audio/` | `data/prepared/audio/{BOOK}/{CHAPTER}.wav` + `.meta.json` + `.index.json` |
 
 ### Alignment Pipeline
 
-| Command | Description |
-|---------|-------------|
-| `go-task align:vibevoice BOOK=GEN CHAPTER=1` | Run VibeVoice on single chapter |
-| `go-task align:evaluate-gold` | Evaluate models on 10 gold chapters |
-| `go-task align:setup` | Pre-download model weights |
+| Command | Description | Input | Output |
+|---------|-------------|-------|--------|
+| `go-task align:vibevoice BOOK=GEN CHAPTER=1` | Run VibeVoice on single chapter | `data/prepared/audio/{BOOK}/{CHAPTER}.wav` | `data/aligned/vibevoice/{BOOK}/{CHAPTER}.json` |
+| `go-task align:evaluate-gold` | Evaluate models on 10 gold chapters | `data/prepared/audio/`, `data/processed/text/mek.jsonl` | `data/evaluation/{BOOK}_{CHAPTER}_{MODEL}_matched.json` |
+| `go-task align:setup` | Pre-download model weights | HuggingFace Hub | `data/models/` |
 
 ### Export Pipeline
 
-| Command | Description |
-|---------|-------------|
-| `go-task export:run` | Full pipeline on all chapters |
-| `go-task export:run-gold` | Full pipeline on gold chapters only |
-| `go-task export:jsonl` | Export alignment to JSONL |
-| `go-task export:align` | Run alignment on all chapters |
+| Command | Description | Input | Output |
+|---------|-------------|-------|--------|
+| `go-task export:run` | Full pipeline on all chapters | `data/prepared/audio/`, `data/processed/text/mek.jsonl` | `data/export/*.jsonl` |
+| `go-task export:run-gold` | Full pipeline on gold chapters only | Same as above (filtered) | `data/export/*_{MODEL}.jsonl` |
+| `go-task export:jsonl` | Export alignment to JSONL | `data/evaluation/*_matched.json` | `data/export/{BOOK}_{CHAPTER}_{MODEL}.jsonl` |
+| `go-task export:align` | Run alignment on all chapters | `data/prepared/audio/` | `data/aligned/{MODEL}/{BOOK}/{CHAPTER}.json` |
 
 **Variables:**
 - `MODEL=` — Model ID (default: `microsoft/VibeVoice-ASR-HF`)
-- `GOLD=true` — Restrict to gold chapters
+- `GOLD=true` — Restrict to gold chapters (TIT 1-3, TOB 1-4, ZEP 1-3)
 - `FORCE=true` — Force re-run, skip cache
 
 ## JSONL Output Format
@@ -186,4 +186,4 @@ data/
 
 ## License
 
-Private research project.
+MIT License. See [LICENSE](LICENSE) for details.
