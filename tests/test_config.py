@@ -23,15 +23,12 @@ class TestBibliavoxSettings:
         assert settings.data_dir == Path("data")
         assert settings.cache_dir == Path("data/.cache")
         assert settings.reference_data_path == Path("data/reference")
-        assert settings.szentiras_api_key == ""
 
     def test_env_override(self, monkeypatch: pytest.MonkeyPatch) -> None:
         """Environment variables with BIBLIAVOX_ prefix override defaults."""
         monkeypatch.setenv("BIBLIAVOX_DATA_DIR", "/custom/data")
-        monkeypatch.setenv("BIBLIAVOX_SZENTIRAS_API_KEY", "test-key-123")
         settings = BibliavoxSettings()
         assert settings.data_dir == Path("/custom/data")
-        assert settings.szentiras_api_key == "test-key-123"
 
     def test_dotenv_loading(self, tmp_path: Path) -> None:
         """Settings load from .env file."""

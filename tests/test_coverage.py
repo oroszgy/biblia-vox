@@ -25,8 +25,12 @@ def _book(usx: str, *, deuterocanonical: bool = False) -> Book:
 def test_audit_coverage_fails_without_known_gap_allowance(tmp_path: Path) -> None:
     schemas = [BookSchema(usx_code="GEN", chapter_count=2, chapters={1: 1, 2: 1})]
     books = [_book("GEN")]
-    mapping = {"Genesis": "GEN"}
-    szit_data = {"Genesis": {"1": {"1": "text"}}}
+
+    mek_path = tmp_path / "mek.jsonl"
+    mek_path.write_text(
+        json.dumps({"book": "GEN", "chapter": 1, "verse": 1, "text": "text"}) + "\n",
+        encoding="utf-8",
+    )
 
     raw_root = tmp_path / "raw"
     prepared_root = tmp_path / "prepared"
@@ -55,11 +59,10 @@ def test_audit_coverage_fails_without_known_gap_allowance(tmp_path: Path) -> Non
         known_gaps_path=known_path,
         raw_audio_root=raw_root,
         prepared_audio_root=prepared_root,
+        mek_jsonl_path=mek_path,
         include_remote_audio=False,
         schemas=schemas,
         books=books,
-        mapping=mapping,
-        szit_data=szit_data,
     )
 
     assert report["complete"] is False
@@ -72,8 +75,12 @@ def test_audit_coverage_fails_without_known_gap_allowance(tmp_path: Path) -> Non
 def test_audit_coverage_passes_with_known_gap_allowance(tmp_path: Path) -> None:
     schemas = [BookSchema(usx_code="GEN", chapter_count=2, chapters={1: 1, 2: 1})]
     books = [_book("GEN")]
-    mapping = {"Genesis": "GEN"}
-    szit_data = {"Genesis": {"1": {"1": "text"}}}
+
+    mek_path = tmp_path / "mek.jsonl"
+    mek_path.write_text(
+        json.dumps({"book": "GEN", "chapter": 1, "verse": 1, "text": "text"}) + "\n",
+        encoding="utf-8",
+    )
 
     raw_root = tmp_path / "raw"
     prepared_root = tmp_path / "prepared"
@@ -102,11 +109,10 @@ def test_audit_coverage_passes_with_known_gap_allowance(tmp_path: Path) -> None:
         known_gaps_path=known_path,
         raw_audio_root=raw_root,
         prepared_audio_root=prepared_root,
+        mek_jsonl_path=mek_path,
         include_remote_audio=False,
         schemas=schemas,
         books=books,
-        mapping=mapping,
-        szit_data=szit_data,
     )
 
     assert report["complete"] is True
@@ -119,8 +125,9 @@ def test_audit_coverage_passes_with_known_gap_allowance(tmp_path: Path) -> None:
 def test_audit_coverage_deuterocanonical_allowance(tmp_path: Path) -> None:
     schemas = [BookSchema(usx_code="TOB", chapter_count=1, chapters={1: 1})]
     books = [_book("TOB", deuterocanonical=True)]
-    mapping = {"Tobit": "TOB"}
-    szit_data = {}
+
+    mek_path = tmp_path / "mek.jsonl"
+    mek_path.write_text("", encoding="utf-8")
 
     report = audit_coverage(
         allow_deuterocanonical_missing=True,
@@ -128,11 +135,10 @@ def test_audit_coverage_deuterocanonical_allowance(tmp_path: Path) -> None:
         known_gaps_path=tmp_path / "none.json",
         raw_audio_root=tmp_path / "raw",
         prepared_audio_root=tmp_path / "prepared",
+        mek_jsonl_path=mek_path,
         include_remote_audio=False,
         schemas=schemas,
         books=books,
-        mapping=mapping,
-        szit_data=szit_data,
     )
 
     summary = cast(dict[str, object], report["summary"])

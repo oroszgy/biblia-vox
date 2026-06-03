@@ -38,6 +38,7 @@ class TestTextFetchCommand:
         result = runner.invoke(app, ["fetch", "--help"])
         assert result.exit_code == 0
         assert "book" in result.output.lower()
+        assert "experimental" in result.output.lower()
 
 
 class TestTextInfoCommand:
