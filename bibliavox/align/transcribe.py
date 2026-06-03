@@ -144,11 +144,5 @@ def transcribe_audio(
                     )
         return words
 
-    elif model_config.type == "mms-fa":
-        raise ValueError(
-            f"Model type 'mms-fa' requires forced alignment, not transcription. "
-            f"Use 'bibliavox align forced' or the evaluate-gold command which handles it separately."
-        )
-
     else:
         raise ValueError(f"Unknown model type: {model_config.type}")

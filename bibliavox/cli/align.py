@@ -23,7 +23,6 @@ from bibliavox.align.evaluate import (
     save_cached_result,
     save_evaluation_report,
 )
-from bibliavox.align.forced import align_chapter, save_forced_alignment
 from bibliavox.align.match import match_verses
 from bibliavox.align.transcribe import transcribe_audio
 from bibliavox.align.vibevoice import vibevoice_asr_match, vibevoice_direct
@@ -146,85 +145,6 @@ def match_command(
         console.print(
             f"[green]Saved {len(matched_verses)} matched verses to {out_path}[/green]"
         )
-
-
-@app.command("forced")
-def forced_command(
-    book: str = typer.Option(..., help="USX book code (e.g. GEN)"),
-    chapter: int = typer.Option(..., help="Chapter number"),
-    use_star: bool = typer.Option(
-        True, help="Use <star> token for mismatch absorption"
-    ),
-) -> None:
-    """Run MMS_FA forced alignment for a chapter."""
-    settings = get_settings()
-
-    audio_path = settings.data_dir / "prepared" / "audio" / book / f"{chapter:03d}.wav"
-    if not audio_path.exists():
-        console.print(f"[red]Error: Audio file not found at {audio_path}[/red]")
-        raise typer.Exit(1)
-
-    # Load verses from MEK JSONL corpus (D-04)
-    mek_path = settings.data_dir / "processed" / "text" / "mek.jsonl"
-    if not mek_path.exists():
-        console.print(f"[red]Error: Text corpus not found at {mek_path}[/red]")
-        raise typer.Exit(1)
-
-    verses = []
-    with open(mek_path, "r", encoding="utf-8") as f:
-        for line in f:
-            if not line.strip():
-                continue
-            verse = json.loads(line)
-            if verse.get("book") == book and verse.get("chapter") == chapter:
-                verses.append(
-                    {"verse_id": str(verse.get("verse")), "text": verse.get("text", "")}
-                )
-
-    if not verses:
-        console.print(
-            f"[red]Error: No verses found for {book} {chapter} in MEK corpus[/red]"
-        )
-        raise typer.Exit(1)
-
-    console.print(
-        f"[cyan]Running MMS_FA forced alignment for {book} {chapter}...[/cyan]"
-    )
-    console.print(f"[cyan]  Verses: {len(verses)}, Audio: {audio_path}[/cyan]")
-
-    try:
-        results = align_chapter(audio_path, verses, device="cuda", use_star=use_star)
-    except Exception as e:
-        console.print(f"[red]Forced alignment failed: {e}[/red]")
-        raise typer.Exit(1)
-
-    # Save results to data/aligned/mms_fa/{book}/
-    aligned_dir = settings.data_dir / "aligned" / "mms_fa" / book
-    verse_path, phones_path = save_forced_alignment(results, aligned_dir, book, chapter)
-
-    # Display results table
-    table = Table(title=f"MMS_FA Forced Alignment: {book} {chapter}")
-    table.add_column("Verse", justify="left")
-    table.add_column("Start (s)", justify="right")
-    table.add_column("End (s)", justify="right")
-    table.add_column("Words", justify="right")
-
-    for r in results:
-        word_count = len(r.get("words", []))
-        table.add_row(
-            r["verse_id"],
-            f"{r['start_sec']:.2f}",
-            f"{r['end_sec']:.2f}",
-            str(word_count),
-        )
-
-    console.print(table)
-
-    # Phone-level summary
-    total_phones = sum(len(r.get("phones", [])) for r in results)
-    console.print(f"[green]Phone-level tokens: {total_phones}[/green]")
-    console.print(f"[green]Saved verse-level alignment to {verse_path}[/green]")
-    console.print(f"[green]Saved phone-level alignment to {phones_path}[/green]")
 
 
 @app.command("vibevoice")
@@ -442,44 +362,10 @@ def run_all_command(
 
                 # Run alignment
                 try:
-                    if model_config.type == "mms-fa":
-                        raw_results = align_chapter(
-                            audio_path, chapter_verses, device="cuda"
-                        )
-                        matched = []
-                        for r in raw_results:
-                            word_scores = [
-                                w.get("score", 0.0) for w in r.get("words", [])
-                            ]
-                            avg_score = (
-                                sum(word_scores) / len(word_scores) * 100.0
-                                if word_scores
-                                else 0.0
-                            )
-                            matched.append(
-                                {
-                                    "verse_id": r["verse_id"],
-                                    "start_sec": r["start_sec"],
-                                    "end_sec": r["end_sec"],
-                                    "confidence_score": avg_score,
-                                    "canonical_text": next(
-                                        (
-                                            v["text"]
-                                            for v in chapter_verses
-                                            if v["verse_id"] == r["verse_id"]
-                                        ),
-                                        "",
-                                    ),
-                                    "matched_text": " ".join(
-                                        w.get("word", "") for w in r.get("words", [])
-                                    ),
-                                }
-                            )
-                    else:
-                        words = transcribe_audio(
-                            audio_path, model_config, settings.models_dir
-                        )
-                        matched = match_verses(chapter_verses, words)
+                    words = transcribe_audio(
+                        audio_path, model_config, settings.models_dir
+                    )
+                    matched = match_verses(chapter_verses, words)
 
                     save_cached_result(
                         matched, model_safe_name, book, chapter, settings.data_dir
@@ -604,44 +490,8 @@ def evaluate_gold_command(
             start_time = time.perf_counter()
 
             try:
-                if model_config.type == "mms-fa":
-                    # MMS_FA uses forced alignment with known verse text
-                    raw_results = align_chapter(
-                        audio_path, chapter_verses, device="cuda"
-                    )
-                    # Transform to match format
-                    matched = []
-                    for r in raw_results:
-                        word_scores = [w.get("score", 0.0) for w in r.get("words", [])]
-                        avg_score = (
-                            sum(word_scores) / len(word_scores) * 100.0
-                            if word_scores
-                            else 0.0
-                        )
-                        matched.append(
-                            {
-                                "verse_id": r["verse_id"],
-                                "start_sec": r["start_sec"],
-                                "end_sec": r["end_sec"],
-                                "confidence_score": avg_score,
-                                "canonical_text": next(
-                                    (
-                                        v["text"]
-                                        for v in chapter_verses
-                                        if v["verse_id"] == r["verse_id"]
-                                    ),
-                                    "",
-                                ),
-                                "matched_text": " ".join(
-                                    w.get("word", "") for w in r.get("words", [])
-                                ),
-                            }
-                        )
-                else:
-                    words = transcribe_audio(
-                        audio_path, model_config, settings.models_dir
-                    )
-                    matched = match_verses(chapter_verses, words)
+                words = transcribe_audio(audio_path, model_config, settings.models_dir)
+                matched = match_verses(chapter_verses, words)
             except Exception as e:
                 console.print(f"[red]  Failed to process {book} {chapter}: {e}[/red]")
                 continue
@@ -923,44 +773,10 @@ def evaluate_command(
                 console.print(f"  Processing {bk} Chapter {ch}...")
                 start_time = time.perf_counter()
                 try:
-                    if model_config.type == "mms-fa":
-                        raw_results = align_chapter(
-                            audio_path, chapter_verses, device="cuda"
-                        )
-                        matched = []
-                        for r in raw_results:
-                            word_scores = [
-                                w.get("score", 0.0) for w in r.get("words", [])
-                            ]
-                            avg_score = (
-                                sum(word_scores) / len(word_scores) * 100.0
-                                if word_scores
-                                else 0.0
-                            )
-                            matched.append(
-                                {
-                                    "verse_id": r["verse_id"],
-                                    "start_sec": r["start_sec"],
-                                    "end_sec": r["end_sec"],
-                                    "confidence_score": avg_score,
-                                    "canonical_text": next(
-                                        (
-                                            v["text"]
-                                            for v in chapter_verses
-                                            if v["verse_id"] == r["verse_id"]
-                                        ),
-                                        "",
-                                    ),
-                                    "matched_text": " ".join(
-                                        w.get("word", "") for w in r.get("words", [])
-                                    ),
-                                }
-                            )
-                    else:
-                        words = transcribe_audio(
-                            audio_path, model_config, settings.models_dir
-                        )
-                        matched = match_verses(chapter_verses, words)
+                    words = transcribe_audio(
+                        audio_path, model_config, settings.models_dir
+                    )
+                    matched = match_verses(chapter_verses, words)
                 except Exception as e:
                     console.print(f"[red]  Failed: {e}[/red]")
                     model_error = str(e)
