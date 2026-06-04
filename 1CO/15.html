@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Korinthusiakhoz írt első levél 15. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "1CO", "hungarian_name": "Korinthusiakhoz írt első levél", "abbreviation": "1Kor", "book_number": 407, "chapter_count": 16}, "chapter": {"book_usx": "1CO", "chapter_num": 15, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/53_korint1/korintusiaknak-irt-1-level-15-fejezet.mp3", "verse_count": 58, "aligned_count": 58}, "verses": [{"verse_num": 1, "start_sec": 3.41, "end_sec": 13.66, "confidence": 97.52066115702479, "canonical_text": "Figyelmetekbe ajánlom, testvérek, az evangéliumot, amelyet hirdettem nektek. Elfogadtátok, és szilárdan kitartotok benne.", "matched_text": "Figyelmetekbe ajánlom testvérek az evangéliumot, amelyet hirdettem nektek. Elfogadtátok és szilárdan kitartotok benne. Ált"}, {"verse_num": 2, "start_sec": 12.927857142857142, "end_sec": 23.91, "confidence": 100.0, "canonical_text": "Általa elnyeritek az üdvösséget, ha megtartjátok úgy, ahogy hirdettem nektek. Másként hiába lettetek volna hívővé.", "matched_text": "Általa elnyeritek az üdvösséget, ha megtartjátok úgy, ahogy hirdettem nektek. Másként hiába lettetek volna hívővé."}, {"verse_num": 3, "start_sec": 24.31, "end_sec": 33.549516129032256, "confidence": 95.95959595959596, "canonical_text": "Elsősorban azt hagytam rátok, amit magam is kaptam: Krisztus meghalt bűneinkért, az Írások szerint,", "matched_text": "Elsősorban azt hagytam rátok, amit magam is kaptam. Krisztus meghalt a bűneinkért az írások szerint."}, {"verse_num": 4, "start_sec": 33.549516129032256, "end_sec": 38.47725806451613, "confidence": 84.90566037735849, "canonical_text": "eltemették és harmadnap feltámadt, az Írások szerint.", "matched_text": "temették, és harmad napon föltámadott az írások szerin"}, {"verse_num": 5, "start_sec": 38.47725806451613, "end_sec": 41.557096774193546, "confidence": 100.0, "canonical_text": "Megjelent Péternek, majd a tizenkettőnek.", "matched_text": "Megjelent Péternek, majd a tizenkettőnek."}, {"verse_num": 6, "start_sec": 41.557096774193546, "end_sec": 52.644516129032255, "confidence": 100.0, "canonical_text": "Később egyszerre több mint ötszáz testvérnek jelent meg, ezek közül a legtöbben még élnek, néhányan azonban már meghaltak.", "matched_text": "Később egyszerre több mint ötszáz testvérnek jelent meg, ezek közül a legtöbben még élnek, néhányan azonban már meghaltak."}, {"verse_num": 7, "start_sec": 52.644516129032255, "end_sec": 57.572258064516134, "confidence": 100.0, "canonical_text": "Azután Jakabnak jelent meg, majd az összes apostolnak.", "matched_text": "Azután Jakabnak jelent meg, majd az összes apostolnak."}, {"verse_num": 8, "start_sec": 57.572258064516134, "end_sec": 62.5, "confidence": 100.0, "canonical_text": "Utánuk pedig, mint egy elvetéltnek, megjelent nekem is.", "matched_text": "Utánuk pedig, mint egy elvetéltnek, megjelent nekem is."}, {"verse_num": 9, "start_sec": 62.5, "end_sec": 73.62766666666667, "confidence": 96.8, "canonical_text": "Én ugyanis az utolsó vagyok az apostolok közt, s arra sem méltó, hogy apostolnak hívjanak, hiszen üldöztem az Isten egyházát.", "matched_text": "Én ugyanis az utolsó vagyok az apostolok között, és arra sem méltó, hogy apostolnak hívjanak, hiszen üldöztem Isten egyházád."}, {"verse_num": 10, "start_sec": 73.62766666666667, "end_sec": 91.19766666666666, "confidence": 97.47474747474747, "canonical_text": "De Isten kegyelméből vagyok az, ami vagyok, s rám árasztott kegyelme nem maradt bennem hatástalan. Többet dolgoztam mindegyiküknél, igaz ugyan, hogy nem én, hanem az Isten kegyelme, amely velem van.", "matched_text": "De Isten kegyelméből vagyok az, ami vagyok, és rám árasztott kegyelme nem maradt bennem hatástalan. Többet dolgoztam mindegyiküknél. Igaz ugyan, hogy nem én, hanem Isten kegyelme, amely velem van. Mi"}, {"verse_num": 11, "start_sec": 90.612, "end_sec": 97.64, "confidence": 97.2972972972973, "canonical_text": "Mindegy tehát, hogy én vagy ők: ugyanazt hirdetjük, s így lettetek hívővé.", "matched_text": "indegy tehát, hogy én vagy ők, ugyanazt hirdetjük, és így lettetek hívővé."}, {"verse_num": 12, "start_sec": 98.12, "end_sec": 106.52, "confidence": 98.29059829059828, "canonical_text": "Ha tehát hirdetjük, hogy Krisztus feltámadt a halálból, hogyan állíthatják némelyek közületek, hogy nincs feltámadás?", "matched_text": "Ha tehát hirdetjük, hogy Krisztus föltámadt a halálból, hogyan állíthatják némelyek közületek, hogy nincs föltámadás?"}, {"verse_num": 13, "start_sec": 106.52, "end_sec": 111.56, "confidence": 94.11764705882352, "canonical_text": "Ha nincs feltámadás, akkor Krisztus sem támadt fel.", "matched_text": "Ha nincs föltámadás, akkor Krisztus sem támad föl. H"}, {"verse_num": 14, "start_sec": 111.0, "end_sec": 121.08, "confidence": 98.07692307692307, "canonical_text": "Ha pedig Krisztus nem támadt fel, nincs értelme a mi tanításunknak, s nincs értelme a ti hiteteknek sem.", "matched_text": "Ha pedig Krisztus nem támad föl, nincs értelme a mi tanításunknak, és nincs értelme a ti hiteteknek sem."}, {"verse_num": 15, "start_sec": 121.42, "end_sec": 135.3667213114754, "confidence": 92.81767955801105, "canonical_text": "Ráadásul még Isten hamis tanúinak is bizonyulunk, mert Istenről azt tanúsítjuk, hogy Krisztust feltámasztotta, holott nem támasztotta fel, ha a halottak egyáltalán nem támadnak fel.", "matched_text": "Ráadásul még Isten hamis tanúinak is bizonyulunk, mert Istenről azt tanúsítjuk, hogy föltámasztotta Krisztust, holott nem támasztotta föl, ha a halottak egyáltalán nem támadnak föl."}, {"verse_num": 16, "start_sec": 134.80885245901638, "end_sec": 142.0611475409836, "confidence": 95.71428571428572, "canonical_text": "Ha ugyanis a halottak nem támadnak fel, akkor Krisztus sem támadt fel.", "matched_text": "Ha ugyanis a halottak nem támadnak föl, akkor Krisztus sem támad föl."}, {"verse_num": 17, "start_sec": 142.0611475409836, "end_sec": 151.54491803278688, "confidence": 97.89473684210527, "canonical_text": "Ha pedig Krisztus nem támadt fel, semmit sem ér a hitetek, mert még mindig bűneitekben vagytok.", "matched_text": "Ha pedig Krisztus nem támad föl, semmit sem ér a hitetek, mert még mindig bűneitekben vagytok. S"}, {"verse_num": 18, "start_sec": 150.98704918032786, "end_sec": 155.45, "confidence": 98.0392156862745, "canonical_text": "Sőt azok is elvesztek, akik Krisztusban haltak meg.", "matched_text": "Sőt, azok is elvesztek, akik Krisztusban haltak meg."}, {"verse_num": 19, "start_sec": 155.45, "end_sec": 164.16, "confidence": 100.0, "canonical_text": "Ha csak ebben az életben reménykedünk Krisztusban, minden embernél szánalomra méltóbbak vagyunk.", "matched_text": "Ha csak ebben az életben reménykedünk Krisztusban, minden embernél szánalomra méltóbbak vagyunk."}, {"verse_num": 20, "start_sec": 164.64, "end_sec": 170.6405769230769, "confidence": 96.61016949152543, "canonical_text": "De Krisztus feltámadt a halálból elsőként a halottak közül.", "matched_text": "e Krisztus föltámadt a halálból, elsőként a halottak közül."}, {"verse_num": 21, "start_sec": 170.6405769230769, "end_sec": 180.64153846153846, "confidence": 98.75, "canonical_text": "Mivel egy ember idézte elő a halált, a halottak is egy ember révén támadnak fel.", "matched_text": "Mivel egy ember idézte elő a halált, a halottak is egy ember révén támadnak föl."}, {"verse_num": 22, "start_sec": 179.97480769230768, "end_sec": 187.97557692307691, "confidence": 96.15384615384616, "canonical_text": "Amint ugyanis Ádámban mindenki meghal, úgy Krisztusban mindenki életre is kel.", "matched_text": "Amint ugyanis Ádámban mindenki meghal, úgy Krisztusban mindenki életre kell. M"}, {"verse_num": 23, "start_sec": 186.64211538461538, "end_sec": 196.64307692307693, "confidence": 97.2972972972973, "canonical_text": "Mindenki, amikor sorra kerül: először Krisztus, majd az ő eljövetelekor mindnyájan, akik Krisztushoz tartoznak.", "matched_text": "Mindenki, amikor sorra kerül. Először Krisztus, majd az ő eljövetelekor minnyájan, akik Krisztushoz tartoznak."}, {"verse_num": 24, "start_sec": 196.64307692307693, "end_sec": 210.30535714285713, "confidence": 94.63087248322147, "canonical_text": "Azután következik a vég, amikor is (Krisztus) átadja az Istennek, az Atyának az uralmat, miután minden felsőbbséget, hatalmat és erőt megsemmisített.", "matched_text": "Azután következik a vég, Amikor Krisztus átadja az Istennek, az atyának az uralmat, miután minden felsőbséget, hatalmat és erőt megsemmisített. Addig"}, {"verse_num": 25, "start_sec": 209.65857142857143, "end_sec": 217.42, "confidence": 97.1830985915493, "canonical_text": "Addig kell ugyanis uralkodnia, amíg ellenségeit mind lába alá nem veti.", "matched_text": "dig kell ugyanis uralkodnia, amíg ellenségeit mind a lába alá nem veti."}, {"verse_num": 26, "start_sec": 217.42, "end_sec": 224.26553846153845, "confidence": 93.33333333333333, "canonical_text": "Utolsó ellenségként a halál semmisül meg, hiszen \"mindent lába alá vetett\".", "matched_text": "tolsó ellenségként a halál semmisül meg, hiszen minden a lába alá vettedett."}, {"verse_num": 27, "start_sec": 224.26553846153845, "end_sec": 234.53384615384616, "confidence": 99.06542056074767, "canonical_text": "Amikor arról van szó, hogy minden alá van neki vetve, természetesen kivétel az, aki mindent alávetett neki.", "matched_text": "Amikor arról van szó, hogy minden alá van neki vetve, természetesen kivétel az, aki mindent alá vetett neki."}, {"verse_num": 28, "start_sec": 234.53384615384616, "end_sec": 249.36584615384615, "confidence": 97.79411764705883, "canonical_text": "S ha majd minden alá lesz neki vetve, maga a Fiú is aláveti magát annak, aki mindent alávetett neki, hogy Isten legyen minden mindenben.", "matched_text": "ha majd minden alá lesz neki vetve, maga a fiú is alá veti magát annak, aki mindent alá vetett neki, hogy Isten legyen minden mindenben."}, {"verse_num": 29, "start_sec": 249.36584615384615, "end_sec": 261.396, "confidence": 99.3103448275862, "canonical_text": "Különben mi értelme van annak, hogy a halottakért megkeresztelkednek? Ha a halottak egyáltalán nem támadnak fel, miért keresztelkednek meg értük?", "matched_text": "Különben mi értelme van annak, hogy a halottakért megkeresztelkednek? Ha a halottak egyáltalán nem támadnak föl, miért keresztelkednek meg értük?"}, {"verse_num": 30, "start_sec": 261.396, "end_sec": 266.4112727272727, "confidence": 100.0, "canonical_text": "Miért tesszük ki mi is magunkat szüntelenül veszélynek?", "matched_text": "Miért tesszük ki mi is magunkat szüntelenül veszélynek?"}, {"verse_num": 31, "start_sec": 266.4112727272727, "end_sec": 273.93418181818186, "confidence": 97.02970297029702, "canonical_text": "Mindennap készen vagyok meghalni, hiszen büszkeségem vagytok, testvérek, Urunkban, Jézus Krisztusban.", "matched_text": "inden nap készen vagyok meghalni, hiszen büszkeségen vagytok, testvérek, urunkban, Jézus Krisztusban."}, {"verse_num": 32, "start_sec": 273.30727272727273, "end_sec": 288.98, "confidence": 95.20958083832335, "canonical_text": "Mit használ nekem, hogy Efezusban - emberi módon szólva - vadállatokkal küzdöttem? Ha a halottak nem támadnak fel, akkor \"együnk, igyunk, mert holnap úgyis meghalunk\".", "matched_text": "ban. Mit használ nekem, hogy Efezusban emberi módon szólva vadállatokkal küzdöttem? Ha a halottak nem támadnak föl, Akkor együnk, igyunk, mert holnap úgy is meghalunk."}, {"verse_num": 33, "start_sec": 289.04, "end_sec": 296.48, "confidence": 98.71794871794873, "canonical_text": "Ne hagyjátok magatokat félrevezetni! A gonosz beszéd megrontja a jó erkölcsöt.", "matched_text": "Ne hagyjátok magatokat félrevezetni. A gonosz beszéd megrontja a jó erkölcsöt."}, {"verse_num": 34, "start_sec": 296.54, "end_sec": 307.04711864406784, "confidence": 95.16129032258065, "canonical_text": "Legyetek józanok, és ne vétkezzetek! Némelyek ugyanis nem ismerik az Istent. Azért mondom ezt, hogy szégyelljétek magatokat.", "matched_text": "Legyetek józanok, és ne védkezzetek. Némelyek ugyanis nem ismerik Istent. Azért mondom ezt, hogy szégyeljétek magatokat. De k"}, {"verse_num": 35, "start_sec": 305.29593220338984, "end_sec": 314.05186440677966, "confidence": 94.3820224719101, "canonical_text": "De - kérdezhetné valaki - hogyan támadnak fel a halottak? Milyen testben jönnek majd elő?", "matched_text": ". De kérdezhetné valaki, hogyan támadnak föl a halottak? Milyen testben jönnek majd elő? O"}, {"verse_num": 36, "start_sec": 313.4681355932204, "end_sec": 320.4728813559322, "confidence": 88.33333333333333, "canonical_text": "Ostoba! Amit elvetsz, nem hajt csírát, hacsak el nem rothad.", "matched_text": "Amit elvetsz, nem hajt csírát, ha csak előbb el nem rothad."}, {"verse_num": 37, "start_sec": 320.4728813559322, "end_sec": 330.98, "confidence": 94.28571428571428, "canonical_text": "Amit elvetsz, még nem növény, az csak azután fejlődik, hanem puszta mag, például búzaszem vagy más egyéb.", "matched_text": "t elvetsz, még nem a növény, az csak azután fejlődik, hanem puszta mag. Például buzaszem, vagy más egyéb."}, {"verse_num": 38, "start_sec": 330.98, "end_sec": 337.72, "confidence": 90.66666666666666, "canonical_text": "Isten testet ad neki tetszése szerint, minden magnak neki megfelelő testet.", "matched_text": "Isten ad neki testet tetszése szerint, minden magnak neki megfelelő testet."}, {"verse_num": 39, "start_sec": 337.10727272727274, "end_sec": 348.48117647058825, "confidence": 89.65517241379311, "canonical_text": "Nem minden test egyforma, hanem más az emberé, más az állaté, más a madáré, más a halé.", "matched_text": ". Nem minden test egyforma. Más az emberé, Más az állaté, más a madáré, más a halé. És v"}, {"verse_num": 40, "start_sec": 347.31882352941176, "end_sec": 356.0364705882353, "confidence": 98.63013698630137, "canonical_text": "S van égi test meg földi test, de másként ragyog az égi, másként a földi.", "matched_text": "van égi test, meg földi test, de másként ragyog az égi, másként a földi."}, {"verse_num": 41, "start_sec": 356.0364705882353, "end_sec": 367.66, "confidence": 97.6, "canonical_text": "Más a Nap ragyogása, más a Hold fényessége, más a csillagok tündöklése, sőt az egyik csillag fénye is különbözik a másikétól.", "matched_text": "Más a nap ragyogása, más a hold fényessége, más a csillagok tündöklése, sőt, az egyik csillagfénye is különbözik a másikétól."}, {"verse_num": 42, "start_sec": 367.07882352941175, "end_sec": 374.0529411764706, "confidence": 94.73684210526316, "canonical_text": "Ilyen a halottak feltámadása is. Romlásra vetik el - romlatlannak támad föl.", "matched_text": "Ilyen a halottak föltámadása is. Romlásra vetik el, Romlatlannak támad föl."}, {"verse_num": 43, "start_sec": 373.4717647058824, "end_sec": 381.32761904761907, "confidence": 95.45454545454545, "canonical_text": "Dicstelenül vetik el - dicsőségben támad föl. Erőtlenségben vetik el - erőben támad föl.", "matched_text": "Dicsitelenül vetik el, dicsőségben támad föl. Erőtlenségben vetik el, erőben támad föl."}, {"verse_num": 44, "start_sec": 381.32761904761907, "end_sec": 391.4279365079365, "confidence": 97.70114942528735, "canonical_text": "Érzéki testet vetnek el - szellemi test támad föl. Ha van érzéki test, van szellemi is.", "matched_text": "Érzéki testet vetnek el, szellemi test támad föl. Ha van érzéki test, van szellemi is. A"}, {"verse_num": 45, "start_sec": 390.16539682539684, "end_sec": 402.1595238095238, "confidence": 91.75257731958763, "canonical_text": "Ahogy az Írás mondja: \"Ádám, az első ember élő lénnyé lett\", az utolsó Ádám pedig éltető lélekké.", "matched_text": ". Ahogy az írás mondja, Ádám, az első ember élő lényé lett. Az utolsó Ádám pedig éltedő lélekké. D"}, {"verse_num": 46, "start_sec": 401.528253968254, "end_sec": 409.7347619047619, "confidence": 100.0, "canonical_text": "De nem a szellemi az első, hanem az érzéki, aztán következik a szellemi.", "matched_text": "De nem a szellemi az első, hanem az érzéki, aztán következik a szellemi."}, {"verse_num": 47, "start_sec": 409.7347619047619, "end_sec": 417.31, "confidence": 97.01492537313433, "canonical_text": "Az első ember földből való, földi; a második ember a mennyből való.", "matched_text": "Az első ember földből való, földi. A második ember a mennyből való."}, {"verse_num": 48, "start_sec": 417.31, "end_sec": 426.95612903225805, "confidence": 97.91666666666666, "canonical_text": "Amilyen a földből való, olyanok a földiek is, s amilyen a mennyből való, olyanok a mennyeiek is.", "matched_text": "Amilyen a földből való, olyanok a földiek is. És amilyen a mennyből való, olyanok a mennyeiek is."}, {"verse_num": 49, "start_sec": 426.95612903225805, "end_sec": 434.9, "confidence": 95.18072289156626, "canonical_text": "Ezért ahogy a földi ember képét hordoztuk, a mennyeinek a képét is fogjuk hordozni.", "matched_text": "rt... Ahogy a földi ember képét hordoztuk, a mennyeinek a képét is fogjuk hordozni."}, {"verse_num": 50, "start_sec": 436.14, "end_sec": 447.9, "confidence": 97.5, "canonical_text": "Azt még hozzáfűzöm, testvérek, hogy a test és vér nem örökölheti Isten országát, sem a romlandóság a romolhatatlanságot.", "matched_text": "Azt még hozzáfűzöm, testvérek, hogy a test és a vér nem örököldheti Isten országát, sem a romlandóság a romolhatatlanságo"}, {"verse_num": 51, "start_sec": 447.9, "end_sec": 457.4822222222222, "confidence": 87.87878787878788, "canonical_text": "Nos, titkot közlök veletek: Nem halunk ugyan meg mindnyájan, de mindnyájan elváltozunk, hirtelenül,", "matched_text": ", titkot közlök veletek. Nem halunk meg ugyan minnyájan, De mindannyian elváltozunk, hirtelenül, egy"}, {"verse_num": 52, "start_sec": 456.79777777777775, "end_sec": 469.8022222222222, "confidence": 94.61538461538461, "canonical_text": "egy szempillantás alatt, a végső harsonaszóra. Amikor az megszólal, a halottak feltámadnak a romlatlanságra, mi pedig elváltozunk.", "matched_text": "gy szempillantás alatt a végső harson a szóra. Amikor az megszólal, a halottak föltámadnak a romolhatatlanságra, mi pedig elváltozu"}, {"verse_num": 53, "start_sec": 469.8022222222222, "end_sec": 480.06888888888886, "confidence": 87.75510204081633, "canonical_text": "Ennek a romlandó testnek fel kell öltenie a romlatlanságot, ennek a halandónak a halhatatlanságot.", "matched_text": "ek a romlandó testnek ugyanis fel kell öltenie a romolhatatlanságot, ennek a halandónak a halhatatl"}, {"verse_num": 54, "start_sec": 480.06888888888886, "end_sec": 493.16285714285715, "confidence": 94.24460431654677, "canonical_text": "Amikor a romlandó magára ölti a romlatlanságot, a halandó a halhatatlanságot, akkor teljesedik az Írás szava: A győzelem elnyelte a halált.", "matched_text": "mikor a romlandó magára ölti a romolhatatlanságot, A halandó a halhatatlanságot, akkor teljesedik az írás szava, a győzelem elnyelte a halál"}, {"verse_num": 55, "start_sec": 493.16285714285715, "end_sec": 499.0934693877551, "confidence": 100.0, "canonical_text": "Halál, hol a te győzelmed? Halál, hol a te fullánkod?", "matched_text": "Halál, hol a te győzelmed? Halál, hol a te fullánkod?"}, {"verse_num": 56, "start_sec": 499.0934693877551, "end_sec": 505.6171428571428, "confidence": 100.0, "canonical_text": "A halál fullánkja a bűn, a bűn ereje pedig a törvény.", "matched_text": "A halál fullánkja a bűn, a bűn ereje pedig a törvény."}, {"verse_num": 57, "start_sec": 505.02408163265306, "end_sec": 515.646, "confidence": 92.22222222222223, "canonical_text": "De legyen hála Istennek, mert ő győzelemre segít minket, Jézus Krisztus, a mi Urunk által.", "matched_text": "De hála legyen Istennek, mert ő győzelemre segít minket Jézus Krisztus, ami Urunk által. L"}, {"verse_num": 58, "start_sec": 515.01, "end_sec": 530.91, "confidence": 98.28571428571429, "canonical_text": "Legyetek tehát állhatatosak és kitartók, szeretett testvéreim! Tegyetek mindig minél többet az Úr ügyéért, hiszen tudjátok, hogy az Úr ügyében való fáradozástok nem hiábavaló.", "matched_text": "egyetek tehát álhatatosak és kitartóak, szeretett testvéreim. Tegyetek mindig minél többet az Úr ügyéért, hiszen tudjátok, hogy az Úr ügyében való fáradozástok nem hiába való."}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

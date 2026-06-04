@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zsidóknak írt levél 7. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "HEB", "hungarian_name": "Zsidóknak írt levél", "abbreviation": "Zsid", "book_number": 419, "chapter_count": 13}, "chapter": {"book_usx": "HEB", "chapter_num": 7, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/65_zsidok/zsidoknak-irt-level-07-fejezet.mp3", "verse_count": 28, "aligned_count": 28}, "verses": [{"verse_num": 1, "start_sec": 1.3116666666666668, "end_sec": 15.084166666666668, "confidence": 94.6969696969697, "canonical_text": "Ez a Melkizedek - Sálem királya és a fölséges Isten papja - eléje ment a királyok legyőzése után hazatérő Ábrahámnak, és megáldotta.", "matched_text": "t. Ez a melkizedek, Sálem királya és a felséges Isten papja, eléje ment a királyok legyőzése után hazatérő Ábrahámnak, és megáldotta"}, {"verse_num": 2, "start_sec": 15.084166666666668, "end_sec": 31.271874999999998, "confidence": 96.52777777777779, "canonical_text": "Ábrahám tizedet adott neki mindenből. A neve azt jelenti, hogy az igazságosság királya. Azonkívül Sálem királya volt, vagyis a békesség királya.", "matched_text": "Ábrahám tizedet adott neki mindenből. A neve azt jelenti, az igazságosság királya. Azon kívül Sálem királya volt, vagyis a békesség királya. Nem"}, {"verse_num": 3, "start_sec": 30.5940625, "end_sec": 43.93, "confidence": 97.8102189781022, "canonical_text": "Nem ismerjük apját, anyját, családfáját, sem napjainak kezdetét vagy életének végét. Így az Isten Fiához hasonlítva marad pap mindörökké.", "matched_text": "Nem ismerjük apját, anyját, családfáját, sem napjainak kezdetét, vagy életének végét. Így az Isten fiához hasonlítva maradt pap mindörökké"}, {"verse_num": 4, "start_sec": 45.41, "end_sec": 55.73227272727273, "confidence": 96.90721649484536, "canonical_text": "Gondoljátok meg, milyen nagy ember az, akinek ősatyánk, Ábrahám tizedet adott a zsákmány javából.", "matched_text": "Gondoljátok meg, milyen nagy ember az, akinek ős atyánk Ábraham tizedet adott a zsákmányjavából. L"}, {"verse_num": 5, "start_sec": 55.09, "end_sec": 69.22, "confidence": 96.95121951219512, "canonical_text": "Lévi fiainak, mivel papi tisztet viselnek, szintén megvan a törvényes joguk rá, hogy a néptől, vagyis testvéreiktől, akik Ábrahám leszármazottai, tizedet szedjenek.", "matched_text": "vi fiainak, mivel papi tisztet viselnek, Szintén megvan a törvényes joguk arra, hogy a néptől, vagyis testvéreiktől, akik Ábraham leszármazottai, tizedet szedjenek."}, {"verse_num": 6, "start_sec": 69.62, "end_sec": 81.64, "confidence": 99.17355371900827, "canonical_text": "Ő viszont, aki nem az ő nemzetségükből származott, Ábrahámtól kapta a tizedet, és megáldotta azt, akinek az ígéret szólt.", "matched_text": "Ő viszont, aki nem az ő nemzetségükből származott, Ábrahamtól kapta a tizedet, és megáldotta azt, akinek az ígéret szólt."}, {"verse_num": 7, "start_sec": 82.12, "end_sec": 88.26, "confidence": 100.0, "canonical_text": "Kétségtelen azonban, hogy a magasabb rangú áldja meg az alacsonyabb rangút.", "matched_text": "Kétségtelen azonban, hogy a magasabb rangú áldja meg az alacsonyabb rangút."}, {"verse_num": 8, "start_sec": 88.28, "end_sec": 95.93405405405406, "confidence": 100.0, "canonical_text": "Itt halandó emberek szednek tizedet, ott meg az, akiről tanúsítják, hogy él.", "matched_text": "Itt halandó emberek szednek tizedet, ott meg az, akiről tanúsítják, hogy él."}, {"verse_num": 9, "start_sec": 96.5718918918919, "end_sec": 105.50162162162161, "confidence": 95.0, "canonical_text": "Sőt Ábrahámra való tekintettel mondhatjuk, hogy Lévi is, aki tizedet szed, szintén fizetett tizedet,", "matched_text": "brahámra való tekintettel mondhatjuk, hogy Lévi is, aki most tizedet szed, szintén fizetett tizedet,"}, {"verse_num": 10, "start_sec": 105.50162162162161, "end_sec": 111.88, "confidence": 98.52941176470588, "canonical_text": "hiszen jelen volt őse ágyékában, amikor Melkizedek találkozott vele.", "matched_text": "hiszen jelen volt ő se ágyékában, amikor Melkizedek találkozott vele."}, {"verse_num": 11, "start_sec": 111.24216216216216, "end_sec": 133.7892857142857, "confidence": 99.53488372093024, "canonical_text": "Ha a levita papság, amelynek szolgálata idején a nép a törvényt kapta, elvezetett volna a tökéletességre, mi szükség lett volna még rá, hogy más főpap jöjjön, Melkizedek rendje szerint, nem pedig Áron nemzetségéből?", "matched_text": "Ha a levita papság, amelynek szolgálata idején a nép a törvényt kapta, elvezetett volna a tökéletességre, mi szükség lett volna még rá, hogy más főpap jöjjön, Melkizedek rendje szerint, nem pedig Áron nemzetségéből."}, {"verse_num": 12, "start_sec": 133.7892857142857, "end_sec": 139.53, "confidence": 100.0, "canonical_text": "A papság megváltozásával azonban szükségképpen megváltozott a törvény is.", "matched_text": "A papság megváltozásával azonban szükségképpen megváltozott a törvény is."}, {"verse_num": 13, "start_sec": 139.79, "end_sec": 148.23581818181816, "confidence": 98.9247311827957, "canonical_text": "Akiről ugyanis ezeket mondjuk, az más törzsből való, amelyből senki sem szolgált az oltárnál.", "matched_text": "Akiről ugyanis ezeket mondjuk, Az más törzsből való, amelyből senki sem szolgált az oltárnál."}, {"verse_num": 14, "start_sec": 147.63254545454544, "end_sec": 157.8881818181818, "confidence": 99.15254237288136, "canonical_text": "Hiszen köztudomású, hogy Urunk Júda törzséből származott, e törzzsel kapcsolatban pedig nem beszélt Mózes a papságról.", "matched_text": "Hiszen köztudomású, hogy Urunk Júda törzséből származott, e törzsel kapcsolatban pedig nem beszélt Mózes a papságról."}, {"verse_num": 15, "start_sec": 157.28490909090908, "end_sec": 164.52418181818183, "confidence": 93.84615384615384, "canonical_text": "Még világosabb ez, hogyha Melkizedek módjára egy más pap lép föl,", "matched_text": ". Még világosabb ez, ha Melkizedek módjára egy másik pap lép föl,"}, {"verse_num": 16, "start_sec": 164.52418181818183, "end_sec": 172.97, "confidence": 100.0, "canonical_text": "aki nem a testi leszármazás törvénye alapján lett azzá, hanem a halhatatlan élet erejéből.", "matched_text": "aki nem a testi leszármazás törvénye alapján lett azzá, hanem a halhatatlan élet erejéből."}, {"verse_num": 17, "start_sec": 172.36672727272727, "end_sec": 181.55, "confidence": 91.76470588235294, "canonical_text": "A tanúság ugyanis így szólt róla: \"Te pap vagy mindörökké Melkizedek rendje szerint.\"", "matched_text": "A tanúság ugyanis így szólt róla, pap vagy te mindörökké, melkizedek rendje szerint."}, {"verse_num": 18, "start_sec": 181.71, "end_sec": 187.86945945945948, "confidence": 98.41269841269842, "canonical_text": "Ám ezzel a korábbi törvény megszűnt mint hatástalan és erőtlen,", "matched_text": "Ám ezzel a korábbi törvény megszűnt, mint hatástalan és erőtlen."}, {"verse_num": 19, "start_sec": 187.25351351351352, "end_sec": 199.57243243243244, "confidence": 95.38461538461537, "canonical_text": "a törvény tudniillik nem vezetett el a tökéletességre, csak előkészítője volt egy jobb reménynek, amely közelebb visz az Istenhez.", "matched_text": "A törvény tudnilik nem vezetett el a tökéletességre, csak előkészítője volt egy jobb reménynek, amely közelebb visz Istenhez. Anná"}, {"verse_num": 20, "start_sec": 198.95648648648648, "end_sec": 204.5, "confidence": 100.0, "canonical_text": "Annál is inkább, mivel ez nem történt eskü nélkül.", "matched_text": "Annál is inkább, mivel ez nem történt eskü nélkül."}, {"verse_num": 21, "start_sec": 204.56, "end_sec": 218.92, "confidence": 92.08633093525181, "canonical_text": "Amazok eskü nélkül lettek pappá, ő azonban annak erejével, aki így szólt hozzá: Megesküdött az Úr és nem bánja meg: te pap vagy mindörökké.", "matched_text": "Amazok eskü nélkül lettek pappá, ő azonban annak erejével, aki így szólt hozzá, megesküdött az úr és meg nem bánja, pap vagy te mindörökké."}, {"verse_num": 22, "start_sec": 219.52, "end_sec": 224.72816326530614, "confidence": 100.0, "canonical_text": "Ennek megfelelően Jézus egy kiválóbb szövetség kezese lett.", "matched_text": "Ennek megfelelően Jézus egy kiválóbb szövetség kezese lett."}, {"verse_num": 23, "start_sec": 224.72816326530614, "end_sec": 233.84244897959184, "confidence": 98.86363636363636, "canonical_text": "Azonkívül ők nagy számban voltak papok, mivel a halál következtében nem maradhattak meg.", "matched_text": "zon kívül ők nagy számban voltak papok, mivel a halál következtében nem maradhattak meg."}, {"verse_num": 24, "start_sec": 233.84244897959184, "end_sec": 239.7016326530612, "confidence": 100.0, "canonical_text": "Ő viszont örökre megmarad, s így papsága örökké tart.", "matched_text": "Ő viszont örökre megmarad, s így papsága örökké tart."}, {"verse_num": 25, "start_sec": 239.05061224489796, "end_sec": 251.42, "confidence": 97.45762711864407, "canonical_text": "Ezért mindörökre üdvözítheti is azokat, akik általa járulnak az Isten elé, hiszen örökké él, hogy közbenjárjon értünk.", "matched_text": "Ezért mind örökre üdvözítheti is azokat, akik általa járulnak Isten elé, hiszen örökké él, hogy közben járjon értünk."}, {"verse_num": 26, "start_sec": 250.76897959183674, "end_sec": 260.6043243243243, "confidence": 96.46017699115043, "canonical_text": "Ilyen főpap kellett nekünk: szent, ártatlan, feddhetetlen, a bűnösöktől elkülönített, aki fölségesebb az egeknél.", "matched_text": "Ilyen főpap kellett nekünk, szent, Ártatlan, fethetetlen, a bűnösöktől elkülönített, aki fölségesebb az egeknél."}, {"verse_num": 27, "start_sec": 260.6043243243243, "end_sec": 281.82, "confidence": 98.42931937172776, "canonical_text": "Ő nem szorul rá, mint a többi főpap, hogy naponként először a saját vétkeiért mutasson be áldozatot, s csak azután a nép bűneiért. Egyszer s mindenkorra megtette ezt, amikor magát feláldozta.", "matched_text": "nem szorul rá, mint a többi főpap, hogy naponként először a saját vétkeiért mutasson be áldozatot, s csak azután a nép bűneiért. Egyszer s mindenkorra megtette ezt, amikor önmagát föláldozta."}, {"verse_num": 28, "start_sec": 282.1, "end_sec": 296.16, "confidence": 99.23076923076923, "canonical_text": "A törvény tehát gyarló embereket rendelt főpappá, az eskü szava azonban, amely a törvényt követte, magát az örökre tökéletes Fiút.", "matched_text": "A törvény tehát gyarló embereket rendelt főpappá, az eskü szava azonban, amely a törvényt követte, magát az örökre tökéletes fiút."}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

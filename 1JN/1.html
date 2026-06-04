@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>János első levele 1. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "1JN", "hungarian_name": "János első levele", "abbreviation": "1Jn", "book_number": 423, "chapter_count": 5}, "chapter": {"book_usx": "1JN", "chapter_num": 1, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/69_janos1/szent-janos-1-level-01-fejezet.mp3", "verse_count": 10, "aligned_count": 10}, "verses": [{"verse_num": 1, "start_sec": 7.27, "end_sec": 21.01, "confidence": 96.73202614379085, "canonical_text": "Ami kezdettől fogva volt, amit hallottunk, amit a szemünkkel láttunk, amit szemléltünk és amit a kezünkkel tapintottunk: az élet Igéjét hirdetjük nektek.", "matched_text": "Ami kezdetől fogva volt, amit hallottunk, amit a szemünkkel láttunk, amit szemléltünk, és amit a kezünkkel tapintottunk, az élet igényét hirdetjük nektek."}, {"verse_num": 2, "start_sec": 22.25, "end_sec": 36.28, "confidence": 95.58823529411765, "canonical_text": "Igen, az élet megjelent, láttuk, tanúságot teszünk róla, és hirdetjük nektek az örök életet, amely az Atyánál volt, és megjelent nekünk.", "matched_text": "gen, az élet megjelent. Láttuk, és tanúságot teszünk róla, és hirdetjük nektek az örök életet, amely az atyánál volt, és megjelent nekünk"}, {"verse_num": 3, "start_sec": 36.54, "end_sec": 53.72238095238095, "confidence": 98.22485207100591, "canonical_text": "Amit láttunk és hallottunk, azt nektek is hirdetjük, hogy ti is közösségben legyetek velünk. Mi ugyanis az Atyával és az ő Fiával, Jézus Krisztussal vagyunk közösségben.", "matched_text": "Amit láttunk és hallottunk, azt nektek is hirdetjük, hogy ti is közösségben legyetek velünk. Mi ugyanis az atyával és az ő fiával Jézus Krisztussal vagyunk közösségben. É"}, {"verse_num": 4, "start_sec": 53.12142857142857, "end_sec": 58.53, "confidence": 98.21428571428571, "canonical_text": "S azért írjuk ezeket nektek, hogy örömünk teljes legyen.", "matched_text": "s azért írjuk ezeket nektek, hogy örömünk teljes legyen."}, {"verse_num": 5, "start_sec": 59.58, "end_sec": 71.09, "confidence": 97.2972972972973, "canonical_text": "Az üzenet, amelyet tőle hallottunk és nektek hirdetünk, ez: Az Isten világosság, és nincs benne semmi sötétség.", "matched_text": "Az üzenet, amelyet tőle hallottunk, és nektek hirdetünk ez, az Isten világosság, és nincs benne semmi sötétség."}, {"verse_num": 6, "start_sec": 71.78, "end_sec": 81.45, "confidence": 89.56521739130436, "canonical_text": "Ha azt állítjuk, hogy közösségben vagyunk vele, és sötétségben járunk, akkor hazudunk, és nem az igazságot tesszük.", "matched_text": "a azt állítjuk, hogy közösségben vagyunk vele, és sötétségben élünk, akkor hazudunk, és nem az igazsághoz igazodunk."}, {"verse_num": 7, "start_sec": 80.88117647058824, "end_sec": 96.95, "confidence": 94.5578231292517, "canonical_text": "De ha világosságban járunk, ahogy ő is világosságban van, akkor közösségben vagyunk egymással, és Fiának, Jézusnak a vére minden bűnt lemos rólunk.", "matched_text": "De ha világosságban élünk, ahogy ő is világosságban él, akkor közösségben vagyunk egymással, és fiának, Jézusnak a vére, minden bűnt lemos rólunk."}, {"verse_num": 8, "start_sec": 96.95, "end_sec": 108.45315789473685, "confidence": 97.97979797979798, "canonical_text": "Ha azt állítjuk, hogy nincs bűnünk, saját magunkat vezetjük félre, és nincs meg bennünk az igazság.", "matched_text": "Ha azt állítjuk, hogy nincs bűnünk, saját magunkat vezetjük vére, és nincs meg bennünk az igazság."}, {"verse_num": 9, "start_sec": 108.45315789473685, "end_sec": 118.35631578947368, "confidence": 90.32258064516128, "canonical_text": "Ha megvalljuk bűneinket, akkor mivel jó és igazságos, megbocsátja bűneinket, és minden igazságtalanságtól megtisztít minket.", "matched_text": "Ha megvalljuk bűneinket, akkor, mivel ő jó és igazságos, megbocsátja bűneinket, és minden gonoszságtól megtisztít bennünket."}, {"verse_num": 10, "start_sec": 118.96526315789474, "end_sec": 126.78, "confidence": 94.31818181818183, "canonical_text": "Ha azt állítjuk, hogy nem vétkeztünk, hazugnak tüntetjük fel, és tanítása nincs bennünk.", "matched_text": "zt állítjuk, hogy nem vétkeztünk, hazugnak tüntetjük fel őt, és tanítása nincsen bennünk."}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>János jelenései 7. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "REV", "hungarian_name": "János jelenései", "abbreviation": "Jel", "book_number": 427, "chapter_count": 22}, "chapter": {"book_usx": "REV", "chapter_num": 7, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/73_jelenesek/jelenesek-konyve-07-fejezet.mp3", "verse_count": 17, "aligned_count": 17}, "verses": [{"verse_num": 1, "start_sec": 4.120952380952381, "end_sec": 19.044285714285714, "confidence": 75.6578947368421, "canonical_text": "Ezután négy angyalt láttam, a föld négy sarkán álltak. Feltartóztatták a föld négy szelét, hogy ne fújjanak a földön, sem a tengeren, sem semmiféle fán.", "matched_text": "után láttam négy angyalt, akik a föld négy sarkán álltak, és visszafogták a földnek négy szelét, hogy ne fújjon szél, sem a földön, sem a tengeren, és ne"}, {"verse_num": 2, "start_sec": 22.784285714285716, "end_sec": 39.08133333333333, "confidence": 67.17948717948718, "canonical_text": "Majd láttam, hogy napkeletről egy másik angyal száll fel, az élő Isten pecsétje volt nála. Nagy hangon kiáltott a négy angyalnak, akiknek hatalmuk volt rá, hogy ártsanak a földnek és a tengernek:", "matched_text": "angyalt, aki napkelet felül emelkedett föl, nála volt az élő Isten pecsétje. És oda kiáltott hangos szóval a négy angyalnak, akiknek megadatott, hogy árcsanak a földnek és a tengernek, és mondta,"}, {"verse_num": 3, "start_sec": 39.08133333333333, "end_sec": 50.39176470588235, "confidence": 92.5233644859813, "canonical_text": "\"Ne ártsatok se a földnek, se a tengernek, se a fáknak, míg meg nem jelöljük homlokukon Istenünk szolgáit!\"", "matched_text": "árcsatok, se a földnek, se a tengernek, se a fáknak, amíg meg nem jelöljük homlokukon, ami Istenünk szolgái"}, {"verse_num": 4, "start_sec": 49.64529411764706, "end_sec": 60.4225, "confidence": 69.38775510204081, "canonical_text": "Ekkor hallottam a megjelöltek számát: száznegyvennégyezren voltak Izrael fiainak minden törzséből:", "matched_text": "zolgáid. És hallottam a megjelöltek számát. 144 ezren jelöltettek meg, Izrael fiainak 12 törzséből."}, {"verse_num": 5, "start_sec": 59.596875, "end_sec": 71.1575, "confidence": 68.6046511627907, "canonical_text": "Júda törzséből tizenkétezer, Ruben törzséből tizenkétezer, Gád törzséből tizenkétezer,", "matched_text": "örzséből. Júda törzséből 12 ezer. Ruben törzséből 12 ezer. Gád törzséből 12 ezer. Áser"}, {"verse_num": 6, "start_sec": 69.504375, "end_sec": 80.875, "confidence": 69.89247311827957, "canonical_text": "Áser törzséből tizenkétezer, Naftali törzséből tizenkétezer, Manassze törzséből tizenkétezer,", "matched_text": "zer. Áser törzséből 12 ezer. Neftali törzséből 12 ezer. Manasse törzséből 12 ezer. Simeon törz"}, {"verse_num": 7, "start_sec": 78.6325, "end_sec": 90.5425, "confidence": 68.81720430107528, "canonical_text": "Simeon törzséből tizenkétezer, Lévi törzséből tizenkétezer, Isszachár törzséből tizenkétezer,", "matched_text": "zer. Simeon törzséből 12 ezer. Lévi törzséből 12 ezer. Iszakár törzséből 12 ezer. Zebulon törz"}, {"verse_num": 8, "start_sec": 88.04125, "end_sec": 102.4921052631579, "confidence": 71.57894736842105, "canonical_text": "Zebulun törzséből tizenkétezer, József törzséből tizenkétezer, Benjamin törzséből tizenkétezer.", "matched_text": "er. Zebulon törzséből 12 ezer. József törzséből 12 ezer. Benjamin törzséből 12 ezer. Ezek után l"}, {"verse_num": 9, "start_sec": 103.82684210526315, "end_sec": 122.02, "confidence": 69.61325966850829, "canonical_text": "Ezután akkora sereget láttam, hogy meg sem lehetett számolni. Minden nemzetből, törzsből, népből és nyelvből álltak a trón és a Bárány előtt, fehér ruhába öltözve, kezükben pálmaág.", "matched_text": "sereg, amelyet megszámlálni senki sem tudott. Minden nemzetből és törzsből, népből és nyelvből, Ott álltak a trónus előtt, a bárány színe előtt, fehér ruhába voltak öltözve, és pálm"}, {"verse_num": 10, "start_sec": 122.02, "end_sec": 131.15, "confidence": 77.64705882352942, "canonical_text": "Nagy szóval kiáltották és mondták: \"Üdv Istenünknek, aki a trónon ül és a Báránynak!\"", "matched_text": "zükben. És hangos szóval kiáltották, üdv Istenünknek, aki a trónon ül, és a báránynak."}, {"verse_num": 11, "start_sec": 133.6607692307692, "end_sec": 144.88923076923078, "confidence": 78.26086956521739, "canonical_text": "Az angyalok mind a trón, a vének és a négy élőlény körül álltak, arcra borultak a trón előtt, és imádták az Istent,", "matched_text": "összes angyalog ott álltak a trónos, a vének, és a négy élőlény körül, és arcra borultak a trón előtt, és Istent imá"}, {"verse_num": 12, "start_sec": 145.39961538461537, "end_sec": 158.66, "confidence": 73.27586206896552, "canonical_text": "mondván: \"Amen, áldás, dicsőség, bölcsesség, hála, tisztelet, hatalom és erő a mi Istenünknek örökkön-örökké! Amen.\"", "matched_text": "en. Áldás és dicsőség, és bölcsesség és hála, és tisztesség és erő, és hatalom, ami Istenünknek, örökkön örökké, Amen"}, {"verse_num": 13, "start_sec": 157.9561111111111, "end_sec": 171.392, "confidence": 72.03389830508475, "canonical_text": "Ekkor a vének közül az egyik megszólított. Azt kérdezte tőlem: \"Kik ezek a fehér ruhába öltözöttek, és honnan jöttek?\"", "matched_text": "n. És a vének közül az egyik válaszolt, és mondta nekem, ezek a fehér ruhába öltözöttek kicsodák, és honnan jöttek? És"}, {"verse_num": 14, "start_sec": 173.08280000000002, "end_sec": 186.11, "confidence": 58.33333333333333, "canonical_text": "Így válaszoltam: \"Te tudod, uram.\" \"Ezek a nagy szorongatásból jöttek - magyarázta meg -, ruhájukat fehérre mosták a Bárány vérében.", "matched_text": "d, Uram. És megmondta nekem, ők azok, akik a nagy szorongatásból jöttek, és megmosták, és kifehérítették ruhájukat a bárány vérében."}, {"verse_num": 15, "start_sec": 186.68, "end_sec": 198.0609523809524, "confidence": 75.22935779816513, "canonical_text": "Ezért állnak Isten trónja előtt, s éjjel-nappal szolgálnak neki a templomában. A trónon ülő közöttük lakozik.", "matched_text": "zért Isten trónosa előtt vannak, s éjjel és nappal szolgálnak az ő templomában. És aki a trónon ül, fölöttük f"}, {"verse_num": 16, "start_sec": 198.0609523809524, "end_sec": 207.03347826086957, "confidence": 75.64102564102564, "canonical_text": "Nem éheznek és nem szomjaznak többé, a nap nem égeti őket, sem másfajta hőség,", "matched_text": "i. Nem éheznek, nem is szomjaznak többé, nem tűzi őket a nap, sem bármi hőség,"}, {"verse_num": 17, "start_sec": 207.03347826086957, "end_sec": 223.74, "confidence": 86.23188405797102, "canonical_text": "mert a Bárány, aki a trón közepén áll, legelteti, és élő vizek forrásához tereli őket, az Isten pedig letöröl a szemükről minden könnyet.\"", "matched_text": "mert a bárány, aki a trón közepén van, legelteti, és az életvizének forrásaihoz vezeti őket, és Isten letöröl a szemükről minden könnyet. ["}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

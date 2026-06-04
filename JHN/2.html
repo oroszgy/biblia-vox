@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>János evangéliuma 2. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "JHN", "hungarian_name": "János evangéliuma", "abbreviation": "Jn", "book_number": 404, "chapter_count": 21}, "chapter": {"book_usx": "JHN", "chapter_num": 2, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/50_janos/janos-evangeliuma-02-fejezet.mp3", "verse_count": 25, "aligned_count": 25}, "verses": [{"verse_num": 1, "start_sec": 1.7284615384615383, "end_sec": 10.37076923076923, "confidence": 78.04878048780488, "canonical_text": "Harmadnap menyegzőt tartottak a galileai Kánában, amelyen Jézus anyja is ott volt.", "matched_text": "És a harmadik napon mennyegző volt a galiléai kánában, és Jézus anyja is ott volt."}, {"verse_num": 2, "start_sec": 9.794615384615383, "end_sec": 14.979999999999999, "confidence": 66.07142857142857, "canonical_text": "Jézust is meghívták a menyegzőre, tanítványaival együtt.", "matched_text": "lt. Meghívták a mennyegzőre Jézust és a tanítványait is."}, {"verse_num": 3, "start_sec": 15.08, "end_sec": 22.890526315789476, "confidence": 76.05633802816901, "canonical_text": "Amikor fogytán volt a bor, Jézus anyja megjegyezte: \"Nincs több boruk.\"", "matched_text": "amikor fogytán volt a bor, Jézus anyja így szólt hozzá, nincs boruk. És"}, {"verse_num": 4, "start_sec": 21.216842105263158, "end_sec": 30.70105263157895, "confidence": 52.32558139534884, "canonical_text": "Jézus azt felelte: \"Asszony, a te gondod az én gondom. De még nem jött el az én órám.\"", "matched_text": "s boruk. És mondta neki Jézus, miközünk hozzá, asszony, még nem jött el az én órám. Any"}, {"verse_num": 5, "start_sec": 29.585263157894737, "end_sec": 36.28, "confidence": 50.0, "canonical_text": "Erre anyja szólt a szolgáknak: \"Tegyetek meg mindent, amit csak mond!\"", "matched_text": "Anya így szólt a felszolgálókhoz, bármit mond majd nektek, tegyétek me"}, {"verse_num": 6, "start_sec": 38.45473684210526, "end_sec": 46.125789473684215, "confidence": 73.62637362637363, "canonical_text": "Volt ott hat kőkorsó, a zsidóknál szokásos tisztálkodás céljára, mindegyik két-három mérős.", "matched_text": "elhelyezve hat kőedény, a zsidóknál szokásos mosakodás szériából, mindegyik két-három mérős"}, {"verse_num": 7, "start_sec": 46.823157894736845, "end_sec": 55.88894736842106, "confidence": 70.45454545454545, "canonical_text": "Jézus szólt nekik: \"Töltsétek meg a korsókat vízzel!\" Meg is töltötték azokat színültig.", "matched_text": "ndta nekik Jézus, töltsétek meg az edényeket vízzel. És megtöltötték, azokat színültig. É"}, {"verse_num": 8, "start_sec": 53.79684210526316, "end_sec": 63.56, "confidence": 74.72527472527473, "canonical_text": "Ekkor azt mondta nekik: \"Most merítsetek belőle, és vigyétek oda a násznagynak.\" Odavitték.", "matched_text": "színültig. És mondta nekik, most merítsetek, és vigyétek a násznagynak. Ők pedig elvitték."}, {"verse_num": 9, "start_sec": 64.29207547169811, "end_sec": 76.56603773584905, "confidence": 88.60759493670886, "canonical_text": "Amikor a násznagy megízlelte a borrá vált vizet, nem tudta honnan való - a szolgák azonban, akik a vizet merítették, tudták -, hívatta a násznagy a vőlegényt,", "matched_text": "ig a násznagy megízlelte a borrá vált vizet, és nem tudta, honnét való, a felszolgálók ellenben, akik a vizet merítették, tudták, hívta a násznagy a vőlegényt,"}, {"verse_num": 10, "start_sec": 76.09396226415095, "end_sec": 88.84, "confidence": 61.224489795918366, "canonical_text": "s szemére vetette: \"Először mindenki a jó bort adja, s csak amikor már megittasodtak, akkor az alábbvalót. Te meg mostanáig tartogattad a jó bort.\"", "matched_text": "és mondta neki, mindenki elsőnek a jó bort teszi az asztalra, és csak amikor már megittasodtak azt, ami gyöngébb. Te pedig megőrizted a jó bort mos"}, {"verse_num": 11, "start_sec": 88.3679245283019, "end_sec": 100.52, "confidence": 65.76576576576576, "canonical_text": "Ezzel kezdte meg Jézus csodajeleit a galileai Kánában. Kinyilatkoztatta dicsőségét, s tanítványai hittek benne.", "matched_text": "anáig. Ezt az első csoda jelet Jézus a galiléai kánában tette, és kinyilvánította dicsőségét, és hittek benne a"}, {"verse_num": 12, "start_sec": 102.78, "end_sec": 112.82, "confidence": 75.24752475247524, "canonical_text": "Aztán lement anyjával, testvéreivel és tanítványaival Kafarnaumba, de csak néhány napig maradtak ott.", "matched_text": "zután ő maga, édesanyja, testvérei és tanítványai lementek kafarnaumba, és néhány napig ott maradtak."}, {"verse_num": 13, "start_sec": 115.19317460317461, "end_sec": 121.50904761904762, "confidence": 68.85245901639344, "canonical_text": "A zsidók húsvétjának közeledtével Jézus fölment Jeruzsálembe.", "matched_text": "n közel volt a zsidó kusvétya, és Jézus fölment Jeruzsálembe."}, {"verse_num": 14, "start_sec": 121.50904761904762, "end_sec": 131.61444444444444, "confidence": 72.64957264957265, "canonical_text": "A templomban kalmárokat talált, akik ökröt, juhot és galambot árultak, valamint pénzváltókat, akik ott telepedtek le.", "matched_text": "A templom területén kereskedőket talált, akik ökröket, bárányokat és galambokat árultak, meg pénzváltókat, akik ott ül"}, {"verse_num": 15, "start_sec": 132.87761904761905, "end_sec": 145.50936507936507, "confidence": 76.22377622377623, "canonical_text": "Kötélből ostort font, és mind kiűzte őket a templomból, juhaikkal és ökreikkel együtt, a pénzváltók pénzét szétszórta, asztalaikat felforgatta,", "matched_text": "ötélből ostort font, kihajtott mindenkit a templomból, az ökröket meg a juhokat is. A pénzváltók pénzét szétszórta, és asztalaikat fölforgatta."}, {"verse_num": 16, "start_sec": 145.50936507936507, "end_sec": 154.965, "confidence": 85.71428571428572, "canonical_text": "a galambárusoknak meg azt mondta: \"Vigyétek innét ezeket, ne tegyétek Atyám házát vásárcsarnokká!\"", "matched_text": "galambárusoknak pedig azt mondta, vigyétek ezeket innét, ne tegyétek atyám házát vásárcsarnokká. A"}, {"verse_num": 17, "start_sec": 154.32, "end_sec": 162.06, "confidence": 73.41772151898735, "canonical_text": "Tanítványainak eszükbe jutott az Írás szava: \"Emészt a házadért való buzgalom.\"", "matched_text": "A tanítványoknak eszükbe jutott, hogy meg van írva, emészta házadért való buzgós"}, {"verse_num": 18, "start_sec": 159.48, "end_sec": 171.7825, "confidence": 52.542372881355924, "canonical_text": "A zsidók azonban szót emeltek, ezekkel a szavakkal fordultak hozzá: \"Miféle csodajelet mutatsz, hogy ezt mered tenni?\"", "matched_text": "a házadért való buzgóság. Felelték teát a zsidók, és mondták neki, Milyen jelet mutatsz nekünk, hogy ezeket műveled? Jé"}, {"verse_num": 19, "start_sec": 172.345, "end_sec": 180.22, "confidence": 72.15189873417722, "canonical_text": "Jézus azt válaszolta: \"Bontsátok le ezt a templomot, és harmadnapra fölépítem.\"", "matched_text": "ekik, és mondta, bontsátok le ezt a templomot, és én három nap alatt fölépítem."}, {"verse_num": 20, "start_sec": 180.42, "end_sec": 192.31636363636363, "confidence": 73.07692307692308, "canonical_text": "A zsidók ellene vetették: \"Negyvenhat esztendeig épült ez a templom, s te három nap alatt újjáépítenéd?\"", "matched_text": "ák tehát a zsidók, negyvenhat esztendeje épül ez a templom, és te három nap alatt fölépítenéd. Ő azonban"}, {"verse_num": 21, "start_sec": 191.65545454545455, "end_sec": 194.96, "confidence": 89.1891891891892, "canonical_text": "De ő saját teste templomáról beszélt.", "matched_text": "n saját testének templomáról beszélt."}, {"verse_num": 22, "start_sec": 196.07, "end_sec": 206.40714285714284, "confidence": 67.24137931034483, "canonical_text": "Amikor föltámadt a halálból, tanítványai visszaemlékeztek ezekre a szavakra, s hittek az Írásnak és Jézus szavainak.", "matched_text": "Mikor tehát föltámadt a halálból, tanítványainak eszébe jutott, hogy ezt mondta, és hittek az írásnak és a beszédnek,"}, {"verse_num": 23, "start_sec": 209.63, "end_sec": 220.05105263157895, "confidence": 62.06896551724138, "canonical_text": "Akkor, amikor húsvét ünnepe alkalmával Jézus Jeruzsálemben tartózkodott, sokan hittek benne, mert látták a csodákat,", "matched_text": "kor pedig az ünnepnapon, husvét napján Jeruzsálemben volt, sokan hittek az ő nevében, mert látták csoda jeleit, melye"}, {"verse_num": 24, "start_sec": 219.47210526315789, "end_sec": 226.35333333333332, "confidence": 70.66666666666667, "canonical_text": "amelyeket tett. Jézus azonban nem bízott bennük, mert ismerte mindnyájukat,", "matched_text": "melyeket művelt. Maga Jézus azonban nem bízta rájuk magát, mert ő mindenkit"}, {"verse_num": 25, "start_sec": 229.63733333333334, "end_sec": 243.7, "confidence": 68.18181818181819, "canonical_text": "s nem szorult rá, hogy bárki is felvilágosítsa az emberről. Tudta, mi lakik az emberben.", "matched_text": "ksége, hogy bárkit tanuskodjék neki az emberről. Ő ugyanis tudta, mi lakik az emberben. ["}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Máté evangéliuma 3. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "MAT", "hungarian_name": "Máté evangéliuma", "abbreviation": "Mt", "book_number": 401, "chapter_count": 28}, "chapter": {"book_usx": "MAT", "chapter_num": 3, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/47_mate/mate-evangeliuma-03-fejezet.mp3", "verse_count": 17, "aligned_count": 17}, "verses": [{"verse_num": 1, "start_sec": 1.4666666666666666, "end_sec": 8.066666666666666, "confidence": 60.9375, "canonical_text": "Ezekben a napokban Júdea pusztájában fellépett Keresztelő János,", "matched_text": "ezet. Azokban a napokban pedig eljött keresztelő János. Prédikált"}, {"verse_num": 2, "start_sec": 8.799999999999999, "end_sec": 16.36, "confidence": 73.33333333333334, "canonical_text": "és így prédikált: \"Tartsatok bűnbánatot, mert közel van a mennyek országa!\"", "matched_text": "ában is mondta. Tartsatok bűnbánatot, mert elközelgett a mennyek országa. Ő"}, {"verse_num": 3, "start_sec": 17.009999999999998, "end_sec": 30.32, "confidence": 65.18518518518519, "canonical_text": "Ő az, akire Izajás próféta utal, amikor ezeket mondja: \"A pusztában kiáltónak szava: Készítsétek az Úr útját, egyengessétek ösvényeit!\"", "matched_text": "aki megmondatott, izaiás proféta által mondván, a kiáltónak szava a pusztában. Készítsétek az úrutját, egyenessé tegyétek az ősvényeit."}, {"verse_num": 4, "start_sec": 30.91, "end_sec": 41.940000000000005, "confidence": 53.77358490566038, "canonical_text": "János teveszőrből készült ruhát viselt, csípőjét pedig bőröv vette körül, sáska és vadméz volt az eledele.", "matched_text": "Jánosnak pedig teve szőrből volt a ruhája, és bőröv volt a derekán. Eledel-e sáska volt, és erdei méz. Akko"}, {"verse_num": 5, "start_sec": 41.940000000000005, "end_sec": 48.239999999999995, "confidence": 85.24590163934427, "canonical_text": "Kiment hozzá Jeruzsálem, egész Júda és a Jordán egész vidéke.", "matched_text": "iment hozzá Jeruzsálem, egész Júdea, és az egész Jordán vidék,"}, {"verse_num": 6, "start_sec": 48.87, "end_sec": 55.63, "confidence": 78.46153846153847, "canonical_text": "Megvallották bűneiket, s ő megkeresztelte őket a Jordán folyóban.", "matched_text": "megvalván a bűneiket, megkeresztelkedtek nála a Jordán folyóban. ["}, {"verse_num": 7, "start_sec": 56.217600000000004, "end_sec": 71.48434782608696, "confidence": 62.57309941520468, "canonical_text": "Amikor látta, hogy sok farizeus és szadduceus jön megkeresztelkedni, így szólt hozzájuk: \"Viperák fajzata! Ki tanított benneteket arra, hogy fussatok a közelgő harag elől?", "matched_text": "ig János látta sok farizeust és szadduceust, hogy a kereszttségéhez jönnek, mondta nekik, Viperák fajzata, kimutatta meg nektek, hogy fussatok az eljövendő ítélet elől. Ter"}, {"verse_num": 8, "start_sec": 70.9, "end_sec": 74.40608695652175, "confidence": 89.74358974358975, "canonical_text": "Teremjétek a bűnbánat méltó gyümölcsét!", "matched_text": "remjétek hát a bűnbánat méltó gyümölcsét"}, {"verse_num": 9, "start_sec": 73.23739130434784, "end_sec": 85.63619047619048, "confidence": 58.57142857142856, "canonical_text": "Ne gondoljátok, hogy arra hivatkozhattok: Ábrahám az atyánk! Mondom nektek: ezekből a kövekből is tud az Isten Ábrahámnak fiakat támasztani.", "matched_text": "gyümölcsét, és ne akarjátok mondani magatokban, ami atyánk Ábraham, mert mondom nektek, Isten tud ezekből a kövekből itt, fiakat támasztani"}, {"verse_num": 10, "start_sec": 86.28428571428572, "end_sec": 97.30190476190477, "confidence": 67.0, "canonical_text": "A fejsze már a fák gyökerén van: Kivágnak és tűzre vetnek minden fát, amely nem terem jó gyümölcsöt.", "matched_text": "a fejszemára fák gyökerére tétedett, tehát minden fát, amely nem hoz jó gyümölcsöt, kivágnak és tűzr"}, {"verse_num": 11, "start_sec": 94.06142857142858, "end_sec": 116.983125, "confidence": 61.46788990825688, "canonical_text": "Én csak vízzel keresztellek, hogy bűnbánatra indítsalak benneteket, de aki a nyomomba lép, az hatalmasabb nálam. Arra sem vagyok méltó, hogy a saruját hordozzam. Ő Szentlélekkel és tűzzel fog benneteket megkeresztelni.", "matched_text": "gyümölcsöt, kivágnak és tűzre vetnek. Én megkeresztellek titeket vízben bűnbánatra, aki azonban utánam jön, erősebb nálam, és én nem vagyok rám éltó, hogy a saruját hordozzam. Ő majd Szentlélekben és tűzben keresztel m"}, {"verse_num": 12, "start_sec": 116.983125, "end_sec": 130.84, "confidence": 80.31496062992126, "canonical_text": "Szórólapátja már a kezében van. Kitakarítja szérűjét, a búzát csűrébe gyűjti, a pelyvát pedig olthatatlan tűzbe vetve elégeti.\"", "matched_text": ". Szóró lapátja a kezében van, és megtisztítja szérűjét. A búzáját csürbegyűjti, a pejvát pedig oldhatatlan tűzben elégeti. [Sil"}, {"verse_num": 13, "start_sec": 129.05, "end_sec": 137.2596, "confidence": 72.15189873417722, "canonical_text": "Akkor Jézus Galileából elment Jánoshoz a Jordán mellé, hogy megkeresztelkedjék.", "matched_text": "Akkor eljött Jézus Galiléából a Jordán mellé Jánoshoz, hogy megkeresztelje őt."}, {"verse_num": 14, "start_sec": 137.2596, "end_sec": 146.5370588235294, "confidence": 60.57692307692308, "canonical_text": "János igyekezett visszatartani: \"Nekem van szükségem a te keresztségedre - mondta -, s te jössz hozzám?\"", "matched_text": "János pedig visszatartotta őt, mondván, nekem kell megkeresztelkednem nálad, és te jössz én hozzám. Felál"}, {"verse_num": 15, "start_sec": 145.91, "end_sec": 155.94294117647058, "confidence": 46.15384615384615, "canonical_text": "Jézus ezt mondta: \"Hagyd ezt most! Illő, hogy mindent megtegyünk, ami elő van írva.\" Erre engedett neki.", "matched_text": "pedig mondta neki Jézus, hagyd csak, mert így kell beteljesítenünk a teljes igazságot. Akkor odaengedte"}, {"verse_num": 16, "start_sec": 157.9216, "end_sec": 172.54933333333332, "confidence": 66.88741721854305, "canonical_text": "Megkeresztelkedése után Jézus nyomban feljött a vízből. Akkor megnyílt az ég, és látta, hogy az Isten Lelke mint galamb leszállt és föléje ereszkedett.", "matched_text": "egmerülvén a vízben, azonnal feljött belőle. És íme, megnyílt neki az ég, és látta, hogy a Szentlélek, mint galamb alászál, és fölébe ereszkedik. És íme"}, {"verse_num": 17, "start_sec": 173.65866666666668, "end_sec": 182.83, "confidence": 69.79865771812081, "canonical_text": "Az égből szózat hallatszott: \"Ez az én szeretett Fiam, akiben kedvem telik.\"", "matched_text": "z égből mondta, ez az én szeretett fiam, akiben kedvem tellett. [Silence]"}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

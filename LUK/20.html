@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lukács evangéliuma 20. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "LUK", "hungarian_name": "Lukács evangéliuma", "abbreviation": "Lk", "book_number": 403, "chapter_count": 24}, "chapter": {"book_usx": "LUK", "chapter_num": 20, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/49_lukacs/lukacs-evangeliuma-20-fejezet.mp3", "verse_count": 47, "aligned_count": 47}, "verses": [{"verse_num": 1, "start_sec": 3.27063829787234, "end_sec": 14.717872340425531, "confidence": 60.33057851239669, "canonical_text": "Egy nap, amikor a népet tanította a templomban s az evangéliumot hirdette, odamentek a főpapok, írástudók és a nép vénei,", "matched_text": "k napon, miközben a templomban tanított és hirdette a népnek az örömhírt, ott termettek a főpapok és az írástudók a vénekk"}, {"verse_num": 2, "start_sec": 15.262978723404254, "end_sec": 27.063478260869566, "confidence": 61.60714285714286, "canonical_text": "és megkérdezték: \"Mondd meg nekünk, milyen hatalom birtokában teszed ezeket, vagy ki adta neked ezt a hatalmat?\"", "matched_text": "és így szóltak hozzá, mondj csak, miféle hatalommal teszed ezeket? Vagy ki az, aki ezt a hatalmat adta neked? Vál"}, {"verse_num": 3, "start_sec": 27.063478260869566, "end_sec": 33.82521739130435, "confidence": 83.09859154929578, "canonical_text": "Így felelt nekik: \"Én is kérdezek tőletek valamit. Mondjátok meg nekem:", "matched_text": "ig mondta nekik, Én is kérdezek tőletek valamit, és mondjátok meg nekem,"}, {"verse_num": 4, "start_sec": 33.26173913043478, "end_sec": 40.89866666666667, "confidence": 83.33333333333334, "canonical_text": "János keresztsége az égből való volt, vagy emberektől származott?\"", "matched_text": "János keresztsége az égből való volt, vagy az emberek től? Ők erre"}, {"verse_num": 5, "start_sec": 39.78, "end_sec": 49.848, "confidence": 71.05263157894737, "canonical_text": "Erre tanakodni kezdtek maguk közt: \"Ha azt mondjuk: Az égből -, azt fogja kérdezni: Akkor miért nem hittetek neki?", "matched_text": "k erre magukban gondolkodtak, mondván, ha azt mondjuk, az égből, azt fogja mondani, akkor miért nem hittetek neki?"}, {"verse_num": 6, "start_sec": 50.407333333333334, "end_sec": 61.034666666666666, "confidence": 64.15094339622642, "canonical_text": "Ha meg azt mondjuk: Az emberektől -, megkövez minket az egész nép, mert meggyőződése, hogy János próféta.\"", "matched_text": "g azt mondjuk, az emberek től, az egész nép meg fog kövezni minket, mert bizonyosak abban, hogy János profé"}, {"verse_num": 7, "start_sec": 60.47533333333334, "end_sec": 66.06866666666667, "confidence": 84.21052631578947, "canonical_text": "Ezért azt válaszolták neki, hogy nem tudják, honnét való.", "matched_text": "féta. És azt válaszolták, hogy nem tudják, honnét való leh"}, {"verse_num": 8, "start_sec": 66.06866666666667, "end_sec": 76.64666666666668, "confidence": 62.03703703703704, "canonical_text": "Jézus erre így felelt nekik: \"Akkor én sem mondom meg nektek, hogy milyen hatalom birtokában teszem ezeket.\"", "matched_text": "s Jézus szólt hozzájuk, én sem mondom meg nektek, milyen hatalommal teszem ezeket. Kezdte pedig mondani a nép"}, {"verse_num": 9, "start_sec": 73.4, "end_sec": 87.036, "confidence": 71.73913043478262, "canonical_text": "Ezután mondott a népnek egy példabeszédet: \"Egy ember szőlőt ültetett. Majd bérbe adta szőlőműveseknek, és hosszabb időre elment idegenbe.", "matched_text": "ezdte pedig mondani a népnek ezt a példabeszédet. Egy ember szőlőt telepített, és bérbeadta szőlőműveseknek, ő maga pedig, Hosszú időre elu"}, {"verse_num": 10, "start_sec": 85.08800000000001, "end_sec": 102.62, "confidence": 63.12849162011174, "canonical_text": "Amikor eljött az ideje, elküldte szolgáját a szőlőművesekhez, hogy a szőlő terméséből szolgáltassák be neki a ráeső részt. De a szőlőművesek megverték, és üres kézzel elkergették.", "matched_text": "sszú időre elutazott. És a maga idejében szolgát küldött a szőlőművesekhez, hogy adjanak neki a szőlő terméséből. A szőlőművesek azonban megverték, és üres kézzel küldték el. Akkor"}, {"verse_num": 11, "start_sec": 101.97066666666666, "end_sec": 112.36, "confidence": 67.34693877551021, "canonical_text": "Erre egy másik szolgát küldött. Ezt is megverték, szidták, gyalázták, majd üres kézzel elzavarták.", "matched_text": "r egy másik szolgát küldött, ők azonban ezt is megverték, és gyalázatokkal illetve üresen küldték e"}, {"verse_num": 12, "start_sec": 112.42, "end_sec": 119.79333333333334, "confidence": 74.24242424242425, "canonical_text": "Erre egy harmadikat is küldött. Ezt is sebesre verték és kidobták.", "matched_text": "ött egy harmadikat is. Ők ezt is megsebesítették és kidobták. Mondt"}, {"verse_num": 13, "start_sec": 118.17999999999999, "end_sec": 129.80588235294115, "confidence": 60.0, "canonical_text": "Most a gazda így gondolkodott magában: Mit tegyek? Elküldöm kedves fiamat, őt csak megbecsülik.", "matched_text": "Mondta pedig a szőlő ura, mit tegyek? Elküldöm a szeretett fiamat, őt talán becsülni fogják. Mi"}, {"verse_num": 14, "start_sec": 129.2, "end_sec": 140.1942857142857, "confidence": 63.39285714285714, "canonical_text": "A szőlőművesek azonban a fiú láttára így biztatták egymást: Ez az örökös. Öljük meg, és a miénk lesz öröksége. -", "matched_text": "a szőlőművesek meglátták, azt gondolták magukban, ez az örökös, öljük meg, hogy miénk legyen az öröksége. Kivitt"}, {"verse_num": 15, "start_sec": 139.62, "end_sec": 148.2906896551724, "confidence": 77.14285714285715, "canonical_text": "Kidobták hát a szőlőből és megölték. Vajon mit tesz velük a szőlő ura?", "matched_text": "ték őt a szőlőből és megölték. Mit fog tehát tenni velük a szőlő ura? E"}, {"verse_num": 16, "start_sec": 147.66, "end_sec": 159.01241379310346, "confidence": 58.82352941176471, "canonical_text": "Hazajön, és megöli a szőlőműveseket, a szőlőt pedig másoknak adja bérbe.\" Ezt hallva tiltakoztak: \"Isten mentsen tőle!\"", "matched_text": "jön, és elpusztítja azokat a szőlőműveseket, és a szőlejét másoknak fogja adni. Ennek hallatára mondták, távol legyen. Ő"}, {"verse_num": 17, "start_sec": 160.27379310344827, "end_sec": 175.41034482758621, "confidence": 56.55737704918033, "canonical_text": "Ő azonban végignézett rajtuk és folytatta: \"Mit jelent akkor az Írás: A kő, amelyet az építők elvetettek szegletkővé lett?", "matched_text": "a tekintetét, és szólt, mit jelent tehát az, ami meg van írva? A kő, amelyet megvetettek az építők, az lett a szegletnek f"}, {"verse_num": 18, "start_sec": 176.67172413793105, "end_sec": 184.24, "confidence": 67.6056338028169, "canonical_text": "Aki e kőre esik, összezúzza magát, akire pedig ráesik, azt agyonzúzza.\"", "matched_text": "esik erre a kőre, összetöri magát, akire pedig rá zuhan, az összezúzza."}, {"verse_num": 19, "start_sec": 185.56, "end_sec": 198.3875, "confidence": 67.44186046511628, "canonical_text": "Az írástudók és a főpapok nyomban el akarták fogatni, de féltek a néptől. Megértették ugyanis, hogy róluk szólt ez a példabeszéd.", "matched_text": "Az írástudók és a főpapok abban az órában próbáltak kezet emelni rá, de féltek a néptől. Fölismerték ugyanis, hogy hozzájuk intézt"}, {"verse_num": 20, "start_sec": 203.06, "end_sec": 218.21115384615385, "confidence": 56.14035087719298, "canonical_text": "Szemmel tartották és cselvetőket küldtek ki. Ezek jószándékú embernek tetették magukat, hogy szaván fogják, s aztán kiszolgáltassák a hatóságnak és a helytartó hatalmának.", "matched_text": "Szemmel tartván őt, kísértőket küldtek, akik igaznak mutatták magukat, hogy a beszédében fogják meg Jézust, és így adják át a vezetőknek és a főpapnak. És megkérdezték tőle"}, {"verse_num": 21, "start_sec": 215.96653846153848, "end_sec": 228.31192307692308, "confidence": 58.38926174496643, "canonical_text": "\"Mester - kezdték -, tudjuk, hogy az igazságot hirdeted és tanítod, nem nézed az emberek személyét, hanem az igazsághoz híven tanítod az Isten útját.", "matched_text": "k. És megkérdezték tőle, mondván, mester, tudjuk, hogy helyesen szólsz és tanítasz, és nem vagy személyválogató, hanem igazán tanítod Isten útját. Sza"}, {"verse_num": 22, "start_sec": 227.1896153846154, "end_sec": 232.24, "confidence": 79.24528301886792, "canonical_text": "Szabad adót fizetnünk a császárnak, vagy nem szabad?\"", "matched_text": "Szabad-e nekünk adót fizetni a császárnak, vagy nem?"}, {"verse_num": 23, "start_sec": 169.7341379310345, "end_sec": 175.41034482758621, "confidence": 52.0, "canonical_text": "De ő észrevette a csapdát, ezért így felelt nekik:", "matched_text": "yet megvetettek az építők, az lett a szegletnek fej"}, {"verse_num": 24, "start_sec": 235.4415789473684, "end_sec": 246.2857894736842, "confidence": 70.45454545454545, "canonical_text": "\"Mutassatok egy dénárt! Kinek a képe és felirata van rajta?\" \"A császáré\" - válaszolták.", "matched_text": "k, mutassátok meg nekem a dénárt. Kinek a képe és felirata van rajta? Erre ők mondták, a"}, {"verse_num": 25, "start_sec": 248.83736842105262, "end_sec": 260.00142857142856, "confidence": 81.72043010752688, "canonical_text": "\"Adjátok hát meg a császárnak, ami a császáré, és az Istennek, ami az Istené\" - mondta nekik.", "matched_text": "adjátok hát vissza a császárnak, ami a császáré, és Istennek, ami az Istené. És nem tudtak bel"}, {"verse_num": 26, "start_sec": 255.21631578947367, "end_sec": 269.4963157894737, "confidence": 51.28205128205128, "canonical_text": "Így egyetlen szavába sem tudtak belekötni, amit a nép előtt kiejtett. Meglepődésükben, hogy így felelt, elhallgattak.", "matched_text": "mi az Istené. És nem tudtak belekötni a szavába a nép előtt, és elcsodálkozván a válaszán elnémultak. De odajöttek néh"}, {"verse_num": 27, "start_sec": 265.7421428571429, "end_sec": 275.0052631578948, "confidence": 77.38095238095238, "canonical_text": "Elé járultak néhányan a szadduceusok közül, akik azt tartják, hogy nincs feltámadás,", "matched_text": "k. De odajöttek néhányan a szadduceusok közül, akik tagadják, hogy van föltámadás, és"}, {"verse_num": 28, "start_sec": 273.781052631579, "end_sec": 291.8086666666667, "confidence": 69.41747572815534, "canonical_text": "és megkérdezték tőle: \"Mester! Mózes meghagyta nekünk: Ha valakinek meghal a testvére s asszonyt hagy maga után, gyermeket azonban nem, akkor a testvér vegye el az özvegyet, és támasszon utódot testvérének.", "matched_text": "ámadás, és megkérdezték őt mondván, mester, Mózes megírta nekünk, hogyha valakinek meghal a testvére, akinek felesége volt, de gyermeke nem, vegye feleségül az asszonyt, és támaszon utódott testvérének. Volt"}, {"verse_num": 29, "start_sec": 291.8086666666667, "end_sec": 297.844, "confidence": 80.95238095238095, "canonical_text": "Volt hét testvér. Az első megnősült, aztán meghalt utód nélkül.", "matched_text": "hát hét testvér. Az első megnősült, és meghalt gyermek nélkül. A"}, {"verse_num": 30, "start_sec": 312.37600000000003, "end_sec": 315.808, "confidence": 56.666666666666664, "canonical_text": "Az asszonyt elvette a második,", "matched_text": "az asszony kinek lesz a feleség"}, {"verse_num": 31, "start_sec": 298.3926666666667, "end_sec": 307.72, "confidence": 48.88888888888889, "canonical_text": "aztán a harmadik, majd sorra mind a hét. De mind úgy halt meg, hogy nem maradt utód utána.", "matched_text": "a harmadik is elvette az asszonyt, hasonlóképpen mind a hét, de nem hagytak gyermeket és m"}, {"verse_num": 32, "start_sec": 286.63526315789477, "end_sec": 289.6957894736842, "confidence": 71.42857142857143, "canonical_text": "Végül az asszony is meghalt.", "matched_text": "égül az asszonyt, és támaszon"}, {"verse_num": 33, "start_sec": 311.80400000000003, "end_sec": 319.24, "confidence": 72.72727272727273, "canonical_text": "A feltámadáskor vajon kié lesz az asszony? Hisz mind a hétnek felesége volt.\"", "matched_text": "ámadáskor az asszony kinek lesz a felesége, hiszen mind a hétnek felesége volt"}, {"verse_num": 34, "start_sec": 318.668, "end_sec": 326.0313043478261, "confidence": 59.42028985507246, "canonical_text": "Jézus ezt válaszolta nekik: \"A világ fiai nősülnek és férjhez mennek.", "matched_text": "lt. És szólt hozzájuk Jézus, e világ fiai házasodnak és férhez mennek,"}, {"verse_num": 35, "start_sec": 326.0313043478261, "end_sec": 338.7865217391305, "confidence": 71.2, "canonical_text": "Akik pedig méltók rá, hogy eljussanak a másik világba és a halálból való feltámadásra, nem nősülnek, s nem is mennek férjhez.", "matched_text": "ok pedig, akik méltók lesznek a másik világra és a halálból való föltámadásra, sem férhez nem mennek, sem nem nősülnek. Többé"}, {"verse_num": 36, "start_sec": 335.7495652173913, "end_sec": 347.29, "confidence": 74.78260869565217, "canonical_text": "Hiszen már meg se halhatnak többé, mert az angyalokhoz hasonlítanak, és az Istennek a fiai, mert a feltámadás fiai.", "matched_text": "ek, sem nem nősülnek. Többé meg sem halhatnak, mert az angyalokhoz hasonlók és Isten fiai, mivel a föltámadás fiai."}, {"verse_num": 37, "start_sec": 348.0134375, "end_sec": 365.92625, "confidence": 65.03067484662577, "canonical_text": "Arról, hogy a halottak feltámadnak, már Mózes is beszélt a csipkebokorról szóló részben, ahol az Urat Ábrahám Istenének, Izsák Istenének és Jákob Istenének nevezi.", "matched_text": "g, hogy a halottak föltámadnak. Mózes is bizonyítja a csipkebokornál, amikor az urat Ábraham, Izsák és Jákob istenének mondja. Isten pedig nem a holtaké, hanem az é"}, {"verse_num": 38, "start_sec": 360.61875, "end_sec": 368.58, "confidence": 84.61538461538461, "canonical_text": "Az Isten nem a holtaké, hanem az élőké, hiszen mindenki neki él.\"", "matched_text": "Isten pedig nem a holtaké, hanem az élőké, mert mindenki őneki él."}, {"verse_num": 39, "start_sec": 370.34, "end_sec": 378.14, "confidence": 44.99999999999999, "canonical_text": "Némely írástudó megjegyezte: \"Mester, helyesen válaszoltál.\"", "matched_text": "néhányan az írástudók közül mondták, mester, jól mondtad. És"}, {"verse_num": 40, "start_sec": 378.14, "end_sec": 383.98644444444443, "confidence": 97.36842105263158, "canonical_text": "Többé nem mertek tőle kérdezni semmit.", "matched_text": "öbbé nem mertek tőle kérdezni semmit. M"}, {"verse_num": 41, "start_sec": 383.44, "end_sec": 389.45088888888887, "confidence": 66.66666666666667, "canonical_text": "Most ő kérdezte tőlük: \"Miért mondják, hogy Krisztus Dávid fia?", "matched_text": "Mondta pedig nekik, hogyan mondják, hogy a Krisztus Dávid fia? M"}, {"verse_num": 42, "start_sec": 389.45088888888887, "end_sec": 399.8333333333333, "confidence": 79.56989247311827, "canonical_text": "Hisz Dávid maga mondja a zsoltárok könyvében: Ezt mondta az Úr az én Uramnak: Ülj a jobbomra,", "matched_text": "aga Dávid mondja a Zsoltárok könyvében, mondá az Úr az én Uramnak, ülj az én jobbomra, míg a t"}, {"verse_num": 43, "start_sec": 399.2868888888889, "end_sec": 402.56555555555553, "confidence": 72.09302325581395, "canonical_text": "s ellenségeidet lábad alá teszem zsámolyul.", "matched_text": "te ellenségedet lábad zsámoljává teszem. Dáv"}, {"verse_num": 44, "start_sec": 402.0191111111111, "end_sec": 408.03, "confidence": 79.62962962962963, "canonical_text": "Ha tehát Dávid urának nevezi, hogy lehet akkor a fia?\"", "matched_text": "d tehát urának nevezi őt. Hogyan lehet akkor az ő fia?"}, {"verse_num": 45, "start_sec": 408.03, "end_sec": 413.3813043478261, "confidence": 81.13207547169812, "canonical_text": "Az egész nép füle hallatára így szólt tanítványaihoz:", "matched_text": "Az egész nép, füle hallatára pedig mondta tanítványain"}, {"verse_num": 46, "start_sec": 413.3813043478261, "end_sec": 431.44195652173914, "confidence": 62.23404255319149, "canonical_text": "\"Óvakodjatok az írástudóktól! Szeretnek pompás öltözékben járni, szeretik, ha a tereken köszöntik őket. Szívesen elfoglalják a zsinagógákban az első székeket, a lakomákon az első helyeket,", "matched_text": "akodjatok az írástudóktól, akik szívesen járnak földigérő ruhákban, szeretik a köszöntéseket a tereken, az első székeket a zsinagógákban, és az első helyeket a lakomákon. Fölélik az özvegye"}, {"verse_num": 47, "start_sec": 428.76630434782606, "end_sec": 438.13108695652176, "confidence": 56.38297872340425, "canonical_text": "felfalják az özvegyek házát és színleg nagyokat imádkoznak. Annál súlyosabb ítélet vár rájuk.\"", "matched_text": "Fölélik az özvegyek házát, és színlelik a hosszú imádságot. Ezeknek Nagyobb kárhoztatásban les"}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

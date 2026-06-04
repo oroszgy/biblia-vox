@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tituszhoz írt levél 3. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "TIT", "hungarian_name": "Tituszhoz írt levél", "abbreviation": "Tit", "book_number": 417, "chapter_count": 3}, "chapter": {"book_usx": "TIT", "chapter_num": 3, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/63_titusz/titusznak-irt-level-03-fejezet.mp3", "verse_count": 15, "aligned_count": 15}, "verses": [{"verse_num": 1, "start_sec": 2.375, "end_sec": 14.25, "confidence": 100.0, "canonical_text": "Figyelmeztesd őket, hogy vessék alá magukat a fölöttes hatóságoknak, engedelmeskedjenek, és legyenek készen minden jóra.", "matched_text": "Figyelmeztesd őket, hogy vessék alá magukat a fölöttes hatóságoknak, engedelmeskedjenek, és legyenek készen minden jóra."}, {"verse_num": 2, "start_sec": 15.11, "end_sec": 26.08, "confidence": 95.57522123893806, "canonical_text": "Senkit ne szidalmazzanak, legyenek békeszeretők és barátságosak, s tanúsítsanak kellő szelídséget mindenki iránt.", "matched_text": "enkit ne szidolmozzanak, legyenek békeszeretők és barátságosak, és tanosítsanak kellő szelítséget mindenki iránt."}, {"verse_num": 3, "start_sec": 25.236153846153847, "end_sec": 47.45, "confidence": 96.2085308056872, "canonical_text": "Hiszen egykor mi magunk is balgák, engedetlenek és tévelygők voltunk, mindenféle szenvedély és gyönyör hatalmában tartott bennünket; gonoszságunk, irigységünk miatt utálatra méltók voltunk, és gyűlöltük egymást.", "matched_text": "Hiszen egykor mi magunk is balgák, engedetlenek és tévejgők voltunk, mindenféle szenvedély és gyönyör a hatalmában tartott bennünket. Gonoszságunk, iricségünk miatt utálatra méltók voltunk és gyülöltük egymást."}, {"verse_num": 4, "start_sec": 46.59, "end_sec": 58.16, "confidence": 97.89473684210527, "canonical_text": "Amikor azonban üdvözítő Istenünk kinyilvánította jóságát és emberszeretetét, megmentett minket.", "matched_text": "Mikor azonban üdvözítő Istenünk kinyilvánította jóságát és emberszeretetét, megmentett minket."}, {"verse_num": 5, "start_sec": 58.58, "end_sec": 69.75, "confidence": 96.72131147540983, "canonical_text": "Nem azért, mert igazak voltak tetteink, hanem irgalmasságból, s a Szentlélekben való újjászületés és megújulás fürdőjében,", "matched_text": "em azért, mert igazak voltak a tetteink, hanem irgalmasságból, és a szentélekben való újjászületés és megújulás fürdőjében."}, {"verse_num": 6, "start_sec": 69.95, "end_sec": 75.99888888888889, "confidence": 94.91525423728814, "canonical_text": "akit Üdvözítőnk, Jézus Krisztus által bőven árasztott ránk,", "matched_text": "Akit üdvözítünk, Jézus Krisztus által bőven árasztott ránk,"}, {"verse_num": 7, "start_sec": 75.99888888888889, "end_sec": 83.56, "confidence": 98.7012987012987, "canonical_text": "hogy kegyelmével megigazuljunk, s az örök élet reménybeli örököseivé váljunk.", "matched_text": "ogy kegyelmével megigazuljunk, és az örök élet reménybeli örököseivé váljunk."}, {"verse_num": 8, "start_sec": 82.80388888888889, "end_sec": 102.3625, "confidence": 96.83544303797468, "canonical_text": "Igaz beszéd ez, s kívánom, hogy erről megbizonyosodj: Akik hisznek az Istenben, igyekezzenek a jóban példát adni. Ez válik az embereknek javukra és hasznukra.", "matched_text": "Igaz beszéd ez, és kívánom, hogy erről megbizonyosodj. Akik hisznek az Istenben, igyekezzenek a jóban példát adni. Ez válik az embereknek javára és hasznára."}, {"verse_num": 9, "start_sec": 101.705, "end_sec": 115.03285714285715, "confidence": 95.48872180451127, "canonical_text": "Kerüld azonban az oktalan vitát, a nemzetségfákat, a veszekedést, a törvényen való szóharcot, mert ez hiábavaló és haszontalan dolog.", "matched_text": "ára. Kerüld azonban az oktalan vitát, a nemzetségfákat, a veszekedést, a törvényen való szóharcot, mert ez hiába való és haszontalan."}, {"verse_num": 10, "start_sec": 115.03285714285715, "end_sec": 119.05571428571429, "confidence": 100.0, "canonical_text": "A tévtanítót néhány figyelmeztetés után kerüld,", "matched_text": "A tévtanítót néhány figyelmeztetés után kerüld,"}, {"verse_num": 11, "start_sec": 119.05571428571429, "end_sec": 128.12, "confidence": 96.25, "canonical_text": "hiszen tudod, hogy az ilyen ember megromlott, bűnben él és saját magát ítéli el.", "matched_text": "iszen tudod, hogy az ilyen ember megromlott, bűnben él, és saját magát idéli el."}, {"verse_num": 12, "start_sec": 129.76, "end_sec": 141.80666666666667, "confidence": 98.34710743801654, "canonical_text": "Ha majd elküldöm Artemászt vagy Tichikuszt, azonnal gyere hozzám Nikopoliszba, mert az a tervem, hogy a telet ott töltöm.", "matched_text": "Ha majd elküldöm Artemászt vagy Tihikuszt, azonnal gyere hozzám Nikopolisba, mert az a tervem, hogy a telet ott töltöm. Zé"}, {"verse_num": 13, "start_sec": 141.21, "end_sec": 150.16, "confidence": 98.98989898989899, "canonical_text": "Zénászt, a törvénytudót és Apollót lásd el mindennel az útra, hogy ne szenvedjenek hiányt semmiben.", "matched_text": "énászt, a törvénytudót és Apollót, lásd el mindennel az útra, hogy ne szenvedjenek hiányt semmiben."}, {"verse_num": 14, "start_sec": 150.74, "end_sec": 160.75, "confidence": 99.10714285714286, "canonical_text": "Tanulják meg a mieink is, hogy másokkal a kényszerítő szükségben jót tegyenek, különben gyümölcstelenek lesznek.", "matched_text": "Tanulják meg a mijeink is, hogy másokkal a kényszerítő szükségben jót tegyenek, különben gyümölcstelenek lesznek."}, {"verse_num": 15, "start_sec": 161.42, "end_sec": 176.17, "confidence": 95.6896551724138, "canonical_text": "Köszöntenek mindnyájan, akik itt vannak. Köszöntsd azokat, akik szeretnek minket a hitben! Kegyelem mindnyájatokkal!", "matched_text": "Köszöntenek mindnyáján akik itt vannak. Köszönsd azokat, akik szeretnek minket a hitben. Kegyelem mindnyájatokkal. [S"}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

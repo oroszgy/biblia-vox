@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zsidóknak írt levél 1. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "HEB", "hungarian_name": "Zsidóknak írt levél", "abbreviation": "Zsid", "book_number": 419, "chapter_count": 13}, "chapter": {"book_usx": "HEB", "chapter_num": 1, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/65_zsidok/zsidoknak-irt-level-01-fejezet.mp3", "verse_count": 14, "aligned_count": 14}, "verses": [{"verse_num": 1, "start_sec": 5.10125, "end_sec": 12.868, "confidence": 78.57142857142857, "canonical_text": "Sokszor és sokféle módon szólt Isten hajdan az atyákhoz,", "matched_text": "Sokszor és sokféleképpen szólt Isten egykor az atyákhoz"}, {"verse_num": 2, "start_sec": 14.74, "end_sec": 25.8, "confidence": 96.49122807017544, "canonical_text": "ezekben a végső napokban Fiában szólt hozzánk, akit a mindenség örökösévé tett, aki által az időket is teremtette.", "matched_text": "zekben a végső napokban a fiúban szólt hozzánk, akit a mindenség örökösévé tett, aki által az időket is teremtette."}, {"verse_num": 3, "start_sec": 26.28, "end_sec": 44.69117647058823, "confidence": 97.75280898876404, "canonical_text": "Mint dicsőségének kisugárzása és lényegének képmása, ő tartja fenn hathatós szavával a mindenséget. A bűntől való megtisztítást elvégezve helyet foglalt az isteni Fölség jobbján,", "matched_text": "Mint dicsőségének kisugárzása és lényegének képmása, ő tartja fenn hat hatos szavával a mindenséget. A bűntől való megtisztítást elvégezve, helyet foglalt az isteni fölség jobján,"}, {"verse_num": 4, "start_sec": 44.69117647058823, "end_sec": 52.62, "confidence": 100.0, "canonical_text": "s annyival kiválóbb, mint az angyalok, amennyivel különb nevet örökölt náluk.", "matched_text": "s annyival kiválóbb, mint az angyalok, amennyivel különb nevet örökölt náluk."}, {"verse_num": 5, "start_sec": 54.12, "end_sec": 63.87692307692308, "confidence": 76.19047619047619, "canonical_text": "Vajon melyik angyalnak mondta valaha: \"A fiam vagy, ma szültelek?\" Vagy: \"Én atyja leszek, ő meg a fiam.\"", "matched_text": "n melyik angyalnak mondta valaha, az én fiam vagy te, én ma szültelek téged? Vagy, én az ő atya leszek, ő"}, {"verse_num": 6, "start_sec": 66.43, "end_sec": 75.74777777777777, "confidence": 94.3820224719101, "canonical_text": "Ám amikor Elsőszülöttét bevezeti a világba, ezt mondja: \"Imádja őt Isten minden angyala.\"", "matched_text": "Ám amikor elsőszülöttét bevezeti a világba, ezt mondja, imádja őt Isten minden angyala. Az"}, {"verse_num": 7, "start_sec": 75.74777777777777, "end_sec": 82.88315789473684, "confidence": 90.0, "canonical_text": "Az angyalokról így beszél: Aki követeit szelekké teszi, és szolgáit tűzlángokká.", "matched_text": "ngyalokról pedig így beszél, aki követeit szelekké teszi, és szolgáit tűzlángokká"}, {"verse_num": 8, "start_sec": 83.5078947368421, "end_sec": 92.78736842105263, "confidence": 92.07920792079209, "canonical_text": "A Fiához ellenben e szavakkal fordul: Isten, trónod áll örökre, királyi pálcád igazságosság vesszője.", "matched_text": "iához ellenben e szavakkal fordul, Isten, a te trónod áll örökre. Királyi pálcád igazságosság veszője."}, {"verse_num": 9, "start_sec": 92.78736842105263, "end_sec": 105.217, "confidence": 83.87096774193549, "canonical_text": "Az igazságot szereted, a gonoszságot gyűlölöd, azért kent föl Isten, a te Istened, a vigasság olajával minden társad felett.", "matched_text": "ed az igazságot, és gyűlölöd a gonoszságot, azért kend föl az Isten, a te Istened, a vigasság olajával minden társad fölött."}, {"verse_num": 10, "start_sec": 105.217, "end_sec": 113.33, "confidence": 97.46835443037975, "canonical_text": "Továbbá: Kezdetben, Uram, te teremtetted a földet, az ég is a te kezed munkája.", "matched_text": "Továbbá, kezdetben, Uram, te teremtetted a földet, az ég is a te kezed munkája."}, {"verse_num": 11, "start_sec": 113.43, "end_sec": 120.08407407407408, "confidence": 97.40259740259741, "canonical_text": "Ezek elmúlnak, de te nem múlsz el soha, mindenek elavulnak, mint valami ruha.", "matched_text": "Ezek elmúlnak, de te nem múlsz el soha. Mindenek elavulnak, mint valami ruha."}, {"verse_num": 12, "start_sec": 120.08407407407408, "end_sec": 133.39142857142858, "confidence": 98.41269841269842, "canonical_text": "Akár a köntöst, úgy göngyölöd össze őket, s mint a ruha, úgy változnak meg. Ám te ugyanaz vagy, és esztendeid nem érnek véget.", "matched_text": "Akár a köntöst, úgy göngyölöd össze őket, s mint a ruha, úgy változnak meg. De te ugyanaz vagy, és esztendeid nem érnek véget."}, {"verse_num": 13, "start_sec": 133.39142857142858, "end_sec": 144.015625, "confidence": 87.17948717948718, "canonical_text": "Ugyan melyik angyalnak mondta valaha: Jobbom felől foglalj helyet, és lábad alá teszem zsámolyul minden ellenségedet?", "matched_text": "Ugyan melyik angyalnak mondta valaha? Jobban felülfoglalj helyet, és lábod alá zsámoljul teszem minden ellenségedet. N"}, {"verse_num": 14, "start_sec": 143.34875, "end_sec": 154.09, "confidence": 96.875, "canonical_text": "Nemde ők mind szolgáló lelkek? Azok szolgálatára vannak küldve, akik majd öröklik az üdvösséget.", "matched_text": "m, de ők mind szolgáló lelkek. Azok szolgálatára vannak küldve, akik majd öröklik az üdvösséget."}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

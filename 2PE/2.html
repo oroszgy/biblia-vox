@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Péter második levele 2. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "2PE", "hungarian_name": "Péter második levele", "abbreviation": "2Pt", "book_number": 422, "chapter_count": 3}, "chapter": {"book_usx": "2PE", "chapter_num": 2, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/68_peter2/szent-peter-2-level-02-fejezet.mp3", "verse_count": 22, "aligned_count": 22}, "verses": [{"verse_num": 1, "start_sec": 1.2033333333333334, "end_sec": 22.78666666666667, "confidence": 93.18181818181819, "canonical_text": "De akadtak a nép körében hamis próféták is, ahogy a ti körötökben is föllépnek majd hamis tanítók, akik romlásba döntő tévtanokat terjesztenek, s még megváltó Urunkat is tagadják, s ezzel gyors pusztulást vonnak magukra.", "matched_text": "t. De akadtak a nép körében hamis proféták is, ahogy a ti körötökben is föllépnek majd hamis tanítók, akik veszélyes tévtanokat terjesztenek, s még megváltó urukat is tagadják, és ezzel gyors pusztulást vonnak magukra. So"}, {"verse_num": 2, "start_sec": 22.16, "end_sec": 29.68, "confidence": 93.02325581395348, "canonical_text": "Sokan követik majd őket erkölcstelenségükben, s miattuk szidni fogják az igaz vallást.", "matched_text": "kan követik majd őket erkölcstelenségükbe, és miattuk szidalmazni fogják az igaz vallás"}, {"verse_num": 3, "start_sec": 29.053333333333335, "end_sec": 43.960952380952385, "confidence": 95.07042253521126, "canonical_text": "Kapzsiságukban megkísérlik, hogy hízelgő szavakkal becsapjanak majd titeket. De már rég kimondatott az ítélet, s pusztulásukat nem kerülik el.", "matched_text": "t. Kabzsiságukban megkísérlik, hogy hizelgő szavakkal becsapjanak titeket. De már rég kimondatott az ítélet, és pusztulásukat nem kerülik el. M"}, {"verse_num": 4, "start_sec": 43.34, "end_sec": 56.38, "confidence": 97.35099337748345, "canonical_text": "Mert az Isten az angyaloknak sem kegyelmezett, amikor vétkeztek, hanem az alvilág sötét mélyébe taszította őket, hogy maradjanak őrizetben az ítéletre,", "matched_text": "Mert Isten az angyaloknak sem kegyelmezett, amikor vétkeztek, hanem az alvilág sötét mélyébe taszította őket, hogy maradjanak ott őrizetben az ítéletre."}, {"verse_num": 5, "start_sec": 56.79, "end_sec": 70.75, "confidence": 97.41935483870968, "canonical_text": "és a régi világnak sem kegyelmezett, hanem csak Noét, az igazság hírnökét mentette meg nyolcadmagával, amikor az istentelen világra rázúdította a vízözönt,", "matched_text": "És a régi világnak sem kegyelmezett, hanem csak noét, az igazság hírnökét mentette meg nyolcad magával, amikor az istentelen világra rázódította a vízözönt."}, {"verse_num": 6, "start_sec": 71.41, "end_sec": 84.12214285714286, "confidence": 96.12403100775194, "canonical_text": "vagy amikor Szodoma és Gomorra városát elhamvasztotta, és végpusztulással büntette, hogy példát adjon a későbbi korok bűnöseinek.", "matched_text": "Vagy amikor szodoma és gomora városát elhanvasztotta, és végpusztulással büntette, hogy példát adjon a későbbi korok bűnöseinek. U"}, {"verse_num": 7, "start_sec": 83.43, "end_sec": 93.12, "confidence": 99.0909090909091, "canonical_text": "Ugyanakkor megmentette az igaz Lótot, aki ezeknek a gonoszoknak kicsapongó életmódja miatt annyira szenvedett.", "matched_text": "Ugyanakkor megmentette az igaz lótot, aki ezeknek a gonoszoknak kicsapongó életmódja miatt annyira szenvedett."}, {"verse_num": 8, "start_sec": 93.96, "end_sec": 107.94, "confidence": 99.32432432432432, "canonical_text": "Az igaznak ugyanis, aki köztük élt, napról napra látnia és hallania kellett a törvénysértő tetteket, s ez vallásos lelkének nagy gyötrelmet okozott.", "matched_text": "Az igaznak ugyanis, aki köztük élt, napról napra látnia és hallania kellett a törvénysértő tetteket, és ez vallásos lelkének nagy gyötrelmet okozott."}, {"verse_num": 9, "start_sec": 109.66, "end_sec": 122.19, "confidence": 98.41269841269842, "canonical_text": "Ért hozzá az Úr, hogy az Isten szerint élőket kiragadja a kísértésből, a gonoszok büntetésével pedig várjon az ítélet napjáig,", "matched_text": "Ért hozzá az Úr, hogy az Isten szerint élőket kiragadja a kísértésből. A gonoszok büntetésével pedig várjon az ítélet napjáig,"}, {"verse_num": 10, "start_sec": 121.5635, "end_sec": 138.01000000000002, "confidence": 95.18072289156626, "canonical_text": "főként azokéval, akik szennyes testi vágyakat hajszolnak és az (Isten) felsőbbségét nem ismerik el. Vakmerők, önhittek, nem félnek káromolni (az égi) hatalmasságokat,", "matched_text": "g, főként azokéval, akik szennyes testi vágyakat hajszolnak, és Isten felsőbségét nem ismerik el. Vakmerőek, önhittek, nem félnek káromolni az égi hatalmasságokat, noh"}, {"verse_num": 11, "start_sec": 136.76333333333335, "end_sec": 147.61333333333332, "confidence": 83.87096774193549, "canonical_text": "noha a náluknál erősebb és hatalmasabb angyalok igazságtalanul nem vádolják őket az Úr előtt.", "matched_text": ", noha a náluknál erősebb és hatalmasabb angyalok nem vádolják őket az Úr előtt. De ezek, mint"}, {"verse_num": 12, "start_sec": 145.64, "end_sec": 161.52555555555554, "confidence": 100.0, "canonical_text": "De ezek, mint az oktalan állatok, amelyek természetüknél fogva megfogásra és levágásra valók, azt káromolják, amit nem ismernek. Mint azok, ezek is elpusztulnak,", "matched_text": "De ezek, mint az oktalan állatok, amelyek természetüknél fogva megfogásra és levágásra valók, azt káromolják, amit nem ismernek. Mint azok, ezek is elpusztulnak,"}, {"verse_num": 13, "start_sec": 159.36222222222221, "end_sec": 177.12, "confidence": 84.32432432432432, "canonical_text": "az igazságtalanok az igazságtalanság bérét kapják. Élvezetnek tartják világos nappal a dőzsölést, szenny- és piszokfoltok, kéjelegnek az élvezetekben, amikor veletek együtt lakmároznak.", "matched_text": "is elpusztulnak, megkapják gonoszságukért a bért. Élvezetnek tartják világos nappal a dőzsölést, szenny és piszokfoltok, kíjellegnek az élvezetekben, amikor veletek együtt lakmároznak."}, {"verse_num": 14, "start_sec": 178.45217391304348, "end_sec": 194.9036842105263, "confidence": 89.50617283950618, "canonical_text": "Szemük tele van azzal, akivel házasságot törnek, és éhes a bűnre. Csábítgatják az állhatatlan lelkeket, szívük hozzá van szokva a kapzsisághoz: az átok gyermekei!", "matched_text": "szemük tele van azzal, akivel házasságot törnek és éhes a bűnre. Csábítják az álhatatlan lelkeket, szívük hozzá van szokva a kapzsisághoz. Átkozottak. Az egyenes u"}, {"verse_num": 15, "start_sec": 192.63, "end_sec": 203.24052631578948, "confidence": 93.80530973451327, "canonical_text": "Az egyenes utat elhagyták és eltévelyedtek, Beor fiának, Bileámnak útjain járnak, aki igazságtalan bérre vágyott,", "matched_text": "Az egyenes utat elhagyták és eltévejedtek. Boszorfiának, Biliámnak, útjain járnak, aki igazságtalan bérre vágyott,"}, {"verse_num": 16, "start_sec": 202.48263157894738, "end_sec": 218.513, "confidence": 79.25925925925927, "canonical_text": "de igazságtalansága miatt kapott feddést: a néma teherhordó állat emberi hangon szólalt meg, és megakadályozta a próféta esztelenségét.", "matched_text": ", de bűne miatt rendre utasították. A néma teherhordó állat emberi hangon szólalt meg, és megakadályozta a proféta esztelenségét. Kiszár"}, {"verse_num": 17, "start_sec": 217.8, "end_sec": 224.93, "confidence": 100.0, "canonical_text": "Kiszáradt források, szélvész kergette fellegek, akikre a sötétség homálya vár.", "matched_text": "Kiszáradt források, szélvész kergette fellegek, akikre a sötétség homálya vár."}, {"verse_num": 18, "start_sec": 225.83, "end_sec": 238.25, "confidence": 98.55072463768117, "canonical_text": "Mert nagyhangú, üres szólamokkal buja testi vágyakra csábítják azokat, akik éppen csak hogy kiszabadultak azok közül, akik tévúton járnak.", "matched_text": "ert nagyhangú, üres szólamokkal, buja testi vágyakra csábítják azokat, akik éppen csak, hogy kiszabadultak azok közül, akik tévúton járnak."}, {"verse_num": 19, "start_sec": 238.73, "end_sec": 248.2, "confidence": 96.96969696969697, "canonical_text": "Szabadságot ígérnek nekik, jóllehet a romlottság rabjai, hisz mindenki annak a rabja, aki legyőzte.", "matched_text": "zabadságot ígérnek nekik, jól lehet a romlottság rabjai, hiszen mindenki annak a rabja, aki legyőzte"}, {"verse_num": 20, "start_sec": 249.21, "end_sec": 268.88, "confidence": 95.81395348837209, "canonical_text": "Mert akik a világ romlottságából kimenekültek az Úrnak és Megváltónak, Jézus Krisztusnak megismerése útján, aztán újra belemerültek és hatalmába estek, azoknak ez az utóbbi állapotuk rosszabb, mint az azelőtti volt.", "matched_text": "Mert akik a világ romlottságából kimenekültek az Úrnak és megváltónak, Jézus Krisztusnak megismerése útján, aztán belemerültek újra és hatalmába estek, azoknak ez az utóbbi állapoda rosszabb, mint az az előtti volt."}, {"verse_num": 21, "start_sec": 268.88, "end_sec": 281.6172, "confidence": 99.19354838709677, "canonical_text": "Mert jobb lett volna nekik, ha nem ismerték volna a nekik adott szent parancsokat, mint hogy aztán hűtlenek lettek hozzájuk.", "matched_text": "Mert jobb lett volna nekik, ha nem ismerték volna a nekik adott szent parancsokat, minthogy aztán hűtlenek lettek hozzájuk."}, {"verse_num": 22, "start_sec": 281.0784, "end_sec": 299.21, "confidence": 92.43697478991596, "canonical_text": "Illik rájuk, amit a közmondás mond: \"Visszatért a kutya a hányadékához\" és: \"A megfürdött disznó pocsolyában hentereg.\"", "matched_text": ". Illik rájuk, amit a közmondás mond, visszatér a kutya a hányadékához, és a megfürdött disznó pocsolyában hentereg. [Si"}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

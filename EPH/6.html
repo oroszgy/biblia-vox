@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efezusiaknak írt levél 6. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "EPH", "hungarian_name": "Efezusiaknak írt levél", "abbreviation": "Ef", "book_number": 410, "chapter_count": 6}, "chapter": {"book_usx": "EPH", "chapter_num": 6, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/56_efezusi/efezusiaknak-irt-level-06-fejezet.mp3", "verse_count": 24, "aligned_count": 24}, "verses": [{"verse_num": 1, "start_sec": 1.9699999999999998, "end_sec": 7.879999999999999, "confidence": 98.64864864864865, "canonical_text": "Gyermekek, engedelmeskedjetek szüleiteknek az Úrban, mert így van rendjén.", "matched_text": "Gyermekek, engedelmeskedjetek szüleiteknek az úrban, mert így van rendjén."}, {"verse_num": 2, "start_sec": 7.879999999999999, "end_sec": 15.103333333333332, "confidence": 95.77464788732395, "canonical_text": "Ez az első, ígérettel egybekötött parancs: \"Tiszteld apádat és anyádat,", "matched_text": "Ez az első, ígérettel egybekötött parancs, tiszteld apádat és anyádat, h"}, {"verse_num": 3, "start_sec": 13.79, "end_sec": 19.7, "confidence": 88.37209302325581, "canonical_text": "hogy boldog és hosszú életű légy a földön.\"", "matched_text": "hogy boldog és hosszú életül élj a földön."}, {"verse_num": 4, "start_sec": 20.14, "end_sec": 31.065925925925924, "confidence": 96.03960396039604, "canonical_text": "Apák, ne keserítsétek meg gyermekeiteket, hanem neveljétek őket fegyelemben az Úr útmutatása szerint.", "matched_text": "yák! Ne keserítsétek meg gyermekeiteket, hanem neveljétek őket fegyelemben az Úr útmutatása szerint. S"}, {"verse_num": 5, "start_sec": 29.352307692307694, "end_sec": 38.85925925925926, "confidence": 97.14285714285714, "canonical_text": "Szolgák, engedelmeskedjetek földi uratoknak, félő tisztelettel és egyszerű szívvel, akárcsak Krisztusnak.", "matched_text": ". Szolgálk, engedelmeskedjetek földi uratoknak félőtisztelettel és egyszerű szívvel akárcsak Krisztusnak."}, {"verse_num": 6, "start_sec": 38.85925925925926, "end_sec": 53.58, "confidence": 99.24812030075188, "canonical_text": "Ne látszatra szolgáljatok, mint akik emberek tetszését keresik, hanem mint Krisztus szolgái, akik szívesen teljesítik Isten akaratát.", "matched_text": "Ne látszatra szolgáljatok, mint akik emberek tetszését keresik, hanem mint Krisztus szolgái, Akik szívesen teljesítik Isten akaratát."}, {"verse_num": 7, "start_sec": 53.98, "end_sec": 59.74, "confidence": 100.0, "canonical_text": "Odaadással szolgáljatok, mert az Úrnak szolgáltok, nem embereknek.", "matched_text": "Odaadással szolgáljatok, mert az Úrnak szolgáltok, nem embereknek."}, {"verse_num": 8, "start_sec": 59.74, "end_sec": 72.78, "confidence": 99.03846153846155, "canonical_text": "Hiszen tudjátok, hogy bármi jót tesz valaki, akár szolga, akár szabad ember, jutalomban részesíti az Úr.", "matched_text": "Hiszen tudjátok, hogy bármi jót tesz valaki, akár szolga, akár szabadember, jutalomban részesíti az Úr. ["}, {"verse_num": 9, "start_sec": 72.78, "end_sec": 90.08, "confidence": 98.88268156424581, "canonical_text": "Gazdák, ti is így viselkedjetek velük szemben. Hagyjátok abba a fenyegetőzést, hiszen tudjátok, hogy nekik is, akárcsak nektek, Uruk van a mennyben, akinél nincs személyválogatás.", "matched_text": "Gazdák, ti is így viselkedjetek velük szemben. Hagyjátok abba a fenyegetőzést, hiszen tudjátok, hogy nekik is, akárcsak nektek, úrok van a mennyben, akinél nincs személyválogatás."}, {"verse_num": 10, "start_sec": 92.1, "end_sec": 98.86, "confidence": 96.55172413793103, "canonical_text": "Végül: erősödjetek meg az Úrban, az ő mindenható erejéből.", "matched_text": "Végül, erősödjetek meg az Úrban az ő minden ható erejéből."}, {"verse_num": 11, "start_sec": 98.86, "end_sec": 105.62, "confidence": 100.0, "canonical_text": "Öltsétek föl az Isten fegyverzetét, hogy a sátán cselvetéseinek ellenállhassatok.", "matched_text": "Öltsétek föl az Isten fegyverzetét, hogy a sátán cselvetéseinek ellenállhassatok."}, {"verse_num": 12, "start_sec": 104.944, "end_sec": 123.83102040816327, "confidence": 97.09302325581395, "canonical_text": "Nem annyira a vér és a test ellen kell küzdenünk, hanem a fejedelemségek és hatalmasságok, ennek a sötét világnak kormányzói és az égi magasságoknak gonosz szellemei ellen.", "matched_text": "k. Nem annyira a vér és a test ellen kell küzdenünk, hanem fejedelemségek és hatalmasságok, ennek a sötét világnak kormányzói és az égi magasságok gonosz szellemei ellen. Ez"}, {"verse_num": 13, "start_sec": 121.84384615384616, "end_sec": 135.84632653061226, "confidence": 96.89922480620154, "canonical_text": "Ezért öltsétek fel az Isten fegyverzetét, hogy a gonosz napon ellenállhassatok, és mindent legyőzve megtarthassátok állásaitokat.", "matched_text": ". Ezért öltsétek föl Isten fegyverzetét, hogy a gonosz napon ellenállhassatok, és mindent legyőzve megtarthassátok állásaitokat. Í"}, {"verse_num": 14, "start_sec": 135.04530612244898, "end_sec": 145.45857142857142, "confidence": 99.04761904761905, "canonical_text": "Így készüljetek föl: csatoljátok derekatokra az igazság övét, öltsétek magatokra a megigazulás páncélját,", "matched_text": "Így készüljetek föl, csatoljátok derekatokra az igazság övét, öltsétek magatokra a megigazulás páncélját,"}, {"verse_num": 15, "start_sec": 145.45857142857142, "end_sec": 152.66775510204081, "confidence": 100.0, "canonical_text": "sarunak meg a készséget viseljétek a békesség evangéliumának hirdetésére.", "matched_text": "sarunak meg a készséget viseljétek a békesség evangéliumának hirdetésére."}, {"verse_num": 16, "start_sec": 152.66775510204081, "end_sec": 162.28, "confidence": 97.6470588235294, "canonical_text": "Mindehhez fogjátok a hit pajzsát, ezzel elháríthatjátok a gonosz minden tüzes nyilát.", "matched_text": "Mindehöz fogjátok a hit pajzsát, ezzel elháríthatjátok a gonosz mindent tüzes nyilát."}, {"verse_num": 17, "start_sec": 161.47897959183672, "end_sec": 172.86454545454546, "confidence": 89.24731182795699, "canonical_text": "Tegyétek fel az üdvösség sisakját, és ragadjátok meg a lélek kardját, vagyis az Isten szavát.", "matched_text": "Vegyétek föl az üdvösség sisakját, és ragadjátok meg a lélek kardját, vagyis Isten igéjét. Mi"}, {"verse_num": 18, "start_sec": 172.16, "end_sec": 184.84181818181818, "confidence": 89.39393939393939, "canonical_text": "Minden alkalommal imádkozzatok a Lélekben könyörögve és imákat mondva. Legyetek éberek, és imádkozzatok kitartóan az összes szentért", "matched_text": "Mindig imádkozzatok a lélekben könyörögve és imákat mondva. Legyetek éberek, és imádkozzatok kitartóan az összes szentekért. És értem"}, {"verse_num": 19, "start_sec": 182.7281818181818, "end_sec": 195.41, "confidence": 97.34513274336283, "canonical_text": "és énértem is, hogy megkapjam a beszéd ajándékát, hogy amikor megszólalok, bátran hirdessem az evangélium titkát.", "matched_text": "És értem is, hogy megkapjam a beszéd ajándékát, hogy amikor megszólalok, bátran hirdessem az evangélium titkát. E"}, {"verse_num": 20, "start_sec": 194.70545454545453, "end_sec": 203.16, "confidence": 97.67441860465115, "canonical_text": "Ennek a bilincsekben is hírnöke vagyok, hadd hirdessem hát bátran, ahogy kötelességem.", "matched_text": "Ennek a bilincsekben is hírnöke vagyok. Hadd hirdessem hát bátran, ahogy kötelességem."}, {"verse_num": 21, "start_sec": 202.45545454545453, "end_sec": 216.2342857142857, "confidence": 98.47328244274809, "canonical_text": "S hogy ti is halljatok felőlem és dolgaim felől, Tichikusz, az Úrban szeretett testvérem és munkatársam mindent elmond majd nektek.", "matched_text": "S hogy ti is halljatok felőlem és dolgain felől, Tihikusz, az Úrban szeretett testvérem és munkatársam mindent elmond majd nektek."}, {"verse_num": 22, "start_sec": 216.2342857142857, "end_sec": 224.84, "confidence": 94.56521739130434, "canonical_text": "Épp azért küldtem el oda, hogy megtudjátok, mi van velem, és hogy megvigasztalja szíveteket.", "matched_text": "Éppen azért küldtem el oda, hogy megtudjátok, mi van velem, S hogy megvigasztalja a szíveteke"}, {"verse_num": 23, "start_sec": 224.94, "end_sec": 236.59384615384616, "confidence": 97.0, "canonical_text": "A testvéreknek békesség és hitből jövő szeretet az Atyaistentől és Jézus Krisztustól, a mi Urunktól!", "matched_text": "A testvéreknek békesség és hitből jövő szeretet az Atya Istentől és Jézus Krisztustól, ami Urunktól."}, {"verse_num": 24, "start_sec": 235.81692307692308, "end_sec": 245.14, "confidence": 98.91304347826086, "canonical_text": "Kegyelem legyen mindazokkal, akik nem lankadó szeretettel szeretik Urunkat, Jézus Krisztust!", "matched_text": "Kegyelem legyen mindazokkal, akik nem lankadó szeretettel szeretik Urunkat, Jézus Krisztust."}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

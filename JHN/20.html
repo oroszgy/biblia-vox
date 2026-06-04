@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>János evangéliuma 20. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "JHN", "hungarian_name": "János evangéliuma", "abbreviation": "Jn", "book_number": 404, "chapter_count": 21}, "chapter": {"book_usx": "JHN", "chapter_num": 20, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/50_janos/janos-evangeliuma-20-fejezet.mp3", "verse_count": 31, "aligned_count": 31}, "verses": [{"verse_num": 1, "start_sec": 1.2233333333333334, "end_sec": 15.513076923076923, "confidence": 74.07407407407408, "canonical_text": "A hét első napján, kora reggel, amikor még sötét volt, Mária Magdolna kiment a sírhoz. Észrevette, hogy a követ elmozdították a sírtól.", "matched_text": ". A szombatok első napján, kora reggel, amikor még sötét volt, Mária Magdolna a sírhoz ment, és látta a sírtól elmozdított követ. Futott"}, {"verse_num": 2, "start_sec": 15.02, "end_sec": 27.84, "confidence": 77.18120805369128, "canonical_text": "Erre elfutott Simon Péterhez és a másik tanítványhoz, akit kedvelt Jézus, és hírül adta nekik: \"Elvitték az Urat a sírból, s nem tudni, hova tették.\"", "matched_text": "tehát, és Simon Péterhez jött is a másik tanítványhoz, akit Jézus szeretett, és mondta nekik, elvitték az urat a sírból, és nem tudjuk, hová tették."}, {"verse_num": 3, "start_sec": 29.09888888888889, "end_sec": 35.205555555555556, "confidence": 76.78571428571428, "canonical_text": "Péter és a másik tanítvány elindult és a sírhoz sietett.", "matched_text": "át Péter, és az a másik tanítvány, és a sírhoz mentek. Eg"}, {"verse_num": 4, "start_sec": 35.714444444444446, "end_sec": 45.38333333333334, "confidence": 75.24752475247524, "canonical_text": "Mind a ketten futottak. De a másik tanítvány gyorsabban futott, mint Péter, és hamarabb ért a sírhoz.", "matched_text": "ind a ketten, de az a másik tanítvány gyorsabban futott, mint Péter, megelőzte őt, és előbb ért oda a"}, {"verse_num": 5, "start_sec": 47.41888888888889, "end_sec": 51.49, "confidence": 73.33333333333334, "canonical_text": "Benézett, s látta a gyolcsot, de nem ment be.", "matched_text": "tta a lehelyezett gyolcsokat, de nem ment be."}, {"verse_num": 6, "start_sec": 50.98111111111112, "end_sec": 59.41676470588236, "confidence": 61.627906976744185, "canonical_text": "Nem sokkal később Péter is odaért, bement a sírba és ő is látta az otthagyott gyolcsot", "matched_text": "be. A nyomában odaért Péter is, és bement a sírba. Látta a lehelyezett gyolcsokat és a"}, {"verse_num": 7, "start_sec": 58.89764705882353, "end_sec": 67.72264705882353, "confidence": 74.75728155339806, "canonical_text": "meg a kendőt, amellyel a fejét befödték. Ez nem a gyolcs közt volt, hanem külön összehajtva más helyen.", "matched_text": "a kendőt, amelyel a fejét takarták be. Ez nem a gyolcsokkal együtt volt letéve, hanem külön összehajtva"}, {"verse_num": 8, "start_sec": 70.55882352941177, "end_sec": 80.583, "confidence": 80.48780487804879, "canonical_text": "Most már a másik tanítvány is bement, aki először ért oda a sírhoz. Látta és hitt.", "matched_text": "t bement utána a másik tanítvány is, aki előbb ért oda a sírhoz. Látott és hitt. Ak"}, {"verse_num": 9, "start_sec": 79.91, "end_sec": 89.33200000000001, "confidence": 91.56626506024097, "canonical_text": "Eddig ugyanis nem értették az Írást, amely szerint föl kellett támadnia a halálból.", "matched_text": "or ugyanis még nem értették az írást, mely szerint föl kellett támadnia a halálból."}, {"verse_num": 10, "start_sec": 90.005, "end_sec": 93.37, "confidence": 69.76744186046511, "canonical_text": "Ezután a tanítványok visszatértek övéikhez.", "matched_text": "nítványok ezután ismét hazatértek övéikhez."}, {"verse_num": 11, "start_sec": 92.697, "end_sec": 103.30538461538461, "confidence": 57.47126436781609, "canonical_text": "Mária ott állt a sír előtt és sírt. Amint így sírdogált, egyszer csak benézett a sírba.", "matched_text": ". Mária pedig a síron kívül állt és sírdogált. Közben lehajolt és benézett a sírba, és l"}, {"verse_num": 12, "start_sec": 98.65769230769232, "end_sec": 110.27692307692308, "confidence": 72.47706422018348, "canonical_text": "Látta, hogy ott, ahol Jézus teste volt, két fehér ruhába öltözött angyal ül, az egyik fejtől, a másik lábtól.", "matched_text": "lehajolt és benézett a sírba, és látta, hogy két fehérbe öltözött angyal ül, az egyik fejtől, a másik lábtól,"}, {"verse_num": 13, "start_sec": 114.34365384615384, "end_sec": 124.22, "confidence": 70.29702970297029, "canonical_text": "Megszólították: \"Asszony, miért sírsz?\" \"Mert elvitték Uramat - felelte -, s nem tudom, hová tették.\"", "matched_text": "s mondták neki, asszony, miért sírsz? Mondta nekik, elvitték az én uramat, és nem tudom, hová tették."}, {"verse_num": 14, "start_sec": 123.63903846153846, "end_sec": 133.135, "confidence": 65.90909090909092, "canonical_text": "E szavakkal hátrafordult, s látta Jézust, amint ott állt, de nem tudta róla, hogy Jézus.", "matched_text": "ék. Ezeket mondva hátranézett, és látta az ott álló Jézust, de nem tudta, hogy Jézus az."}, {"verse_num": 15, "start_sec": 131.42000000000002, "end_sec": 148.62, "confidence": 68.55670103092784, "canonical_text": "Jézus megkérdezte: \"Asszony, miért sírsz? Kit keresel?\" Abban a hiszemben, hogy a kertész áll mögötte, így felelt neki: \"Uram, ha te vitted el, mondd meg, hova tetted, hogy elvihessem magammal.\"", "matched_text": "Jézus az. Mondta neki Jézus, asszony, miért sírsz? Kit keresel? Ő, Mivel azt gondolta, hogy a kertész az, mondta neki, Uram, ha te vitted el őt, mondd meg nekem, hová tetted, hogy elhozhassam őt"}, {"verse_num": 16, "start_sec": 147.72086956521738, "end_sec": 163.7897142857143, "confidence": 47.540983606557376, "canonical_text": "Jézus most nevén szólította: \"Mária!\" Erre megfordult, s csak ennyit mondott: \"Rabboni\", ami annyit jelent, mint \"Mester\".", "matched_text": "sam őt. Mondta neki Jézus, Mária. Ő megfordulván héberül mondta neki, Rabboni, azaz Mester. Mondta neki Jézus, már ne tartó"}, {"verse_num": 17, "start_sec": 162.29485714285715, "end_sec": 179.308, "confidence": 73.22404371584699, "canonical_text": "Jézus ezt mondta neki: \"Engedj! Még nem mentem föl Atyámhoz. Inkább menj el testvéreimhez és vidd nekik hírül: Fölmegyek Atyámhoz és a ti Atyátokhoz, Istenemhez és a ti Istenetekhez.\"", "matched_text": "már ne tartóztass, mert még nem mentem föl az atyához. hanem menj a testvéreimhez és mondd nekik, fölmegyek az én atyámhoz és a ti atyátokhoz, az én istenemhez és a ti istenetekhez. Má"}, {"verse_num": 18, "start_sec": 178.76, "end_sec": 189.03190476190477, "confidence": 75.0, "canonical_text": "Mária Magdolna elment, és hírül adta a tanítványoknak: \"Láttam az Urat, s ezt mondta nekem.\"", "matched_text": "Mária Magdolna ment és hirdette az apostoloknak, láttam az urat, s hogy ezeket mondta neki. M"}, {"verse_num": 19, "start_sec": 184.78799999999998, "end_sec": 206.76095238095238, "confidence": 60.73059360730594, "canonical_text": "Amikor beesteledett, még a hét első napján megjelent Jézus a tanítványoknak, ott, ahol együtt voltak, bár a zsidóktól való félelmükben bezárták az ajtót. Belépett, megállt középen és köszöntötte őket: \"Békesség nektek!\"", "matched_text": "ezeket mondta neki. Mikor pedig este lett a szombatok első napján, és zárva voltak az ajtók ott, ahol a tanítványok voltak, A zsidóktól való félelem miatt eljött Jézus. Megállt középen és mondta nekik, békesség nektek."}, {"verse_num": 20, "start_sec": 207.33285714285714, "end_sec": 216.39000000000001, "confidence": 64.8936170212766, "canonical_text": "E szavakkal megmutatta nekik kezét és oldalát. Az Úr láttára öröm töltötte el a tanítványokat.", "matched_text": "tán ezt mondta, megmutatta nekik a kezét és oldalát. Megörültek tehát a tanítványok, mert láttá"}, {"verse_num": 21, "start_sec": 218.29230769230767, "end_sec": 229.36923076923077, "confidence": 72.63157894736842, "canonical_text": "Jézus megismételte: \"Békesség nektek! Amint engem küldött az Atya, úgy küldelek én is titeket.\"", "matched_text": "ehát nekik ismét, békesség nektek. Amint engem küldött az atya, Én is küldelek titeket. És miutá"}, {"verse_num": 22, "start_sec": 228.67692307692306, "end_sec": 238.36923076923077, "confidence": 65.33333333333333, "canonical_text": "Ezekkel a szavakkal rájuk lehelt, s így folytatta: \"Vegyétek a Szentlelket!", "matched_text": "án ezeket mondta, rájuk lehelt és így szólt, vegyétek a szent lelket. Akik b"}, {"verse_num": 23, "start_sec": 236.2923076923077, "end_sec": 243.9076923076923, "confidence": 64.44444444444444, "canonical_text": "Akinek megbocsátjátok bűneit, az bocsánatot nyer, s akinek megtartjátok, az bűnben marad.\"", "matched_text": "Akik bűneit megbocsátjátok, azoknak megbocsáttatnak, akikét pedig megtartjátok, meg vannak"}, {"verse_num": 24, "start_sec": 246.545, "end_sec": 255.635, "confidence": 56.48148148148149, "canonical_text": "A tizenkettő közül az egyik, Tamás, vagy melléknevén Didimusz, nem volt velük, amikor megjelent nekik Jézus.", "matched_text": "ig, egy a tizenkettő közül, aki tikernek mondanak, Nem volt velük, amikor eljött Jézus. Mondták tehát neki a"}, {"verse_num": 25, "start_sec": 255.635, "end_sec": 272.3, "confidence": 69.35483870967742, "canonical_text": "A tanítványok elmondták: \"Láttuk az Urat!\" De kételkedett: \"Hacsak nem látom kezén a szegek nyomát, ha nem helyezem ujjamat a szegek helyére, és oldalába nem teszem a kezem, nem hiszem.\"", "matched_text": "tanítványok, láttuk az urat. Ő pedig mondta nekik, ha csak nem látom kezeiben a szegek helyét, és nem teszem ujjamat a szegek helyébe, és nem bocsátom kezemet az oldalába, én nem hiszem."}, {"verse_num": 26, "start_sec": 271.795, "end_sec": 291.46830188679246, "confidence": 70.91836734693877, "canonical_text": "Nyolc nap múlva ismét együtt voltak a tanítványok, s Tamás is ott volt velük. Ekkor újra megjelent Jézus, bár az ajtó zárva volt. Belépett, megállt középen, és köszöntötte őket: \"Békesség nektek!\"", "matched_text": "m. És nyolc nap múlva, ismét együtt voltak a tanítványok benne a házban, És Tamás is velük volt. Eljött Jézus, bár az ajtók zárva voltak. Megállt középen, és mondta, békesség nektek. Azután mondta"}, {"verse_num": 27, "start_sec": 290.3452830188679, "end_sec": 304.96444444444444, "confidence": 72.26277372262774, "canonical_text": "Aztán Tamáshoz fordult: \"Nyújtsd ide az ujjadat és nézd kezemet! Nyújtsd ki a kezedet és tedd oldalamba! S ne légy hitetlen, hanem hívő!\"", "matched_text": "Azután mondta Tamásnak, tedd ide az ujjadat, és lásd a kezeimet. Hozd a kezedet, és bocsásd oldalamba, és ne légy hitetlen, hanem hívő. Ta"}, {"verse_num": 28, "start_sec": 117.82942307692308, "end_sec": 123.05807692307692, "confidence": 51.21951219512195, "canonical_text": "Tamás fölkiáltott: \"Én Uram, és Istenem!\"", "matched_text": "dta nekik, elvitték az én uramat, és nem t"}, {"verse_num": 29, "start_sec": 310.03555555555556, "end_sec": 321.46, "confidence": 63.73626373626373, "canonical_text": "Jézus csak ennyit mondott: \"Hittél, mert láttál. Boldogok, akik nem látnak, mégis hisznek.\"", "matched_text": "Mondta neki Jézus, mivel láttál engem, hittél. Boldogok, akik nem láttak, és mégis hittek."}, {"verse_num": 30, "start_sec": 323.22, "end_sec": 333.6, "confidence": 76.19047619047619, "canonical_text": "Jézus még sok más csodajelet is mutatott tanítványai előtt, amelyeket nem jegyeztek föl ebben a könyvben.", "matched_text": "Jézus nagyon sok más jelet is tett tanítványai szeme láttára, amelyek nem irattak meg ebben a könyvben. Ez"}, {"verse_num": 31, "start_sec": 332.4466666666667, "end_sec": 349.1, "confidence": 70.16129032258065, "canonical_text": "Ezeket azonban följegyezték, hogy higgyétek: Jézus a Messiás, az Isten Fia, s hogy a hit által életetek legyen az ő nevében.", "matched_text": "Ezek pedig megirattak, hogy higgyétek, Jézus a Krisztus, az Isten fia, S mert hisztek, életetek legyen az ő nevében. [Noise]"}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

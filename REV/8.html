@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>János jelenései 8. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "REV", "hungarian_name": "János jelenései", "abbreviation": "Jel", "book_number": 427, "chapter_count": 22}, "chapter": {"book_usx": "REV", "chapter_num": 8, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/73_jelenesek/jelenesek-konyve-08-fejezet.mp3", "verse_count": 13, "aligned_count": 13}, "verses": [{"verse_num": 1, "start_sec": 2.955, "end_sec": 11.82, "confidence": 91.89189189189189, "canonical_text": "Amikor feltörte a hetedik pecsétet, csönd lett az égben, úgy egy félórára.", "matched_text": "amikor feltörte a hetedik pecsétet, csönd lett az égben mintegy fél órára."}, {"verse_num": 2, "start_sec": 14.291428571428572, "end_sec": 21.62, "confidence": 59.42028985507246, "canonical_text": "Ekkor hét angyalt láttam, az Úr előtt álltak, és hét harsonát kaptak.", "matched_text": "ét angyalt, akik Isten színe előtt álltak, és átadtak nekik hét harson"}, {"verse_num": 3, "start_sec": 22.63, "end_sec": 39.23722222222222, "confidence": 94.44444444444444, "canonical_text": "Jött egy másik angyal, megállt az oltár előtt, aranyfüstölő volt nála. Sok tömjént kapott, hogy az összes szent imádásával tegye az aranyoltárra, amely az Isten trónusa előtt állt.", "matched_text": "Jött egy másik angyal, megállt az oltár előtt, aranyfüstölő volt nála. Sok tömjént adtak neki, hogy az összes szent imádságával tegye az aranyoltárra, amely Isten trónusa előtt állt"}, {"verse_num": 4, "start_sec": 39.23722222222222, "end_sec": 49.402142857142856, "confidence": 92.3076923076923, "canonical_text": "Az angyal kezéből a tömjén füstje a szentek imádásával felszállt az Isten elé.", "matched_text": "az angyal kezéből a tömjén füstje a szentek imádságával fölszállt Isten elé. É"}, {"verse_num": 5, "start_sec": 48.79, "end_sec": 65.74, "confidence": 89.1156462585034, "canonical_text": "Most az angyal fogta a füstölőt, megtöltötte az oltár parazsával, és leszórta a földre. Erre mennydörgés, égzengés, villámlás és földrengés támadt.", "matched_text": "s az angyal fogta a füstölőt, megtöltötte az oltár parazsával, és a földre hajította. És mennydörgés, égzengés, villámlás és földrengés támadt. [Sil"}, {"verse_num": 6, "start_sec": 65.74, "end_sec": 76.11, "confidence": 89.28571428571429, "canonical_text": "A hét angyal pedig, akinél a hét harsona volt, felkészült, hogy megfújja a harsonát.", "matched_text": "a hét angyal, akinél a hét harsona volt, fölkészült, hogy megfújja a harsonád. [Sile"}, {"verse_num": 7, "start_sec": 76.71764705882353, "end_sec": 95.34, "confidence": 82.28571428571428, "canonical_text": "Az első angyal megfújta a harsonát. Erre vérrel vegyes jégeső és tűz záporozott a földre. A föld harmada elégett, a fák harmada pernyévé lett, és a zöldellő fű mind elhamvadt.", "matched_text": "z első angyal megfújta a harsonád. Vérrel vegyes jégeső és tűz támadt, és a földre zúdult. A föld egy harmada elégett, a fák egy harmada elégett, és a zöldelő fű mind elégett."}, {"verse_num": 8, "start_sec": 94.80375000000001, "end_sec": 109.45923076923077, "confidence": 77.77777777777779, "canonical_text": "A második angyal is megfújta a harsonát. Erre mint lángban égő hatalmas hegy, valami a tengerbe zuhant. A tenger egyharmada vérré vált,", "matched_text": "ett. A második angyal is megfújta a harsonád, és mint egy izzó hatalmas hegy zuhant a tengerbe. És a tenger egy harmada vérré vált. A te"}, {"verse_num": 9, "start_sec": 108.39, "end_sec": 115.34, "confidence": 97.5, "canonical_text": "a tengerben élő állatok egyharmada elpusztult, és a hajók egyharmada elsüllyedt.", "matched_text": "tengerben élő állatok egy harmada elpusztult, és a hajók egy harmada elsüllyedt."}, {"verse_num": 10, "start_sec": 116.95, "end_sec": 133.12, "confidence": 83.85093167701864, "canonical_text": "A harmadik angyal is megfújta a harsonát. Erre az égből lehullott egy nagy csillag, s mint égő fáklya, lobogott. A folyó egyharmadára hullott és a vízforrásokra.", "matched_text": "A harmadik angyal is megfújta a harsonád. És az égből lehullott egy nagy csillag, s mint hatalmas égő fákja, a folyók egy harmadára és a vízforrásokra hullott. És"}, {"verse_num": 11, "start_sec": 133.12, "end_sec": 147.19375, "confidence": 89.38053097345133, "canonical_text": "A csillagnak Üröm volt a neve. A vizek egyharmada ürömmé vált, és sok ember meghalt a víztől, mert megkeseredett.", "matched_text": "a csillag neve üröm volt. És a vizek egy harmada ürömmé vált, és sok ember meghalt a víztől, mert megkeseredett. É"}, {"verse_num": 12, "start_sec": 147.19375, "end_sec": 166.82272727272726, "confidence": 89.60396039603961, "canonical_text": "A negyedik angyal is megfújta a harsonát. Erre a Nap harmadát, a Hold harmadát és a csillagok harmadát érte a csapás: harmadrészük elsötétedett, a nappal és az éjszaka világossága a harmadával csökkent.", "matched_text": "negyedik angyal is megfújta a harsonád. És a naphegy egy harmadát, a hold egy harmadát, és a csillagok harmadát érte a csapás. Harmadrékszük elsötétedett, a nappal és az éjszaka világossága a harmadával"}, {"verse_num": 13, "start_sec": 169.09, "end_sec": 189.73, "confidence": 61.855670103092784, "canonical_text": "És láttam meg hallottam, hogy az ég magasában egy sas repült, hallottam, amint hangosan kiáltozott: \"Jaj, jaj, jaj a föld lakóinak a többi három harsona miatt, amit az angyalok most készülnek megfújni.\"", "matched_text": "És láttam, és hallottam, hogy az ég közepén átrepül egy sas, és nagy szóval mondja, jaj, jaj, jaj a föld lakóinak, a másik három angyal harsonája miatt, akik harsonázni fognak. [Silence]"}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

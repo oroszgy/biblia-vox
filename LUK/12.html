@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lukács evangéliuma 12. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "LUK", "hungarian_name": "Lukács evangéliuma", "abbreviation": "Lk", "book_number": 403, "chapter_count": 24}, "chapter": {"book_usx": "LUK", "chapter_num": 12, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/49_lukacs/lukacs-evangeliuma-12-fejezet.mp3", "verse_count": 59, "aligned_count": 59}, "verses": [{"verse_num": 1, "start_sec": 0.0, "end_sec": 18.32475, "confidence": 72.1311475409836, "canonical_text": "Közben tízezres tömeg verődött össze körülötte, úgyhogy egymást tiporták, és először csak tanítványaihoz kezdett beszélni: \"Óvakodjatok a farizeusok kovászától, vagyis a képmutatástól.", "matched_text": "A 12. fejezet. Miközben olyan sokan gyűltek össze, hogy egymást taposták az emberek, ő először a tanítványaihoz kezdett szólni. Óvakodjatok a farizeusok kovászától, ami a képmutatás."}, {"verse_num": 2, "start_sec": 19.643250000000002, "end_sec": 28.213499999999996, "confidence": 57.49999999999999, "canonical_text": "Nincs semmi elrejtve, ami nyilvánosságra ne kerülne, s titok, ami ki ne tudódna.", "matched_text": "incs eltakarva, amit föl ne födnének, és nincs eltitkolva, amit meg ne tudnának."}, {"verse_num": 3, "start_sec": 28.213499999999996, "end_sec": 41.045468750000005, "confidence": 73.80952380952381, "canonical_text": "Amit sötétben mondtok, világos nappal hallják majd, és amit a zárt falak közt fülbe súgtok, azt a háztetőkről fogják hirdetni.", "matched_text": "t Amit sötétben mondtatok, fényes nappal lehet majd hallani, és amit kamrákban fülbe súgtatok, a háztetőkön fogják hirdetni. Ne"}, {"verse_num": 4, "start_sec": 40.42, "end_sec": 52.303906250000004, "confidence": 62.28070175438596, "canonical_text": "Nektek, barátaimnak, mondom: Ne féljetek azoktól, akik a testet ugyan megölik, de aztán semmi többet nem tehetnek.", "matched_text": "Nektek azonban, az én barátainak azt mondom, ne rettenjetek meg azoktól, akik megölik a testet, azután nem tudnak m"}, {"verse_num": 5, "start_sec": 50.4275, "end_sec": 66.06421875000001, "confidence": 74.56647398843931, "canonical_text": "Megmondom én nektek, kitől féljetek: Attól féljetek, akinek, miután megölt, ahhoz is van hatalma, hogy a kárhozatba taszítson benneteket. Igen, mondom nektek, tőle féljetek.", "matched_text": "nem tudnak mit tenni, hanem megmutatom, kitől féljetek. Attól féljetek, akinek Miután megölt, van hatalma ahhoz, hogy a gehennába vessen. Igen, mondom nektek, tőle féljetek."}, {"verse_num": 6, "start_sec": 65.43875, "end_sec": 76.07171875, "confidence": 51.06382978723405, "canonical_text": "Ugye két fillérért öt verebet is adnak. Mégis az Isten nem feledkezik meg egyetlen egyről sem.", "matched_text": "ek. Nem, de öt verebet adnak két villérért, és Isten előtt egy sincs elfeledve. Nektek pedig mé"}, {"verse_num": 7, "start_sec": 74.1953125, "end_sec": 87.385, "confidence": 62.83185840707964, "canonical_text": "Sőt még a fejeteken a hajszálakat is mind számon tartja. Ne féljetek hát! Sokkal többet értek ti, mint a verebek.", "matched_text": "tek pedig még a hajszálaitok is mind meg vannak számlálva. Ne féljetek, sokkal különbek vagytok ti a verebeknél. M"}, {"verse_num": 8, "start_sec": 85.46375, "end_sec": 99.44999999999999, "confidence": 69.46564885496183, "canonical_text": "Mondom nektek, hogy aki tanúságot tesz mellettem az emberek előtt, azt majd az Emberfia is magáénak vallja az Isten angyalai előtt.", "matched_text": "beknél. Mondom pedig nektek, mindazt, aki megval engem az emberek előtt, az emberfia is megvallja majd Isten angyalai előtt. Aki ped"}, {"verse_num": 9, "start_sec": 98.815, "end_sec": 107.07, "confidence": 87.65432098765432, "canonical_text": "Aki azonban megtagad az emberek előtt, azt én is megtagadom Isten angyalai előtt.", "matched_text": "pedig megtagad engem az emberek előtt, azt én is megtagadom Isten angyalai előtt."}, {"verse_num": 10, "start_sec": 108.08611111111111, "end_sec": 120.95133333333334, "confidence": 83.17757009345794, "canonical_text": "Aki az Emberfia ellen beszél, az bocsánatot nyer, aki azonban a Szentlelket káromolja, nem nyer bocsánatot.", "matched_text": "mindaz, aki az emberfia ellen szól, bocsánatot nyer. De aki a szent lelket káromolja, nem nyer bocsánatot. A"}, {"verse_num": 11, "start_sec": 118.90388888888889, "end_sec": 133.39533333333333, "confidence": 72.36842105263158, "canonical_text": "Amikor majd a zsinagógákba vagy a hatóságok és hatalmasságok elé hurcolnak benneteket, ne gondolkozzatok rajta, hogyan védekezzetek, vagy mit mondjatok,", "matched_text": ". Amikor pedig majd zsinagógákba, elöljárók és hatalmasságok elé hurcolnak titeket, ne aggodalmaskodjatok, hogy mit válaszoljatok, vagy mit mondjatok. A"}, {"verse_num": 12, "start_sec": 131.32133333333334, "end_sec": 141.0, "confidence": 74.15730337078652, "canonical_text": "mert a Szentlélek abban az órában majd megtanít rá benneteket, hogy mit kell mondanotok.\"", "matched_text": "mit mondjatok. A szent lélek abban az órában majd megtanítja nektek, amit mondanotok kell."}, {"verse_num": 13, "start_sec": 142.375, "end_sec": 153.74357142857144, "confidence": 77.88461538461539, "canonical_text": "Ekkor valaki megszólalt a tömegben: \"Mester, mondd meg testvéremnek, hogy ossza meg velem az örökséget.\"", "matched_text": "] Valaki így szólt hozzá a sokaságból, mester, mondd a testvéremnek, hogy ossza meg velem az örökséget. Ő"}, {"verse_num": 14, "start_sec": 144.33785714285713, "end_sec": 154.33142857142857, "confidence": 45.263157894736835, "canonical_text": "De elutasította: \"Ember, ki hatalmazott fel rá, hogy bírótok legyek és elosszam örökségeteket?\"", "matched_text": "y szólt hozzá a sokaságból, mester, mondd a testvéremnek, hogy ossza meg velem az örökséget. Ő p"}, {"verse_num": 15, "start_sec": 159.03428571428572, "end_sec": 171.9740909090909, "confidence": 64.66165413533835, "canonical_text": "Majd a néphez fordult: \"Vigyázzatok és óvakodjatok minden kapzsiságtól, mert nem a vagyonban való bővelkedéstől függ az ember élete.\"", "matched_text": "ehajtóvá köztetek? És mondta nekik, vigyázzatok és óvakodjatok minden kapzsiságtól, mert ha valaki bővelkedik is javakban, az élete ne"}, {"verse_num": 16, "start_sec": 175.76, "end_sec": 182.871, "confidence": 71.76470588235294, "canonical_text": "Példabeszédet is mondott nekik: \"Egy gazdag embernek bőséges termést hozott a földje.", "matched_text": "kkor mondott nekik egy példabeszédet. Egy gazdag embernek bőtermést hozott a földje. A"}, {"verse_num": 17, "start_sec": 182.32399999999998, "end_sec": 188.888, "confidence": 76.81159420289855, "canonical_text": "Így okoskodott magában: Mit tegyek? Nincs hová gyűjtsem a termésemet.", "matched_text": "Azt gondolta magában, mit tegyek, nincs hová gyűjtsem a termést. És mo"}, {"verse_num": 18, "start_sec": 189.435, "end_sec": 199.281, "confidence": 76.10619469026548, "canonical_text": "Tudom már, mit teszek: lebontom csűreimet és nagyobbakat építek, oda gyűjtöm majd a termést és minden vagyonomat.", "matched_text": "fogom tenni, lebontom csüreimet és nagyobbakat építek, és oda gyűjtöm be az összes gabonát és minden vagyonomat, é"}, {"verse_num": 19, "start_sec": 198.187, "end_sec": 208.58, "confidence": 47.78761061946902, "canonical_text": "Aztán majd elégedetten mondom magamnak: Ember, van annyid, hogy sok évig elég! Pihenj, egyél, igyál, s élj jól! -", "matched_text": "t, és azt mondom majd a lelkemnek, lelkem, Hosszú évekre elegendő nagy vagyonod van. Nyugodjál, egyél, igyál és la"}, {"verse_num": 20, "start_sec": 209.37151515151515, "end_sec": 220.99030303030304, "confidence": 62.38532110091744, "canonical_text": "Ám az Isten így szól hozzá: Esztelen, még az éjjel visszakérik tőled lelkedet. Amit gyűjtöttél, kire marad? -", "matched_text": "an így szólt hozzá, te ostoba, még ezen az éjszakán számon kérik tőled a lelkedet, amit előre készítettél, kié"}, {"verse_num": 21, "start_sec": 220.99030303030304, "end_sec": 230.35, "confidence": 54.216867469879524, "canonical_text": "Így jár az, aki vagyont halmoz fel magának ahelyett, hogy az Istenben gazdagodnék.\"", "matched_text": "esz. Így van az, aki magának gyűjt kincset, és nem Istenben válik gazdaggál. És mond"}, {"verse_num": 22, "start_sec": 228.32848484848483, "end_sec": 240.42999999999998, "confidence": 63.01369863013699, "canonical_text": "Aztán így szólt tanítványaihoz: \"Ezért mondom nektek, ne aggódjatok megélhetésetek miatt, hogy mit esztek, sem testetek miatt, hogy mibe öltöztök.", "matched_text": "zdaggál. És mondta a apostolainak, ezért mondom nektek, ne aggódjatok a lélekért, hogy mit fogtok enni, sem a testért, hogy mibe fogtok öltözni. Hi"}, {"verse_num": 23, "start_sec": 240.42999999999998, "end_sec": 246.67, "confidence": 98.24561403508771, "canonical_text": "A lélek több, mint az eledel, s a test több, mint a ruha.", "matched_text": "lélek több, mint az eledel, és a test több, mint a ruha."}, {"verse_num": 24, "start_sec": 245.23, "end_sec": 260.2033333333333, "confidence": 74.68354430379746, "canonical_text": "Vegyetek példát a hollókról. Nem vetnek, nem aratnak, nincs pincéjük, nincs kamrájuk s az Isten táplálja őket. Mennyivel többet értek ti, mint ezek a madarak!", "matched_text": "t a ruha. Nézzétek a hollókat, nem vetnek, nem is aratnak, nincsenek kamráik és csüreik, és Isten táplálja őket. Mennyivel többet értek ti, mint a madarak? Ki"}, {"verse_num": 25, "start_sec": 299.3178571428571, "end_sec": 309.3721428571429, "confidence": 43.43434343434344, "canonical_text": "Ugyan melyiketek hosszabbíthatja meg az életét csak egy arasznyival is azzal, hogy aggodalmaskodik?", "matched_text": "se keressétek, hogy mit egyetek, vagy mit igjatok, és ne aggodalmaskodjatok, mert mindezeket a vilá"}, {"verse_num": 26, "start_sec": 265.7338888888889, "end_sec": 274.02972222222223, "confidence": 55.263157894736835, "canonical_text": "Ha tehát még az egészen kis dolgokban is tehetetlenek vagytok, mit aggódtok?", "matched_text": "Ha te át a legkisebbre nem vagytok képesek, a többi miatt miért aggódtok? Né"}, {"verse_num": 27, "start_sec": 272.9236111111111, "end_sec": 286.75, "confidence": 67.81609195402298, "canonical_text": "Vegyetek példát a liliomokról, hogyan nőnek: se nem fonnak, se nem szőnek. Mégis, mondom nektek, hogy Salamon dicsősége teljében sem volt úgy felöltözve, mint egy ezek közül.", "matched_text": "ggódtok? Nézzétek a liliumokat, hogyan növekednek, nem fáradoznak, nem fonnak, de mondom nektek, még Salomon sem volt úgy felöltözve minden dicsőségében, mint egy ezek közül."}, {"verse_num": 28, "start_sec": 285.6438888888889, "end_sec": 299.3178571428571, "confidence": 81.4814814814815, "canonical_text": "Ha tehát a mezőn a füvet, amely ma a mezőn zöldell, holnap a kemencébe kerül, Isten így öltözteti, mennyivel inkább titeket, kishitűek.", "matched_text": "közül. Ha pedig a füvet, Amely ma a mezőn van, és holnap kemencébe kerül, Isten így öltözteti. Mennyivel inkább titeket, kicsinyhitőek?"}, {"verse_num": 29, "start_sec": 298.6894642857143, "end_sec": 306.85857142857145, "confidence": 75.0, "canonical_text": "Ne kérdezgessétek hát, hogy mit esztek vagy mit isztok, és ne nyugtalankodjatok.", "matched_text": "Ti se keressétek, hogy mit egyetek, vagy mit igjatok, és ne aggodalmaskodjatok,"}, {"verse_num": 30, "start_sec": 307.4869642857143, "end_sec": 316.2844642857143, "confidence": 63.95348837209303, "canonical_text": "Mert erre a pogányok törekednek a világban. Atyátok tudja, hogy szükségetek van rájuk.", "matched_text": "ezeket a világ pogányai keresik. A ti atyátok pedig tudja, hogy ezekre szükségetek van,"}, {"verse_num": 31, "start_sec": 328.46090909090907, "end_sec": 335.95545454545453, "confidence": 49.23076923076923, "canonical_text": "Inkább az Isten országát keressétek, és ezeket megkapjátok hozzá.", "matched_text": "ogy nektek adja az országot. Adjátok el, amitek van, és adjátok od"}, {"verse_num": 32, "start_sec": 322.84, "end_sec": 331.58363636363634, "confidence": 74.07407407407408, "canonical_text": "Ne félj, te kisded nyáj, hisz Atyátok úgy látta jónak, hogy nektek adja országát.", "matched_text": "Ne féljtek is, de nyáj, mert atyátoknak úgy tetszett, hogy nektek adja az országot"}, {"verse_num": 33, "start_sec": 331.58363636363634, "end_sec": 348.4434782608696, "confidence": 74.60317460317461, "canonical_text": "Adjátok el, amitek van, adjátok oda a rászorulóknak. Készítsetek magatoknak kimeríthetetlen erszényt, elfogyhatatlan kincset a mennyben, ahol nem fér hozzá tolvaj, és nem rágja szét a moly.", "matched_text": "játok el, amitek van, és adjátok oda alamizsnaként. Készítsetek magatoknak erszényeket, amelyek nem rongyolódnak el. Elfogyhatatlan kincset a mennyben, ahol tolvaj nem fér hozzá, és maj szét"}, {"verse_num": 34, "start_sec": 350.02434782608697, "end_sec": 354.24, "confidence": 86.11111111111111, "canonical_text": "Ahol a kincsetek, ott a szívetek is.", "matched_text": "a kincsetek, ott lesz a szívetek is."}, {"verse_num": 35, "start_sec": 355.4833333333333, "end_sec": 360.63, "confidence": 70.83333333333333, "canonical_text": "Csípőtök legyen felövezve és égjen a lámpásotok.", "matched_text": "ekatok legyen felövezve, és égjenek a mécsesek, é"}, {"verse_num": 36, "start_sec": 361.91666666666663, "end_sec": 374.14, "confidence": 61.19402985074627, "canonical_text": "Hasonlítsatok azokhoz az emberekhez, akik urukra várnak, hogy mihelyt megérkezik a menyegzőről és zörget, rögtön ajtót nyissanak neki.", "matched_text": "asonlók az urukat hazaváró szolgákhoz, mikor az mennyegzőről tér haza, hogy amikor megérkezik és zörget, Azonnal ajtót nyissanak neki."}, {"verse_num": 37, "start_sec": 374.46, "end_sec": 387.9926829268293, "confidence": 77.70700636942675, "canonical_text": "Boldogok azok a szolgák, akiket uruk megérkezésekor ébren talál. Bizony mondom nektek, felövezi magát, asztalhoz ülteti őket, és megy, hogy kiszolgálja őket.", "matched_text": "Boldogok azok a szolgák, akiket Uruk éblán talál, amikor megjön. Bizony mondom nektek, felövezi magát, asztalhoz ülteti őket, és körüljárva felszolgál nekik."}, {"verse_num": 38, "start_sec": 387.9926829268293, "end_sec": 399.68, "confidence": 81.44329896907216, "canonical_text": "És ha a második vagy a harmadik őrváltáskor érkezve is így találja őket, boldogok azok a szolgák.", "matched_text": "És ha a második, és ha a harmadik őrség idején jön, és így találja őket, boldogok azok a szolgák."}, {"verse_num": 39, "start_sec": 401.3706451612903, "end_sec": 411.4061290322581, "confidence": 76.76767676767678, "canonical_text": "Gondoljátok meg: ha tudná a házigazda, hogy melyik órában jön a tolvaj, nem engedné betörni házába.", "matched_text": "tudjátok meg, hogyha egy családfő tudná, melyik órában jön a tolvaj, nem engedné betörni a házába. T"}, {"verse_num": 40, "start_sec": 410.22548387096776, "end_sec": 420.4286274509804, "confidence": 73.86363636363636, "canonical_text": "Legyetek ti is készen, mert olyan órában, amikor nem is gondoljátok, eljön az Emberfia.\"", "matched_text": "ba. Ti is, legyetek készen, mert amelyik órában nem gondoljátok, eljön az ember fia. Péte"}, {"verse_num": 41, "start_sec": 417.8996774193549, "end_sec": 426.8921568627451, "confidence": 65.47619047619048, "canonical_text": "Péter megkérdezte: \"Uram, ezt a példabeszédet csak nekünk mondod, vagy mindenkinek?\"", "matched_text": ". Péter pedig szólt, Uram, nekünk mondod ezt a példabeszédet, vagy mindenkinek? És az"}, {"verse_num": 42, "start_sec": 426.3535294117647, "end_sec": 439.8192156862745, "confidence": 58.914728682170534, "canonical_text": "Az Úr így válaszolt: \"Ki a hű és okos sáfár, akit ura szolgái fölé rendelt, hogy ha eljön az ideje, kiadja részüket az élelemből?", "matched_text": "z úr mondta, Mit gondolsz? Ki a hűséges és okos gondnok, akit az úr házanépe fölé rendel, hogy a maga idejében kiadja nekik a gabo"}, {"verse_num": 43, "start_sec": 374.46, "end_sec": 380.61121951219513, "confidence": 57.8125, "canonical_text": "Boldog az a szolga, ha megérkeztekor ura ilyen munkában találja.", "matched_text": "Boldogok azok a szolgák, akiket Uruk éblán talál, amikor megjön."}, {"verse_num": 44, "start_sec": 279.0072222222222, "end_sec": 283.4316666666667, "confidence": 54.54545454545454, "canonical_text": "Mondom nektek, hogy minden vagyonát rábízza.", "matched_text": "ondom nektek, még Salomon sem volt úgy felölt"}, {"verse_num": 45, "start_sec": 455.0492857142857, "end_sec": 467.96, "confidence": 67.83216783216784, "canonical_text": "De ha a szolga azt mondja magában: Uram csak sokára tér vissza -, és elkezdi verni a többi szolgát és szolgálót, eszik-iszik meg részegeskedik,", "matched_text": "a szolga, azt mondja a szívében, Késlekedik még az én uram haza jönni, s elkezdi verni a szolgákat és a szolgálókat. Eszik, iszik és részegesked"}, {"verse_num": 46, "start_sec": 467.44357142857143, "end_sec": 482.78000000000003, "confidence": 76.04790419161677, "canonical_text": "akkor ennek a szolgának az ura olyan napon érkezik meg, amikor nem várja, és olyan órában, amikor nem gondolja. Kegyetlenül megbünteti, és a hűtlenek sorsára juttatja.", "matched_text": "szegeskedik. Megérkezik annak a szolgának az ura olyan napon, amikor nem várja, és olyan órában, amelyet nem ismer. Megbünteti, és a hűtlenek sorsára juttatja. Tehát az"}, {"verse_num": 47, "start_sec": 482.17, "end_sec": 492.54, "confidence": 72.11538461538461, "canonical_text": "Az a szolga, aki ismeri ura akaratát, de nem áll készen, hogy akarata szerint járjon el, sok verést kap.", "matched_text": "azt a szolgát, aki ismerte ura akaratát, De nem készült, vagy nem tett akarata szerint, nagyon megverik."}, {"verse_num": 48, "start_sec": 491.93, "end_sec": 511.54407407407405, "confidence": 67.02127659574468, "canonical_text": "Aki azonban nem ismeri s így tesz olyat, amiért büntetést érdemel, csak kevés verést kap. Mert aki sokat kapott, attól sokat követelnek, és akire sokat bíztak, attól annál többet kívánnak.", "matched_text": "rik. Aki pedig nem ismerte, és büntetésre méltó dolgokat tett, kevesebb verést kap. Mert akinek sok adatot, attól sokat kérnek számon. És akire sokat bíztak, attól többet kérnek vissza. Tüz"}, {"verse_num": 49, "start_sec": 508.4, "end_sec": 518.6288888888888, "confidence": 56.97674418604651, "canonical_text": "Azért jöttem, hogy tüzet dobjak a földre. Mi mást akarnék, mint hogy lángra lobbanjon!", "matched_text": "ek vissza. Tüzet gyújtani jöttem a földre, és mit akarok? Azt, hogy végre föllobbanjon."}, {"verse_num": 50, "start_sec": 520.5611111111111, "end_sec": 527.6459259259259, "confidence": 60.0, "canonical_text": "Keresztséggel kell megkereszteltetnem. Annyira szorongok, míg be nem teljesedik.", "matched_text": "esztségem, amelyel meg kell keresztelkednem, és mennyire gyötrődöm, amíg meg nem"}, {"verse_num": 51, "start_sec": 527.0018518518518, "end_sec": 536.6629629629629, "confidence": 58.82352941176471, "canonical_text": "Azt hiszitek, azért jöttem, hogy békét hozzak a földre? Nem azt, hanem - mondom nektek - meghasonlást.", "matched_text": "em történik. Azt gondoljátok, hogy békét adni jöttem a földre? Nem, mondom nektek, hanem elkülönülést."}, {"verse_num": 52, "start_sec": 536.6629629629629, "end_sec": 546.2881818181819, "confidence": 60.396039603960396, "canonical_text": "Ezentúl ha öten lesznek egy házban, megoszlanak egymás közt: három kettő ellen, és kettő három ellen.", "matched_text": "tantól fogva megoszlanak öten egy házon belül. Három kettővel szemben, és kettő hárommal szemben. Szem"}, {"verse_num": 53, "start_sec": 545.72, "end_sec": 561.3670967741936, "confidence": 81.4814814814815, "canonical_text": "Meghasonlik az apa a fiával és a fiú az apjával, az anya a lányával és a lány az anyjával, az anyós a menyével és a meny az anyósával.\"", "matched_text": "embeszáll az apa a fiával, és a fiú atyával, anya a leányával, és leány az anyjával, anyósa mennyével, és menny az anyósával. Mondta ped"}, {"verse_num": 54, "start_sec": 560.14, "end_sec": 572.4109677419355, "confidence": 68.9922480620155, "canonical_text": "Aztán a néphez fordult: \"Ha azt látjátok, hogy nyugat felől felhő kerekedik, mindjárt mondjátok, hogy eső lesz, s ez be is válik.", "matched_text": "ta pedig a sokaságnak, amikor látjátok, hogy nyugatfelül felhő kerekedik, mindjárt mondjátok, zápor jön, és úgy is lesz. És amikor"}, {"verse_num": 55, "start_sec": 571.7974193548387, "end_sec": 584.085, "confidence": 49.03846153846154, "canonical_text": "S ha azt látjátok, hogy délről fúj a szél, arra következtettek, hogy hőség lesz, és ez be is következik.", "matched_text": "or a déli szelet látjátok fújni, Azt mondjátok, hőség lesz, és lesz. Képmutatók, az ég és a föld jeleiből"}, {"verse_num": 56, "start_sec": 578.5464516129032, "end_sec": 590.16, "confidence": 66.03773584905662, "canonical_text": "Képmutatók! A föld meg az ég jeleiből tudtok következtetni. Hát ezt az időt miért nem tudjátok felismerni?", "matched_text": ". Képmutatók, az ég és a föld jeleiből tudtok következtetni. Ebből az időből hogyhogy nem tudtok következte"}, {"verse_num": 57, "start_sec": 590.16, "end_sec": 597.275641025641, "confidence": 86.79245283018868, "canonical_text": "Miért nem ítélitek meg magatok, hogy mi az igazságos?", "matched_text": "Miért nem ítélitek meg magatoktól, mi az igazság? Amik"}, {"verse_num": 58, "start_sec": 596.66, "end_sec": 612.0510256410256, "confidence": 64.57142857142857, "canonical_text": "Amikor ellenfeleddel a bíróságra tartasz, útközben igyekezzél tőle megszabadulni, nehogy a bíró elé hurcoljon, és a bíró átadjon a poroszlónak, a poroszló meg börtönbe vessen.", "matched_text": "r pedig ellenfeleddel a fejedelemhez mégy, még útközben próbálj megszabadulni tőle, Nehogy bíró elé vigyen, a bíró átadjon a végrehajtónak, a végrehajtó pedig börtönbe vessen."}, {"verse_num": 59, "start_sec": 612.0510256410256, "end_sec": 620.67, "confidence": 77.33333333333333, "canonical_text": "Mondom neked, nem szabadulsz ki, míg az utolsó fillért is meg nem fizeted.\"", "matched_text": "om neked, ki nem jössz onnét, amíg az utolsó fillért is vissza nem fizeted."}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

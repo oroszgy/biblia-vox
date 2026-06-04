@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galatáknak írt levél 2. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "GAL", "hungarian_name": "Galatáknak írt levél", "abbreviation": "Gal", "book_number": 409, "chapter_count": 6}, "chapter": {"book_usx": "GAL", "chapter_num": 2, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/55_galata/galataknak-irt-level-02-fejezet.mp3", "verse_count": 21, "aligned_count": 21}, "verses": [{"verse_num": 1, "start_sec": 1.37, "end_sec": 10.96, "confidence": 93.20388349514563, "canonical_text": "Tizennégy évvel később Barnabás kíséretében ismét fölmentem Jeruzsálembe, s Tituszt is magammal vittem.", "matched_text": "zet. 14 évvel később, Barnabás kíséretében ismét fölmentem Jeruzsálembe, és Tituszt is magammal vittem."}, {"verse_num": 2, "start_sec": 11.6, "end_sec": 28.9, "confidence": 98.59154929577466, "canonical_text": "Kinyilatkoztatástól indíttatva mentem oda, s megbeszéltem velük, a tekintélyesekkel külön is, az evangéliumot, amelyet a pogányok között hirdetek, nehogy hiába fáradozzam, s addigi fáradozásom is hiábavaló legyen.", "matched_text": "Kinyilatkoztatástól indítatva mentem oda, és megbeszéltem velük, tekintélyesekkel külön is, az evangéliumot, amelyet a pogányok között hirdetek, nehogy hiába fáradozzam, és addigi fáradozásom is hiába való legyen."}, {"verse_num": 3, "start_sec": 28.93, "end_sec": 41.36636363636363, "confidence": 96.92307692307692, "canonical_text": "Ők még kísérőmet, Tituszt sem kényszerítették körülmetélkedésre, jóllehet görög volt, a betolakodott hamis testvérek ellenére sem,", "matched_text": "még a kísérőmet, Tituszt sem kényszerítették körülmetérkedésre, jó lehet görög volt, a betolakodott hamis testvérek ellenére sem,"}, {"verse_num": 4, "start_sec": 41.36636363636363, "end_sec": 51.73, "confidence": 99.21259842519686, "canonical_text": "akik azért tolakodtak be közénk, hogy kifürkésszék Krisztus Jézusban való szabadságunkat, és szolgaságba taszítsanak bennünket.", "matched_text": "akik azért tolakodtak be közénk, hogy kifürkészszék Krisztus Jézusban való szabadságunkat, és szolgaságba taszítsanak bennünket."}, {"verse_num": 5, "start_sec": 51.97, "end_sec": 60.9, "confidence": 98.9795918367347, "canonical_text": "Ezeknek egy pillanatra sem tettünk engedményt, hogy az evangéliumot tisztán megőrizzük számotokra.", "matched_text": "Ezeknek egy pillanatra sem tettünk engedményt, hogy az evangéliumot Tisztán megőrizzük számotokra."}, {"verse_num": 6, "start_sec": 60.155833333333334, "end_sec": 76.10564102564103, "confidence": 90.38461538461539, "canonical_text": "Azok, akiknek tekintélyük volt - hogy azelőtt milyenek voltak, nekem mindegy, az Isten nem nézi a személyt -, a tekintély birtokosai semmire sem köteleztek.", "matched_text": "tokra. Azok, akiknek tekintélyük volt, hogy azelőtt milyenek voltak nekem mindegy, Isten nem személyválogató, a tekintély birtokosai semmire sem köteleztek."}, {"verse_num": 7, "start_sec": 76.10564102564103, "end_sec": 90.68, "confidence": 92.56756756756756, "canonical_text": "Ellenkezőleg: elismerték, hogy én éppúgy megbízatást kaptam az evangélium hirdetésére a körülmetéletlenek, mint ahogy Péter a körülmetéltek körében.", "matched_text": "lenkezőleg, elismerték, hogy én épp úgy megbizatást kaptam az evangélium hirdetésére a körülmetéletlenek között, Mint ahogy Péter a körülmetéltek kör"}, {"verse_num": 8, "start_sec": 90.72, "end_sec": 102.1, "confidence": 100.0, "canonical_text": "Aki ugyanis Péternek erőt adott a körülmetéltek közötti apostolkodásra, velem is együtt munkálkodott a pogányok között.", "matched_text": "Aki ugyanis Péternek erőt adott a körülmetéltek közötti apostolkodásra, velem is együtt munkálkodott a pogányok között."}, {"verse_num": 9, "start_sec": 102.5, "end_sec": 124.42372093023256, "confidence": 94.44444444444444, "canonical_text": "Amikor Jakab, Kéfás és János, akiket oszlopoknak tekintettek, fölismerték az osztályrészemül jutott kegyelmet, az egyetértés jeléül kezüket nyújtották nekem és Barnabásnak: Mi apostolkodjunk a pogányok, ők meg a körülmetéltek körében.", "matched_text": "Jakab, Kéfás és János, akiket oszlopoknak tekintettek, fölismerték az osztályrészemül jutott kegyelmet, az egyetértés jeliül, Kezüket nyújtottak nekem és Barnabásnak. Mi apostolkodjunk a pogányok között, ők meg a körülmet éltek körébe"}, {"verse_num": 10, "start_sec": 124.42372093023256, "end_sec": 131.96, "confidence": 97.36842105263158, "canonical_text": "Csak legyen gondunk a szegényekre, ennek viszont igyekeztem is eleget tenni.", "matched_text": "Csak legyen gondunk a szegényekre. Ennek viszont igyekeztem is eleget tenni."}, {"verse_num": 11, "start_sec": 131.27488372093023, "end_sec": 139.7286274509804, "confidence": 98.79518072289156, "canonical_text": "Amikor azonban Péter Antióchiába érkezett, szembeszálltam vele, mert okot adott rá.", "matched_text": "Amikor azonban Péter Antióhiába érkezett, szembeszálltam vele, mert okot adott rá."}, {"verse_num": 12, "start_sec": 139.7286274509804, "end_sec": 155.86901960784314, "confidence": 96.19565217391303, "canonical_text": "Mielőtt ugyanis néhányan átjöttek volna Jakabtól, együtt étkezett a pogányokkal, azután azonban, hogy ezek megjelentek, visszahúzódott és különvált tőlük, mert félt a körülmetéltektől.", "matched_text": "előtt ugyanis néhányan átjöttek volna Jakaptól, Együtt étkezett a pogányokkal. Azután azonban, hogy ezek megjelentek, visszahúzódott és külön vált tőlük, mert félt a körülmet éltek től."}, {"verse_num": 13, "start_sec": 155.86901960784314, "end_sec": 164.56, "confidence": 100.0, "canonical_text": "Az ingadozásban a többi zsidó is követte, sőt még Barnabást is belesodorták a kétszínűségbe.", "matched_text": "Az ingadozásban a többi zsidó is követte, sőt még Barnabást is belesodorták a kétszínűségbe."}, {"verse_num": 14, "start_sec": 163.9392156862745, "end_sec": 189.52811320754716, "confidence": 92.51968503937007, "canonical_text": "Amikor tehát láttam, hogy viselkedésük nem egyezik az evangélium tanításával, mindnyájuk előtt megmondtam Péternek: Ha te zsidó létedre pogány módon, és nem zsidó szokás szerint élsz, hogyan kényszerítheted a pogányokat, hogy zsidó szokásokat kövessenek?", "matched_text": ". Amikor tehát láttam, hogy viselkedésük nem egyezik az evangélium tanításával, Minnyájuk előtt megmondtam Péternek, ha te zsidó létedre pogány módon, és nem zsidó szokás szerint élsz, hogyan kényszerítheted a pogányokat a zsidó szokások megtartására? Mi"}, {"verse_num": 15, "start_sec": 188.92, "end_sec": 193.78490566037735, "confidence": 100.0, "canonical_text": "Mi születésünknél fogva zsidók vagyunk, nem bűnös pogányok.", "matched_text": "Mi születésünknél fogva zsidók vagyunk, nem bűnös pogányok."}, {"verse_num": 16, "start_sec": 193.78490566037735, "end_sec": 221.15, "confidence": 98.67109634551495, "canonical_text": "Tudjuk azonban, hogy az embert nem a törvény szerinti tettek teszik igazzá, hanem a Jézus Krisztusba vetett hit. Ezért elfogadtuk Jézus Krisztus hitét, hogy a Krisztusba vetett hitben váljunk igazzá, nem mert tetteink megfelelnek a törvénynek, hisz a törvény szerinti tettek senkit sem tesznek igazzá.", "matched_text": "udjuk azonban, hogy az embert nem a törvény szerinti tettek teszik igazzá, hanem a Jézus Krisztusba vetett hit. Ezért elfogadtuk Jézus Krisztus hitét, hogy a Krisztusba vetett hitben váljunk igazzá. Nem mert tetteink megfelelnek a törvénynek, hiszen a törvény szerinti tettek senki sem tesznek igazzá."}, {"verse_num": 17, "start_sec": 220.54188679245283, "end_sec": 236.14210526315787, "confidence": 97.33333333333334, "canonical_text": "Ha azonban mi azáltal, hogy Krisztusban keressük az igazzá válást, bűnössé válnánk, akkor vajon Krisztus nem a bűnt mozdítaná-e elő? Semmi esetre sem.", "matched_text": "Ha azonban mi azáltal, hogy Krisztusban keressük az igazzávállást, bűnössé válnánk, akkor vajon Krisztus? Nem a bűnt mozdítaná elő? Semmi esetre sem."}, {"verse_num": 18, "start_sec": 236.14210526315787, "end_sec": 242.8157894736842, "confidence": 98.68421052631578, "canonical_text": "Ha ugyanis újra fölépítem azt, amit leromboltam, törvényszegőnek bizonyulok.", "matched_text": "a ugyanis újra fölépítem azt, amit leromboltam, törvény szegőnek bizonyulok."}, {"verse_num": 19, "start_sec": 242.14842105263156, "end_sec": 253.4936842105263, "confidence": 95.7983193277311, "canonical_text": "Hiszen a törvény által meghaltam a törvénynek, hogy az Istennek éljek, mert Krisztussal engem is keresztre feszítettek.", "matched_text": "k. Hiszen a törvény által meghaltam a törvénynek, hogy Istennek éljek. Mert Krisztussal engem is keresztre feszítettek."}, {"verse_num": 20, "start_sec": 253.4936842105263, "end_sec": 271.17485714285715, "confidence": 97.53086419753086, "canonical_text": "Élek, de már nem én, hanem Krisztus él énbennem. Minthogy azonban most még testben élek, Isten Fiának hitében élek, aki szeretett engem és feláldozta magát értem.", "matched_text": "Élek, de már nem én, hanem Krisztus él bennem. Minthogy azonban most még testben élek, Isten fiának hitében élek, aki szeretett engem, és föláldozta magát értem. N"}, {"verse_num": 21, "start_sec": 270.5451428571428, "end_sec": 285.86, "confidence": 95.23809523809523, "canonical_text": "Nem vetem el az Isten kegyelmét. Mert ha a törvény útján igazzá válhat az ember, Krisztus hiába halt meg.", "matched_text": "Nem vetem el Isten kegyelmét, mert ha a törvény útján igazzá válhat az ember, Krisztus hiába halt meg. [Si"}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

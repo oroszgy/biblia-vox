@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Korinthusiakhoz írt első levél 7. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "1CO", "hungarian_name": "Korinthusiakhoz írt első levél", "abbreviation": "1Kor", "book_number": 407, "chapter_count": 16}, "chapter": {"book_usx": "1CO", "chapter_num": 7, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/53_korint1/korintusiaknak-irt-1-level-07-fejezet.mp3", "verse_count": 40, "aligned_count": 40}, "verses": [{"verse_num": 1, "start_sec": 2.1278048780487806, "end_sec": 9.929756097560976, "confidence": 95.83333333333334, "canonical_text": "A leveletekre ezt válaszolom: Jó, ha az ember asszonnyal nem érintkezik.", "matched_text": "A leveletekre ezt válaszolom, jó, ha az ember asszonyjal nem érintkezik."}, {"verse_num": 2, "start_sec": 9.929756097560976, "end_sec": 19.85951219512195, "confidence": 100.0, "canonical_text": "A kicsapongás veszélye miatt azonban legyen csak minden férfinak felesége és minden asszonynak férje.", "matched_text": "A kicsapongás veszélye miatt azonban legyen csak minden férfinak felesége és minden asszonynak férje."}, {"verse_num": 3, "start_sec": 19.85951219512195, "end_sec": 29.08, "confidence": 100.0, "canonical_text": "A férfi teljesítse házastársi kötelességét feleségével szemben, hasonlóképpen az asszony is férjével szemben.", "matched_text": "A férfi teljesítse házastársi kötelességét feleségével szemben, hasonlóképpen az asszony is férjével szemben."}, {"verse_num": 4, "start_sec": 29.57, "end_sec": 43.20529411764706, "confidence": 97.43589743589743, "canonical_text": "Az asszony testével nem maga rendelkezik, hanem a férje, éppígy a férfi testével sem ő rendelkezik, hanem a felesége.", "matched_text": "Az asszony testével nem maga rendelkezik, hanem a férje. Épp így a férfi testével sem ő rendelkezik, hanem a felesége."}, {"verse_num": 5, "start_sec": 42.523529411764706, "end_sec": 60.93117647058824, "confidence": 98.61111111111111, "canonical_text": "Ne tartózkodjatok egymástól, legföljebb közös megegyezéssel egy időre, hogy azt imádsággal töltsétek. Azután térjetek vissza egymáshoz, nehogy a sátán megkísértsen benneteket, mivel nem tudtok megtartóztatásban élni.", "matched_text": ". Ne tartózkodjatok egymástól, legfőjebb közös megegyezéssel egy időre, hogy azt imádsággal töltsétek. Aztán térjetek vissza egymáshoz, nehogy a sátán megkísértsen benneteket, mivel nem tudtok megtartóztatásban élni."}, {"verse_num": 6, "start_sec": 60.93117647058824, "end_sec": 64.34, "confidence": 100.0, "canonical_text": "Ezt engedményként mondom, nem parancsként.", "matched_text": "Ezt engedményként mondom, nem parancsként."}, {"verse_num": 7, "start_sec": 64.42, "end_sec": 77.18, "confidence": 97.91666666666666, "canonical_text": "Szeretném ugyanis, ha mindnyájan olyanok volnátok, mint én magam, de hát mindenki saját ajándékát kapta Istentől, az egyik ilyet, a másik olyat.", "matched_text": "zeretném ugyanis, ha minnyáján olyanok volnátok, mint én magam, de hát mindenki a saját ajándékát kapta Istentől, az egyik ilyet, a másik olyat."}, {"verse_num": 8, "start_sec": 77.3, "end_sec": 86.27931034482758, "confidence": 96.20253164556962, "canonical_text": "A nem házasoknak és az özvegyeknek ezt mondom: Jó, ha úgy maradnak, mint én is.", "matched_text": "A nem házasoknak és az özvegyeknek azt mondom, jó, ha úgy maradnak, mint én is."}, {"verse_num": 9, "start_sec": 86.27931034482758, "end_sec": 94.66, "confidence": 98.95833333333334, "canonical_text": "De ha nem tartóztatják meg magukat, kössenek csak házasságot, mert jobb megházasodni, mint égni.", "matched_text": "De ha nem tartóztatják meg magukat, Kössenek csak házasságot, mert jobb megházasodni, mint égni."}, {"verse_num": 10, "start_sec": 95.24470588235295, "end_sec": 103.11529411764705, "confidence": 95.0, "canonical_text": "A házasoknak meg nem én parancsolom, hanem az Úr: A feleség ne hagyja el férjét.", "matched_text": "házasoknak meg nem én parancsolom, hanem az Úr, a feleség ne hagyja el a férjét."}, {"verse_num": 11, "start_sec": 103.11529411764705, "end_sec": 112.56, "confidence": 96.03960396039604, "canonical_text": "Ha mégis elhagyná, maradjon férj nélkül, vagy béküljön ki férjével. A férfi se bocsássa el feleségét.", "matched_text": "mégis elhagyná, maradjon férj nélkül, vagy béküljön ki a férjével. A férfi se bocsássa el a feleségét"}, {"verse_num": 12, "start_sec": 112.78, "end_sec": 124.93465517241378, "confidence": 99.19354838709677, "canonical_text": "A többieknek azonban én mondom, nem az Úr: Ha valamelyik testvérnek hitetlen felesége van, aki kész vele élni, ne küldje el.", "matched_text": "A többieknek azonban én mondom, nem az Úr, Ha valamelyik testvérnek hitetlen felesége van, aki kész vele élni, ne küldje el."}, {"verse_num": 13, "start_sec": 125.51344827586206, "end_sec": 134.7741379310345, "confidence": 97.87234042553192, "canonical_text": "S ha valamelyik asszonynak hitetlen férje van, és az szívesen marad vele, ne hagyja el férjét.", "matched_text": "ha valamelyik asszonynak hitetlen férje van, és az szívesen marad vele, ne hagyja el a férjét."}, {"verse_num": 14, "start_sec": 134.7741379310345, "end_sec": 146.35, "confidence": 97.27891156462584, "canonical_text": "Mert a hitetlen férjet megszenteli felesége, és a hitetlen asszonyt megszenteli férje. Különben gyermekeitek tisztátalanok volnának, pedig szentek.", "matched_text": "t a hitetlen férjet megszenteli a felesége, és a hitetlen asszonyt megszenteli a férje. Különben gyermekeitek tisztátalanok volnának, pedig szentek."}, {"verse_num": 15, "start_sec": 147.19, "end_sec": 161.22589743589745, "confidence": 98.50746268656717, "canonical_text": "De ha a nem hívő fél elválik, hadd váljék el. Ilyen esetben a testvér vagy nővér nincs lekötve, hiszen Isten békességre hívott minket.", "matched_text": "De ha a nem hívő fél elválik, hadd váljon el. Ilyen esetben a testvér vagy nővér nincs lekötve, hiszen Isten békességre hívott minket."}, {"verse_num": 16, "start_sec": 161.22589743589745, "end_sec": 170.99, "confidence": 95.08196721311475, "canonical_text": "Honnan tudod, te asszony, hogy a férfit üdvösségre vezetheted? Vagy honnan tudod, te férfi, hogy feleségedet megmentheted?", "matched_text": "Honnan tudott-e asszony, hogy a férfit üdvösségre vezetheted? Vagy honnan tudott-e férfi, hogy a feleségedet megmentheted?"}, {"verse_num": 17, "start_sec": 172.47, "end_sec": 184.4904, "confidence": 95.41284403669725, "canonical_text": "Különben mindenki éljen úgy, ahogy az Úr adta neki, s ahogy az Isten hívta. Így rendelkezem minden egyházban.", "matched_text": "lönben mindenki éljen úgy, ahogy az Úr adta neki. S ahogy az Isten meghívta. Így rendelkezem minden egyházban."}, {"verse_num": 18, "start_sec": 184.4904, "end_sec": 194.50740000000002, "confidence": 97.65625, "canonical_text": "Aki körülmetélten kap meghívást, ne akarjon körülmetéletlennek látszani, aki viszont körülmetéletlen, ne metéltesse körül magát.", "matched_text": "Aki körülmetélten kap meghívást, ne akarjon körülmetéletlennek látszani. Aki viszont körülmetéletlen, ne metéltesse körül magád."}, {"verse_num": 19, "start_sec": 194.50740000000002, "end_sec": 205.86, "confidence": 98.41269841269842, "canonical_text": "A körülmetéltség nem ér semmit, hasonlóképpen a körülmetéletlenség sem ér semmit, hanem csak az Isten parancsainak megtartása.", "matched_text": "A körülmetéltség nem ér semmit. Hasonlóképpen a körülmetéletlenség sem ér semmit, hanem csak az Isten parancsainak megtartása."}, {"verse_num": 20, "start_sec": 206.05, "end_sec": 211.16644444444447, "confidence": 100.0, "canonical_text": "Maradjon meg mindenki abban a hivatásban, amelyet kapott.", "matched_text": "Maradjon meg mindenki abban a hivatásban, amelyet kapott."}, {"verse_num": 21, "start_sec": 211.16644444444447, "end_sec": 222.67844444444447, "confidence": 94.44444444444444, "canonical_text": "Ha rabszolga vagy, s úgy nyertél hivatást, ne bánkódj miatta. Még ha szabaddá lehetnél is, maradj meg benne.", "matched_text": "Ha rabszolga vagy, és úgy nyertél meghívást, ne bánkodj miatta. Még ha szabaddá lehetnél is, maradj meg benne"}, {"verse_num": 22, "start_sec": 222.67844444444447, "end_sec": 234.83, "confidence": 95.0354609929078, "canonical_text": "Aki ugyanis mint rabszolga nyert hivatást az Úrban, az Úrnak szabadosa. Viszont, aki szabad emberként kapta a hivatást, Krisztus rabszolgája.", "matched_text": "ki ugyanis, mint rabszolga nyert hivatást az Úrban, az Úrnak szabadusa. Viszont aki szabademberként kapta a meghívást, Krisztus rabszolgálja."}, {"verse_num": 23, "start_sec": 234.19044444444447, "end_sec": 241.41, "confidence": 94.66666666666667, "canonical_text": "Nagy váltságdíjat fizetett értetek, ne legyetek azért emberek rabszolgáivá.", "matched_text": "Nagy váltságdíjat fizettek, értetek, ne legyetek azért emberek rabszolgáiva"}, {"verse_num": 24, "start_sec": 240.68333333333334, "end_sec": 252.844, "confidence": 94.68085106382979, "canonical_text": "Maradjon meg tehát, testvérek, mindegyiktek abban a hivatásban az Isten előtt, amelyet kapott.", "matched_text": ". Maradjon meg tehát testvérek mindegyiktek abban a hivatásban Isten előtt, amelyet kapott. A s"}, {"verse_num": 25, "start_sec": 251.49, "end_sec": 265.03, "confidence": 98.4375, "canonical_text": "A szüzeket illetően nincs külön parancsom az Úrtól, tanácsot azonban adok, mint olyan, aki az Úr irgalma folytán hitelt érdemel.", "matched_text": "A szüzeket illetően nincs külön parancsom az úrtól, tanácsot azonban adok, mint olyan, aki az úr irgalma folytán hitelt érdemel."}, {"verse_num": 26, "start_sec": 265.13, "end_sec": 275.45, "confidence": 97.91666666666666, "canonical_text": "Azt tartom, a mostani megpróbáltatások miatt ez az állapot ajánlható; jó, ha így marad az ember.", "matched_text": "Azt tartom, a mostani megpróbáltatások miatt ez az állapot ajánlható. Jó, ha így marad az ember."}, {"verse_num": 27, "start_sec": 275.71, "end_sec": 284.926, "confidence": 96.3302752293578, "canonical_text": "Ha asszonyhoz vagy kötve, ne törekedj elválni, ha azonban nem kötötted magad asszonyhoz, ne keress feleséget.", "matched_text": "Ha asszonyhoz vagy kötve, ne törekedj elválni. Ha azonban nem kötötted magadat asszonyhoz, ne keres feleséget."}, {"verse_num": 28, "start_sec": 286.078, "end_sec": 300.478, "confidence": 94.87179487179486, "canonical_text": "De ha megnősülsz, nem vétkezel, s ha a lány férjhez megy, nem követ el bűnt. Ám az ilyeneket testi nyugtalanság gyötri, s én meg akarlak kímélni benneteket.", "matched_text": "megnősülsz, nem vétkezel, és ha a leány férjhez megy, nem követ el bűnt. Ám az ilyeneket... Testi nyugtalanság gyötri, és én meg akarlak kimélni benneteket."}, {"verse_num": 29, "start_sec": 300.478, "end_sec": 309.46225, "confidence": 94.89795918367348, "canonical_text": "Azt mondom tehát, testvérek: Az idő rövid, azért akinek van felesége, éljen úgy, mintha nem volna,", "matched_text": "zt mondom tehát, testvérek, az idő rövid. Azért, akinek van felesége, éljen úgy, mintha nem volna,"}, {"verse_num": 30, "start_sec": 309.46225, "end_sec": 318.26625, "confidence": 100.0, "canonical_text": "aki sír, mintha nem sírna, aki örül, mintha nem örülne, aki vásárol, mintha meg sem tartaná,", "matched_text": "aki sír, mintha nem sírna, aki örül, mintha nem örülne, aki vásárol, mintha meg sem tartaná,"}, {"verse_num": 31, "start_sec": 318.26625, "end_sec": 326.52, "confidence": 98.79518072289156, "canonical_text": "s aki felhasználja a világ dolgait, mintha nem élne velük, mert ez a világ elmúlik.", "matched_text": "s aki felhasználja a világ dolgait, mintha nem élne velük, Mert ez a világ elmúlik."}, {"verse_num": 32, "start_sec": 326.74, "end_sec": 338.0415873015873, "confidence": 95.65217391304348, "canonical_text": "Azt szeretném, ha mentek volnátok a gondtól. A nőtlennek arra van gondja, ami az Úré: hogyan járjon az Úr kedvében.", "matched_text": "zt szeretném, ha mentesek volnátok a gondtól. A nőtlennek arra van gondja, ami az úré, hogyan járjon az úr kedvében."}, {"verse_num": 33, "start_sec": 338.0415873015873, "end_sec": 343.692380952381, "confidence": 98.59154929577466, "canonical_text": "A nős azonban világi dolgokkal törődik: hogyan keresse felesége kedvét,", "matched_text": "A nős azonban világi dolgokkal törődik, hogyan keresse felesége kedvét,"}, {"verse_num": 34, "start_sec": 343.1273015873016, "end_sec": 362.34, "confidence": 96.7741935483871, "canonical_text": "ezért meg van osztva. A nem házas asszony és a szűz arra gondol, ami az Úré, hogy testben és lélekben szent legyen, míg a férjes nőt világi dolgok kötik le: hogyan járjon férje kedvében.", "matched_text": "ezért meg van osztva. A nemházas asszony és a szűz arra gondol, ami az úré, hogy testben és lélekben szent legyen. Míg a férjes nőt világi dolgok kötik le, hogyan járjon férje kedvében?"}, {"verse_num": 35, "start_sec": 362.4, "end_sec": 377.2723076923077, "confidence": 93.91891891891892, "canonical_text": "Ezt javatokra mondom, nem azért, hogy tőrbe csaljalak, hanem hogy a feddhetetlen életre és az Úrhoz való osztatlan ragaszkodásra segítselek titeket.", "matched_text": "Ezt javatokra mondom, nem azért, hogy törbecsajjalak, hanem, hogy fethetetlen életre és az úrhoz való osztatlan ragaszkodásra segítse le titeket. Ha"}, {"verse_num": 36, "start_sec": 376.62, "end_sec": 393.58, "confidence": 99.42857142857143, "canonical_text": "Ha valaki mégis úgy véli, hogy igazságtalanul bánna hajadon lányával, mert eljárt fölötte az idő, ha úgy van rendjén, tegye, amit akar. Nem vétkezik, kössenek csak házasságot.", "matched_text": "Ha valaki mégis úgy véli, hogy igazságtalanul bánna hajadonleányával, mert eljárt fölötte az idő, ha úgy van rendjén, tegye, amit akar. Nem vétkezik, kössenek csak házasságot."}, {"verse_num": 37, "start_sec": 393.66, "end_sec": 406.92, "confidence": 97.87234042553192, "canonical_text": "Akinek azonban szilárd a meggyőződése, s minden kényszerítő ok nélkül, teljesen szabadon úgy döntött, hogy megőrzi hajadon lányát, jól teszi.", "matched_text": "Akinek azonban szilárd a meggyőződése, és minden kényszerítő ok nélkül teljesen szabadon úgy döntött, hogy megőrzi hajadonleányád, jól teszi."}, {"verse_num": 38, "start_sec": 406.93, "end_sec": 415.65, "confidence": 97.89473684210527, "canonical_text": "Tehát aki férjhez adja hajadon lányát, jól teszi, aki pedig nem adja férjhez, még jobban teszi.", "matched_text": "ehát, aki férjhez adja hajadon leányát, jól teszi, aki pedig nem adja férjhez, még jobban teszi."}, {"verse_num": 39, "start_sec": 416.09, "end_sec": 427.99, "confidence": 96.61016949152543, "canonical_text": "Az asszony le van kötve, amíg férje él, de ha férje meghal, felszabadul. Férjhez mehet, akihez akar, de csak az Úrban.", "matched_text": "z asszony le van kötve, amíg férje él, de ha a férje meghal, fölszabadul. Férjhez mehet, akihez akar, de csak az úrban."}, {"verse_num": 40, "start_sec": 428.31, "end_sec": 439.26, "confidence": 99.03846153846155, "canonical_text": "Boldogabb azonban, ha úgy marad, ahogy van. Ez a tanácsom, és hiszem, hogy Isten Lelke szerint beszélek.", "matched_text": "Boldogabb azonban, ha úgy marad, ahogy van. Ez a tanácsom, és hiszem, hogy Isten lelke szerint beszélek."}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

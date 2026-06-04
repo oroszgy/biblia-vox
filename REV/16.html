@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>János jelenései 16. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "REV", "hungarian_name": "János jelenései", "abbreviation": "Jel", "book_number": 427, "chapter_count": 22}, "chapter": {"book_usx": "REV", "chapter_num": 16, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/73_jelenesek/jelenesek-konyve-16-fejezet.mp3", "verse_count": 21, "aligned_count": 21}, "verses": [{"verse_num": 1, "start_sec": 1.8925, "end_sec": 15.14, "confidence": 67.1875, "canonical_text": "Akkor nagy szózatot hallottam a templomból, a hét angyalnak szólt: \"Rajta, öntsétek ki Isten haragjának hét csészéjét a földre!\"", "matched_text": "egy erős hangot, amely a templomból ezt mondta a hét angyalnak, menjetek, és öntsétek a földre, Isten haragjának hét csészéjét."}, {"verse_num": 2, "start_sec": 14.509166666666667, "end_sec": 30.78, "confidence": 50.877192982456144, "canonical_text": "Az első elindult és kiöntötte csészéjét a földre. Rosszindulatú, fájdalmas fekély keletkezett az embereken, akik a vadállat jegyét viselték, és a képmása előtt leborultak.", "matched_text": "széjét. És ment az első, és kiöntötte csészéjét a földre. És akiken a vadallat bélyege volt, és akik imádták az ő képmását, Azokon fájdalmas, és igen gonosz tekély támadt."}, {"verse_num": 3, "start_sec": 32.302608695652175, "end_sec": 44.3, "confidence": 58.33333333333333, "canonical_text": "A második a tengerbe öntötte csészéjét. Erre az a halottak véréhez vált hasonlóvá, és minden tengeri élőlény elpusztult.", "matched_text": "öntötte csészéjét a tengerre, és az olyan lett, mint a halott vére, és minden élő lény, ami a tengerben van, elpusztult."}, {"verse_num": 4, "start_sec": 45.849333333333334, "end_sec": 53.465333333333334, "confidence": 76.92307692307692, "canonical_text": "A harmadik a folyókba és a vízforrásokba öntötte csészéjét, mire vérré váltak.", "matched_text": "harmadik a folyóvizekbe és a vizek forrásaiba öntötte csészéjét, és azok vérré"}, {"verse_num": 5, "start_sec": 52.830666666666666, "end_sec": 62.91225806451613, "confidence": 74.46808510638299, "canonical_text": "Hallottam, hogy a nagy vizek angyala felkiáltott: \"Igazságos vagy, te, aki vagy és aki voltál!", "matched_text": "ré váltak. És hallottam, hogy a vizek angyala mondja, igazságos vagy, aki vagy és aki voltál, a"}, {"verse_num": 6, "start_sec": 62.91225806451613, "end_sec": 73.75333333333333, "confidence": 63.793103448275865, "canonical_text": "Szent vagy, hogy így ítéltél; amiért a szentek és a próféták vérét kiontották, vért adtál nekik inni. Rászolgáltak!\"", "matched_text": "zent, mivel így ítéltél, mert profétáid és szentjeid vérét ontották, és most vért adtál nekik inni. Megérdemelték. És"}, {"verse_num": 7, "start_sec": 72.38, "end_sec": 87.46266666666666, "confidence": 76.78571428571428, "canonical_text": "Hallottam, hogy az oltár felől egy hang felelt: \"Igen, Uram, mindenható Isten, igazak és igazságosak ítéleteid.\"", "matched_text": "És hallottam, hogy az oltár mondja, igen, Uram, minden ható Isten igazak, és igazságosak a te ítéleteid. És a ne"}, {"verse_num": 8, "start_sec": 86.34088888888888, "end_sec": 95.31511111111111, "confidence": 71.91011235955057, "canonical_text": "A negyedik a Napra öntötte csészéjét. Hatalmat kapott, hogy az embereket tűzzel gyötörje.", "matched_text": "a negyedik angyal a napra öntötte a csészéjét, és az hatalmat kapott arra, hogy tűzzel per"}, {"verse_num": 9, "start_sec": 94.75422222222223, "end_sec": 108.21555555555555, "confidence": 57.33333333333333, "canonical_text": "Az emberek kínlódtak a nagy hőségben, mégsem kaptak észbe, nem hódoltak előtte, hanem káromolták az Isten nevét, akinek hatalma kiterjed e csapásokra.", "matched_text": "lje az embereket. És perzselődtek az emberek a nagy hőségtől, és káromolták Isten nevét, akinek hatalma volt e csapások fölött, és nem tartottak bűnbán"}, {"verse_num": 10, "start_sec": 112.95666666666668, "end_sec": 125.62333333333333, "confidence": 65.625, "canonical_text": "Az ötödik a vadállat trónjára öntötte csészéjét, mire sötétség lett országában. Az emberek fájdalmukban a nyelvüket harapdálták,", "matched_text": "z ötödik angyal ráöntötte csészéjét a vadállat trónjára. És sötétségbe borult a virodalma. És az emberek a nyelvüket harapdálták"}, {"verse_num": 11, "start_sec": 126.28999999999999, "end_sec": 134.95666666666665, "confidence": 68.29268292682926, "canonical_text": "s káromolták az ég Istenét kínjuk és fekélyeik miatt, de tetteiket nem bánták meg.", "matched_text": "s káromolták az égistenét fájdalmaik és sebeik miatt, és nem tartottak bűnbánatot a"}, {"verse_num": 12, "start_sec": 137.03, "end_sec": 150.1925, "confidence": 62.4, "canonical_text": "A hatodik (angyal) a nagy Eufrátesz folyóba öntötte csészéjét. Erre kiszáradt a vize, hogy utat nyisson napkelet királyainak.", "matched_text": "s a hatodik angyal Beleöntötte csészéjét a nagy folyamba, az eufrátezbe, és kiszáradt a vize, hogy út készüljön a királyoknak,"}, {"verse_num": 13, "start_sec": 152.825, "end_sec": 167.30375, "confidence": 70.45454545454545, "canonical_text": "S láttam, hogy a sárkány szájából, a vadállat szájából és a hamis próféta szájából három békához hasonló tisztátalan lélek jött elő.", "matched_text": "És láttam, hogy a sárkány szájából, a vadállat és az álproféta szájából kijön három tisztátalan lélek, a békához hasonlók. Ezek a cso"}, {"verse_num": 14, "start_sec": 164.67125000000001, "end_sec": 179.08, "confidence": 65.46762589928056, "canonical_text": "Sátáni lelkek, akik csodákat művelnek, és elmennek a földkerekség királyaihoz, hogy harcra toborozzák őket a mindenható Isten nagy napjára.", "matched_text": "onlók. Ezek a csodatévő ördögök lelkei. Akik elmennek a föld minden királyához, hogy összegyűjtsék őket a minden ható Isten nagy napjának üt"}, {"verse_num": 15, "start_sec": 178.42625, "end_sec": 194.23724137931035, "confidence": 79.33884297520662, "canonical_text": "Íme, úgy jövök, mint tolvaj. Boldog, aki virraszt és vigyáz ruhájára, hogy ne járjon mezítelenül, és ne lássák szégyenét.", "matched_text": ". Íme, úgy jövök el, mint a tolvaj. Boldog, aki virraszt, és őrzi ruháit, nehogy ruhátlanul járjon, és lássák szégyenét. É"}, {"verse_num": 16, "start_sec": 194.23724137931035, "end_sec": 200.5, "confidence": 90.41095890410959, "canonical_text": "Összegyűjtötték őket arra a helyre, amelyet héberül Harmagedónnak hívnak.", "matched_text": "sszegyűjtötte őket arra a helyre, amelyet héberül Harmagedonnak neveznek."}, {"verse_num": 17, "start_sec": 199.8041379310345, "end_sec": 214.0169230769231, "confidence": 60.629921259842526, "canonical_text": "A hetedik a levegőbe öntötte csészéjét. Erre az égi templomból, a trónusról egy hatalmas hang hangzott, és mondta: \"Végbement!\"", "matched_text": ". És a hetedik angyal beleöntötte csészéjét a levegőbe. És nagy szózat jött ki a templomból, a trónusról, és mondta, megtörtént."}, {"verse_num": 18, "start_sec": 214.65076923076924, "end_sec": 226.06, "confidence": 67.76859504132231, "canonical_text": "Villámlás, égzengés, mennydörgés és akkora földrengés támadt, olyan nagy, amilyen még nem volt, amióta ember él a földön.", "matched_text": "illámlás, dübörgés és mennydörgés támadt, és olyan hatalmas földrengés, amekkora nem volt még, amióta ember van a földön."}, {"verse_num": 19, "start_sec": 228.15545454545455, "end_sec": 245.74200000000002, "confidence": 66.26506024096386, "canonical_text": "A nagyváros háromfelé vált, és a pogányok városai romba dőltek. Az Isten színe előtt megemlékeztek a nagy Babilonról, és izzó haragja borának kelyhét nyújtották neki.", "matched_text": "a nagyváros három felé vált. És a nemzetek városai összedőltek. És Isten megemlékezett a nagy Babylonról, hogy átadja neki méltatlankodása haragborának kejhét. És mind"}, {"verse_num": 20, "start_sec": 244.266, "end_sec": 252.38400000000001, "confidence": 66.66666666666667, "canonical_text": "Minden sziget eltűnt, és a hegyeket nem lehetett többé megtalálni.", "matched_text": "s minden sziget elmerült, és a hegyek nincsenek többé. És talentum"}, {"verse_num": 21, "start_sec": 252.38400000000001, "end_sec": 267.31, "confidence": 72.28070175438597, "canonical_text": "Az égből mázsás szemekben jégeső zúdult az emberekre. Az emberek káromolták az Istent a jégverés csapása miatt, mert rettenetesen nagy csapás volt.", "matched_text": "gyságú jégverés zuhogott az emberekre az égből. és az emberek káromolták Istent a jégverés csapása miatt, mert ez a csapás igen nagy volt."}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

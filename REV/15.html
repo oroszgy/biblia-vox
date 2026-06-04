@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>János jelenései 15. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "REV", "hungarian_name": "János jelenései", "abbreviation": "Jel", "book_number": 427, "chapter_count": 22}, "chapter": {"book_usx": "REV", "chapter_num": 15, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/73_jelenesek/jelenesek-konyve-15-fejezet.mp3", "verse_count": 8, "aligned_count": 8}, "verses": [{"verse_num": 1, "start_sec": 4.203333333333333, "end_sec": 19.259999999999998, "confidence": 64.02877697841727, "canonical_text": "Egy másik csodálatos nagy jelet is láttam az égen: Hét angyalt, a hét végső csapás volt rájuk bízva - ezzel lesz teljessé az Isten haragja.", "matched_text": "egy másik, nagy és csodálatos jelet. Hét angyalt, akiknél a hét végső csapás van, mert ezekben teljesedik be Isten haragja. És amit láttam,"}, {"verse_num": 2, "start_sec": 18.532222222222224, "end_sec": 33.484117647058824, "confidence": 74.52229299363057, "canonical_text": "Tűzben játszó, csillogó üvegtengert láttam. Akik legyőzték a vadállatot, képmását és nevének számát, ott álltak az üvegtengeren, a kezükben az Isten hárfája.", "matched_text": "m, tűzzel vegyült üvegtengerhez hasonlított, és akik legyőzték a vadállatot, és az ő képmását, és nevének számát, ott álltak az üvegtengeren, és Isten hárfái"}, {"verse_num": 3, "start_sec": 37.87714285714286, "end_sec": 54.160526315789475, "confidence": 74.85380116959064, "canonical_text": "Mózesnek, az Isten szolgájának, és a Báránynak énekét énekelték: \"Nagyok és csodálatosak a tetteid, Uram, mindenható Isten! Útjaid igazságosak és igazak, nemzetek Királya.", "matched_text": "Mózesnek énekét, és a bárányi énekét éneklik, mondván, nagyok és csodálatosak a te műveid, Urunk, minden ható Istenünk. Igazságosak és igazak a te utaid, nemzetek királya."}, {"verse_num": 4, "start_sec": 54.71684210526316, "end_sec": 71.5047619047619, "confidence": 69.03225806451613, "canonical_text": "Ki ne félne téged, Uram, és ki ne dicsőítené a neved? Mert csak te vagy szent! Minden nemzet eljön és leborul színed előtt. mert ítéleteid kinyilvánultak.\"", "matched_text": "féli, Urunk, és ki nem dicsőíti a te nevedet? Mert egyedül te vagy a szent, és az összes nemzetek eljönnek, és leborulnak a te színed előtt, mert nyilvánva"}, {"verse_num": 5, "start_sec": 72.08238095238094, "end_sec": 80.50714285714285, "confidence": 73.23943661971832, "canonical_text": "Ezután láttam, hogy megnyílt az égben a tanúságtétel sátrának temploma.", "matched_text": "d. És ezek után láttam, kinyílt az égben a szövetség sátrának temploma,"}, {"verse_num": 6, "start_sec": 81.09142857142857, "end_sec": 91.831, "confidence": 72.56637168141593, "canonical_text": "A templomból hét angyal lépett ki a hét csapással. Ragyogóan fehér vászonruhába voltak öltözve, mellükön aranyöv.", "matched_text": "ijött a templomból hét angyal, akiknél hét csapás van, Hófehér gyolcsba voltak öltözve a mellükön aranyövvel. És a"}, {"verse_num": 7, "start_sec": 92.42, "end_sec": 106.34333333333333, "confidence": 76.98412698412699, "canonical_text": "A négy közül az egyik élőlény a hét angyalnak hét aranycsészét adott. Ezek az örökkön-örökké élő Isten haragjával voltak tele.", "matched_text": "ny közül az egyik átadott a hét angyalnak hét arancsészét, amelyek telve vannak az örökkön örökké élő Isten haragjával. És a te"}, {"verse_num": 8, "start_sec": 105.03111111111112, "end_sec": 120.14, "confidence": 72.07792207792207, "canonical_text": "A templom megtelt Isten dicsőségének és erejének füstjével, és senki sem léphetett be a templomba addig, amíg a hét angyal hét csapása be nem teljesedett.", "matched_text": "templom megtelt hüstel Isten dicsőségétől és erejétől, és senki sem tudott bemenni a templomba, amíg be nem teljesedik a hét angyal hét csapása. [Silence]"}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

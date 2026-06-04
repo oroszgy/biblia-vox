@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Máté evangéliuma 27. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "MAT", "hungarian_name": "Máté evangéliuma", "abbreviation": "Mt", "book_number": 401, "chapter_count": 28}, "chapter": {"book_usx": "MAT", "chapter_num": 27, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/47_mate/mate-evangeliuma-27-fejezet.mp3", "verse_count": 66, "aligned_count": 66}, "verses": [{"verse_num": 1, "start_sec": 5.164, "end_sec": 16.756, "confidence": 56.56565656565656, "canonical_text": "Amikor megvirradt, a főpapok és a nép vénei tanácsot tartottak és elhatározták, hogy halálra adják.", "matched_text": "dig tanácsot tartottak mind a papi fejedelmek és a nép vénei Jézus ellen, hogy halálra adják őt. És"}, {"verse_num": 2, "start_sec": 16.756, "end_sec": 22.22222222222222, "confidence": 87.71929824561404, "canonical_text": "Megkötözték, elvezették, és átadták Pilátus helytartónak.", "matched_text": "egkötözve elvezették és átadták Pilatus helytartónak. Amik"}, {"verse_num": 3, "start_sec": 21.56, "end_sec": 33.48, "confidence": 80.48780487804879, "canonical_text": "Amikor Júdás, az áruló látta, hogy elítélték, megbánta tettét, és visszavitte a harminc ezüstöt a főpapoknak és a véneknek.", "matched_text": "Amikor Júdás, aki őt elárulta, látta, hogy elítélték, megbámba tettét, Visszavitte a harminc ezüstöt a papi fejedelmeknek és"}, {"verse_num": 4, "start_sec": 36.12888888888889, "end_sec": 47.52105263157895, "confidence": 59.375, "canonical_text": "\"Vétkeztem - mondta -, elárultam az igaz vért.\" \"Mi közünk hozzá? - válaszolták. - A te dolgod!\"", "matched_text": "étkeztem, amikor elárultam az igazvért. Álmazok azt mondták, mi közünk hozzá, te lássad. És széts"}, {"verse_num": 5, "start_sec": 46.718947368421055, "end_sec": 55.55, "confidence": 74.32432432432432, "canonical_text": "Erre az ezüstöt beszórta a templomba, aztán elment és felakasztotta magát.", "matched_text": "rta az ezüstöt a templomban, visszatért, és elmenvén fölakasztotta magát. A"}, {"verse_num": 6, "start_sec": 56.69, "end_sec": 67.60923076923078, "confidence": 79.20792079207921, "canonical_text": "A főpapok fölszedték a pénzt, de úgy vélték: \"Nem szabad a templom kincstárába tenni, mert vér díja.\"", "matched_text": "ig fölszedték a pénzt, De azt mondták, ezt nem szabad a templom kincstárába tenni, mert vérnek díja. T"}, {"verse_num": 7, "start_sec": 65.81, "end_sec": 75.41076923076923, "confidence": 86.04651162790698, "canonical_text": "Tanácsot tartottak, és megvették rajta a fazekas telkét az idegenek számára temetőnek.", "matched_text": "díja. Tanácsot tartottak tehát, és megvették rajta a fazekas telkét az idegenek temetke"}, {"verse_num": 8, "start_sec": 75.41076923076923, "end_sec": 80.95428571428572, "confidence": 61.702127659574465, "canonical_text": "Ezért hívják azt a telket még ma is Vérmezőnek.", "matched_text": "ül. Ezért hívják azt a földet, ha kell domának,"}, {"verse_num": 9, "start_sec": 84.48, "end_sec": 101.156, "confidence": 71.14093959731544, "canonical_text": "Így beteljesedett, amit Jeremiás próféta jövendölt: Fogtam a harminc ezüstöt, annak árát, akit ennyire becsültek, akit Izrael fiai becsültek ennyire,", "matched_text": "beteljesedett, Amit megmondott Jeremias proféta, és fogták a harminc ezüstöt a fölbecsültnek árát, akit ennyire becsültek Izrael fiai részéről, és od"}, {"verse_num": 10, "start_sec": 100.398, "end_sec": 110.26, "confidence": 72.41379310344827, "canonical_text": "s a fazekas telkéért adták, ahogy az Úr parancsolta nekem.", "matched_text": "k a fazekas telkéért, amint megparancsolta nekem az Úr. [Mu"}, {"verse_num": 11, "start_sec": 107.22, "end_sec": 123.04103448275862, "confidence": 63.28125, "canonical_text": "Közben Jézust a helytartó elé állították. A helytartó megkérdezte tőle: \"Te vagy a zsidók királya?\" \"Te mondod\" - felelte Jézus.", "matched_text": "usic] Jézus pedig ott állt a helytartó előtt, és vallotta őt a helytartó, mondván, te vagy a zsidók királya, mondta pedig Jézus,"}, {"verse_num": 12, "start_sec": 126.08413793103449, "end_sec": 131.56172413793104, "confidence": 61.111111111111114, "canonical_text": "A főpapok és vének vádjaira azonban nem felelt semmit.", "matched_text": "fejedelmek és a vének vádolták, nem válaszolt semmit."}, {"verse_num": 13, "start_sec": 131.56172413793104, "end_sec": 138.25655172413792, "confidence": 66.66666666666667, "canonical_text": "Erre Pilátus így szólt hozzá: \"Nem hallod, mi mindennel vádolnak?\"", "matched_text": "kor mondta neki Pilátus, nem hallod, mi mindennel vádolnak téged? É"}, {"verse_num": 14, "start_sec": 136.43068965517242, "end_sec": 144.95137931034483, "confidence": 55.072463768115945, "canonical_text": "De ő egyetlen vádjukra sem felelt. Ezen a helytartó igen meglepődött.", "matched_text": "téged? És nem felelt neki egy szót sem. Amin a helytartó szer fölött"}, {"verse_num": 15, "start_sec": 144.95137931034483, "end_sec": 154.08666666666667, "confidence": 67.77777777777779, "canonical_text": "Az ünnep napján a helytartó szabadon szokott bocsátani egy rabot, a nép kívánsága szerint.", "matched_text": "ott. Az ünnep napon a helytartó a népnek elszokott bocsátani egy foglyot, akit kértek. Volt"}, {"verse_num": 16, "start_sec": 153.49619047619046, "end_sec": 158.22, "confidence": 61.224489795918366, "canonical_text": "Volt akkor egy hírhedt rabjuk, Barabásnak hívták.", "matched_text": "akkor egy nevezetes foglyuk, akit barrabásnak hív"}, {"verse_num": 17, "start_sec": 160.17249999999999, "end_sec": 172.33142857142857, "confidence": 66.66666666666667, "canonical_text": "Pilátus kérdést intézett hozzájuk: \"Mit akartok, melyiket bocsássam el a kettő közül, Barabást vagy Jézust, akit Krisztusnak mondanak?\"", "matched_text": "yűltek, Pilátus megkérdezte, kit kívántok, hogy elbocsássam nektek, barrabást vagy Jézust, akit Krisztusnak mondanak? Tudta ugyanis, hog"}, {"verse_num": 18, "start_sec": 169.35375, "end_sec": 175.36, "confidence": 86.0, "canonical_text": "Tudta ugyanis, hogy csak irigységből adták kezére.", "matched_text": "ak? Tudta ugyanis, hogy iricségből adták a kezére."}, {"verse_num": 19, "start_sec": 174.60285714285715, "end_sec": 190.5505882352941, "confidence": 68.87417218543047, "canonical_text": "Míg ott ült ítélőszékében, a felesége üzenetet küldött neki: \"Ne legyen közöd annak az embernek a dolgához! Az éjjel álmomban sokat szenvedtem miatta.\"", "matched_text": "e. Mikor pedig bírói székébe ült, a felesége üzenetet küldött neki mondván, semmi közöd ahhoz az igaz emberhez, ma álmomban sokat szenvedtem miatta. A p"}, {"verse_num": 20, "start_sec": 188.3018181818182, "end_sec": 199.16470588235293, "confidence": 66.3265306122449, "canonical_text": "A főpapok és a vének felbujtották a népet, hogy Barabást kérje ki, Jézusnak pedig kívánja halálát.", "matched_text": "A papi fejedelmek és a vének azonban rábeszélték a népet, hogy barrabást kérjék, Jézust pedig vesz"}, {"verse_num": 21, "start_sec": 157.62952380952382, "end_sec": 168.6475, "confidence": 51.304347826086946, "canonical_text": "A helytartó tehát föltette a kérdést: \"Mit akartok, melyiket bocsássam el a kettő közül?\" \"Barabást!\" - kiáltották.", "matched_text": ". Mikor tehát összegyűltek, Pilátus megkérdezte, kit kívántok, hogy elbocsássam nektek, barrabást vagy Jézust, akit"}, {"verse_num": 22, "start_sec": 211.78, "end_sec": 223.118, "confidence": 63.24786324786324, "canonical_text": "Pilátus tovább kérdezte: \"Hát Jézussal, akit Krisztusnak mondanak, mit tegyek?\" Mind azt kiabálták: \"Keresztre vele!\"", "matched_text": "Pilátus, mit tegyek hát Jézussal, akit Krisztusnak mondanak? Valamennyien azt mondták, feszíttessék meg. Ő pedig szól"}, {"verse_num": 23, "start_sec": 222.4145, "end_sec": 231.56, "confidence": 56.25, "canonical_text": "\"De hát mi rosszat tett?\" - kérdezte. Annál inkább ordították: \"Keresztre vele!\"", "matched_text": "t, de hát mi rosszat tett? Erre azok még hangosabban kiáltozták, Feszítessék meg."}, {"verse_num": 24, "start_sec": 232.44, "end_sec": 250.56851063829788, "confidence": 57.692307692307686, "canonical_text": "Pilátus látta, hogy nem megy semmire, sőt a zajongás még fokozódik is. Vizet hozatott, s a nép szeme láttára megmosta kezét: \"Ennek az igaz embernek vére ontásában én ártatlan vagyok - mondta. - Ti lássátok!\"", "matched_text": "ván tehát Pilátus, hogy semmire sem megy, hanem csak egyre nagyobb lesz a zajongás, vizet hozatott, és megmosta kezét a nép szeme láttára, és mondta, én ártatlan vagyok ettől a vértől, tilássátok. És felelvén"}, {"verse_num": 25, "start_sec": 250.03531914893617, "end_sec": 257.5, "confidence": 57.407407407407405, "canonical_text": "Erre az egész tömeg zúgta: \"Vére rajtunk és fiainkon!\"", "matched_text": "én az egész nép mondta, az ő vére mi rajtunk, és a mi g"}, {"verse_num": 26, "start_sec": 258.51, "end_sec": 270.9124074074074, "confidence": 89.81481481481481, "canonical_text": "Akkor szabadon bocsátotta Barabást, Jézust pedig megostoroztatta, és átadta nekik, hogy feszítsék keresztre.", "matched_text": "Akkor elbocsátotta nekik barrabást, Jézus pedig megostoroztatta, és átadta nekik, hogy feszítsék keresztre. A"}, {"verse_num": 27, "start_sec": 270.9124074074074, "end_sec": 279.9061111111111, "confidence": 66.66666666666667, "canonical_text": "A helytartó katonái bevitték Jézust a helytartóságra, s odagyűjtötték köré az egész helyőrséget.", "matched_text": "a helytartó katonái magukkal vitték Jézust, és a prétóriumban köréje gyűjtötték az egész csapatot"}, {"verse_num": 28, "start_sec": 279.2637037037037, "end_sec": 284.40296296296293, "confidence": 62.264150943396224, "canonical_text": "Megfosztották ruhájától, bíborszínű köntöst adtak rá.", "matched_text": "atot, és levetkőztették, bíbor színű köpent adtak rá,"}, {"verse_num": 29, "start_sec": 283.1181481481481, "end_sec": 299.1783333333333, "confidence": 71.24183006535948, "canonical_text": "Tövisből koszorút fontak, fejére tették, jobb kezébe pedig nádszálat adtak. Aztán térdet hajtottak előtte, és így gúnyolták: \"Üdvözlégy, zsidók királya!\"", "matched_text": "adtak rá, tövisből koronát fontak, és a fejére tették, Nátsz állat adtak a kezébe, majd térdet hajtva előtte így gúnyolták, üdvözlégy, zsidó királya. És l"}, {"verse_num": 30, "start_sec": 299.1783333333333, "end_sec": 307.74, "confidence": 63.46153846153846, "canonical_text": "Közben leköpdösték, fogták a nádat s verték a fejét.", "matched_text": "kivették kezéből a nádat, és verték a fejét. És miut"}, {"verse_num": 31, "start_sec": 304.3175925925926, "end_sec": 318.84, "confidence": 81.74603174603175, "canonical_text": "Miután így csúfot űztek belőle, levették róla a palástot, s ráadták saját ruháját. Aztán elvezették, hogy keresztre feszítsék.", "matched_text": "fejét. És miután csúfot üsztek belőle, levették róla a köpenty, Ráadták saját ruháit, és elvezették, hogy keresztre feszítsék."}, {"verse_num": 32, "start_sec": 318.09999999999997, "end_sec": 331.1817391304348, "confidence": 81.25, "canonical_text": "Amint kifelé vonultak, találkoztak egy Simon nevű cirenei emberrel. Ezt kényszerítették, hogy vigye a keresztet.", "matched_text": "Kimenvén pedig találkoztak egy Simon nevű, cirenei emberrel, ezt kényszerítették, hogy vigye Jézus keresztjét. É"}, {"verse_num": 33, "start_sec": 331.1817391304348, "end_sec": 339.36260869565217, "confidence": 59.210526315789465, "canonical_text": "Fölértek arra a helyre, amelynek Golgota, vagyis Koponyák helye volt a neve.", "matched_text": "aértek a helyre, amelyet Golgotának mondanak, ami a Kálvária, és epével kever"}, {"verse_num": 34, "start_sec": 337.31739130434784, "end_sec": 348.295, "confidence": 95.06172839506173, "canonical_text": "Itt epével kevert bort adtak neki inni, de amikor megízlelte, nem akarta meginni.", "matched_text": "s epével kevert bort adtak neki inni, De amikor megízlelte, nem akarta meginni. Mi"}, {"verse_num": 35, "start_sec": 347.44, "end_sec": 354.28, "confidence": 68.18181818181819, "canonical_text": "Aztán keresztre feszítették, és sorsot vetve megosztoztak ruháján,", "matched_text": "Miután keresztre feszítették, elosztották ruháit, sorsot vetve rá,"}, {"verse_num": 36, "start_sec": 353.425, "end_sec": 359.40999999999997, "confidence": 76.66666666666666, "canonical_text": "majd leheveredtek, és őrizték.", "matched_text": "majd leültek, és őrizték őt. É"}, {"verse_num": 37, "start_sec": 360.265, "end_sec": 374.2615, "confidence": 63.095238095238095, "canonical_text": "Feje fölé táblát tettek, amelyre elítélése okát írták: \"Ez Jézus, a zsidók királya.\"", "matched_text": "a feje fölé egy táblára írva kivégzésének okát, ez Jézus, a zsidók királya. [Music] A"}, {"verse_num": 38, "start_sec": 370.525, "end_sec": 381.428, "confidence": 62.637362637362635, "canonical_text": "Vele együtt két gonosztevőt is keresztre feszítettek, az egyiket jobbról, a másikat balról.", "matched_text": "[Music] Akkor megfeszítettek vele együtt két rablót, az egyiket jobbról, a másikat balról."}, {"verse_num": 39, "start_sec": 380.7765, "end_sec": 385.9885, "confidence": 70.45454545454545, "canonical_text": "Az arra menők káromolták, s fejüket csóválva", "matched_text": "Az arra járók káromolták őt, fejüket hajtoga"}, {"verse_num": 40, "start_sec": 386.64, "end_sec": 401.55111111111114, "confidence": 79.8507462686567, "canonical_text": "mondogatták: \"Te, aki lebontod és harmadnapra fölépíted a templomot, szabadítsd meg magad! Ha Isten Fia vagy, szállj le a keresztről!\"", "matched_text": "mondták, te, aki lerontod a templomot, és harmadnapra újjáépíted, szabadítsd meg magadat. Ha Isten fia vagy, szállj le a keresztről. Ha"}, {"verse_num": 41, "start_sec": 402.79333333333335, "end_sec": 409.62555555555554, "confidence": 63.38028169014085, "canonical_text": "Ugyanígy gúnyolódtak az írástudókkal és a vénekkel együtt a főpapok is:", "matched_text": "lmek is, Az írástudókkal és a vénekkel együtt, gúnyolódva mondták, mások"}, {"verse_num": 42, "start_sec": 409.00444444444446, "end_sec": 419.56333333333333, "confidence": 77.11864406779661, "canonical_text": "\"Másokat megmentett, de magát nem tudja megmenteni. Ha Izrael királya, szálljon le a keresztről, s akkor hiszünk neki.", "matched_text": "ásokat megszabadított, önmagát nem tudja megszabadítani. Izrael királya ő, szálljon le most a keresztről és hiszünk ben"}, {"verse_num": 43, "start_sec": 420.18444444444447, "end_sec": 428.88, "confidence": 64.63414634146342, "canonical_text": "Az Istenben bízott. Mentse hát meg, ha akarja. Hisz azt mondta: Isten Fia vagyok.\"", "matched_text": "stenben bízott, szabadítsa meg most, ha kedveli őt, hiszen azt mondta, Isten fia va"}, {"verse_num": 44, "start_sec": 429.3, "end_sec": 438.8637837837838, "confidence": 60.9375, "canonical_text": "Ilyen módon gyalázták a vele együtt megfeszített gonosztevők is.", "matched_text": "y gyalázták őt a rablók is, Akiket vele együtt feszítettek meg. A"}, {"verse_num": 45, "start_sec": 435.57272727272726, "end_sec": 447.0454054054054, "confidence": 66.17647058823529, "canonical_text": "A hatodik órától a kilencedik óráig sötétség borult az egész földre.", "matched_text": "A hatodik órától fogva azonban sötétség támadt az egész földön, és a"}, {"verse_num": 46, "start_sec": 450.7643243243243, "end_sec": 465.64, "confidence": 78.01418439716312, "canonical_text": "Kilenc óra tájban Jézus felkiáltott, hangosan mondva: \"Éli, Éli, lamma szabaktani?\" Vagyis: \"Én Istenem, én Istenem, miért hagytál el engem?\"", "matched_text": "ilencedik óra tájban fölkiáltott Jézus hangos szóval és mondta, Éli, Éli, lammászabaktáni, azaz, Istenem, Én, Istenem, miért hagytál el engem?"}, {"verse_num": 47, "start_sec": 466.64, "end_sec": 474.66769230769233, "confidence": 61.76470588235294, "canonical_text": "Ezt hallva az ott állók közül néhányan megjegyezték: \"Illést hívja.\"", "matched_text": "tták ezt némelyek az ott állók közül, és mondták, ez illést hívja. Eg"}, {"verse_num": 48, "start_sec": 472.8, "end_sec": 482.8276923076923, "confidence": 67.9245283018868, "canonical_text": "Egyikük rögtön odaszaladt, fogott egy ecetbe mártott szivacsot, rátűzte egy nádszálra, és inni adott neki.", "matched_text": "vja. Egyikük nyomban odafutott, fogott egy szivacsot, ecetbe mártotta, nátszára tűzte, és inni adott neki."}, {"verse_num": 49, "start_sec": 482.8276923076923, "end_sec": 489.7323076923077, "confidence": 74.35897435897436, "canonical_text": "A többiek meg így beszéltek: \"Hadd lássuk, eljön-e Illés, hogy megszabadítsa!\"", "matched_text": "A többiek ellenben azt mondták, hagyd, lássuk, eljön-e illés, hogy megszabadíts"}, {"verse_num": 50, "start_sec": 489.7323076923077, "end_sec": 497.93, "confidence": 66.15384615384615, "canonical_text": "Most Jézus még egyszer hangosan felkiáltott, és kilehelte lelkét.", "matched_text": "Jézus pedig ismét fölkiáltott hangos szóval, és kilehelte lelkét."}, {"verse_num": 51, "start_sec": 501.32736842105265, "end_sec": 513.7652631578948, "confidence": 89.52380952380953, "canonical_text": "Erre a templom függönye kettéhasadt, felülről egészen az aljáig, a föld megrendült, sziklák repedtek meg,", "matched_text": "e a templom függönyeket téhasadt, fölülről egészen az aljáig. A föld megrendült, a sziklák megrepedtek, sí"}, {"verse_num": 52, "start_sec": 512.9878947368421, "end_sec": 519.9842105263158, "confidence": 73.77049180327869, "canonical_text": "sírok nyíltak meg, és sok elhunyt szentnek feltámadt a teste.", "matched_text": "sírok megnyíltak, és sok megholt szentnek teste föltámadt. És"}, {"verse_num": 53, "start_sec": 519.9842105263158, "end_sec": 531.5500000000001, "confidence": 67.77777777777779, "canonical_text": "Feltámadása után előjöttek a sírokból, bementek a szent városba, és többeknek megjelentek.", "matched_text": "iőve a sírjukból, a föltámadása után bementek a szent városba, és sokaknak megjelentek. A s"}, {"verse_num": 54, "start_sec": 532.2800000000001, "end_sec": 550.7006666666666, "confidence": 57.857142857142854, "canonical_text": "A százados és a többiek is, akik Jézust őrizték, a földrengés és a történtek láttára igen megijedtek: \"Ez valóban Isten Fia volt\" - mondták.", "matched_text": "és akik vele együtt őrizték Jézust, amikor látták a földindulást és a történteket, nagyon féltek, és mondták, ez valóban Isten fia volt. Sok"}, {"verse_num": 55, "start_sec": 550.03, "end_sec": 561.4313333333333, "confidence": 55.55555555555556, "canonical_text": "Messziről több asszony figyelte, mi történik; olyanok, akik Galileából eddig kísérték, és gondoskodtak róla.", "matched_text": "asszony is volt ott, akik a távolból szemlélték, akik Galileából kísérték Jézust, és a szolgálatára voltak."}, {"verse_num": 56, "start_sec": 560.7606666666667, "end_sec": 572.27, "confidence": 96.55172413793103, "canonical_text": "Köztük volt Mária Magdolna, Mária, Jakab és József anyja, és Zebedeus fiainak az anyja.", "matched_text": "Köztük volt Mária Magdolna, Mária, Jakab és József anyja, és Zebedeus fiainak anyja. [M"}, {"verse_num": 57, "start_sec": 572.27, "end_sec": 585.5333333333333, "confidence": 63.63636363636363, "canonical_text": "Amikor már estére járt az idő, jött egy József nevű jómódú arimateai ember, aki maga is Jézus tanítványa volt.", "matched_text": "kor pedig már esteledett, jött egy arimatéai gazdag ember, név szerint József, Aki maga is Jézus tanítványa vol"}, {"verse_num": 58, "start_sec": 585.5333333333333, "end_sec": 594.3755555555555, "confidence": 81.92771084337349, "canonical_text": "Bement Pilátushoz, és elkérte Jézus testét. Pilátus elrendelte, hogy adják ki neki.", "matched_text": "ement Pilátushoz és elkérte Jézus testét. Akkor Pilátus megparancsolta, hogy adják o"}, {"verse_num": 59, "start_sec": 595.8492592592593, "end_sec": 601.0072222222221, "confidence": 70.58823529411764, "canonical_text": "József levette a testet, tiszta gyolcsba göngyölte,", "matched_text": "án a testet, József tiszta gyolcslepelbe göngyölte,"}, {"verse_num": 60, "start_sec": 601.744074074074, "end_sec": 613.7953846153846, "confidence": 68.81720430107528, "canonical_text": "s sziklába vájt új sírboltjába helyezte. A sír bejáratához nagy követ hengerített, és elment.", "matched_text": "sziklába vágott új sírboltjában, majd Nagy követ hengerített a sír bejáratához, és elment. Ot"}, {"verse_num": 61, "start_sec": 615.0261538461538, "end_sec": 624.1316666666667, "confidence": 73.23943661971832, "canonical_text": "Mária Magdolna és a másik Mária ott maradtak, leültek a sírral szemben.", "matched_text": "Mária Magdolna és a másik Mária, szemben ültek a sírral. A következő nap"}, {"verse_num": 62, "start_sec": 624.1316666666667, "end_sec": 632.69, "confidence": 54.94505494505495, "canonical_text": "Másnap, a készület napjának elmúltával a főpapok és az írástudók egybegyűltek Pilátusnál és", "matched_text": "edig, mely a készület utáni nap volt, összegyűltek a főpapok és a farizeusok Pilátushoz, és"}, {"verse_num": 63, "start_sec": 632.69, "end_sec": 642.96, "confidence": 69.81132075471699, "canonical_text": "figyelmeztették: \"Uram, emlékszünk rá, hogy az a csaló még életében azt állította: Harmadnapra feltámadok.", "matched_text": "ták neki, Uram, Mi emlékszünk rá, hogy ez az ámító még életében azt mondta, harmadnapon föl fogok támadni."}, {"verse_num": 64, "start_sec": 640.6777777777778, "end_sec": 658.38, "confidence": 65.97938144329896, "canonical_text": "Rendeld hát el, hogy harmadnapig őrizzék a sírt, nehogy odamenjenek tanítványai és ellopják, aztán híreszteljék a nép között: Feltámadt a halálból. Ez utóbbi csalás rosszabb lenne az előbbinél.\"", "matched_text": "armadnapon föl fogok támadni. Őriztesd tehát a sírt harmadnapig, nehogy eljöjjenek tanítványai, ellopják, és azt mondják a népnek, föltámadta halálból, és ez a csalás rosszabb lesz az előbbinél."}, {"verse_num": 65, "start_sec": 657.7441666666666, "end_sec": 666.691, "confidence": 57.14285714285714, "canonical_text": "\"Legyen őrségetek - válaszolta Pilátus -, menjetek, őrizzétek, ahogy csak tudjátok!\"", "matched_text": "előbbinél. Pilátus szólt hozzájuk, van őrségetek, menjetek, Őrizétek, ahogy tudjátok."}, {"verse_num": 66, "start_sec": 667.55, "end_sec": 676.14, "confidence": 73.91304347826086, "canonical_text": "Erre elmentek, lepecsételték a követ, és őrséget állítottak a sírhoz.", "matched_text": "pedig elmentek, lepecsételték a követ, és megerősítették a sírt őrségg"}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

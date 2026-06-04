@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zsidóknak írt levél 11. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "HEB", "hungarian_name": "Zsidóknak írt levél", "abbreviation": "Zsid", "book_number": 419, "chapter_count": 13}, "chapter": {"book_usx": "HEB", "chapter_num": 11, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/65_zsidok/zsidoknak-irt-level-11-fejezet.mp3", "verse_count": 40, "aligned_count": 40}, "verses": [{"verse_num": 1, "start_sec": 2.4066666666666663, "end_sec": 11.23111111111111, "confidence": 100.0, "canonical_text": "A hit a remélt dolgok biztosítéka, a nem látható dolgok bizonyítéka.", "matched_text": "A hit a remélt dolgok biztosítéka, a nem látható dolgok bizonyítéka."}, {"verse_num": 2, "start_sec": 11.23111111111111, "end_sec": 14.44, "confidence": 100.0, "canonical_text": "Őseink ebből merítettek bizonyosságot.", "matched_text": "Őseink ebből merítettek bizonyosságot."}, {"verse_num": 3, "start_sec": 13.637777777777776, "end_sec": 25.365000000000002, "confidence": 97.02970297029702, "canonical_text": "A hitből ismerjük meg, hogy a világot az Isten szava alkotta, vagyis a látható a láthatatlanból lett.", "matched_text": ". A hitből ismerjük meg, hogy a világot Isten szava alkotta, vagyis a látható a láthatatlanból lett. Á"}, {"verse_num": 4, "start_sec": 23.895, "end_sec": 45.48, "confidence": 93.5, "canonical_text": "Ábel a hittől vezettetve mutatott be értékesebb áldozatot, mint Kain, és kapott bizonyosságot igaz voltáról, mert az Isten maga tett áldozati ajándékairól tanúságot. Hite által még holtában is beszél.", "matched_text": ". Ábel, a hittől vezettetve mutatott be értékesebb áldozatot, mint Kain, és kapott bizonyosságot igaz voltáról, mert Isten maga tett tanúságot áldozati ajándékairól. Hite által még holtában is beszél."}, {"verse_num": 5, "start_sec": 44.735, "end_sec": 64.94, "confidence": 94.76744186046511, "canonical_text": "A hitéért ragadtatott el Hénoch, hogy ne ízlelje meg a halált: \"Nem találták többé, mert az Úr elragadta.\" Még eltűnése előtt bizonyságot nyert, hogy kedves az Isten előtt.", "matched_text": ". A hitéért ragadtatott el Hénok, hogy ne ízlelje meg a halált. Nem találták többé, mert az Úr elragadta. Még eltűnése előtt bizonságot nyert, hogy kedves Isten előtt. Hit n"}, {"verse_num": 6, "start_sec": 63.75, "end_sec": 78.03, "confidence": 91.91176470588235, "canonical_text": "Hit nélkül pedig nem lehet senki sem kedves, aki ugyanis az Istenhez járul, hinnie kell, hogy Ő van és megjutalmazza azt, aki Őt keresi.", "matched_text": "nélkül pedig nem lehet senki sem kedves. Aki ugyanis Istenhez járul, annak hinnie kell, hogy ő van, és megjutalmazza azt, aki őt keresi."}, {"verse_num": 7, "start_sec": 77.435, "end_sec": 97.89, "confidence": 98.6046511627907, "canonical_text": "A hitben kapott Noé felvilágosítást a még nem látható eseményekről, és szent félelemmel eltelve bárkát épített családja megmentésére. Hitében ítélkezett a világ fölött, és a hitből fakadó megigazulásból lett örökös.", "matched_text": ". A hitben kapott Noé fölvilágosítást a még nem látható eseményekről és szent félelemmel eltelve bárkát épített családja megmentésére. Hitében ítélkezett a világ fölött és a hitből fakadó megigazulásból lett örökös."}, {"verse_num": 8, "start_sec": 98.47, "end_sec": 113.35307692307693, "confidence": 98.70967741935483, "canonical_text": "Ábrahám hitből engedelmeskedett a hívásnak, hogy költözzék arra a vidékre, amelyet örökségül kellett kapnia. Elindult anélkül, hogy tudta volna, hová megy.", "matched_text": "Ábrahám hitből engedelmeskedett a hívásnak, hogy költözzék arra vidékre, amelyet örökségül kellett kapnia. Elindult anélkül, hogy tudta volna, hová megy. Hi"}, {"verse_num": 9, "start_sec": 112.64435897435897, "end_sec": 126.89999999999999, "confidence": 98.52941176470588, "canonical_text": "Hittel telepedett le az Ígéret földjére, idegen országban, és sátorban lakott Izsákkal és Jákobbal, akik ugyanazt az ígéretet örökölték.", "matched_text": "Hittel telepedett le az ígéret földjére idegen országban, és sátorban lakott Izsákkal és Jákobbal, akik ugyanazt az ígéretet örökölték. V"}, {"verse_num": 10, "start_sec": 125.40128205128205, "end_sec": 137.03681818181818, "confidence": 96.62921348314607, "canonical_text": "Várta ugyanis azt a szilárd alapokon nyugvó várost, amelyet majd az Isten tervez és épít.", "matched_text": "Várta ugyanis azt a szilárd alapokon nyugvó várost, amelyet majd Isten tervez és épít. Sá"}, {"verse_num": 11, "start_sec": 136.41, "end_sec": 150.2, "confidence": 97.74436090225565, "canonical_text": "Sára is a hitében kapta az erőt, hogy előrehaladott kora ellenére anya lehessen, mert hűségesnek tartotta azt, aki az ígéretet tette.", "matched_text": "ra is, A hitében kapta az erőt, hogy előre haladott kora ellenére anya lehessen, mert hűségesnek tartotta azt, aki az ígéretet tette."}, {"verse_num": 12, "start_sec": 150.74, "end_sec": 163.5, "confidence": 98.59154929577466, "canonical_text": "Ezért ettől az egytől, noha már nem volt fiatal, annyian származnak, mint az égen a csillag vagy mint a tengerpart megszámlálhatatlan fövenye.", "matched_text": "Ezért ettől az ettől, noha már nem volt fiatal, annyian származnak, mint az égen a csillag, vagy mint a tengerpart megszámlálhatatlan fövenye."}, {"verse_num": 13, "start_sec": 162.92000000000002, "end_sec": 180.3276923076923, "confidence": 95.15151515151516, "canonical_text": "Mind hitben hunytak el, de anélkül, hogy az ígéret teljesedését megérték volna; csak messziről látták és üdvözölték, elismerve, hogy vándorok és jövevények a földön.", "matched_text": ". Mind hitben hunytak el. Anélkül, hogy az ígéret teljesedését megérték volna. Csak messziről látták és üdvözölték, elismerve, hogy vándorok és jövevények a földön, a"}, {"verse_num": 14, "start_sec": 179.64653846153846, "end_sec": 185.09576923076924, "confidence": 98.07692307692307, "canonical_text": "Akik így beszélnek, megvallják, hogy hazát keresnek.", "matched_text": "kik így beszélnek, megvallják, hogy hazát keresnek. H"}, {"verse_num": 15, "start_sec": 184.4146153846154, "end_sec": 193.26961538461538, "confidence": 100.0, "canonical_text": "Ha arra a földre gondoltak volna, ahonnan kijöttek, lett volna alkalmuk a visszatérésre.", "matched_text": "Ha arra a földre gondoltak volna, ahonnan kijöttek, lett volna alkalmuk a visszatérésre."}, {"verse_num": 16, "start_sec": 192.58846153846153, "end_sec": 207.71, "confidence": 95.45454545454545, "canonical_text": "De egy jobb haza után vágyódtak, a mennyei után. Ezért az Isten sem szégyelli, hogy Istenüknek hívják, hiszen hazát készített nekik.", "matched_text": "De egy jobb haza után vágyakoztak, a mennyei után. Ezért Isten sem szégyenli, hogy Istenüknek hívják, hiszen hazát készített nekik."}, {"verse_num": 17, "start_sec": 206.95454545454547, "end_sec": 223.51999999999998, "confidence": 94.96402877697841, "canonical_text": "Ábrahám hittel áldozta fel Izsákot, amikor az Isten próbára tette. Készen volt rá, hogy feláldozza egyszülöttét, ő, aki ígéretképpen kapta,", "matched_text": ". Ábrahám hittel áldozta föl Izsákot, amikor Isten próbára tette. Kész volt rá, hogy föláldozza egy szülöttét, ő, aki ígéretképpen kapta, és"}, {"verse_num": 18, "start_sec": 222.8595238095238, "end_sec": 227.48285714285714, "confidence": 93.02325581395348, "canonical_text": "és hallotta: \"Izsák által lesznek utódaid.\"", "matched_text": "és hallotta, Izsák által lesznek utódaid. Bi"}, {"verse_num": 19, "start_sec": 226.82238095238094, "end_sec": 237.39, "confidence": 97.0873786407767, "canonical_text": "Biztosra vette, hogy Isten képes a halottakat is feltámasztani. Ezért vissza is kapta mintegy előképül.", "matched_text": "Biztosra vette, hogy Isten képes a halottakat is föltámasztani. Ezért vissza is kapta, mint egy előképül"}, {"verse_num": 20, "start_sec": 237.61, "end_sec": 245.8116, "confidence": 100.0, "canonical_text": "Izsák hittel, szemét a jövőre irányítva áldotta meg Jákobot és Ézsaut.", "matched_text": "Izsák hittel, szemét a jövőre irányítva áldotta meg Jákobot és Ézsaut."}, {"verse_num": 21, "start_sec": 245.8116, "end_sec": 256.25, "confidence": 99.00990099009901, "canonical_text": "Hittel áldotta meg a haldokló Jákob József két fiát, miközben botjának fejére támaszkodva imádkozott.", "matched_text": "Hittel áldotta meg a haldokló Jákob József két fiát, Miközben botjának fejére támaszkodva imádkozott."}, {"verse_num": 22, "start_sec": 256.25, "end_sec": 264.74290322580646, "confidence": 97.8021978021978, "canonical_text": "Hittel gondolt József halála előtt Izrael fiainak kivonulására és rendelkezett csontjairól.", "matched_text": "ittel gondolt József halála előtt Izrael fiainak kivonulására és rendelkezett a csontjairól."}, {"verse_num": 23, "start_sec": 264.74290322580646, "end_sec": 278.19, "confidence": 99.20634920634922, "canonical_text": "Hitükben rejtegették az újszülött Mózest szülei három hónapig, látva, hogy a gyermek szép, és nem féltek a király parancsától.", "matched_text": "Hitükben rejtegették az újszülött Mózesst szülei három hónapig, látva, hogy a gyermek szép és nem féltek a király parancsától."}, {"verse_num": 24, "start_sec": 278.47, "end_sec": 285.9886885245902, "confidence": 97.14285714285714, "canonical_text": "Mózes a hitében tagadta felnőtt korában, hogy a fáraó leányának a fia.", "matched_text": "Mózes A hitében tagadta felnőtt korában, hogy a fáraó léányának a fia."}, {"verse_num": 25, "start_sec": 285.362131147541, "end_sec": 296.64016393442625, "confidence": 97.27272727272728, "canonical_text": "Inkább vállalta, hogy az Isten népével együtt elszenvedi a sanyargatást, mint hogy a bűn múló előnyét élvezze.", "matched_text": ". Inkább vállalta, hogy Isten népével együtt elszenvedi a sanyargatást, mint hogy a bűn múló előnyét élvezze. A"}, {"verse_num": 26, "start_sec": 296.01360655737705, "end_sec": 304.7854098360656, "confidence": 99.02912621359224, "canonical_text": "A Messiás gyalázatát nagyobb értéknek tartotta az egyiptomiak kincseinél, mert a jutalommal is számolt.", "matched_text": "A messiás gyalázatát nagyobb értéknek tartotta az egyiptomiak kincseinél, mert a jutalommal is számolt."}, {"verse_num": 27, "start_sec": 304.7854098360656, "end_sec": 317.54333333333335, "confidence": 99.25925925925925, "canonical_text": "Hittel távozott Egyiptomból, és nem ijedt meg a király haragjától, hanem állhatatosan kitartott, mintha már a láthatatlant látta volna.", "matched_text": "Hittel távozott Egyiptomból, és nem ijedt meg a király haragjától, hanem álhatatosan kitartott, mintha már a láthatatlant látta volna. H"}, {"verse_num": 28, "start_sec": 316.97, "end_sec": 327.29, "confidence": 97.22222222222221, "canonical_text": "Hittel ünnepelte meg a húsvétot, és a vérrel való meghintést, hogy az öldöklő ne ártson az elsőszülötteknek.", "matched_text": "Hittel ünnepelte meg a husvétot, és a vérrel való meghintést, hogy az öldöklő ne árcson az első szülötteknek."}, {"verse_num": 29, "start_sec": 327.41, "end_sec": 338.33, "confidence": 93.16239316239316, "canonical_text": "Hittel keltek át a Vörös-tengeren, úgy, mint a szárazföldön, de amikor az egyiptomiak kísérelték ezt meg, elmerültek.", "matched_text": "ittel keltek át a vörös tengeren, Úgy, mint a száraz földön, de amikor az egyiptomiak kísérelték meg ezt, elmerültek."}, {"verse_num": 30, "start_sec": 338.79, "end_sec": 346.3142424242424, "confidence": 100.0, "canonical_text": "A hit erejéből omlottak le Jerikó falai, azután, hogy hét napon át körüljárták.", "matched_text": "A hit erejéből omlottak le Jerikó falai, azután, hogy hét napon át körüljárták."}, {"verse_num": 31, "start_sec": 345.73545454545456, "end_sec": 359.12163636363636, "confidence": 98.33333333333333, "canonical_text": "A bűnös életű Rácháb is a hite folytán nem veszett oda a hitetlenekkel együtt, mert jó szívvel befogadta a hírszerzőket.", "matched_text": "A bűnös életű Ráháb is a hite folytán nem vezett oda a hitetlenekkel együtt, mert jó szívvel befogadta a hírszerzőket. D"}, {"verse_num": 32, "start_sec": 359.12163636363636, "end_sec": 372.26272727272726, "confidence": 93.93939393939394, "canonical_text": "Minek folytassam tovább? Kifogynék az időből, ha felsorolnám Gedeont, Bárákot, Sámsont, Jiftachot, Dávidot, Sámuelt és a prófétákat,", "matched_text": "inek folytassam tovább? Ki fogynék az időből, ha felsorolnám Gedeont, Bárákot, Sámson-t, Jevtét, Dávidot, Sámuel-t és a profétákat, a"}, {"verse_num": 33, "start_sec": 371.5710909090909, "end_sec": 382.6372727272728, "confidence": 100.0, "canonical_text": "akik a hit erejével országokat győztek le, igazságot osztottak, ígéreteket nyertek el, oroszlánok torkát tömték be,", "matched_text": "akik a hit erejével országokat győztek le, igazságot osztottak, ígéreteket nyertek el, oroszlánok torkát tömték be,"}, {"verse_num": 34, "start_sec": 382.6372727272728, "end_sec": 396.47, "confidence": 98.65771812080537, "canonical_text": "lángoló tüzet oltottak el, megmenekültek a kard élétől, gyengeségükben erőre kaptak, hősök voltak a háborúban, és megfutamították az ellenség sorait.", "matched_text": "lángoló tüzet oltottak el, megmenekültek a kard élétől, Gyöngeségükben erőre kaptak, hősök voltak a háborúban, és megfutamították az ellenség sorait."}, {"verse_num": 35, "start_sec": 396.47, "end_sec": 411.7691304347826, "confidence": 97.63313609467455, "canonical_text": "Asszonyok feltámasztás útján visszakapták halottaikat. Némelyek kínpadra jutottak, de nem fogadták el a szabadságot, csak hogy dicsőségesebb feltámadásban részesüljenek.", "matched_text": "sszonyaik föltámasztás útján visszakapták halottaikat. Némelyek kínpadra jutottak, de nem fogadták el a szabadságot, csak hogy dicsőségesebb föltámadásban részesüljenek."}, {"verse_num": 36, "start_sec": 411.7691304347826, "end_sec": 419.82130434782607, "confidence": 98.50746268656717, "canonical_text": "Mások gúnyt és megostorozást, sőt bilincseket és börtönt tűrtek el,", "matched_text": "ások gúnyt és megostorozást, sőt, bilincseket és börtönt tűrtek el,"}, {"verse_num": 37, "start_sec": 419.82130434782607, "end_sec": 433.51, "confidence": 94.8051948051948, "canonical_text": "megkövezték, kettéfűrészelték, agyonkínozták, kardélre hányták őket, juhbőrbe és kecskebőrbe öltözve bujdostak, nélkülözés, üldözés és zaklatás közepette.", "matched_text": "köveszték, ketté fűrészelték, agyonkinoszták, kardélre hányták őket, jobbőrbe és kecskebőrbe öltözve bujdostak, nélkülözés, üldözés és zaklatások közepette"}, {"verse_num": 38, "start_sec": 433.51, "end_sec": 445.29, "confidence": 92.85714285714286, "canonical_text": "A világ nem volt méltó rájuk. Ezért a pusztában, a hegyek közt, a föld barlangjaiban és szurdokaiban bolyongtak.", "matched_text": "világ nem volt rájuk méltó. Ezért a pusztában, a hegyek között, a föld barlangjaiban és szurdokaiban bolyongtak."}, {"verse_num": 39, "start_sec": 445.71, "end_sec": 454.8932, "confidence": 98.66666666666667, "canonical_text": "Bár ezek a hitükről mind bizonyságot kaptak, mégsem nyerték el az ígéretet,", "matched_text": "Bár ezek a hitükről mind bizonságot kaptak, mégsem nyerték el az ígéretet, m"}, {"verse_num": 40, "start_sec": 453.4804, "end_sec": 463.37, "confidence": 96.7032967032967, "canonical_text": "mert az Isten nekünk valami jobbat tervezett, nélkülünk nem juthatnak hát el az üdvösségre.", "matched_text": "t, mert Isten nekünk valami jobbat tervezett, nélkülünk nem juthatnak hát el az üdvösségre."}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

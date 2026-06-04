@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lukács evangéliuma 3. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "LUK", "hungarian_name": "Lukács evangéliuma", "abbreviation": "Lk", "book_number": 403, "chapter_count": 24}, "chapter": {"book_usx": "LUK", "chapter_num": 3, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/49_lukacs/lukacs-evangeliuma-03-fejezet.mp3", "verse_count": 38, "aligned_count": 38}, "verses": [{"verse_num": 1, "start_sec": 2.72, "end_sec": 26.65872340425532, "confidence": 83.72093023255813, "canonical_text": "Tiberius császár uralkodásának 15. esztendejében, amikor Poncius Pilátus volt Júdea helytartója, s Galileának Heródes volt a negyedes fejedelme, testvére, Fülöp meg Itureának és Trachonitisz tartományának, Lizániás pedig Abilinának volt a negyedes fejedelme,", "matched_text": "Tiberius császár uralkodásának 15. esztendejében, amikor Poncius Pilátus volt Judea helytartója, Galilea negyedes fejedelme Heródes volt, a testvére Fülöp, Iturea és Trahonitis tartományának volt negyedes fejedelme, Lizániás pedig Abilina negyedes fejedelme v"}, {"verse_num": 2, "start_sec": 26.65872340425532, "end_sec": 37.88, "confidence": 66.66666666666667, "canonical_text": "Annás és Kaifás főpapok idején az Úr szózatot intézett Jánoshoz, Zakariás fiához a pusztában.", "matched_text": "nás és Kaifás főpapsága idejében elhangzott az úr szava Zakariás fia János fölött a pusztában."}, {"verse_num": 3, "start_sec": 38.76133333333333, "end_sec": 48.02, "confidence": 78.02197802197803, "canonical_text": "S ő bejárta a Jordán egész környékét, hirdette a bűnbánat keresztségét a bűnök bocsánatára,", "matched_text": "ent az egész Jordán körüli vidékre, és hirdette a bűnbánat keresztségét a bűnök bocsánatára."}, {"verse_num": 4, "start_sec": 48.04, "end_sec": 61.57043478260869, "confidence": 82.48175182481752, "canonical_text": "ahogy meg van írva Izajás próféta beszédeinek könyvében: \"A pusztába kiáltónak a szava: Készítsétek az Úr útját, egyengessétek ösvényeit!", "matched_text": "írva van Izaiás proféta beszédeinek könyvében, a pusztában kiáltónak szava, Készítsétek el az úr útját, egyenessé tegyétek az ősvényeit."}, {"verse_num": 5, "start_sec": 61.57043478260869, "end_sec": 74.42434782608694, "confidence": 73.98373983739836, "canonical_text": "A völgyeket töltsétek fel, a hegyeket, halmokat hordjátok el, ami görbe, legyen egyenessé, a göröngyös változzék sima úttá,", "matched_text": "völgyet töltsetek föl, minden hegyet és halmot hordjatok le. A kanyargósak legyenek egyenessé, és a göröngyösek sima úttá."}, {"verse_num": 6, "start_sec": 172.156, "end_sec": 176.5496, "confidence": 53.333333333333336, "canonical_text": "és minden test meglátja az Isten üdvösségét.\"", "matched_text": "t, és mindenki azt gondolta a szívében Jánosró"}, {"verse_num": 7, "start_sec": 80.96, "end_sec": 94.85199999999999, "confidence": 74.83870967741936, "canonical_text": "Ezért így beszélt a néphez, amely kiment hozzá, hogy megkeresztelkedjen: \"Viperák fajzata! Ki tanított arra titeket, hogy fussatok az eljövendő harag elől?", "matched_text": "dta tehát a sokaságnak, akik kimentek hozzá, hogy megkeresztelje őket. Viperák fajzata, ki figyelmeztetett titeket, hogy fussatok az eljövendő harag elől? T"}, {"verse_num": 8, "start_sec": 93.56952380952382, "end_sec": 111.376, "confidence": 80.72916666666666, "canonical_text": "Teremjétek a bűnbánat méltó gyümölcsét! És ne mondogassátok magatokban: Ábrahám a mi atyánk! - Mert mondom nektek, van hatalma az Istennek, hogy ezekből a kövekből fiakat támasszon Ábrahámnak.", "matched_text": "lől? Teremjétek át a bűnbánat méltó gyümölcsét, és ne kezdjétek mondani magatokban, Ábrahám a mi atyánk, mert mondom nektek, képes az Isten ezekből a kövekből itt fiakat támasztani Ábrahámnak."}, {"verse_num": 9, "start_sec": 111.988, "end_sec": 121.78, "confidence": 84.31372549019608, "canonical_text": "A fejsze már a fák gyökerén van. Minden fát, amely nem terem jó gyümölcsöt, kivágnak és tűzre vetnek.\"", "matched_text": "ejszemára fák gyökeréhez ért. Tehát minden fát, amely nem hoz jó gyümölcsöt, kivágnak és tűzre vetnek."}, {"verse_num": 10, "start_sec": 122.28, "end_sec": 127.82666666666667, "confidence": 57.77777777777777, "canonical_text": "Ekkor megkérdezte a tömeg: \"Mit tegyünk hát?\"", "matched_text": "kérdezte tőle a sokaság, tehát mit tegyünk? F"}, {"verse_num": 11, "start_sec": 129.05925925925925, "end_sec": 142.04307692307694, "confidence": 60.0, "canonical_text": "\"Akinek két ruhája van - válaszolta -, az egyiket adja oda annak, akinek egy sincs. S akinek van mit ennie, ugyanígy tegyen\".", "matched_text": "k, akinek két ruhája van, adja oda annak, akinek nincsen, és akinek van ennivalója, tegyen hasonlóképpen. Eljöttek a vámosok i"}, {"verse_num": 12, "start_sec": 139.96, "end_sec": 144.12615384615384, "confidence": 97.82608695652173, "canonical_text": "Jöttek a vámosok is, hogy megkeresztelje őket,", "matched_text": "öttek a vámosok is, hogy megkeresztelje őket, é"}, {"verse_num": 13, "start_sec": 143.0846153846154, "end_sec": 153.5, "confidence": 55.55555555555556, "canonical_text": "s így szóltak hozzá: \"Mester, mit tegyünk?\" Ezt felelte nekik: \"Ne szedjetek be többet, mint amennyi meg van szabva.\"", "matched_text": ", és mondták neki, Mester, mit tegyünk? Ő erre azt mondta nekik, semmi többet ne tegyetek, mint amit meghatároztak nek"}, {"verse_num": 14, "start_sec": 154.752, "end_sec": 167.52, "confidence": 61.702127659574465, "canonical_text": "Megkérdezték a katonák is: \"Hát mi mit tegyünk?\" Nekik így felelt: \"Ne zsaroljatok, ne bántsatok senkit, hanem elégedjetek meg zsoldotokkal.\"", "matched_text": "t a katonák is mondván, és mi mit tegyünk? És szólt hozzájuk, senkit ne bántalmazzatok, kárt se okozzatok, és elég egyetek meg a zsoldotokkal."}, {"verse_num": 15, "start_sec": 169.41, "end_sec": 178.7464, "confidence": 46.808510638297875, "canonical_text": "A nép feszülten várakozott. Mindnyájan azon töprengtek magukban, vajon nem János-e a Krisztus.", "matched_text": "l az egész nép úgy vélekedett, és mindenki azt gondolta a szívében Jánosról, hogy ő a Krisztus,"}, {"verse_num": 16, "start_sec": 179.2956, "end_sec": 196.87, "confidence": 78.21782178217822, "canonical_text": "Ezért János így szólt hozzájuk: \"Én csak vízzel keresztellek benneteket. De jön nálam erősebb, akinek saruszíját sem vagyok méltó megoldani. Ő majd Szentlélekben és tűzben fog benneteket megkeresztelni.", "matched_text": "t minnyájuknak, és mondta, én csak vízzel keresztellek benneteket. Jön azonban a nálamnál erősebb, akinek én a sarusz íját sem vagyok méltó megoldani. Ő majd szent lélekben és tűzzel fog megkeresztelni t"}, {"verse_num": 17, "start_sec": 196.3208, "end_sec": 208.25, "confidence": 83.59375, "canonical_text": "Szórólapátja már a kezében, hogy rendet teremtsen szérűjén, a búzát csűrébe gyűjtse, a pelyvát meg olthatatlan tűzzel elégesse.\"", "matched_text": "Szórólapátja a kezében van, hogy megtisztítsa szérűjét, és a búzát csűrébe gyűjtse, a pejvát pedig oldhatatlan tűzzel elégesse."}, {"verse_num": 18, "start_sec": 209.57, "end_sec": 217.81653846153847, "confidence": 70.83333333333333, "canonical_text": "És még sok mással is buzdította a népet, így hirdette nekik az örömhírt.", "matched_text": "És még sok mással is buzdítván őket, hirdette a népnek az evangéliumot. H"}, {"verse_num": 19, "start_sec": 217.81653846153847, "end_sec": 229.81423076923076, "confidence": 66.66666666666667, "canonical_text": "Heródes negyedes fejedelmet is megrótta testvérének felesége, Heródiás miatt, és a többi gonosztettéért, amit Heródes elkövetett;", "matched_text": "edig a negyedes fejedelem, amikor János megdorgálta, Heródiás a testvére felesége miatt és minden gonoszságért, amit Heródes művel"}, {"verse_num": 20, "start_sec": 229.1476923076923, "end_sec": 236.07150000000001, "confidence": 64.61538461538461, "canonical_text": "amiket az megtetézett még azzal is, hogy börtönbe vetette Jánost.", "matched_text": "művelt, mindezeket azzal tetészte, hogy börtönbe zárta Jánost. Tör"}, {"verse_num": 21, "start_sec": 233.81346153846152, "end_sec": 246.467, "confidence": 75.18248175182481, "canonical_text": "Ekkor történt, hogy amikor már az egész nép megkeresztelkedett és Jézus is fölvette a keresztséget, és amikor imádkozott, megnyílt az ég,", "matched_text": "ánost. Történt pedig, hogy miközben az egész nép keresztelkedett, Jézus is megkeresztelkedett, és miközben imádkozott, megnyílt az ég, és"}, {"verse_num": 22, "start_sec": 245.244, "end_sec": 259.30850000000004, "confidence": 65.38461538461539, "canonical_text": "és a Szentlélek galamb alakjában leszállt rá. Szózat is hallatszott az égből: \"Te vagy az én szeretett Fiam, benned telik kedvem.\"", "matched_text": "és leszállt rá a Szentlélek testi alakban, mint galamb, És az égből hang hallatszott, te vagy az én szeretett fiam, benned kedvem"}, {"verse_num": 23, "start_sec": 262.79999999999995, "end_sec": 274.521, "confidence": 65.38461538461539, "canonical_text": "Föllépésekor Jézus mintegy harmincéves volt. Azt tartották róla, hogy Józsefnek a fia, aki Éli fia volt,", "matched_text": "r föllépett, mintegy harminc esztendős volt. Miként gondolták Józsefnek a fia, aki volt Hélié, aki volt M"}, {"verse_num": 24, "start_sec": 273.87, "end_sec": 280.38, "confidence": 56.14035087719298, "canonical_text": "ez Mattaté, ez Lévié, ez Melchié, ez Jannaié, ez Józsefé,", "matched_text": "Mattaté, aki volt Lévié, aki volt Melhié, aki volt Jannáé,"}, {"verse_num": 25, "start_sec": 285.27166666666665, "end_sec": 292.9585714285714, "confidence": 55.93220338983051, "canonical_text": "ez Mattatáé, ez Ámoszé, ez Náchumé, ez Heszlié, ez Naggájé,", "matched_text": "t Ámoszé, aki volt Nahumé, aki volt Eslié, aki volt Naggáé,"}, {"verse_num": 26, "start_sec": 296.45261904761907, "end_sec": 303.4407142857143, "confidence": 53.448275862068975, "canonical_text": "ez Maaté, ez Hattatiáé, ez Szemeiné, ez Józsefé, ez Jodáé,", "matched_text": "atiasé, aki volt Szemeié, aki volt Joszehé, aki volt Jodáé,"}, {"verse_num": 27, "start_sec": 306.9347619047619, "end_sec": 313.73285714285714, "confidence": 53.968253968253975, "canonical_text": "az Jochanané, ez Rezáé, ez Zerubbábelé, ez Sealtielé, ez Nerié,", "matched_text": "Resáé, aki volt Zorobábelé, Aki volt Szalatielé, aki volt Nerié,"}, {"verse_num": 28, "start_sec": 315.7342857142857, "end_sec": 322.4057142857143, "confidence": 57.692307692307686, "canonical_text": "ez Melkié, ez Addié, ez Kozámé, ez Elmadamé, ez Eré,", "matched_text": "ki volt Addié, aki volt Koszamé, aki volt Elmadamé, a"}, {"verse_num": 29, "start_sec": 325.74142857142857, "end_sec": 333.08, "confidence": 58.92857142857143, "canonical_text": "ez Jézusé, ez Eliezeré, ez Jorimé, ez Mattaté, ez Lévié,", "matched_text": "volt Eliezeré, aki volt Jorimé, aki volt Mattaté, aki vo"}, {"verse_num": 30, "start_sec": 334.4142857142857, "end_sec": 341.97926829268295, "confidence": 56.14035087719298, "canonical_text": "ez Simeoné, ez Júdáé, ez Józsefé, ez Jonámé, ez Eljakimé,", "matched_text": "Simeoné, aki volt Júdáé, Aki volt Józsefé, aki volt Jónás"}, {"verse_num": 31, "start_sec": 344.7987804878049, "end_sec": 352.55243902439025, "confidence": 58.92857142857143, "canonical_text": "ez Meleáé, ez Mennáé, ez Mattatáé, ez Nátámé, ez Dávidé,", "matched_text": "Meleáé, aki volt Mennáé, aki volt Mattatáé, aki volt Nát"}, {"verse_num": 32, "start_sec": 356.07682926829267, "end_sec": 364.5353658536585, "confidence": 53.57142857142857, "canonical_text": "ez Izaié, ez Obedé, ez Boászé, ez Szalmozé, ez Nachsoné,", "matched_text": "aki volt Obedé, aki volt Boásé, aki volt Szaláé, aki vol"}, {"verse_num": 33, "start_sec": 365.9451219512195, "end_sec": 375.296, "confidence": 55.88235294117647, "canonical_text": "ez Aminadabé, ez Adminé, ez Arnié, ez Heszromé, ez Perecé, ez Júdáé,", "matched_text": "lt Aminadabé, aki volt Adminé, aki volt Arnié, aki volt Esromé, aki v"}, {"verse_num": 34, "start_sec": 381.7805, "end_sec": 388.9855, "confidence": 58.92857142857143, "canonical_text": "ez Jákobé, ez Izsáké, ez Ábrahámé, ez Táréé, ez Náchoré,", "matched_text": "áké, aki volt Ábrahámé, aki volt Táréé, aki volt Nahoré,"}, {"verse_num": 35, "start_sec": 389.706, "end_sec": 396.85040000000004, "confidence": 47.27272727272728, "canonical_text": "ez Szeruché, ez Regué, ez Pelegé, ez Héberé, ez Selaké,", "matched_text": "olt Szeruhé, aki volt Ragaué, aki volt Fáleké, Aki volt"}, {"verse_num": 36, "start_sec": 400.9916, "end_sec": 408.5838, "confidence": 50.0, "canonical_text": "ez Kenáné, ez Arpachsádé, ez Szemé, ez Noéé, ez Lámeché,", "matched_text": "nané, aki volt Arfaxadé, aki volt Szemé, aki volt Noéé, a"}, {"verse_num": 37, "start_sec": 412.725, "end_sec": 421.0074, "confidence": 53.125, "canonical_text": "ez Metuselaché, ez Hénoché, ez Járedé, ez Mahalalelé, ez Kenané,", "matched_text": "t Énoké, aki volt Járedé, aki volt Malalé elé, aki volt Kainané,"}, {"verse_num": 38, "start_sec": 423.07800000000003, "end_sec": 429.2898, "confidence": 65.11627906976744, "canonical_text": "ez Enosé, ez Szeté, ez Ádámé, ez az Istené.", "matched_text": "i volt Szeté, Aki volt Ádámé, aki az Istené"}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

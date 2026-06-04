@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Korinthusiakhoz írt első levél 14. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "1CO", "hungarian_name": "Korinthusiakhoz írt első levél", "abbreviation": "1Kor", "book_number": 407, "chapter_count": 16}, "chapter": {"book_usx": "1CO", "chapter_num": 14, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/53_korint1/korintusiaknak-irt-1-level-14-fejezet.mp3", "verse_count": 40, "aligned_count": 40}, "verses": [{"verse_num": 1, "start_sec": 2.4105882352941177, "end_sec": 13.66, "confidence": 99.11504424778761, "canonical_text": "Törekedjetek a szeretetre, de igyekezzetek a lelki adományokat is elnyerni, különösen azt, hogy prófétálhassatok.", "matched_text": "Törekedjetek a szeretetre, de igyekezzetek a lelki adományokat is elnyerni, különösen azt, hogy profétálhassatok."}, {"verse_num": 2, "start_sec": 12.856470588235295, "end_sec": 30.412, "confidence": 96.75324675324676, "canonical_text": "Aki ugyanis az elragadtatás nyelvén szól, nem emberekhez beszél, hanem az Istenhez. Senki sem érti, hiszen a Lélektől indíttatva titokzatos dolgokat mond.", "matched_text": ". Aki ugyanis az elragadtatás nyelvén szól, nem emberekhez beszél, hanem Istenhez. Senki sem érti, hiszen a lélektől indítatva titokzatos dolgokat mond. Ak"}, {"verse_num": 3, "start_sec": 29.55, "end_sec": 38.17, "confidence": 98.76543209876543, "canonical_text": "Aki viszont prófétál, az emberek épülésére, buzdítására és vigasztalására beszél.", "matched_text": "Aki viszont profétál, az emberek épülésére, buzdítására és vigasztalására beszél."}, {"verse_num": 4, "start_sec": 39.711666666666666, "end_sec": 51.88708333333333, "confidence": 93.16239316239316, "canonical_text": "Aki az elragadtatás nyelvén szól, csak a maga lelki épülését szolgálja, aki azonban prófétál, az Egyházat építi vele.", "matched_text": "ki elragadtatás nyelvén szól, csak a maga lelki épülését szolgálja. Aki azonban profétál, az egyházat építi vele. Szer"}, {"verse_num": 5, "start_sec": 51.29, "end_sec": 74.27727272727273, "confidence": 95.08196721311475, "canonical_text": "Szeretném, ha mindnyájan szólnátok az elragadtatás nyelvén, de még inkább azt, hogy prófétáljatok, hiszen aki prófétál, az nagyobb annál, mint aki az elragadtatás nyelvén szól, hacsak szavait meg nem magyarázza, hogy az Egyház is épüljön rajta.", "matched_text": "Szeretném, ha mindnyáján szólnátok az elragadtatás nyelvén, de még inkább az, hogy profétáljatok. Hiszen aki profétál, az nagyobb annál, aki az elragadtatás nyelvén szól, ha csak szavait meg nem magyarázza, hogy az egyház is épüljön rajta. Ha te"}, {"verse_num": 6, "start_sec": 70.91, "end_sec": 89.28529411764706, "confidence": 98.44559585492227, "canonical_text": "Ha tehát elmennék hozzátok, testvérek, és az elragadtatás nyelvén beszélnék, mi hasznotokra volnék, ha nem a kinyilatkoztatás, a tudás szavait intézném hozzátok, nem prófétálnék vagy tanítanék,", "matched_text": "Ha tehát elmennék hozzátok testvérek, és az elragadtatás nyelvén beszélnék, mi hasznotokra volnék, ha nem a kinyilatkoztatás, a tudás szavait intézném hozzátok, nem profétálnék vagy tanítanék."}, {"verse_num": 7, "start_sec": 89.28529411764706, "end_sec": 103.74961538461538, "confidence": 100.0, "canonical_text": "Az élettelen hangszerek is, akár fuvola, akár hárfa, ha nem adnak különböző hangot, honnan lehet tudni, hogy mit játszanak a fuvolán vagy a hárfán?", "matched_text": "Az élettelen hangszerek is, akár fuvola, akár hárfa, ha nem adnak különböző hangot, honnan lehet tudni, hogy mit játszanak a fuvolán vagy a hárfán?"}, {"verse_num": 8, "start_sec": 103.74961538461538, "end_sec": 109.38923076923076, "confidence": 96.42857142857143, "canonical_text": "S ha a trombita bizonytalan hangot ad, ki indul csatába?", "matched_text": "ha a trambita bizonytalan hangot ad, ki indul csatába? Í"}, {"verse_num": 9, "start_sec": 108.36384615384615, "end_sec": 123.0, "confidence": 96.81528662420382, "canonical_text": "Így van ez veletek is: ha a nyelv adományával megáldva nem hallattok érthető szavakat, hogyan értsék meg az emberek, amit mondtok? Csak a levegőbe beszéltek!", "matched_text": "Így van ez veletek is. Ha nyelv adományával megáldva, nem hallattok érthető szavakat, hogyan értsék meg az emberek, amit mondotok? Csak a levegőbe beszéltek."}, {"verse_num": 10, "start_sec": 123.29, "end_sec": 129.23407407407407, "confidence": 100.0, "canonical_text": "Lám, milyen sokféle nyelv van a világon, de egy sem érthetetlen.", "matched_text": "Lám, milyen sokféle nyelv van a világon, de egy sem érthetetlen."}, {"verse_num": 11, "start_sec": 128.6937037037037, "end_sec": 137.88, "confidence": 98.93617021276596, "canonical_text": "De ha nem ismerem a szó jelentését, idegen maradok a beszélőnek, és a beszélő is idegen nekem.", "matched_text": "De ha nem ismerem a szójelentését, idegen maradok a beszélőnek, és a beszélő is idegen nekem."}, {"verse_num": 12, "start_sec": 138.39, "end_sec": 149.33, "confidence": 100.0, "canonical_text": "Ezért ti is, ha egyszer törekedtek a lelki adományok elnyerésére, igyekezzetek a közösség épülésére bővelkedni bennük.", "matched_text": "Ezért ti is, ha egyszer törekedtek a lelki adományok elnyerésére, igyekezzetek a közösség épülésére bővelkedni bennük."}, {"verse_num": 13, "start_sec": 150.49, "end_sec": 158.662, "confidence": 100.0, "canonical_text": "Aki tehát az elragadtatás nyelvén szól, imádkozzék, hogy meg is tudja magyarázni.", "matched_text": "Aki tehát az elragadtatás nyelvén szól, imádkozzék, hogy meg is tudja magyarázni."}, {"verse_num": 14, "start_sec": 158.662, "end_sec": 168.414, "confidence": 95.74468085106383, "canonical_text": "Ha ugyanis elragadtatásban imádkozom, lelkem ugyan imádkozik, de tudatom nem kapcsolódik bele.", "matched_text": "Ha ugyanis elragadtatásban imádkozom, a lelkem ugyan imádkozik, de a tudatom nem kapcsolódik be"}, {"verse_num": 15, "start_sec": 168.414, "end_sec": 179.2784210526316, "confidence": 98.30508474576271, "canonical_text": "Mi következik ebből? Imádkozzam lélekkel, de imádkozzam értelemmel is, énekeljek lélekkel, de énekeljek értelemmel is.", "matched_text": "Mi következik ebből? Imádkozzam lélekkel, de imádkozzam értelemmel is. Énekeljek lélekkel, de énekeljek értelemmel is."}, {"verse_num": 16, "start_sec": 179.2784210526316, "end_sec": 194.74304347826086, "confidence": 98.69281045751634, "canonical_text": "Ha ugyanis csak lélekben dicsőíted az Istent, hogyan mondhat áldó imádra ament az, akinek a be nem avatottak szerepe jutott? Azt sem tudja, mit beszélsz.", "matched_text": "a ugyanis csak lélekben dicsőíted az Istent, hogyan mondhat áldó imádra ámment az, akinek a be nem avatottak szerepe jutott? Azt sem tudja, mit beszélsz."}, {"verse_num": 17, "start_sec": 194.74304347826086, "end_sec": 200.2, "confidence": 96.2962962962963, "canonical_text": "Te szép hálaimát mondhatsz, de a másik nem épül rajta.", "matched_text": "Te szép hála imád mondhatsz, de a másik nem épül rajta."}, {"verse_num": 18, "start_sec": 199.70391304347825, "end_sec": 209.33142857142857, "confidence": 96.5909090909091, "canonical_text": "Hálát adok Istenemnek, hogy mindnyájatoknál jobban tudok az elragadtatás nyelvén szólni,", "matched_text": ". Hálat adok Istenemnek, hogy minnyájatoknál jobban tudok az elragadtatás nyelvén szólni."}, {"verse_num": 19, "start_sec": 209.33142857142857, "end_sec": 221.44, "confidence": 99.1869918699187, "canonical_text": "az egyházban azonban inkább szólok öt érthető szót azért, hogy másokat tanítsak, mint tízezer szót az elragadtatás nyelvén.", "matched_text": "z egyházban azonban, inkább szólok öt érthető szót azért, hogy másokat tanítsak, mint tízezer szót az elragadtatás nyelvén."}, {"verse_num": 20, "start_sec": 223.07, "end_sec": 235.64, "confidence": 100.0, "canonical_text": "Testvérek, értelem dolgában ne legyetek gyerekek. Csak a gonoszság terén maradjatok kiskorúak, gondolkodásotokban azonban legyetek felnőttek.", "matched_text": "Testvérek, értelem dolgában ne legyetek gyerekek. Csak a gonoszság terén maradjatok kiskorúak, gondolkodásotokban azonban legyetek felnőttek."}, {"verse_num": 21, "start_sec": 234.85437499999998, "end_sec": 248.39681818181816, "confidence": 91.93548387096774, "canonical_text": "A törvényben ezt olvassuk: \"Idegen nyelven és idegen ajakkal szólok majd e néphez, de mégsem hallgatnak rám - mondja az Úr.\"", "matched_text": ". A törvényben ezt olvassuk, idegen nyelven és idegen olyakkal szólok majd enéphez, de mégsem hallgatnak rám, mondja az úr. Í"}, {"verse_num": 22, "start_sec": 247.89, "end_sec": 259.04, "confidence": 96.89922480620154, "canonical_text": "Így a nyelv adománya sem a hívők, hanem a hitetlenek számára csodajel, a prófétálás azonban a hívőknek szól, nem a hitetleneknek.", "matched_text": "Így a nyelv adománya sem a hívők, hanem a hitetlenek számára csoda jel. A profétálás azonban a hívőknek szól, nem a hitetleneknek."}, {"verse_num": 23, "start_sec": 260.1631034482759, "end_sec": 274.25, "confidence": 96.51162790697676, "canonical_text": "Ha tehát egybegyűl az egész Egyház, s mindenki az elragadtatás nyelvén szól, és be nem avatottak vagy hitetlenek lépnek be, vajon nem azt mondják-e, hogy elment az eszetek?", "matched_text": "tehát egybegyűlik az egész egyház, és mindenki az elragadtatás nyelvén szól, és a be nem avatottak vagy hitetlenek lépnek be, vajon nem azt mondják-e, hogy elment az eszetek"}, {"verse_num": 24, "start_sec": 274.92, "end_sec": 285.9813043478261, "confidence": 98.31932773109243, "canonical_text": "De ha mind prófétálnak, s belép egy hitetlen vagy be nem avatott, mind ellene érvelnek, mind ítéletet mondanak fölötte,", "matched_text": "De ha mind profétálnak, és belép egy hitetlen vagy be nem avatott, mind ellene érvelnek, mind ítéletet mondanak fölötte,"}, {"verse_num": 25, "start_sec": 285.3991304347826, "end_sec": 296.08, "confidence": 95.7983193277311, "canonical_text": "rejtett gondolatai felszínre kerülnek, úgyhogy arcra borul, imádja az Istent és megvallja: \"Valóban köztetek az Isten!\"", "matched_text": "e, rejtett gondolatai felszínre kerülnek, úgyhogy arcra borul, imádja az Istent és megvallja, valóban köztetek az Isten."}, {"verse_num": 26, "start_sec": 295.4458333333333, "end_sec": 312.95947368421054, "confidence": 98.9010989010989, "canonical_text": "Mi következik ebből, testvérek? Amikor egybegyűltök, akinek csak van dicsőítő éneke, tanítása vagy kinyilatkoztatása, nyelvadománya vagy magyarázata, az mind épülésetekre szolgáljon.", "matched_text": ". Mi következik ebből, testvérek? Amikor egybegyűltök, akinek csak van dicsőítő éneke, tanítása vagy kinyilatkoztatása, nyelvadománya vagy magyarázata, az mind épülésteke szolgáljon."}, {"verse_num": 27, "start_sec": 312.95947368421054, "end_sec": 324.10583333333335, "confidence": 97.27272727272728, "canonical_text": "Az elragadtatás nyelvén kettő vagy legföljebb három szóljon csak, mégpedig sorjában, és valaki magyarázza meg.", "matched_text": "Az elragadtatás nyelvén kettő vagy lefőjebb három szóljon csak, mégpedig sorjában, és valaki magyarázza meg. Ha"}, {"verse_num": 28, "start_sec": 323.49, "end_sec": 330.88, "confidence": 100.0, "canonical_text": "Ha nem akadna magyarázó, hallgassanak az egyházban. Beszéljenek maguknak és az Istennek.", "matched_text": "Ha nem akadna magyarázó, hallgassanak az egyházban. Beszéljenek maguknak és az Istennek."}, {"verse_num": 29, "start_sec": 331.94, "end_sec": 338.94304347826085, "confidence": 98.64864864864865, "canonical_text": "A próféták közül is kettő vagy három beszéljen, a többi pedig bírálja meg.", "matched_text": "A proféták közül is kettő vagy három beszéljen, a többi pedig bírálja meg."}, {"verse_num": 30, "start_sec": 338.94304347826085, "end_sec": 344.33, "confidence": 98.57142857142858, "canonical_text": "Ha egy másik jelenlevő kap kinyilatkoztatást, az előbbi hallgasson el.", "matched_text": "Ha egy másik jelenlévő kap kinyilatkoztatást, az előbbi hallgasson el."}, {"verse_num": 31, "start_sec": 344.87, "end_sec": 350.3970588235294, "confidence": 97.22222222222221, "canonical_text": "Egymás után mind prófétálhattok, hogy mindenki tanuljon és felbuzduljon.", "matched_text": "Egymás után mind profétálhattok, hogy mindenki tanuljon és felbúzduljon."}, {"verse_num": 32, "start_sec": 350.3970588235294, "end_sec": 355.31, "confidence": 95.74468085106383, "canonical_text": "A prófétaság lelke alá van vetve a prófétáknak.", "matched_text": "A profétaság lelke alá van vetve a profétáknak."}, {"verse_num": 33, "start_sec": 355.63, "end_sec": 365.05, "confidence": 98.96907216494846, "canonical_text": "Isten ugyanis nem a zűrzavarnak, hanem a békességnek az Istene. Mint a szentek minden egyházában,", "matched_text": "Isten ugyanis nem az űrzavarnak, hanem a békességnek az Istene. Mint a szentek minden egyházában,"}, {"verse_num": 34, "start_sec": 365.05, "end_sec": 374.86, "confidence": 97.84172661870504, "canonical_text": "az asszonyok hallgassanak összejöveteleiteken. Nincs megengedve, hogy beszéljenek, nekik engedelmeskedniük kell, ahogy a törvény is mondja.", "matched_text": "z asszonyok hallgassanak az összejöveteleiteken. Nincs megengedve, hogy beszéljenek, nekik engedelmeskedniük kell, ahogy a törvény is mondja"}, {"verse_num": 35, "start_sec": 375.08, "end_sec": 383.92, "confidence": 99.10714285714286, "canonical_text": "Ha tudni akarnak valamit, kérdezzék meg otthon a férjüktől, mert az asszonynak nem illik az Egyházban beszélnie.", "matched_text": "Ha tudni akarnak valamit, kérdezzék meg otthon a férjüktől, mert az asszonynak nem illik az egyházban beszélnie."}, {"verse_num": 36, "start_sec": 384.75, "end_sec": 391.8015789473684, "confidence": 97.01492537313433, "canonical_text": "Vajon tőletek ered az Isten tanítása, vagy csak hozzátok jutott el?", "matched_text": "Vajon tőletek ered az Isten tanítása? Vagy csak hozzátok jutott el?"}, {"verse_num": 37, "start_sec": 391.8015789473684, "end_sec": 402.75347826086954, "confidence": 97.36842105263158, "canonical_text": "Aki prófétának vagy lelki adománnyal megáldottnak tartja magát, vegye tudomásul, hogy amit írok, az az Úr akarata.", "matched_text": "Aki profétának, vagy lelki adományjal megáldottnak tartja magát, vegye tudomásul, hogy amit írok, az az Úr akarata."}, {"verse_num": 38, "start_sec": 402.75347826086954, "end_sec": 408.35695652173916, "confidence": 100.0, "canonical_text": "Ha nem veszi tudomásul, róla sem vesznek majd tudomást.", "matched_text": "Ha nem veszi tudomásul, róla sem vesznek majd tudomást."}, {"verse_num": 39, "start_sec": 408.35695652173916, "end_sec": 416.655, "confidence": 98.0392156862745, "canonical_text": "Törekedjetek tehát a prófétálásra, testvérek, s ne akadályozzátok meg az elragadtatás nyelvén szólást.", "matched_text": "örekedjetek tehát a profétálásra, testvérek, és ne akadályozzátok meg az elragadtatás nyelvén szólást."}, {"verse_num": 40, "start_sec": 416.655, "end_sec": 421.72, "confidence": 100.0, "canonical_text": "De minden illő módon és rendben menjen végbe.", "matched_text": "De minden illő módon és rendben menjen végbe."}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

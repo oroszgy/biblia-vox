@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rómabeliekhez írt levél 2. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "ROM", "hungarian_name": "Rómabeliekhez írt levél", "abbreviation": "Róm", "book_number": 406, "chapter_count": 16}, "chapter": {"book_usx": "ROM", "chapter_num": 2, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/52_romai/romaiaknak-irt-level-02-fejezet.mp3", "verse_count": 29, "aligned_count": 29}, "verses": [{"verse_num": 1, "start_sec": 3.11, "end_sec": 18.38, "confidence": 93.71069182389937, "canonical_text": "Nincs hát számodra mentség, bárki vagy is, te ember, aki ítélkezel. Mert amikor mást elítélsz, magadat marasztalod el, hiszen ugyanazt műveled te is, ítélkező.", "matched_text": "s, ha a számodra mentség, bárki vagy, Isten ember, aki ítélkezel. Mert amikor mást elítélsz, magadat marasztalod el, hiszen ugyanazt műveled te is, te ítélkező."}, {"verse_num": 2, "start_sec": 18.58, "end_sec": 25.96, "confidence": 98.78048780487805, "canonical_text": "Márpedig tudjuk, hogy Isten ítélete igazságosan éri azokat, akik effélét művelnek.", "matched_text": "Márpedig tudjuk, hogy Isten ítélete igazságosan éri azokat, akik e félét művelnek."}, {"verse_num": 3, "start_sec": 25.345, "end_sec": 39.10809523809524, "confidence": 98.58156028368793, "canonical_text": "Azt hiszed talán, te ember, hogy kibújhatsz Isten ítélete alól, ha elítéled azokat, akik ilyeneket tesznek, amikor magad is ugyanazt műveled?", "matched_text": "Azt hiszed talán te ember, hogy kibújhatsz Isten ítélete alól, Ha elítéled azokat, akik ilyeneket tesznek, amikor magad is ugyanazt műveled?"}, {"verse_num": 4, "start_sec": 39.10809523809524, "end_sec": 50.84, "confidence": 97.58064516129032, "canonical_text": "Avagy semmibe veszed, hogy Isten végtelenül jó, türelmes és elnéző, s nem jut eszedbe, hogy irgalma bűnbánatra akar vezetni?", "matched_text": "Vagy semmibe veszed, hogy Isten végtelenül jó, türelmes és elnéző? És nem jut eszedbe, hogy irgalma bűnbánatra akar vezetni?"}, {"verse_num": 5, "start_sec": 50.24333333333334, "end_sec": 64.47, "confidence": 97.2027972027972, "canonical_text": "Konokságodban és szíved megrögzöttségében csak büntetést halmozol magadra, a haragnak és az Isten igazságos ítélete megnyilvánulásának napjára.", "matched_text": "? Konokságodban és szíved megrögzettségében csak büntetést halmozol magadra, a haragnak, és Isten igazságos ítélete megnyilvánulásának napjára."}, {"verse_num": 6, "start_sec": 65.12, "end_sec": 68.91444444444444, "confidence": 97.14285714285714, "canonical_text": "Ő kinek-kinek tettei szerint fizet:", "matched_text": "Ő kinek-kinek tettei szerint fizet."}, {"verse_num": 7, "start_sec": 68.91444444444444, "end_sec": 78.78, "confidence": 98.01980198019803, "canonical_text": "örök élettel annak, aki a jótettekben kitartva dicsőségre, tiszteletre és halhatatlanságra törekszik,", "matched_text": "rög élettel annak, aki a jó tettekben kitartva dicsőségre, tiszteletre és halhatatlanságra törekszik,"}, {"verse_num": 8, "start_sec": 79.06, "end_sec": 87.72, "confidence": 99.00990099009901, "canonical_text": "haraggal és megtorlással annak, aki haszonleső, s nem hajlik az igazságra, hanem a gonoszsággal tart.", "matched_text": "haraggal és megtorlással annak, aki haszonleső, és nem hajlik az igazságra, hanem a gonoszsággal tart."}, {"verse_num": 9, "start_sec": 87.14266666666667, "end_sec": 98.75, "confidence": 96.93877551020408, "canonical_text": "Mindenkit, aki gonoszat művel, utolér a kín és a gyötrelem, elsősorban a zsidót, azután a pogányt.", "matched_text": "Mindenkit, aki gonoszat művel, utolér a kín és a gyötrelem. Elsősorban a zsidót, aztán a pogányt."}, {"verse_num": 10, "start_sec": 98.113125, "end_sec": 110.26428571428572, "confidence": 99.03846153846155, "canonical_text": "S dicsőség, tisztelet és békesség vár mindenkire, aki jót tesz, elsősorban a zsidóra, azután a pogányra.", "matched_text": "S dicsőség, tisztelet és békesség vár mindenkire, aki jót tesz, elsősorban a zsidóra, aztán a pogányra."}, {"verse_num": 11, "start_sec": 110.26428571428572, "end_sec": 113.75, "confidence": 100.0, "canonical_text": "Isten ugyanis személyválogatás nélkül ítél.", "matched_text": "Isten ugyanis személyválogatás nélkül ítél."}, {"verse_num": 12, "start_sec": 114.85, "end_sec": 129.62, "confidence": 98.10126582278481, "canonical_text": "Az, aki úgy vétkezett, hogy a törvény nem kötelezte, a törvény nélkül vész el, aki pedig a törvénynek alávetve vétkezett, a törvény alapján nyeri el ítéletét,", "matched_text": "Az, aki úgy vétkezett, hogy a törvény nem kötelezte, a törvény nélkül vész el. Aki pedig a törvénynek alávetve vétkezett, a törvény alapján nyeri el ítéletét."}, {"verse_num": 13, "start_sec": 130.06, "end_sec": 140.02125, "confidence": 98.93617021276596, "canonical_text": "mert Isten szemében a törvénynek nem a hallgatója válik igazzá, hanem a megtartója igazul meg.", "matched_text": "ert Isten szemében a törvénynek nem a hallgatója válik igazzá, hanem a megtartója igazul meg. A"}, {"verse_num": 14, "start_sec": 137.82533333333333, "end_sec": 150.943, "confidence": 96.52173913043478, "canonical_text": "Amikor a pogány törvény híján a természet szavára jár el a törvény szerint, törvény híján saját magának a törvénye.", "matched_text": "g. Amikor a pogány törvényhíján a természet szavára jár el a törvény szerint, törvényhíján saját magának törvénye. E"}, {"verse_num": 15, "start_sec": 150.31, "end_sec": 166.90666666666667, "confidence": 97.51552795031056, "canonical_text": "Ezzel igazolja, hogy a törvény szabta cselekedet a szívébe van írva. Erről lelkiismerete tanúskodik és önítélete, amely hol vádolja, hol menti majd azon a napon,", "matched_text": "zel igazolja, hogy a törvény szabta cselekedet a szívébe van írva. Erről lelkiismerete tanuskodik és önit élete, amely hol vádolja, hol menti, majd azon a napon,"}, {"verse_num": 16, "start_sec": 166.90666666666667, "end_sec": 174.78, "confidence": 97.84946236559139, "canonical_text": "amelyen evangéliumom szerint Isten Krisztus által ítélkezik az emberek rejtett dolgai fölött.", "matched_text": "amelyen evangéliumom szerint, Isten, Krisztus által ítélkezik az emberek rejtett dolgai fölött"}, {"verse_num": 17, "start_sec": 176.07, "end_sec": 183.475, "confidence": 97.67441860465115, "canonical_text": "De ha te zsidónak mondod magad, és a törvényre támaszkodol, és az Istennel dicsekszel,", "matched_text": "ha te zsidónak mondod magadat, és a törvényre támaszkodol, és az Istennel dicsekszel,"}, {"verse_num": 18, "start_sec": 183.475, "end_sec": 190.88, "confidence": 100.0, "canonical_text": "ismered is akaratát, és ki tudod választani a jobbat, mert a törvény megtanított rá,", "matched_text": "ismered is akaratát, és ki tudod választani a jobbat, mert a törvény megtanított rá,"}, {"verse_num": 19, "start_sec": 191.11, "end_sec": 199.04375000000002, "confidence": 100.0, "canonical_text": "ha a vakok vezetőjének, a sötétben élők világosságának, a tudatlanok tanítójának,", "matched_text": "ha a vakok vezetőjének, a sötétben élők világosságának, a tudatlanok tanítójának,"}, {"verse_num": 20, "start_sec": 199.04375000000002, "end_sec": 208.36652173913043, "confidence": 97.95918367346938, "canonical_text": "a kiskorúak mesterének tartod magad, ha a törvényben megkaptad a megismerés és igazság foglalatát,", "matched_text": "a kiskorúak mesterének tartod magadat, ha a törvényben megkaptad a megismerés és igazság foglalatát"}, {"verse_num": 21, "start_sec": 208.36652173913043, "end_sec": 217.01, "confidence": 95.1219512195122, "canonical_text": "ha mást tanítasz, magadat miért nem tanítod? Azt hirdeted: ne lopj, s magad lopsz?", "matched_text": "ha mást tanítasz, magadat miért nem tanítod? Azt hirdeted, ne lobj, és magad lobsz,"}, {"verse_num": 22, "start_sec": 217.13, "end_sec": 227.36, "confidence": 97.24770642201834, "canonical_text": "Azt mondod: ne törj házasságot, s magad házasságot törsz? Utálod a bálványokat, és templomrablást követsz el?", "matched_text": "Azt mondod, ne törj házasságot, és magad házasságot törsz. Utálod a bálványokat, és templomrablást követsz el."}, {"verse_num": 23, "start_sec": 226.720625, "end_sec": 232.71882352941176, "confidence": 91.93548387096774, "canonical_text": "Kérkedsz a törvénnyel, és törvényszegéssel gyalázod az Istent?", "matched_text": "l. Kérkedsz a törvényjel, és törvényszegéssel gyalázod Istent."}, {"verse_num": 24, "start_sec": 232.71882352941176, "end_sec": 240.06, "confidence": 98.55072463768117, "canonical_text": "Valóban: miattatok káromolják Isten nevét a pogányok, ahogy írva van.", "matched_text": "Valóban, miattatok káromolják Isten nevét a pogányok, ahogy írva van."}, {"verse_num": 25, "start_sec": 241.68, "end_sec": 252.93, "confidence": 98.36065573770492, "canonical_text": "A körülmetélés hasznodra válik, ha megtartod a törvényt, de ha áthágod a törvényt, körülmetéltből körülmetéletlenné válsz.", "matched_text": "A körülmetélés hasznodra válik, ha megtartod a törvényt. De ha áthágod a törvényt, körülmetéltből körülmetéletlenné válsz."}, {"verse_num": 26, "start_sec": 253.49, "end_sec": 263.12, "confidence": 95.53571428571429, "canonical_text": "Ha pedig a körülmetéletlen megtartja a törvény rendelkezéseit, körülmetéletlenül is nemde körülmetéltnek számít?", "matched_text": "Ha pedig a körülmetéletlen megtartja a törvény rendelkezéseit, körülmetéletlenül is, ugye, körülmetéltnek számít."}, {"verse_num": 27, "start_sec": 263.9, "end_sec": 278.12, "confidence": 98.75, "canonical_text": "Ilyenkor a származása szerint körülmetéletlen, aki megtartja a törvényt, ítélkezik fölötted, mert a törvény betűje és a körülmetélés ellenére törvényszegő vagy.", "matched_text": "Ilyenkor a származása szerint körülmetéletlen, aki megtartja a törvényt, ítélkezik fölötted. Mert a törvény betűje és a körülmetélés ellenére törvényszegő vagy."}, {"verse_num": 28, "start_sec": 278.81, "end_sec": 285.90565217391304, "confidence": 98.75, "canonical_text": "Nem az a zsidó, aki látszatra az, s nem az a körülmetélés, ami a testen látható,", "matched_text": "Nem az a zsidó, aki látszatra az, és nem az a körülmetélés, ami a testen látható,"}, {"verse_num": 29, "start_sec": 286.3491304347826, "end_sec": 299.78, "confidence": 99.3006993006993, "canonical_text": "az a zsidó, aki bensőleg az, s aki nem betű szerint, hanem lélek szerint körülmetélt. Az ilyen nem embertől, hanem Istentől kapja a dicséretet.", "matched_text": "az a zsidó, aki belsőleg az, s aki nem betű szerint, hanem lélek szerint körülmetélt. Az ilyen nem embertől, hanem Istentől kapja a dicséretet."}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

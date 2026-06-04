@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apostolok cselekedetei 28. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "ACT", "hungarian_name": "Apostolok cselekedetei", "abbreviation": "ApCsel", "book_number": 405, "chapter_count": 28}, "chapter": {"book_usx": "ACT", "chapter_num": 28, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/51_apcsel/apostolok-cselekedetei-28-fejezet.mp3", "verse_count": 31, "aligned_count": 30}, "verses": [{"verse_num": 1, "start_sec": 3.62, "end_sec": 7.884615384615385, "confidence": 100.0, "canonical_text": "Megmenekülve megtudtuk, hogy a szigetet Máltának hívják.", "matched_text": "Megmenekülve megtudtuk, hogy a szigetet Máltának hívják."}, {"verse_num": 2, "start_sec": 7.884615384615385, "end_sec": 19.46, "confidence": 96.63865546218487, "canonical_text": "A bennszülöttek igen emberségesen bántak velünk. Tüzet raktak, s a szakadó eső és a hideg elől mindnyájunkat odahívtak.", "matched_text": "A benszülöttek igen emberségesen bántak velünk, tüzet raktak, és a szakadó eső és a hideg elől minnyájunkat oda hívtak."}, {"verse_num": 3, "start_sec": 19.52, "end_sec": 30.28, "confidence": 99.1304347826087, "canonical_text": "Pál összeszedett egy csomó rőzsét, de amikor a tűzre dobta, a melegtől egy vipera mászott elő, s a kezébe harapott.", "matched_text": "ál összeszedett egy csomó rőzsét, de amikor a tűzre dobta, a melegtől egy vipera mászott elő, és a kezébe harapott."}, {"verse_num": 4, "start_sec": 29.742, "end_sec": 48.409, "confidence": 94.89795918367348, "canonical_text": "Amikor a bennszülöttek meglátták, hogy az állat a kezén lóg, így szóltak egymáshoz: \"Ez az ember egész biztos gyilkos! Kimenekült ugyan a tengerből, de az igazságosság azonban nem hagyja életben.\"", "matched_text": "Amikor a benszülöttek meglátták, hogy az állat a kezén lóg, így szóltak egymáshoz, ez az ember egészen biztosan gyilkos, kimenekült ugyan a tengerből, az igazságosság azonban nem hagyja életben. Ő"}, {"verse_num": 5, "start_sec": 47.82, "end_sec": 54.888000000000005, "confidence": 100.0, "canonical_text": "Ő azonban lerázta az állatot a tűzbe, és semmi baja nem történt.", "matched_text": "Ő azonban lerázta az állatot a tűzbe, és semmi baja nem történt."}, {"verse_num": 6, "start_sec": 54.888000000000005, "end_sec": 69.93, "confidence": 96.83544303797468, "canonical_text": "Várták, hogy felpuffad vagy hirtelen összeesik és meghal. Jó ideig vártak, de mert semmi baja sem esett, megváltoztatták nézetüket, s azt mondták, hogy isten.", "matched_text": "árták, hogy fölpuffad, vagy hirtelen összeesik és meghal. Jó ideig vártak, de mert semmi baja nem esett, megváltoztatták nézetüket, és azt mondták, hogy Isten."}, {"verse_num": 7, "start_sec": 72.71, "end_sec": 85.88588235294117, "confidence": 99.21875, "canonical_text": "Ezen a vidéken feküdtek a sziget első emberének, Publiusznak a birtokai. Házába fogadott minket, és három napig vendégül látott.", "matched_text": "Ezen a vidéken feküdtek a sziget első emberének, Publiusnak a birtokai. Házába fogadott minket, és három napig vendégül látott. P"}, {"verse_num": 8, "start_sec": 85.07, "end_sec": 98.94, "confidence": 95.86776859504133, "canonical_text": "Publiusz apja láztól és vérhastól gyötörten ágyban feküdt. Pál bement hozzá, imádkozott, rátette kezét és meggyógyította.", "matched_text": "Publius apja, Lásztól és vérhastól gyötörten ágyban feküdt. Pál bement hozzá, imádkozott, rátette a kezét és meggyógyított"}, {"verse_num": 9, "start_sec": 99.04, "end_sec": 105.82, "confidence": 98.55072463768117, "canonical_text": "Erre a többi beteg is odasereglett a szigetről, és gyógyulást talált.", "matched_text": "Erre a többi beteg is oda sereglett a szigetről és gyógyulást talált."}, {"verse_num": 10, "start_sec": 106.12, "end_sec": 115.6, "confidence": 92.04545454545455, "canonical_text": "Így nagy tiszteletben álltunk, és amikor hajóra szálltunk, elláttak minden szükségessel.", "matched_text": "nagy tiszteletben álltunk, és amikor hajóra szálltunk, elláttak minket minden szükségess"}, {"verse_num": 11, "start_sec": 114.81, "end_sec": 129.55, "confidence": 95.19999999999999, "canonical_text": "Három hónap múlva továbbindultunk egy alexandriai hajón, amely a szigeten telelt, és amelynek a Dioszkurok voltak a jelvénye.", "matched_text": "Három hónap múlva tovább indultunk egy alexandriai hajón, amely a sziketen telett, s melynek a dioszkúrok voltak a jelvénye."}, {"verse_num": 12, "start_sec": 130.13, "end_sec": 135.10538461538462, "confidence": 97.87234042553192, "canonical_text": "Szirakuzába érve három napig ott vesztegeltünk.", "matched_text": "Szirakúzába érve három napig ott vesztegeltünk."}, {"verse_num": 13, "start_sec": 134.27615384615385, "end_sec": 149.24769230769232, "confidence": 92.43697478991596, "canonical_text": "Onnét a part mellett hajózva eljutottunk Régiumba. Mivel másnap déli szél fújt, a következő nap Puteoliba futottunk be.", "matched_text": "Onnét a part mellett hajózva eljutottunk régiónba. Mivel másnap déli szél fújt, a következő nap Puteoliba futott. Itt t"}, {"verse_num": 14, "start_sec": 147.8580769230769, "end_sec": 158.975, "confidence": 99.05660377358491, "canonical_text": "Itt testvéreket találtunk, s kérésüknek engedve egy hétig ott maradtunk, aztán Róma felé vettük az irányt.", "matched_text": "tt testvéreket találtunk, és kérésüknek engedve egy hétig ott maradtunk, aztán Róma felé vettük az irányt."}, {"verse_num": 15, "start_sec": 158.975, "end_sec": 179.95354838709676, "confidence": 88.88888888888889, "canonical_text": "A testvérek, mihelyt hírt hallottak rólunk, elénk siettek egészen a Forum Appii és a Tres Tabernae tájáig. Amikor Pál meglátta őket, hálát adott az Istennek, és bizalommal telt el.", "matched_text": "A testvérek mihányt hallottak rólunk, elénk siettek egészen a fórum apii és a tress tabernétájáig. Amikor Pál meglátta őket, hálát adott Istennek, és bizalommal telt el. Amikor megé"}, {"verse_num": 16, "start_sec": 178.67, "end_sec": 187.65483870967742, "confidence": 97.05882352941177, "canonical_text": "Amikor megérkeztünk Rómába, Pál engedélyt kapott, hogy saját szállást vegyen egy katona őrizete alatt.", "matched_text": "Amikor megérkeztünk Rómába, Pál engedélyt kapott, hogy saját szállást vegyen, egy katona őrizete adott."}, {"verse_num": 17, "start_sec": 188.2966129032258, "end_sec": 208.8333870967742, "confidence": 92.37668161434978, "canonical_text": "Három nap múlva magához kérette a tekintélyesebb zsidókat. Amikor összejöttek, beszélt hozzájuk: \"Testvérek! Semmit sem vétettem a nép vagy atyáink szokásai ellen, mégis megkötöztek Jeruzsálemben, és a rómaiak kezére adtak.", "matched_text": "ap múlva magához kérette a tekintélyesebb zsidókat, és amikor azok összejöttek, így beszélt hozzájuk. Testvérek, semmit sem vétettem a nép vagy atyáink szokásai ellen, mégis megkötöztek Jeruzsálemben, és a rómaiak kezére adt"}, {"verse_num": 18, "start_sec": 208.8333870967742, "end_sec": 218.46, "confidence": 99.0909090909091, "canonical_text": "Ezek kivizsgálták ügyemet, s szabadon akartak engedni, mert semmi okot nem találtak, amiért halálra ítéljenek.", "matched_text": "Ezek kivizsgálták ügyemet, és szabadon akartak engedni, mert semmi okot nem találtak, amiért halálra ítéljenek."}, {"verse_num": 19, "start_sec": 218.46, "end_sec": 228.96, "confidence": 100.0, "canonical_text": "A zsidók azonban tiltakoztak, így kénytelen voltam a császárhoz föllebbezni, de nem azért, mintha népemet akarnám vádolni.", "matched_text": "A zsidók azonban tiltakoztak, így kénytelen voltam a császárhoz föllebbezni, de nem azért, mintha népemet akarnám vádolni."}, {"verse_num": 20, "start_sec": 229.54, "end_sec": 240.98, "confidence": 99.17355371900827, "canonical_text": "Azért kérettelek ide, hogy lássalak benneteket, és szóljak hozzátok. Ezt a bilincset Izrael reménysége miatt rakták rám.\"", "matched_text": "Azért kérettelek ide, hogy lássalak benneteket, és szóljak hozzátok. Ezt a bilincset, Izrael reménysége miatt rakták rám."}, {"verse_num": 21, "start_sec": 241.52, "end_sec": 253.8029411764706, "confidence": 91.47286821705426, "canonical_text": "Azok kijelentették: \"Sem levelet nem kaptunk felőled Júdeából, sem ide vetődő testvér nem hozott hírt vagy mondott rosszat rólad.", "matched_text": "Azok kijelentették, sem levelet nem kaptunk felőled Júdiából, sem idevetődő testvér nem hozott hírt, vagy mondott rólad rosszat. T"}, {"verse_num": 22, "start_sec": 253.1564705882353, "end_sec": 265.3272727272727, "confidence": 95.3125, "canonical_text": "Tőled szeretnénk hallani, hogy milyen felfogást vallasz. Csak azt tudjuk erről a felekezetről, hogy mindenütt ellenzésre talál.\"", "matched_text": "Tőled szeretnénk hallani, milyen felfogást vallasz. Csak azt tudjuk erről a felekezetről, hogy mindenütt ellenkezésre talál. Megá"}, {"verse_num": 23, "start_sec": 264.76, "end_sec": 284.98, "confidence": 99.08256880733946, "canonical_text": "Megállapodtak vele egy napban, s igen sokan elmentek hozzá a szállására. Reggeltől estig meggyőző erővel bizonyította nekik az Isten országát, és igyekezett őket Mózes törvénye és a próféták alapján megnyerni Jézusnak.", "matched_text": "Megállapodtak vele egy napban, és igen sokan elmentek hozzá a szállására. Reggeltől estig meggyőző erővel bizonyította nekik az Isten országát, és igyekezett őket Mózes törvénye és a proféták alapján megnyerni Jézusnak."}, {"verse_num": 24, "start_sec": 285.24, "end_sec": 289.38378787878787, "confidence": 84.0909090909091, "canonical_text": "Némelyek hittek szavainak, mások nem hittek.", "matched_text": "Némeiek hittek, szavainak, mások nem. Mivel e"}, {"verse_num": 25, "start_sec": 288.1998484848485, "end_sec": 300.03924242424245, "confidence": 90.64748201438849, "canonical_text": "Mivel egymás közt nem értettek egyet, szétoszlottak. Pál csak ezt mondta nekik: \"Jól beszélt a Szentlélek Izajás próféta által atyáitokhoz,", "matched_text": "egymás között nem értettek egyet, szétoszlottak. Pál csak ezt mondta nekik. Helyesen beszélt a Szentlélek izaiás proféta által atyáitokhoz,"}, {"verse_num": 26, "start_sec": 299.4472727272727, "end_sec": 312.4706060606061, "confidence": 92.43697478991596, "canonical_text": "amikor ezt mondta: Menj el ahhoz a néphez és mondd: Hallván halljátok, de nem értitek, nézvén nézitek, de nem látjátok,", "matched_text": "amikor ezt mondta, menj el ahhoz a néphez és mond, halván halljátok, de nem értitek. Nézvé nézitek, de nem látjátok, me"}, {"verse_num": 27, "start_sec": 311.87863636363636, "end_sec": 329.48, "confidence": 96.53465346534654, "canonical_text": "mert megkérgesedett ennek a népnek a szíve. Fülükre nagyot hallanak, szemüket behunyják, nehogy lássanak a szemükkel, halljanak a fülükkel, értsenek a szívükkel, és megtérjenek, hogy meggyógyítsam őket.", "matched_text": "ert megkérgesedett ennek a népnek a szíve. A fülükre nagyot hallanak, a szemüket behunnyák, nehogy lássanak a szemükkel, halljanak a fülükkel, Értsenek a szívükkel, és megtérjenek, hogy meggyógyítsam őke"}, {"verse_num": 28, "start_sec": 329.74, "end_sec": 339.86, "confidence": 88.42105263157895, "canonical_text": "Tudjátok hát meg, hogy Isten üdvössége a pogányoknak jut majd osztályrészül. Ők meghallgatják.\"", "matched_text": "djátok meg hát, hogy Isten üdvössége a pogányoknak jut majd osztályrészül, ők majd meghallgatják"}, {"verse_num": 29, "start_sec": null, "end_sec": null, "confidence": null, "canonical_text": null, "matched_text": null}, {"verse_num": 30, "start_sec": 340.92, "end_sec": 351.6775, "confidence": 97.89473684210527, "canonical_text": "Két álló esztendeig ott maradt bérbe vett szállásán, s fogadott mindenkit, aki csak fölkereste.", "matched_text": "ét álló esztendeig ott maradt, bérbevett szállásán, és fogadott mindenkit, aki csak fölkereste."}, {"verse_num": 31, "start_sec": 351.6775, "end_sec": 360.78, "confidence": 97.2972972972973, "canonical_text": "Hirdette az Isten országát, és bátran és akadálytalanul tanított Urunkról, Jézus Krisztusról.", "matched_text": "Hirdette Isten országát, és bátran, és akadálytalanul tanított, Urunkról, Jézus Krisztusról."}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

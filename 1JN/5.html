@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>János első levele 5. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "1JN", "hungarian_name": "János első levele", "abbreviation": "1Jn", "book_number": 423, "chapter_count": 5}, "chapter": {"book_usx": "1JN", "chapter_num": 5, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/69_janos1/szent-janos-1-level-05-fejezet.mp3", "verse_count": 21, "aligned_count": 21}, "verses": [{"verse_num": 1, "start_sec": 1.378, "end_sec": 14.428125000000001, "confidence": 94.64285714285714, "canonical_text": "Mindenki, aki hiszi, hogy Jézus a Krisztus, az Isten egyszülötte, és aki a szülőt szereti, szereti szülöttét is.", "matched_text": "t. Mindenki, aki hiszi, hogy Jézus a Krisztus, Isten szülötte, és aki a szülőt szereti, szereti szülöttét is. Abb"}, {"verse_num": 2, "start_sec": 13.091, "end_sec": 22.59375, "confidence": 89.52380952380953, "canonical_text": "Abból tudjuk meg, hogy szeretjük az Isten gyermekeit, hogy szeretjük az Istent, és megtesszük parancsait.", "matched_text": "s. Abból tudjuk meg, hogy szeretjük Isten gyermekeit, hogy szeretjük Istent, és teljesítjük parancsait. Me"}, {"verse_num": 3, "start_sec": 21.965625000000003, "end_sec": 32.015625, "confidence": 76.19047619047619, "canonical_text": "Mert az az Isten iránti szeretet, hogy megtartjuk parancsait. Parancsai nem nehezek.", "matched_text": "t az az Isten iránti szeretet, hogy a parancsait megtartjuk. És az ő parancsai nem ne"}, {"verse_num": 4, "start_sec": 31.387500000000003, "end_sec": 45.235454545454544, "confidence": 85.71428571428572, "canonical_text": "Mert mindenki, aki az Istentől született, legyőzi a világot. És ez a győzelem - győzelem a világ fölött! - a mi hitünk.", "matched_text": ". Mert mindenki, aki Isten től való, legyőzi a világot. És ez a győzelem, győzelem a világ fölött, ami hitünk. Ki győzi"}, {"verse_num": 5, "start_sec": 44.13, "end_sec": 52.42090909090909, "confidence": 98.55072463768117, "canonical_text": "Ki győzi le a világot, ha nem az, aki hiszi, hogy Jézus az Isten Fia?", "matched_text": "Ki győzi le a világot, ha nem az, aki hiszi, hogy Jézus az Isten fia?"}, {"verse_num": 6, "start_sec": 51.868181818181824, "end_sec": 68.45, "confidence": 96.68874172185431, "canonical_text": "Ő az, aki víz és vér által jött, Jézus Krisztus. Nem csupán víz által, hanem víz és vér által. És a Lélek tesz tanúságot róla, mert a Lélek az igazság.", "matched_text": "a? Ő az, aki víz és vér által jött, Jézus Krisztus. Nem csupán víz által, hanem víz és vér által. És a lélek tesz tanúságot róla, mert a lélek igazság."}, {"verse_num": 7, "start_sec": 67.89727272727274, "end_sec": 70.10818181818182, "confidence": 92.0, "canonical_text": "Tehát hárman tanúskodnak:", "matched_text": "Tehát hárman tanuskodnak,"}, {"verse_num": 8, "start_sec": 70.10818181818182, "end_sec": 76.7409090909091, "confidence": 97.67441860465115, "canonical_text": "a Lélek, a víz és a vér, és ez a három egy.", "matched_text": "a lélek, a víz és a vér, és ez a három egy."}, {"verse_num": 9, "start_sec": 74.53, "end_sec": 87.37285714285714, "confidence": 82.03125, "canonical_text": "Ha az emberek tanúságát is elfogadjuk, az Isten tanúsága többet jelent. Az Isten tanúsága az, hogy tanúságot tett a Fia mellett.", "matched_text": "z a három egy. Ha emberek tanúságát elfogadjuk, Isten tanúsága nagyobb. Isten tanúsága az, hogy tanúságot tett a fia mellett. Aki"}, {"verse_num": 10, "start_sec": 85.344, "end_sec": 104.28, "confidence": 89.3854748603352, "canonical_text": "Aki hisz az Isten Fiában, magában hordja az (Isten) tanúságát. Aki nem hisz Istennek, hazugságot tulajdonít neki, épp mert nem hisz tanúságában, amelyet az Isten Fia mellett tett.", "matched_text": "a mellett. Aki hisz Isten fiában, magában hordja Isten tanuságát. Aki nem hisz Istennek, hazugságot tulajdonít neki, mert nem hisz a tanuságában, amelyet Isten a fia mellett tett."}, {"verse_num": 11, "start_sec": 102.25114285714287, "end_sec": 115.68375, "confidence": 78.7037037037037, "canonical_text": "Mert ennek a tanúságnak az a tartalma, hogy az Isten örök életet adott nekünk, s ez az élet az ő Fiában van.", "matched_text": "a mellett tett. Mert ez a tanuság az, hogy Isten örök életet adott nekünk, és ez az élet az ő fiában van. Aki"}, {"verse_num": 12, "start_sec": 114.97, "end_sec": 127.8175, "confidence": 93.51851851851852, "canonical_text": "Aki magáénak mondhatja a Fiút, annak van élete, aki nem mondhatja magáénak az Isten Fiát, annak nincs élete.", "matched_text": "Aki magáénak mondhatja a fiút, annak van élete. Aki nem mondhatja magáénak Isten fiát, annak nincs élete. Eze"}, {"verse_num": 13, "start_sec": 127.10375, "end_sec": 137.81, "confidence": 72.44897959183673, "canonical_text": "Ezeket azért írtam nektek, akik hisztek az Isten Fia nevében, hogy megtudjátok: örök életetek van.", "matched_text": "t azért írtam nektek, hogy megtudjátok, nektek, akik hisztek Isten fia nevében, örök életetek van."}, {"verse_num": 14, "start_sec": 136.3825, "end_sec": 147.43, "confidence": 85.57692307692308, "canonical_text": "Az a bizalom, amellyel iránta vagyunk, azt jelenti, hogy bármit kérünk is akarata szerint, meghallgatja.", "matched_text": "ek van. A bizalom, amellyel iránta vagyunk, azt jelenti, hogy bármit kérünk akarata szerint, odafigyel a"}, {"verse_num": 15, "start_sec": 150.48, "end_sec": 162.21166666666664, "confidence": 78.26086956521739, "canonical_text": "Ha pedig tudjuk, hogy bármit kérünk, meghallgat bennünket, tudjuk azt is, hogy amit kértünk, azt már meg is kaptuk.", "matched_text": "yen kéréssel fordulunk is hozzá, meghallgat bennünket, tudjuk azt is, hogy amit kértünk, azt már meg is kaptuk. Amik"}, {"verse_num": 16, "start_sec": 158.41, "end_sec": 183.36333333333334, "confidence": 77.64227642276423, "canonical_text": "Amikor valaki látja, hogy testvére bűnt követ el, de ez a bűn nem jelenti számára a halált, imádkozzék érte, és életet szerez annak, aki a halállal egyenlő bűnnel vétkezik. Van halált jelentő bűn is; nem az ilyenről mondom, hogy könyörögjön érte.", "matched_text": "azt már meg is kaptuk. Amikor valaki látja, hogy a testvére bűnt követ el, de ez a bűn nem halálos, imádkozzék érte, és életet szerez annak, Aki nem halálos bűnnel vétkezett. Van halálos bűn is. Nem az ilyenről mondom, hogy imádkozzék érte. Minden"}, {"verse_num": 17, "start_sec": 182.22, "end_sec": 190.2447619047619, "confidence": 83.33333333333334, "canonical_text": "Minden igazságtalanság bűn, de van olyan bűn is, amely nem egyenlő a halállal.", "matched_text": "rte. Minden igazságtalanság bűn, de van olyan bűn is, amely nem halálos. Tudjuk"}, {"verse_num": 18, "start_sec": 189.68, "end_sec": 201.54, "confidence": 92.0, "canonical_text": "Tudjuk, hogy aki az Istentől való, nem vétkezik, mert az Istentől Született ereje megóvja (a bűntől), és a gonosz nem érinti.", "matched_text": "Tudjuk, hogy aki Istentől való, nem vétkezik, mert az Istentől született ereje megóvja a bűntől, és a gonosz nem keríti hatalm"}, {"verse_num": 19, "start_sec": 200.9752380952381, "end_sec": 209.935625, "confidence": 96.42857142857143, "canonical_text": "Tudjuk, hogy mi az Istentől vagyunk, és hogy az egész világ a gonosz hatalmában van.", "matched_text": ". Tudjuk, hogy mi Istentől vagyunk, és hogy az egész világ a gonosz hatalmában van. T"}, {"verse_num": 20, "start_sec": 209.35, "end_sec": 229.51, "confidence": 93.51351351351352, "canonical_text": "Tudjuk, hogy az Isten Fia eljött, és megadta nekünk a belátást ahhoz, hogy megismerjük az Igazat. Mi az Igazban vagyunk, az ő Fiában, Jézus Krisztusban. Ő az igaz Isten és az örök élet.", "matched_text": "Tudjuk, hogy Isten fia eljött, és megadta nekünk az értelmet ahhoz, hogy megismerjük az igazat. Mi az igazban vagyunk, az ő fiában, Jézus Krisztusban. Ő az igaz Isten, és az örök élet. G"}, {"verse_num": 21, "start_sec": 228.27, "end_sec": 233.23, "confidence": 94.87179487179486, "canonical_text": "Gyermekeim, óvakodjatok a bálványoktól!", "matched_text": "Gyermekeim! Óvakodjatok a bálványoktól!"}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

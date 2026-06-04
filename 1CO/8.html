@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Korinthusiakhoz írt első levél 8. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "1CO", "hungarian_name": "Korinthusiakhoz írt első levél", "abbreviation": "1Kor", "book_number": 407, "chapter_count": 16}, "chapter": {"book_usx": "1CO", "chapter_num": 8, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/53_korint1/korintusiaknak-irt-1-level-08-fejezet.mp3", "verse_count": 13, "aligned_count": 13}, "verses": [{"verse_num": 1, "start_sec": 2.52, "end_sec": 16.92952380952381, "confidence": 99.40476190476191, "canonical_text": "A bálványoknak feláldozott húsra vonatkozólag tudjuk, hogy mindnyájan megfelelő ismerettel rendelkezünk. A tudás azonban felfuvalkodottá tesz, a szeretet ellenben épít.", "matched_text": "A bálványoknak feláldozott húsra vonatkozólag tudjuk, hogy mindnyáján megfelelő ismerettel rendelkezünk. A tudás azonban felfuvalkodottá tesz, a szeretet ellenben épít."}, {"verse_num": 2, "start_sec": 16.92952380952381, "end_sec": 25.575238095238095, "confidence": 96.96969696969697, "canonical_text": "Aki tetszeleg tudásában, még nem értette meg, mi a helyes ismeret.", "matched_text": "Aki tetszelek tudásában még nem értette meg, mi a helyes ismeret. A"}, {"verse_num": 3, "start_sec": 24.134285714285713, "end_sec": 34.29611111111112, "confidence": 93.75, "canonical_text": "Aki azonban szereti az Istent, azt az Isten is a magáénak tudja.", "matched_text": ". Aki azonban szereti az Istent, Azt Isten is a magáénak tudja. A"}, {"verse_num": 4, "start_sec": 33.7, "end_sec": 44.43, "confidence": 98.1981981981982, "canonical_text": "Ami tehát a bálványáldozatok fogyasztását illeti, tudjuk, hogy bálvány nincs a világon, Isten meg csak egy van.", "matched_text": "Ami tehát a bálvány áldozatok fogyasztását illeti, tudjuk, hogy bálvány nincs a világon. Isten meg csak egy van."}, {"verse_num": 5, "start_sec": 44.43, "end_sec": 52.20318181818182, "confidence": 90.9090909090909, "canonical_text": "Igaz, beszélnek istenekről, az égen és földön, mivel sok istenük és uruk van,", "matched_text": "gaz? Beszélnek Istenekről az égen és a földön, mivel sok Istenük és Uruk van,"}, {"verse_num": 6, "start_sec": 52.20318181818182, "end_sec": 68.86, "confidence": 98.23529411764706, "canonical_text": "nekünk mégis egy az Istenünk: az Atya, akitől minden származik, s akiért mi is vagyunk, egy az Urunk, Jézus Krisztus, aki által minden van, s mi magunk is általa vagyunk.", "matched_text": "nekünk mégis egy az Istenünk, az Atya, akitől minden származik, s akiért mi is vagyunk. Egy az Urunk, Jézus Krisztus, aki által minden van, s mi magunk is általa vagyunk."}, {"verse_num": 7, "start_sec": 69.38, "end_sec": 87.44, "confidence": 95.05494505494505, "canonical_text": "De nincs mindenkiben tudás. Némelyek ugyanis a bálványokhoz vannak szokva, s még most is úgy fogyasztják a húst, mint áldozati eledelt, és mivel lelkiismeretük téves, beszennyeződik.", "matched_text": "e nincs meg mindenkiben ez a tudás. Némelyek ugyanis a bálványokhoz vannak szokva, s még most is úgy fogyasztják a húst, mint áldozati eledelt, s mivel lelkiismeretük téves, beszenyez"}, {"verse_num": 8, "start_sec": 87.53, "end_sec": 100.10333333333334, "confidence": 100.0, "canonical_text": "Az étel ugyanis nem tesz kedvesebbé Isten előtt. Ha nem eszünk, azzal nem veszítünk, de ha eszünk, azzal sem nyerünk.", "matched_text": "Az étel ugyanis nem tesz kedvesebbé Isten előtt. Ha nem eszünk, azzal nem veszítünk, de ha eszünk, azzal sem nyerünk."}, {"verse_num": 9, "start_sec": 100.10333333333334, "end_sec": 106.39, "confidence": 100.0, "canonical_text": "Arra azonban ügyeljetek, hogy szabadságotokkal az aggályosokat meg ne botránkoztassátok.", "matched_text": "Arra azonban ügyeljetek, hogy szabadságotokkal az aggályosokat meg ne botránkoztassátok."}, {"verse_num": 10, "start_sec": 107.17483870967742, "end_sec": 122.24129032258064, "confidence": 96.73202614379085, "canonical_text": "Ha tehát valaki a bálványtemplom asztalánál látja azt, akiben megvan a tudás, mivel lelkiismerete téves, nemde felbátorodik arra, hogy bálványhúst egyék?", "matched_text": "tehát valaki a bálvány templom asztalánál látja azt, akiben megvan a tudás, mivel lelkiismerete téves, Nem, de felbátorodik arra, hogy bálványhúst tegyék."}, {"verse_num": 11, "start_sec": 122.24129032258064, "end_sec": 127.72, "confidence": 100.0, "canonical_text": "Így tudásoddal tönkreteszed aggályos testvéredet, akiért Krisztus meghalt.", "matched_text": "Így tudásoddal tönkreteszed aggályos testvéredet, akiért Krisztus meghalt."}, {"verse_num": 12, "start_sec": 128.14, "end_sec": 136.512, "confidence": 98.98989898989899, "canonical_text": "Ezért ha testvéred ellen vétkezel, mert megsérted aggályos lelkiismeretét, Krisztus ellen vétkezel.", "matched_text": "Ezért, ha testvéred ellen vétkezel, mert megsérted aggályos lelkiismeretét, Krisztus ellen vétkezel."}, {"verse_num": 13, "start_sec": 136.512, "end_sec": 149.07, "confidence": 95.04132231404958, "canonical_text": "Tehát ha az étel megbotránkoztatja testvéremet, inkább soha nem eszem húst, csak hogy testvéremet meg ne botránkoztassam.", "matched_text": "ehát, ha az étel megbotránkoztatja a testvéremet, inkább soha nem eszem húst. Csak, hogy testvéremet meg ne botránkoztassa"}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Korinthusiakhoz írt első levél 13. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "1CO", "hungarian_name": "Korinthusiakhoz írt első levél", "abbreviation": "1Kor", "book_number": 407, "chapter_count": 16}, "chapter": {"book_usx": "1CO", "chapter_num": 13, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/53_korint1/korintusiaknak-irt-1-level-13-fejezet.mp3", "verse_count": 13, "aligned_count": 13}, "verses": [{"verse_num": 1, "start_sec": 3.98, "end_sec": 14.907142857142858, "confidence": 96.52173913043478, "canonical_text": "Szólhatok az emberek vagy az angyalok nyelvén, ha szeretet nincs bennem, csak zengő érc vagyok vagy pengő cimbalom.", "matched_text": "Szólhatok az emberek vagy angyalok nyelvén, ha szeretet nincs bennem, csak zengő érz vagyok, vagy pengő cimbalom. Le"}, {"verse_num": 2, "start_sec": 13.090588235294117, "end_sec": 28.45, "confidence": 96.15384615384616, "canonical_text": "Lehet prófétáló tehetségem, ismerhetem az összes titkokat és mind a tudományokat, hitemmel elmozdíthatom a hegyeket, ha szeretet nincs bennem, mit sem érek.", "matched_text": "m. Lehet profétáló tehetségem, ismerhetem az összes titkokat és minden tudományt, hitemmel elmozdíthatom a hegyeket, ha szeretet nincs bennem, mit sem érek."}, {"verse_num": 3, "start_sec": 29.03, "end_sec": 41.22, "confidence": 97.70992366412213, "canonical_text": "Szétoszthatom mindenemet a nélkülözők közt, odaadhatom a testemet is égőáldozatul, ha szeretet nincs bennem, mit sem használ nekem.", "matched_text": "étozthatom mindenemet a nélkülözők között, odaadhatom a testemet is égő áldozatul, ha szeretet nincs bennem, mit sem használ nekem."}, {"verse_num": 4, "start_sec": 40.578421052631576, "end_sec": 52.13869565217391, "confidence": 97.89473684210527, "canonical_text": "A szeretet türelmes, a szeretet jóságos, a szeretet nem féltékeny, nem kérkedik, nem is kevély.", "matched_text": "A szeretet türelmes, a szeretet jóságos, a szeretet nem féltékeny, nem kérkedik, nem is kevé. N"}, {"verse_num": 5, "start_sec": 50.696, "end_sec": 60.31173913043478, "confidence": 94.11764705882352, "canonical_text": "Nem tapintatlan, nem keresi a maga javát, nem gerjed haragra, a rosszat nem rója fel.", "matched_text": "Nem tapintatlan, nem keresi a magajavát, nem gerjed haragra, a rosszat föl nem rója."}, {"verse_num": 6, "start_sec": 60.31173913043478, "end_sec": 65.97, "confidence": 100.0, "canonical_text": "Nem örül a gonoszságnak, örömét az igazság győzelmében leli.", "matched_text": "Nem örül a gonoszságnak, örömét az igazság győzelmében leli."}, {"verse_num": 7, "start_sec": 66.19, "end_sec": 72.238, "confidence": 100.0, "canonical_text": "Mindent eltűr, mindent elhisz, mindent remél, mindent elvisel.", "matched_text": "Mindent eltűr, mindent elhisz, mindent remél, mindent elvisel."}, {"verse_num": 8, "start_sec": 72.238, "end_sec": 83.75, "confidence": 97.05882352941177, "canonical_text": "S a szeretet nem szűnik meg soha. A prófétálás végetér, a nyelvek elhallgatnak, a tudomány elenyészik.", "matched_text": "S a szeretet nem szűnik meg soha. A profétálás véget ér, a nyelvek elhallgatnak, a tudomány ellenézik."}, {"verse_num": 9, "start_sec": 85.15, "end_sec": 91.48789473684211, "confidence": 98.50746268656717, "canonical_text": "Most megismerésünk csak töredékes, és töredékes a prófétálásunk is.", "matched_text": "Most megismerésünk csak töredékes, és töredékes a profétálásunk is."}, {"verse_num": 10, "start_sec": 91.48789473684211, "end_sec": 98.53, "confidence": 100.0, "canonical_text": "Ha azonban elérkezik a tökéletes, ami töredékes, az véget ér.", "matched_text": "Ha azonban elérkezik a tökéletes, ami töredékes, az véget ér."}, {"verse_num": 11, "start_sec": 99.38, "end_sec": 113.18, "confidence": 95.20958083832335, "canonical_text": "Gyermekkoromban úgy beszéltem, mint a gyerek, úgy gondolkoztam, mint a gyerek, úgy ítéltem, mint a gyerek. De amikor elértem a férfikort, elhagytam a gyerek szokásait.", "matched_text": "ermekkoromban úgy beszéltem, mint a gyermek, úgy gondolkodtam, mint a gyermek, s úgy ítéltem, mint a gyermek. De mikor elértem a férfi kort, elhagytam a gyermek szokása"}, {"verse_num": 12, "start_sec": 113.48, "end_sec": 129.08181818181816, "confidence": 100.0, "canonical_text": "Ma még csak tükörben, homályosan látunk, akkor majd színről színre. Most még csak töredékes a tudásom, akkor majd úgy ismerek mindent, ahogy most engem ismernek.", "matched_text": "Ma még csak tükörben, homályosan látunk, akkor majd színről színre. Most még csak töredékes a tudásom, akkor majd úgy ismerek mindent, ahogy most engem ismernek."}, {"verse_num": 13, "start_sec": 129.08181818181816, "end_sec": 139.62, "confidence": 100.0, "canonical_text": "Addig megmarad a hit, a remény és a szeretet, ez a három, de közülük a legnagyobb a szeretet.", "matched_text": "Addig megmarad a hit, a remény és a szeretet, ez a három, de közülük a legnagyobb a szeretet."}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>János jelenései 6. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "REV", "hungarian_name": "János jelenései", "abbreviation": "Jel", "book_number": 427, "chapter_count": 22}, "chapter": {"book_usx": "REV", "chapter_num": 6, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/73_jelenesek/jelenesek-konyve-06-fejezet.mp3", "verse_count": 17, "aligned_count": 17}, "verses": [{"verse_num": 1, "start_sec": 1.1341666666666665, "end_sec": 17.84, "confidence": 88.59060402684564, "canonical_text": "Ekkor láttam, hogy a Bárány feltörte a hét pecsét közül az egyiket, és hallottam, hogy a négy élőlény közül az egyik mennydörgő hangon szólt: \"Jöjj!\"", "matched_text": ". És láttam, hogy a bárány feltörte a hét pecsét közül az elsőt. És hallottam, hogy a négy élőlény közül az egyik mennydörgő hangon szólt, jöjj! És lá"}, {"verse_num": 2, "start_sec": 16.433333333333334, "end_sec": 33.88, "confidence": 77.77777777777779, "canonical_text": "Erre a szemem előtt egy fehér ló jelent meg. A lovasnak íja volt. Koszorút nyújtottak át neki, s ő diadalmasan kivonult, hogy győzelmet arasson.", "matched_text": "láttam, és íme egy fehér ló, és aki rajta ült, annak íja volt. És koronát nyújtottak át neki, s ő diadalmasan kivonult, hogy győzelmet alasson."}, {"verse_num": 3, "start_sec": 35.881499999999996, "end_sec": 43.961, "confidence": 82.14285714285714, "canonical_text": "Amikor a második pecsétet feltörte, hallottam, hogy a második élőlény szólt: \"Jöjj!\"", "matched_text": "amikor feltörte a második pecsétet, hallottam, hogy a második élőlény szól, jöjj! És"}, {"verse_num": 4, "start_sec": 43.3395, "end_sec": 58.5075, "confidence": 67.97385620915033, "canonical_text": "Erre előjött egy vörös ló. Aki rajta ült, hatalmat kapott, hogy megbontsa a földön a békét, hadd gyilkolják egymást az emberek. Hosszú kardot adtak neki.", "matched_text": "kijött egy másik, egy vörös ló. És aki rajta ült, annak megadatott, hogy elvegye a földről a békét, s hogy egymást gyilkolják az emberek, és adtak neki e"}, {"verse_num": 5, "start_sec": 61.25076923076923, "end_sec": 78.03869565217391, "confidence": 71.62162162162163, "canonical_text": "Amikor feltörte a harmadik pecsétet, hallottam, hogy a harmadik élőlény szólt: \"Jöjj!\" Ekkor fekete lovat láttam, lovasa mérleget tartott a kezében.", "matched_text": "mikor feltörte a harmadik pecsétet, hallottam, hogy a harmadik élőlény mondja, jöjj! És láttam, íme egy fekete ló. És aki rajta ült, annak a kezében"}, {"verse_num": 6, "start_sec": 79.31695652173914, "end_sec": 95.54176470588236, "confidence": 92.25806451612904, "canonical_text": "Úgy hallottam, mintha a négy élőlény közt szózat hallatszott volna: \"Egy mérő búza egy dénár, három mérő árpa egy dénár. De az olajat és a bort ne bántsd!\"", "matched_text": "s hallottam, mintha négy élőlény közt szózathallatszott volna, egy mérő búza, egy dénár, három mérő árpa, egy dénár. De az olajat és a bort ne báncsd. Amiko"}, {"verse_num": 7, "start_sec": 94.02166666666666, "end_sec": 103.2429411764706, "confidence": 86.04651162790698, "canonical_text": "Amikor feltörte a negyedik pecsétet, hallottam, hogy a negyedik élőlény szólt: \"Jöjj!\"", "matched_text": "d. Amikor feltörte a negyedik pecsétet, hallottam a negyedik élőlény szavát, jöjj! És l"}, {"verse_num": 8, "start_sec": 105.16823529411765, "end_sec": 122.91, "confidence": 78.33333333333333, "canonical_text": "Erre fakó lovat láttam, a Halál ült rajta, nyomában az alvilág. Hatalmat kapott a föld negyed része fölött, hogy karddal, éhínséggel, halállal és fenevadakkal pusztítsák az életet.", "matched_text": "És aki rajta ült, annak a neve halál. És az alvilág követte, és hatalmat kapott a föld negyed része fölött, hogy karddal, éhinséggel, halállal és fenevadakkal pusztítsa az életed."}, {"verse_num": 9, "start_sec": 125.17190476190476, "end_sec": 137.7428, "confidence": 90.15151515151516, "canonical_text": "Amikor feltörte az ötödik pecsétet, az oltár alatt azoknak a lelkét láttam, akiket az Isten szaváért és tanúságtételükért öltek meg.", "matched_text": "mikor feltörte az ötödik pecsétet, láttam az oltár alatt azoknak a lelkét, akiket az Isten igéjéért és tanúságtételükért öltek meg. É"}, {"verse_num": 10, "start_sec": 137.7428, "end_sec": 150.05, "confidence": 83.94160583941606, "canonical_text": "Nagy szóval kiáltották, mondván: \"Urunk, te szent és igaz, meddig vársz még az ítélettel? Mikor állsz bosszút a vérünkért a föld lakóin?\"", "matched_text": "agy szóval kiáltották mondván, Urunk, te szent és igaz, meddig nem mondasz még itt életet, és nem állsz bosszut a vérünkért a föld lakóin."}, {"verse_num": 11, "start_sec": 151.72521739130434, "end_sec": 168.05, "confidence": 89.94413407821229, "canonical_text": "Mindannyian fehér ruhát kaptak, azzal, hogy egy kis ideig legyenek még türelemmel, míg teljessé nem lesz szolgatársaik és testvéreik száma, akiket szintén megölnek, akárcsak őket.", "matched_text": "fehér ruhát adtak, és mondták nekik, hogy egy kis ideig legyenek még türelemmel, míg teljessé nem lesz szolgatársaik és testvéreik száma, akiket szintén megölnek, akár csak őket."}, {"verse_num": 12, "start_sec": 170.10307692307694, "end_sec": 183.18, "confidence": 96.57534246575342, "canonical_text": "Amikor feltörte a hatodik pecsétet, láttam, hogy nagy földrengés támadt. A Nap olyan fekete lett, mint a szőrzsák, a Hold pedig olyan, mint a vér.", "matched_text": "amikor feltörte a hatodik pecsétet, láttam, hogy nagy földrengés támadt. A nap olyan fekete lett, mint a szörzsák, a holt pedig olyan, mint a vér."}, {"verse_num": 13, "start_sec": 182.65692307692308, "end_sec": 192.8144, "confidence": 99.00990099009901, "canonical_text": "Az ég csillagai a földre hullottak, mint amikor a fügefa hullatja éretlen fügéit, ha erős szél rázza.", "matched_text": "Az ég csillagai a földre hullottak, mint amikor a fügefa hullatja éretlen fügéit, ha erős szél rázza,"}, {"verse_num": 14, "start_sec": 193.3676, "end_sec": 202.2, "confidence": 92.92929292929293, "canonical_text": "Az ég összehúzódott, mint egy felgöngyölt könyvtekercs. Minden hegy és sziget elmozdult a helyéről.", "matched_text": "z ég visszahúzódott, mint egy felgöngyölt könyvtekercs. És minden hegy és sziget elmozdult a helyérő"}, {"verse_num": 15, "start_sec": 204.17652173913044, "end_sec": 218.18, "confidence": 97.85714285714285, "canonical_text": "A föld királyai, nagyjai és vezérei, a gazdagok és a hatalmasok, mindenki, rabszolga és szabad elrejtőzött a barlangokban és a sziklák közt.", "matched_text": "föld királyai, nagyjai és vezérei, a gazdagok és a hatalmasok, mindenki, rabszolgai és szabad, elrejtőzött a barlangokba és a sziklák közé."}, {"verse_num": 16, "start_sec": 218.4, "end_sec": 230.09, "confidence": 80.95238095238095, "canonical_text": "És így szóltak a hegyekhez és a sziklákhoz: \"Szakadjatok ránk, s rejtsetek el bennünket a trónon ülő és a Bárány haragja elől!", "matched_text": "És mondták a hegyeknek és a szikláknak, omoljatok ránk, és rejtsetek el bennünket, A trónon ülő arca és a bárány haragja elől,"}, {"verse_num": 17, "start_sec": 231.0125, "end_sec": 238.0, "confidence": 66.66666666666667, "canonical_text": "Eljött haragjuk nagy napja, ugyan ki állhat meg előttük?\"", "matched_text": "ljött, haragjuk nagy napja, és kimaradhat állva. [Silence]"}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

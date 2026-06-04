@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Máté evangéliuma 2. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "MAT", "hungarian_name": "Máté evangéliuma", "abbreviation": "Mt", "book_number": 401, "chapter_count": 28}, "chapter": {"book_usx": "MAT", "chapter_num": 2, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/47_mate/mate-evangeliuma-02-fejezet.mp3", "verse_count": 23, "aligned_count": 23}, "verses": [{"verse_num": 1, "start_sec": 3.4587878787878785, "end_sec": 11.763030303030302, "confidence": 75.67567567567568, "canonical_text": "Amikor a júdeai Betlehemben Heródes király idejében Jézus megszületett, bölcsek jöttek napkeletről Jeruzsálembe", "matched_text": "megszületett Jézus a júdéai Betlehemben, Heródes király napjaiban, íme, bölcsek jöttek napkeletről Jeruzsálembe,"}, {"verse_num": 2, "start_sec": 11.763030303030302, "end_sec": 25.576363636363638, "confidence": 61.36363636363637, "canonical_text": "és kérdezősködtek: \"Hol van a zsidók újszülött királya? Láttuk csillagát napkeleten s eljöttünk, hogy bemutassuk neki hódolatunkat.\"", "matched_text": "és mondták, hol van a zsidók megszületett királya? Mert láttuk az ő felkelő csillagát, és eljöttünk, hogy imádjuk őt. Amikor Heródes"}, {"verse_num": 3, "start_sec": 26.214545454545455, "end_sec": 32.467999999999996, "confidence": 61.53846153846154, "canonical_text": "Ennek hallatára Heródes király megriadt, s vele egész Jeruzsálem.", "matched_text": "ezt hallotta, megrettent, és vele együtt egész Jeruzsálem. És össz"}, {"verse_num": 4, "start_sec": 30.681818181818183, "end_sec": 40.928, "confidence": 65.71428571428571, "canonical_text": "Összehívta tehát a főpapokat és a nép írástudóit, és tudakozódott tőlük, hol kell a Messiásnak születnie.", "matched_text": "zsálem. És összehívta a főpapokat és a népírás tudóit, és kérdezte tőlük, hogy hol születik a Krisztus. Er"}, {"verse_num": 5, "start_sec": 41.492, "end_sec": 48.26, "confidence": 52.3076923076923, "canonical_text": "\"Júda Betlehemében - válaszolták -, mert így jövendölt a próféta:", "matched_text": "ndták neki, a júdéai Betlehemben. Mert így írta meg a proféta. És"}, {"verse_num": 6, "start_sec": 48.824, "end_sec": 62.36, "confidence": 72.25806451612904, "canonical_text": "Te Betlehem, Júda földje, egyáltalán nem vagy oly kicsi Júda nemzetségei közt, hisz belőled származik majd a vezér, aki népemnek, Izraelnek pásztora lesz.\"", "matched_text": "Betlehem, júd a földje, egyáltalán nem vagy a legkisebb júd a fejedelmei között. mert belőled származik majd a vezér, aki kormányozni fogja népemet Izraelt."}, {"verse_num": 7, "start_sec": 61.232, "end_sec": 71.94666666666667, "confidence": 76.57657657657657, "canonical_text": "Erre Heródes titokban magához hívatta a bölcseket és pontosan megtudakolta tőlük a csillag feltűnésének idejét.", "matched_text": "emet Izraelt. Akkor Heródes titokban hivatta a bölcseket, és pontosan megtudakolta tőlük a csillagidejét, amely"}, {"verse_num": 8, "start_sec": 72.57179487179488, "end_sec": 89.61571428571429, "confidence": 75.84269662921348, "canonical_text": "Aztán elküldte őket Betlehembe: \"Menjetek - mondta -, s szerezzetek pontos értesülést a gyermek felől! Ha megtaláljátok, jelentsétek nekem, hogy én is elmenjek és hódoljak neki.\"", "matched_text": "ttük, és elküldvén őket Betlehembe mondta, menjetek, és kérdezősködjetek szorgosan a gyermek felül, és ha megtaláltátok, jelentsétek nekem, hogy én is elmenjek és hódoljak neki. Ő"}, {"verse_num": 9, "start_sec": 87.5748717948718, "end_sec": 104.62, "confidence": 87.03703703703704, "canonical_text": "Azok meghallgatták a királyt és útra keltek. S lám, a csillag, amelyet napkeleten láttak, vezette őket, míg végre meg nem állt a hely fölött, ahol a gyermek volt.", "matched_text": "Ők meghallgatták a királyt és útra keltek. És íme a csillag, amelyet fölkelni láttak, előttük ment, amíg odaérve meg nem állt a hely fölött, ahol a gyermek volt."}, {"verse_num": 10, "start_sec": 105.44, "end_sec": 110.62, "confidence": 60.46511627906976, "canonical_text": "A csillagot megpillantva nagyon megörültek.", "matched_text": "a csillagot, megörültek igen nagy örömmel."}, {"verse_num": 11, "start_sec": 112.08857142857143, "end_sec": 130.19571428571427, "confidence": 65.68047337278107, "canonical_text": "Bementek a házba, és meglátták a gyermeket anyjával, Máriával. Leborultak és hódoltak neki, majd elővették kincseiket s ajándékot adtak neki: aranyat, tömjént és mirhát.", "matched_text": "házba, Meglátták a gyermeket Máriával, az ő anyjával, és leborulva imádták őt. És felnyitották kincses ládáikat, és ajándékokat ajánlottak föl neki, aranyat, tömjént és"}, {"verse_num": 12, "start_sec": 131.58, "end_sec": 144.18473684210525, "confidence": 74.50980392156863, "canonical_text": "Mivel álmukban utasítást kaptak, hogy ne menjenek vissza Heródeshez, más úton tértek vissza hazájukba.", "matched_text": "És miután álomban intést kaptak, hogy vissza ne menjenek Heródeshez, más úton tértek haza országukba. A"}, {"verse_num": 13, "start_sec": 144.7394736842105, "end_sec": 164.71, "confidence": 69.91150442477876, "canonical_text": "Azután, hogy elmentek, megjelent Józsefnek álmában az Úr angyala, s ezt mondta neki: \"Kelj föl, fogd a gyermeket és anyját, menekülj Egyiptomba, s maradj ott, amíg nem szólok, mert Heródes keresi a gyermeket, meg akarja ölni.\"", "matched_text": "oztak, íme, megjelent az úrangyal a álomban Józsefnek, és mondta, Kejföl, fogd a gyermeket és anyját, és menekülj Egyiptomba, és légy ott addig, amíg majd szólok neked, mert Heródes keresni fogja a gyermeket, hogy elpusztítsa ő"}, {"verse_num": 14, "start_sec": 148.0678947368421, "end_sec": 155.8342105263158, "confidence": 69.87951807228916, "canonical_text": "Fölkelt, s még akkor éjszaka fogta a gyermeket és anyját, és elmenekült Egyiptomba.", "matched_text": "Józsefnek, és mondta, Kejföl, fogd a gyermeket és anyját, és menekülj Egyiptomba, é"}, {"verse_num": 15, "start_sec": 173.2028125, "end_sec": 184.68, "confidence": 73.55371900826447, "canonical_text": "Ott maradt Heródes haláláig. Így beteljesedett, amit a próféta szavával mondott az Úr: \"Egyiptomból hívtam az én fiamat.\"", "matched_text": "tt volt egészen Heródes haláláig, hogy beteljesedjék, amit az Úr mondott a proféta által, Egyiptomból hívtam az én fiamat."}, {"verse_num": 16, "start_sec": 182.26375000000002, "end_sec": 201.87513513513514, "confidence": 53.43915343915344, "canonical_text": "Amikor Heródes látta, hogy a bölcsek kijátszották, haragra lobbant, és Betlehemben meg a környékén, minden fiúgyermeket megöletett, kétéves korig, a bölcsektől megtudott időnek megfelelően.", "matched_text": "ívtam az én fiamat. Akkor Heródes, látva, hogy a mágusok kiátszották, nagyon megharagudott, és elküldvén a szolgáit, megölt minden fiú gyermeket, akik csak voltak Betlehemben és az egész kör"}, {"verse_num": 17, "start_sec": 210.06, "end_sec": 215.2925, "confidence": 66.66666666666667, "canonical_text": "Így beteljesedett, amit Jeremiás próféta jövendölt:", "matched_text": "beteljesült, ami megmondatott Jeremias proféta álta"}, {"verse_num": 18, "start_sec": 215.2925, "end_sec": 230.35000000000002, "confidence": 86.99186991869918, "canonical_text": "Kiáltozás hallik Rámában, keserves sírás és jajgatás: Ráchel siratja fiait, s nem akar vigasztalódni, mert nincsenek többé.", "matched_text": "iáltás hallik rámában, sírás és nagy jajgadás. Ráhel siratja fiait, és nem akar vigasztalódni, mert nincsenek többé. Miután"}, {"verse_num": 19, "start_sec": 230.35000000000002, "end_sec": 237.31, "confidence": 64.1025641025641, "canonical_text": "Amikor Heródes meghalt, megjelent Egyiptomban álmában Józsefnek az Úr angyala,", "matched_text": "ig Herodes meghalt, íme, megjelent az úrangyal a Józsefnek álomban, és mondta,"}, {"verse_num": 20, "start_sec": 235.57, "end_sec": 249.03727272727272, "confidence": 76.92307692307692, "canonical_text": "és így szólt hozzá: \"Kelj föl, fogd a gyermeket és anyját és menj Izrael földjére, mert meghaltak, akik a gyermek életére törtek!\"", "matched_text": "és mondta, Kejföl, vedd a gyermeket és anyját, és menj Izrael földjére, mert meghaltak azok, akik keresték a gyermek életét. Ő föl"}, {"verse_num": 21, "start_sec": 247.17, "end_sec": 254.65, "confidence": 86.56716417910448, "canonical_text": "Erre fölkelt, fogta a gyermeket és anyját, és Izrael földjére ment.", "matched_text": ". Ő fölkelvén fogta a gyermeket és anyját, és Izrael földjére jött."}, {"verse_num": 22, "start_sec": 254.02636363636364, "end_sec": 271.194358974359, "confidence": 62.264150943396224, "canonical_text": "De amikor meghallotta, hogy Archelausz uralkodik Júdeában apja, Heródes után, félt odamenni, ezért egy álmában kapott utasításra Galilea tartományba költözött.", "matched_text": "t. Mikor pedig hallotta, hogy Júdiában, Arheleus uralkodik, atya, Herodes után, félt oda menni. És álomban intést kapva, elhúzódott Galilea vidékére, és abban a"}, {"verse_num": 23, "start_sec": 272.6225641025641, "end_sec": 282.62, "confidence": 59.25925925925925, "canonical_text": "Odaérve Názáret városában telepedett le. Így teljesedett a próféták jövendölése: \"Názáretinek fogják hívni.\"", "matched_text": "amelyet Názaretnek hívnak, hogy beteljesedjék, ami megmondatott a proféták által, Názaretinek fogják hívni."}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

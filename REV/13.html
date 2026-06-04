@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>János jelenései 13. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "REV", "hungarian_name": "János jelenései", "abbreviation": "Jel", "book_number": 427, "chapter_count": 22}, "chapter": {"book_usx": "REV", "chapter_num": 13, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/73_jelenesek/jelenesek-konyve-13-fejezet.mp3", "verse_count": 18, "aligned_count": 18}, "verses": [{"verse_num": 1, "start_sec": 1.3905263157894738, "end_sec": 15.84, "confidence": 61.654135338345874, "canonical_text": "Ekkor láttam, hogy a tengerből egy vadállat bukkan fel. Tíz szarva volt és hét feje, szarvain tíz korona, fején meg istenkáromló név.", "matched_text": "jezet. És láttam, hogy a tengerből fölmerülett hétfejű és tiszt szarvú vadállat, és a szarvain tíz diadém, és a fejein káromló nevek."}, {"verse_num": 2, "start_sec": 15.84, "end_sec": 32.41166666666667, "confidence": 78.91566265060241, "canonical_text": "A vadállat, amelyet láttam, hasonlított a párduchoz, lába mint a medvéé, szája pedig az oroszlán szája. A sárkány neki adta erejét és trónját, nagy hatalmával együtt.", "matched_text": "a vadállat, amelyet láttam, olyan volt, mint a párduc. A lába, mint a medvéjé, a szája, mint az oroszláné. És a sárkány nekiadta erejét, a trónusát, és nagy hatalmat"}, {"verse_num": 3, "start_sec": 36.89666666666667, "end_sec": 47.441199999999995, "confidence": 78.94736842105263, "canonical_text": "Az egyik feje mintha halálra lett volna sebezve, de halálos sebe meggyógyult. Az egész föld csodálta a vadállatot.", "matched_text": "yan volt, mintha halálos sebet kapott volna, de a halálos sebe meggyógyult. És az egész föld csodálta a vadállatot,"}, {"verse_num": 4, "start_sec": 48.0028, "end_sec": 63.775000000000006, "confidence": 61.98830409356726, "canonical_text": "Leborultak a sárkány előtt, hogy hatalmat adott a vadállatnak. Leborultak a vadállat előtt is, és így imádták: \"Ki fogható a vadállathoz, ki tudja vele fölvenni a harcot?\"", "matched_text": "imádták a sárkányt, mivel hatalmat adott a vadállatnak, és imádták a vadállatot mondván, ki hasonlítható a vadállathoz, és ki tud harcolni vele. És nagyokat mondó, és károm"}, {"verse_num": 5, "start_sec": 63.1525, "end_sec": 70.058, "confidence": 72.5, "canonical_text": "Gőgös, káromló szája volt, és hatalmat kapott, hogy negyvenkét hónapig jártassa.", "matched_text": "káromló száj adadott neki, és hatalmat kapott, hogy cselekedjék negyvenkét hónapi"}, {"verse_num": 6, "start_sec": 70.69500000000001, "end_sec": 80.25, "confidence": 68.96551724137932, "canonical_text": "Káromlásra nyitotta száját az Isten ellen, káromolta a nevét, hajlékát és az ég lakóit.", "matched_text": "ölnyitotta a száját káromlásra Isten ellen, hogy káromolja az ő nevét, és az ő hajlékát,"}, {"verse_num": 7, "start_sec": 84.46166666666667, "end_sec": 96.9104761904762, "confidence": 64.84375, "canonical_text": "Hatalmat kapott, hogy megtámadja a szenteket és győzelmet arasson. Hatalma kiterjedt minden törzsre, népre, nyelvre és nemzetre.", "matched_text": "adatott neki, hogy háborút indítson a szentek ellen, és legyőzze őket, és hatalmat kapott minden törzs és nép és nyelv és nemzet"}, {"verse_num": 8, "start_sec": 99.5152380952381, "end_sec": 111.74578947368421, "confidence": 58.82352941176471, "canonical_text": "A föld lakói, akiknek a neve a világ kezdetétől nincs beírva a megölt Bárány életkönyvébe, mind leborulnak majd előtte.", "matched_text": "akik a földön laknak, akiknek a neve nincs fölírva a bárány életkönyvében, aki megöletett a világ kezdetétől fogva. Aki"}, {"verse_num": 9, "start_sec": 111.10473684210527, "end_sec": 114.31, "confidence": 96.42857142857143, "canonical_text": "Akinek van füle, hallja meg!", "matched_text": "Akinek van füle, hallja meg."}, {"verse_num": 10, "start_sec": 113.66894736842106, "end_sec": 130.52608695652174, "confidence": 61.53846153846154, "canonical_text": "Aki mást fogságba hurcol, fogságba kerül. Aki karddal öl, annak kard által kell elhullnia. Ez a szentek állhatatosságának és hitének az alapja.", "matched_text": "Akinek fogságba kell mennie, az fogságba megy. Akinek kard által kell meghalnia, azt karddal kell megölni. Ez a szentek türelme és hite. És lát"}, {"verse_num": 11, "start_sec": 129.66, "end_sec": 141.0216, "confidence": 75.0, "canonical_text": "Akkor láttam, hogy egy másik vadállat emelkedik ki a földből. Két szarva volt, mint a Báránynak, de úgy beszélt, mint a sárkány.", "matched_text": "És láttam egy másik vadállatot, amely a földből jött elő, és két olyan szarva volt, mint a bárányé, és beszélt, mint a sárkány. É"}, {"verse_num": 12, "start_sec": 141.0216, "end_sec": 156.27583333333334, "confidence": 62.27544910179641, "canonical_text": "Az első vadállatnak minden hatalmát gyakorolta a jelenlétében. A földet és lakóit rávette, hogy boruljanak le az első vadállat előtt, amely kigyógyult halálos sebéből.", "matched_text": "z első vadállat teljes hatalmával cselekszik annak színe előtt. És a földet, és minden lakóját hódoltatja az első vadállat előtt, amelynek halálos sebe meggyógyult. És"}, {"verse_num": 13, "start_sec": 154.6284, "end_sec": 163.86333333333334, "confidence": 76.66666666666666, "canonical_text": "Nagy csodajeleket vitt végbe, még tüzet is bocsátott le az égből az emberek szeme láttára.", "matched_text": "ggyógyult. És nagy jeleket művel, még tüzet is hoz le az égből az emberek szeme láttára. És"}, {"verse_num": 14, "start_sec": 164.36916666666667, "end_sec": 180.62, "confidence": 65.625, "canonical_text": "A föld lakóit megtévesztette a csodajelekkel, amelyeket a vadállat előtt véghezvihetett. Rávette a föld lakóit, hogy emeljenek szobrot a vadállatnak, amelyet a kard megsebzett, de felgyógyult.", "matched_text": "a föld lakóit a jelekkel, amelyeket kapott, hogy a vadállat színe előtt művelje. És azt mondja a föld lakóinak, hogy készítsenek képmást a vadállatról, amelyet kard sebesített meg, de fölé lett"}, {"verse_num": 15, "start_sec": 180.0925, "end_sec": 196.92555555555555, "confidence": 59.63855421686747, "canonical_text": "Hatalmat kapott, hogy lelket leheljen a vadállat szobrába, hogy megszólaljon a vadállat szobra, meg hogy megölje azokat, akik nem borulnak le a vadállat szobra előtt.", "matched_text": "lett. És megadatott neki, hogy lelket adjon a vadállat képmásának, hogy a vadállat képmása is beszéljen, és azokat, akik nem imádják a vadállat képmását, ölesse meg. É"}, {"verse_num": 16, "start_sec": 194.3528, "end_sec": 208.41, "confidence": 73.10344827586206, "canonical_text": "Elrendelte, hogy mindenkinek, kicsinek és nagynak, gazdagnak és szegénynek, szabadnak és rabszolgának jelöljék meg a jobb karját vagy a homlokát,", "matched_text": "eg. És mindenkit, kicsinyeket és nagyokat, gazdagokat és szegényeket, szabadokat és rabszolgákat, megbélyegeztet a jobb karjukon, vagy a homlokuko"}, {"verse_num": 17, "start_sec": 212.2308695652174, "end_sec": 222.864, "confidence": 58.33333333333333, "canonical_text": "és hogy senki ne adhasson-vehessen, ha nem viseli a vadállat jelét: nevét vagy nevének a számát.", "matched_text": "son el, és ne vásárolhasson, csak akin rajta van a bélyeg, a vadállat neve, vagy nevének száma. E"}, {"verse_num": 18, "start_sec": 220.92652173913044, "end_sec": 234.096, "confidence": 76.0, "canonical_text": "Ez a bölcsesség! Akinek van esze, számítsa ki a vadállat számát, hisz emberi szám: hatszázhatvanhat.", "matched_text": "Ez a bölcsesség. Akinek van értelme, számolja ki a vadállat számát, mert emberi szám az, és az ő szá"}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

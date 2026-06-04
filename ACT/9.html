@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apostolok cselekedetei 9. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "ACT", "hungarian_name": "Apostolok cselekedetei", "abbreviation": "ApCsel", "book_number": 405, "chapter_count": 28}, "chapter": {"book_usx": "ACT", "chapter_num": 9, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/51_apcsel/apostolok-cselekedetei-09-fejezet.mp3", "verse_count": 43, "aligned_count": 43}, "verses": [{"verse_num": 1, "start_sec": 2.36, "end_sec": 11.818333333333332, "confidence": 63.54166666666667, "canonical_text": "Saul még mindig lihegett a dühtől, és halállal fenyegette az Úr tanítványait. Elment a főpaphoz,", "matched_text": "aul pedig még lihegve a fenyegetésektől és öldökléstől az úr tanítványai ellen, elment a főpaphoz"}, {"verse_num": 2, "start_sec": 9.296111111111111, "end_sec": 25.06, "confidence": 60.54054054054055, "canonical_text": "s arra kérte, adjon neki ajánlólevelet a damaszkuszi zsinagógához, hogy ha talál ott embereket, férfiakat vagy nőket, akik ezt az utat követik, megkötözve Jeruzsálembe hurcolhassa őket.", "matched_text": "ellen, elment a főpaphoz, és a damaszkuszi zsinagógáknak szóló levelet kért tőle, hogyha találna ott ilyen uton járókat, férfiakat és asszonyokat, megkötözve Jeruzsálembe hozhassa őket."}, {"verse_num": 3, "start_sec": 24.429444444444442, "end_sec": 35.12, "confidence": 51.72413793103448, "canonical_text": "Már Damaszkusz közelében járt, amikor az égből egyszerre nagy fényesség ragyogta körül.", "matched_text": ". És amikor úton volt, és már közel járt Damascus-hoz, hirtelen fény ragyogta körül az é"}, {"verse_num": 4, "start_sec": 35.89904761904762, "end_sec": 45.163809523809526, "confidence": 63.44086021505376, "canonical_text": "Földre hullott, és hallotta, hogy egy hang így szól hozzá: \"Saul, Saul, miért üldözöl engem?\"", "matched_text": "vén a földre hallott egy hangot, amely mondta neki, Saul, Saul, miért üldözöl engem? Ő mondta,"}, {"verse_num": 5, "start_sec": 42.26857142857143, "end_sec": 51.53333333333333, "confidence": 67.46987951807229, "canonical_text": "Erre megkérdezte: \"Ki vagy, Uram?\" Az folytatta: \"Én vagyok Jézus, akit te üldözöl.", "matched_text": "rt üldözöl engem? Ő mondta, ki vagy, Uram? És az, én vagyok Jézus, akit te üldözöl."}, {"verse_num": 6, "start_sec": 50.95428571428572, "end_sec": 59.64, "confidence": 84.0, "canonical_text": "De állj fel és menj a városba, ott majd megmondják neked, mit kell tenned.\"", "matched_text": ". De kelj föl, menj be a városba, és majd megmondják neked, Mit kell tenned?"}, {"verse_num": 7, "start_sec": 61.588, "end_sec": 70.05933333333334, "confidence": 59.036144578313255, "canonical_text": "Útitársainak elakadt a szavuk, mert hallották a hangot, de látni nem láttak semmit.", "matched_text": "ig, akik kísérték, ámulva álltak, mert a hangot hallották, de nem láttak senkit. Sau"}, {"verse_num": 8, "start_sec": 70.63866666666667, "end_sec": 80.48733333333334, "confidence": 69.0909090909091, "canonical_text": "Saul feltápászkodott a földről, kinyitotta a szemét, de nem látott. Úgy vezették be Damaszkuszba, kézen fogva.", "matched_text": "fölkelt a földről, de amikor kinyitotta a szemét, nem látott semmit. A kezénél fogva vezették be Damaszkuszba."}, {"verse_num": 9, "start_sec": 81.06666666666666, "end_sec": 86.86, "confidence": 89.58333333333334, "canonical_text": "Három napig nem látott, nem evett, és nem ivott.", "matched_text": "árom napon át nem látott, nem evett és nem ivott."}, {"verse_num": 10, "start_sec": 88.91521739130435, "end_sec": 100.73, "confidence": 50.806451612903224, "canonical_text": "Damaszkuszban volt egy Ananiás nevű tanítvány. Az Úr egy látomásban megszólította: \"Ananiás!\" \"Itt vagyok, Uram!\" - felelte.", "matched_text": "amascusban egy tanítvány, név szerint Ananiás, és mondta neki az úr látomásban, Ananiás. Erre ő így szólt, íme itt vagyok, Ur"}, {"verse_num": 11, "start_sec": 102.26461538461538, "end_sec": 112.36205128205128, "confidence": 62.39316239316239, "canonical_text": "S az Úr folytatta: \"Kelj fel és siess az Egyenes utcába. Keresd meg Júdás házában a tarzuszi Sault. Nézd: imádkozik.\"", "matched_text": "mondta neki, kelj föl, menj el az egyenes utcába, és keresd Júdás házában a Saul nevű tarzosi embert. Éppen imádkozik"}, {"verse_num": 12, "start_sec": 111.35230769230769, "end_sec": 120.44, "confidence": 80.35714285714286, "canonical_text": "És látomásban látott egy Ananiás nevű férfit, ahogy belép hozzá, és ráteszi a kezét, hogy visszanyerje látását.\"", "matched_text": "imádkozik ugyanis, és látott egy Ananiás nevű férfit, aki bejön, és ráteszi a kezét, hogy visszanyerje látását."}, {"verse_num": 13, "start_sec": 121.68133333333333, "end_sec": 130.70133333333334, "confidence": 68.22429906542055, "canonical_text": "Ananiás tiltakozott: \"Uram, sokaktól hallottam, hogy ez az ember mennyit ártott szentjeidnek Jeruzsálemben.", "matched_text": "n így felelt. Uram, sokaktól hallottam erről a férfiről, mennyi rosszat tett szentjeid ellen Jeruzsálemben."}, {"verse_num": 14, "start_sec": 130.1, "end_sec": 139.93818181818182, "confidence": 73.33333333333334, "canonical_text": "Ide pedig megbízatása van a főpapoktól, hogy bilincsbe verjen mindenkit, aki segítségül hívja a nevedet.\"", "matched_text": ". Itt is meghatalmazása van a főpapoktól, hogy megkötözze mindazokat, akik segítségül hívják a nevedet. Mo"}, {"verse_num": 15, "start_sec": 137.316, "end_sec": 153.23636363636365, "confidence": 71.72413793103448, "canonical_text": "Az Úr azonban ezt válaszolta neki: \"Menj csak, mert választott edényem ő, hogy nevemet hordozza a pogány népek, a királyok és Izrael fiai között.", "matched_text": "a nevedet. Mondta pedig neki az úr, menj csak, mert választott edényem ő, hogy hordozza a nevemet a pogányok, királyok és Izrael fiai előtt. Én u"}, {"verse_num": 16, "start_sec": 153.81454545454545, "end_sec": 158.44, "confidence": 71.42857142857143, "canonical_text": "Megmutatom majd neki, mennyit kell nevemért szenvednie.\"", "matched_text": "egmutatom neki, hogy mennyit kell szenvednie a nevemért."}, {"verse_num": 17, "start_sec": 160.24, "end_sec": 178.32, "confidence": 66.83673469387756, "canonical_text": "Ananiás elment, betért a házba, és e szavakkal tette rá kezét: \"Saul testvér, Urunk Jézus küldött, aki megjelent neked idejövet az úton, hogy visszakapd szemed világát, és eltelj a Szentlélekkel.\"", "matched_text": "aniás elment, betért a házba, és a kezét rátéve mondta, Saul testvér, az úr küldött engem. Jézus, aki megjelent neked az úton, amelyen jöttél, elküldött engem, hogy láss, és betelj szent lélekkel."}, {"verse_num": 18, "start_sec": 179.58095238095237, "end_sec": 190.23428571428573, "confidence": 82.35294117647058, "canonical_text": "Azon nyomban valami hályogféle vált le szeméről, és visszanyerte látását. Felállt, megkeresztelkedett,", "matched_text": "zonnal valami hályogféle vált le Saul szeméről, és visszakapta a látást. Fölkelt, és megkeresztelkedett"}, {"verse_num": 19, "start_sec": 191.75619047619048, "end_sec": 200.6111111111111, "confidence": 64.63414634146342, "canonical_text": "majd evett és erőre kapott.\nNéhány napig ottmaradt Damaszkuszban a tanítványokkal,", "matched_text": "adtak neki, megerősödött. Néhány napig együtt volt a damaszkuszi tanítványokkal, é"}, {"verse_num": 20, "start_sec": 199.4933333333333, "end_sec": 206.2, "confidence": 60.0, "canonical_text": "és máris tanította a zsinagógákban, hogy Jézus az Isten Fia.", "matched_text": "és a zsinagógákban hirdetni kezdte Jézust. hogy ő az Isten f"}, {"verse_num": 21, "start_sec": 205.6411111111111, "end_sec": 224.70315789473685, "confidence": 63.725490196078425, "canonical_text": "Akik hallgatták, mind csodálkoztak, mondván: \"Hát nem ez tört vesztükre Jeruzsálemben azoknak, akik ezt a nevet segítségül hívják? Ide is nem azért jött, hogy bilincsbe verve a főpapok elé hurcolja őket?\"", "matched_text": "fia. Akik csak hallottak, álmélkodtak és mondogatták, nem de ő az, aki Jeruzsálemben támadta azokat, akik ezt a nevet hívják segítségül, és ide is azért jött, hogy megkötözze a főpapokhoz vigye őket. Sauln"}, {"verse_num": 22, "start_sec": 227.91894736842104, "end_sec": 241.88324324324324, "confidence": 44.61538461538461, "canonical_text": "Saul azonban mind határozottabban lépett fel, s mert azt bizonyította, hogy Jézus a Messiás, zavarba hozta a damaszkuszi zsidókat.", "matched_text": "ga, és megszígyenítette a Damascusban lakó zsidókat azzal, hogy állította, Jézus a Krisztus. Sok nap elmúltával a zsidók tanácsot t"}, {"verse_num": 23, "start_sec": 238.0918918918919, "end_sec": 244.4108108108108, "confidence": 57.14285714285714, "canonical_text": "Amikor már jó idő eltelt, a zsidók megállapodtak, hogy megölik.", "matched_text": "elmúltával a zsidók tanácsot tartottak arról, hogy megölik őt."}, {"verse_num": 24, "start_sec": 243.77891891891892, "end_sec": 255.78486486486486, "confidence": 55.65217391304348, "canonical_text": "Saulnak tudomására jutott szándékuk. Éjjel-nappal szemmel tartották még a kapukat is, csakhogy eltehessék láb alól.", "matched_text": "De Saulnak tudomására jutott az áskálódásuk. A kapukat is őrizték éjjel és nappal, hogy megöljék. A tanítványok azo"}, {"verse_num": 25, "start_sec": 253.25729729729727, "end_sec": 263.07, "confidence": 52.87356321839081, "canonical_text": "A tanítványok azonban kiszöktették éjszaka, kötélen leengedték a falon át egy kosárban.", "matched_text": "k. A tanítványok azonban ének idején kosárban bocsátották le a városfalon keresztül. [Mu"}, {"verse_num": 26, "start_sec": 264.31, "end_sec": 274.85, "confidence": 73.94957983193278, "canonical_text": "Amikor Jeruzsálembe ért, a tanítványokhoz akart csatlakozni, de mind féltek tőle, nem hitték el, hogy tanítvánnyá lett.", "matched_text": "Jeruzsálembe ért, próbált csatlakozni a tanítványokhoz. De mindenki félt tőle, mert nem hitték el, hogy tanítvány lett."}, {"verse_num": 27, "start_sec": 274.23, "end_sec": 291.89, "confidence": 65.05376344086021, "canonical_text": "Végül Barnabás mégis maga mellé vette, és elvitte az apostolokhoz. Elmondta nekik, hogy látta az úton az Urat, hogy mit mondott neki, s milyen bátran beszélt Damaszkuszban Jézus nevében.", "matched_text": "ett. Barnabás azonban megragadta őt, elvezette az apostolokhoz, és elbeszélte nekik, hogyan látta az urat az úton, hogy szólt hozzá, és hogyan járt el hívőként Damascusban Jézus nevében."}, {"verse_num": 28, "start_sec": 293.3414285714286, "end_sec": 300.25, "confidence": 61.9718309859155, "canonical_text": "Ezentúl velük járt-kelt Jeruzsálemben, s nyíltan beszélt az Úr nevében.", "matched_text": "t velük, ki, s bejárván Jeruzsálemben, és hittel cselekedett az úr nevéb"}, {"verse_num": 29, "start_sec": 452.92411764705884, "end_sec": 460.77, "confidence": 45.05494505494505, "canonical_text": "A görög nyelvű zsidókhoz is beszélt, sőt vitába is szállt velük. De azok az életére törtek.", "matched_text": "a fölsegítette, és miután beszólította a szenteket és az özvegyeket, élve megmutatta nekik."}, {"verse_num": 30, "start_sec": 309.6645454545454, "end_sec": 316.81, "confidence": 60.24096385542168, "canonical_text": "Amikor ezt a testvérek megtudták, Cezáreába kísérték, majd onnét Tarzuszba küldték.", "matched_text": "Amikor ezt megtudták, a testvérek lekísérték Cézarejáig, és elbocsátották Tarzusba."}, {"verse_num": 31, "start_sec": 316.0954545454546, "end_sec": 335.51431034482755, "confidence": 80.13245033112582, "canonical_text": "Az egyház egész Júdeában, Galileában és Szamariában békét élvezett. Megerősödött, az Úr félelmében élt, és a Szentlélek segítségével egyre gyarapodott.", "matched_text": ". Az egyház pedig egész Júdiában, Galileában és Szamariában békét élvezett, épült, az úr félelmében élt, és a szent lélek vigasztalásában gyarapodott. T"}, {"verse_num": 32, "start_sec": 332.43666666666667, "end_sec": 343.0060344827586, "confidence": 55.294117647058826, "canonical_text": "Ekkor történt, hogy Péter mindenhová elment, így a Liddában élő hívőkhöz is eljutott.", "matched_text": "Történt pedig, hogy Péter, miközben mindenfelé körül járt, eljutott a liddában élő sz"}, {"verse_num": 33, "start_sec": 342.38172413793103, "end_sec": 350.49775862068964, "confidence": 55.55555555555556, "canonical_text": "Ott egy Éneász nevű béna emberre akadt, aki már nyolc éve ágyban feküdt.", "matched_text": "z. Rátalált egy emberre, név szerint Éneászra, Aki 8 éve ágyban feküdt, m"}, {"verse_num": 34, "start_sec": 352.37068965517244, "end_sec": 364.23258620689654, "confidence": 73.63636363636363, "canonical_text": "Péter megszólította: \"Éneász, Jézus Krisztus meggyógyít. Kelj fel és vesd be ágyadat!\" Az nyomban fel is kelt.", "matched_text": "á Péter, Éneász, Jézus Krisztus meggyógyít téged, kelj föl, vesd be az ágyadat. És az nyomban fölkelt. És láttá"}, {"verse_num": 35, "start_sec": 365.4812068965517, "end_sec": 373.29148148148147, "confidence": 57.6271186440678, "canonical_text": "Lidda és Száron lakói mind ismerték őt, és az Úrhoz tértek.", "matched_text": "liddában és száromban laktak, és megtértek az úrhoz. Jobbéb"}, {"verse_num": 36, "start_sec": 373.83296296296294, "end_sec": 386.82851851851854, "confidence": 68.58974358974359, "canonical_text": "Joppéban volt a tanítványok közt egy asszony, Tabitának hívták, ami annyit jelent, mint Dorkász, azaz gazella. Sok jót tett, és gyakorolta az irgalmasságot.", "matched_text": "volt egy tanítvány, egy Tabita nevű asszony, akinek a neve azt jelenti dorkasz, azaz gazella. Nagyon sok jót cselekedett, és buzgon gyakorolta az irgalmasság"}, {"verse_num": 37, "start_sec": 386.82851851851854, "end_sec": 395.83933333333334, "confidence": 72.91666666666667, "canonical_text": "Épp ezekben a napokban megbetegedett és meghalt. Megmosták, és az emeleti teremben kiterítették.", "matched_text": "Történt pedig azokban a napokban, hogy megbetegedett és meghalt. Megmosdatták, és kiterítették a"}, {"verse_num": 38, "start_sec": 396.48466666666667, "end_sec": 412.48, "confidence": 67.22222222222223, "canonical_text": "Mivel Lidda közel esik Joppéhoz, és a tanítványok meghallották, hogy Péter épp ott van, elküldtek hozzá két férfit ezzel a kéréssel: \"Amilyen gyorsan csak tudsz, gyere el hozzánk!\"", "matched_text": "mben. Mivel azonban jobbe, közel van liddához, Amikor a tanítványok hallották, hogy Péter ott van, elküldtek hozzá két férfit és kérték, ne sajnáld a fáradtságot, hogy hozzánk is el"}, {"verse_num": 39, "start_sec": 412.82, "end_sec": 433.9616, "confidence": 74.6606334841629, "canonical_text": "Péter rögtön útnak indult velük. Amikor megérkezett, fölvezették az emeleti terembe. Itt körülvették az özvegyek, és siránkozva mutogatták neki azokat a ruhákat és köntösöket, amelyeket, amíg élt, Dorkász készített nekik.", "matched_text": "ölkeldinte át Péter, elment velük. És amikor megérkezett, fölvezették a felső terembe, és körülvették mind az özvegyek, és sírva mutogatták neki a ruhákat és köntösöket, amelyeket Dorkas készített, amikor még velük volt. P"}, {"verse_num": 40, "start_sec": 430.346875, "end_sec": 444.86719999999997, "confidence": 61.417322834645674, "canonical_text": "Péter kiparancsolt mindenkit, majd térdre borult és imádkozott. Aztán a halotthoz fordult és felszólította: \"Tabita, kelj fel!\"", "matched_text": "velük volt. Péter akkor mindenkit kiküldött, térdre borulva imádkozott, majd a test felé fordulva mondta, Tabita, kelj föl! Err"}, {"verse_num": 41, "start_sec": 444.86719999999997, "end_sec": 462.74600000000004, "confidence": 76.8361581920904, "canonical_text": "Az kinyitotta a szemét, s amikor meglátta Pétert, felült. (Péter) kezét nyújtotta neki, fölsegítette, aztán behívta a szenteket, meg az özvegyeket, és megmutatta nekik, hogy él.", "matched_text": "kinyitotta a szemét, és meglátva Pétert, felült. Ő pedig a kezét nyújtva fölsegítette, és miután beszólította a szenteket és az özvegyeket, élve megmutatta nekik. Ez közismerté"}, {"verse_num": 42, "start_sec": 460.16647058823526, "end_sec": 470.1157142857143, "confidence": 65.625, "canonical_text": "A dolognak híre futott egész Joppében, és sokan hittek az Úrban.", "matched_text": ". Ez közismerté vált egész jobbéban, és sokan hittek az úrban. Tö"}, {"verse_num": 43, "start_sec": 473.99, "end_sec": 483.97, "confidence": 66.66666666666667, "canonical_text": "Péter pedig még jó ideig Joppéban maradt egy bizonyos Simon nevű tímárnál.", "matched_text": "radt jobbéban egy bizonyos Simon nevű tímárnál. [Music]"}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

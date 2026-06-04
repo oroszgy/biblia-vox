@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Korinthusiakhoz írt első levél 12. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "1CO", "hungarian_name": "Korinthusiakhoz írt első levél", "abbreviation": "1Kor", "book_number": 407, "chapter_count": 16}, "chapter": {"book_usx": "1CO", "chapter_num": 12, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/53_korint1/korintusiaknak-irt-1-level-12-fejezet.mp3", "verse_count": 31, "aligned_count": 31}, "verses": [{"verse_num": 1, "start_sec": 1.570769230769231, "end_sec": 10.21, "confidence": 98.73417721518987, "canonical_text": "Nem akarom, testvérek, hogy a lelki adományokat illetően tudatlanok maradjatok.", "matched_text": "Nem akarom testvérek, hogy a lelki adományokat illetően tudatlanok maradjatok."}, {"verse_num": 2, "start_sec": 10.64, "end_sec": 21.04, "confidence": 100.0, "canonical_text": "Emlékeztek, hogy amikor még pogányok voltatok, hogyan hajszoltak benneteket ellenkezést nem tűrve a néma bálványok elé.", "matched_text": "Emlékeztek, hogy amikor még pogányok voltatok, hogyan hajszoltak benneteket ellenkezést nem tűrve a néma bálványok elé."}, {"verse_num": 3, "start_sec": 20.39, "end_sec": 41.6064705882353, "confidence": 93.45238095238095, "canonical_text": "Ezért értésetekre adom, hogy aki Isten Lelke által szól, az egy sem mondja: \"Átkozott legyen Jézus.\" De azt sem mondhatja senki: \"Jézus az Úr\", csak a Szentlélek által.", "matched_text": "Ezért értéstekre adom, hogy aki Isten lelke által szól, az egy sem mondja, Átkozott legyen Jézus, de azt sem mondhatja senki, Jézus az Úr, csak a Szent Lélek által. A l"}, {"verse_num": 4, "start_sec": 40.35, "end_sec": 46.00411764705883, "confidence": 98.33333333333333, "canonical_text": "A lelki adományok ugyan különfélék, a Lélek azonban ugyanaz.", "matched_text": "A lelki adományok ugyan különfélék, a lélek azonban ugyanaz."}, {"verse_num": 5, "start_sec": 46.00411764705883, "end_sec": 51.03, "confidence": 100.0, "canonical_text": "A szolgálatok is különfélék, de az Úr ugyanaz.", "matched_text": "A szolgálatok is különfélék, de az Úr ugyanaz."}, {"verse_num": 6, "start_sec": 51.22, "end_sec": 59.145714285714284, "confidence": 97.26027397260275, "canonical_text": "Sokfélék a jelek is, de Isten, aki mindenben mindent véghezvisz, ugyanaz.", "matched_text": "Sokfélék a jelek is, de Isten, aki mindenben mindent végbe visz, ugyanaz."}, {"verse_num": 7, "start_sec": 59.145714285714284, "end_sec": 65.09, "confidence": 98.55072463768117, "canonical_text": "A Lélek megnyilvánulásait mindenki azért kapja, hogy használjon vele.", "matched_text": "A lélek megnyilvánulásait mindenki azért kapja, hogy használjon vele."}, {"verse_num": 8, "start_sec": 65.32, "end_sec": 74.4728, "confidence": 98.11320754716981, "canonical_text": "Az egyik ugyanis a bölcsesség ajándékát kapja a Lélektől, a másik a tudás adományát ugyanattól a Lélektől,", "matched_text": "Az egyik ugyanis a bölcsesség ajándékát kapja a lélektől, a másik a tudás adományát ugyanattól a lélektől,"}, {"verse_num": 9, "start_sec": 74.4728, "end_sec": 85.07642857142858, "confidence": 97.27272727272728, "canonical_text": "a harmadik a hitet kapja ugyanabban a Lélekben vagy pedig a gyógyítás adományát szintén ugyanabban a Lélekben.", "matched_text": "harmadik a hitet kapja ugyanabban a lélekben, vagy pedig a gyógyítás adományát szintén ugyanabban a lélekben."}, {"verse_num": 10, "start_sec": 85.07642857142858, "end_sec": 103.31, "confidence": 96.46464646464646, "canonical_text": "Van, aki csodatevő hatalmat kap, van, akinek a prófétálásnak vagy a szellemek elbírálásának képessége jut osztályrészül. Más különféle nyelveket vagy pedig a nyelvek értelmezését nyeri el ajándékul.", "matched_text": "an, aki csodatévő hatalmat kap. Van, akinek a profétálásnak, vagy a szellemek elbírálásának képessége jut osztályrészül. Más, különféle nyelveket, vagy pedig a nyelvek értelmezését nyeri el ajándékul"}, {"verse_num": 11, "start_sec": 103.6, "end_sec": 112.72, "confidence": 96.3855421686747, "canonical_text": "Mindezt azonban egy és ugyanaz a Lélek műveli, tetszése szerint osztva kinek-kinek.", "matched_text": "Mindezt azonban egy és ugyanaz a lélek műveli, tetszése szerint osztva kinek, kinek."}, {"verse_num": 12, "start_sec": 114.12, "end_sec": 123.88, "confidence": 98.01980198019803, "canonical_text": "A test ugyan egy, de sok tagja van, a testnek ez a sok tagja azonban mégis egy test. Így Krisztus is.", "matched_text": "A test ugyan egy, de sok tagja van. A testnek ez a sok tagja azonban mégis egy test. Így Krisztus is."}, {"verse_num": 13, "start_sec": 123.4152380952381, "end_sec": 138.75, "confidence": 96.40718562874252, "canonical_text": "Mi ugyanis mindnyájan egy Lélekben egy testté lettünk a keresztséggel: akár zsidók, akár pogányok, akár rabszolgák, akár szabadok. Mindannyiunkat egy Lélek itatott át.", "matched_text": "Mi ugyanis minnyájan egy lélekben, egy testé lettünk a keresztséggel. Akár zsidók, akár pogányok, akár rabszolgák, akár szabadok. Mindannyiunkat egy lélek itatott át."}, {"verse_num": 14, "start_sec": 139.56, "end_sec": 143.84333333333333, "confidence": 100.0, "canonical_text": "Mert a test nem egyetlen tagból áll, hanem sokból.", "matched_text": "Mert a test nem egyetlen tagból áll, hanem sokból."}, {"verse_num": 15, "start_sec": 143.84333333333333, "end_sec": 153.06533333333334, "confidence": 93.87755102040816, "canonical_text": "Ha a láb azt mondaná is: \"Nem vagyok kéz, tehát nem tartozom a testhez\", azért a testhez tartozik.", "matched_text": "Ha a láb azt mondaná is, nem vagyok kéz, tehát nem tartozom a testhez. Azért a testhez tartozik. Ha"}, {"verse_num": 16, "start_sec": 151.93407407407406, "end_sec": 160.83066666666667, "confidence": 90.19607843137256, "canonical_text": "Ha pedig a fül azt mondaná: \"Nem vagyok szem, tehát nem tartozom a testhez\", azért a testhez tartozik.", "matched_text": "ozik. Ha pedig a fül mondaná, nem vagyok szem, tehát nem tartozom a testhez. Azért a testhez tartozik."}, {"verse_num": 17, "start_sec": 160.34533333333334, "end_sec": 169.44, "confidence": 96.7032967032967, "canonical_text": "Ha a test csupa szem volna, hol maradna a hallás? Ha meg csupa hallás, hol volna a szaglás?", "matched_text": "Ha a test csupa szembólna, hol maradna a hallás? Ha meg csupa hallás, hol volna a szaglás?"}, {"verse_num": 18, "start_sec": 169.44, "end_sec": 176.34, "confidence": 98.66666666666667, "canonical_text": "Isten határozta meg minden egyes tag feladatát a testben, tetszése szerint.", "matched_text": "Isten határozta meg minden egyes tag feladatát a testben tetszése szerint. H"}, {"verse_num": 19, "start_sec": 175.765, "end_sec": 180.94, "confidence": 100.0, "canonical_text": "Ha valamennyi egy tag volna, hol volna a test?", "matched_text": "Ha valamennyi egy tag volna, hol volna a test?"}, {"verse_num": 20, "start_sec": 181.11, "end_sec": 185.9914814814815, "confidence": 100.0, "canonical_text": "Így azonban sok a tag, de a test csak egy.", "matched_text": "Így azonban sok a tag, de a test csak egy."}, {"verse_num": 21, "start_sec": 185.50333333333333, "end_sec": 195.04833333333332, "confidence": 89.58333333333334, "canonical_text": "A szem nem mondhatja a kéznek: \"Nincs rád szükségem\" vagy a fej a lábnak: \"Nincs rád szükségem.\"", "matched_text": "gy. A szem nem mondhatja a kéznek, nincs rá szükségem, vagy a fej a lábnak, nincs rá szükségem. E"}, {"verse_num": 22, "start_sec": 194.44, "end_sec": 199.30666666666667, "confidence": 98.41269841269842, "canonical_text": "Ellenkezőleg, a gyöngébbnek látszó tagok sokkal szükségesebbek.", "matched_text": "Ellenkezőleg, a gyöngébnek látszó tagok sokkal szükséges ebbek."}, {"verse_num": 23, "start_sec": 199.30666666666667, "end_sec": 209.6855, "confidence": 99.2248062015504, "canonical_text": "Sőt a test alacsonyabb rendű tagjait nagyobb gonddal vesszük körül, és a tisztességtelen tagok nagyobb tisztességben részesülnek,", "matched_text": "Sőt, a test alacsonyabb rendű tagjait nagyobb gonddal vesszük körül, és a tisztességtelen tagok nagyobb tisztességben részesülnek."}, {"verse_num": 24, "start_sec": 209.6855, "end_sec": 223.2755, "confidence": 99.35897435897436, "canonical_text": "a tisztességes tagoknak ugyanis nincs erre szükségük. De Isten alkotta így a testet, és azért részesítette az alacsonyabb rendű tagot nagyobb tisztességben,", "matched_text": "A tisztességes tagoknak ugyanis nincs erre szükségük. De Isten alkotta így a testet, és azért részesítette az alacsonyabb rendű tagot nagyobb tisztességben,"}, {"verse_num": 25, "start_sec": 223.2755, "end_sec": 230.2, "confidence": 100.0, "canonical_text": "hogy a testben ne támadjon meghasonlás, hanem a tagok törődjenek egymással.", "matched_text": "hogy a testben ne támadjon meghasonlás, hanem a tagok törődjenek egymással."}, {"verse_num": 26, "start_sec": 230.84, "end_sec": 241.83, "confidence": 98.36065573770492, "canonical_text": "Ha szenved az egyik tag, valamennyi együtt szenved vele, s ha tiszteletben van része az egyik tagnak, mindegyik örül vele.", "matched_text": "Ha szenved az egyik tag, valamennyi együtt szenved vele. És ha tiszteletben van része az egyik tagnak, mindegyik örül vele."}, {"verse_num": 27, "start_sec": 243.46, "end_sec": 249.32000000000002, "confidence": 95.91836734693877, "canonical_text": "Ti Krisztusnak teste vagytok, s egyenként tagjai.", "matched_text": "i Krisztusnak teste vagytok, s egyenként a tagjai."}, {"verse_num": 28, "start_sec": 249.32000000000002, "end_sec": 268.91, "confidence": 96.3917525773196, "canonical_text": "Ám az Egyházban Isten némelyeket apostollá, másokat prófétává, ismét másokat tanítóvá tett. Adott csodatevő hatalmat, gyógyítóerőt, segítőkészséget, kormányzóképességet, különféle nyelvadományt.", "matched_text": "az egyházban Isten némelyeket apostollá, másokat profétává, ismét másokat tanítóvá tette. Adott csodatévő hatalmat, gyógyító erőt, segítőkészséget, kormányzó képességet, különféle nyelv adományt"}, {"verse_num": 29, "start_sec": 269.19, "end_sec": 278.22222222222223, "confidence": 91.75257731958763, "canonical_text": "Vajon mind apostolok? Mind próféták? Mind tanítók? Valamennyien rendelkeznek csodatevő hatalommal", "matched_text": "Vajon mind apostolok, mind proféták, mind tanítók, valamennyien rendelkeznek csodatévő hatalommal"}, {"verse_num": 30, "start_sec": 278.22222222222223, "end_sec": 283.97, "confidence": 98.14814814814815, "canonical_text": "és gyógyítóerővel? Mindnyájan értelmezik a beszédeket?", "matched_text": "és gyógyító erővel? Minnyájan értelmezik a beszédeket?"}, {"verse_num": 31, "start_sec": 284.74, "end_sec": 294.59, "confidence": 98.96907216494846, "canonical_text": "Törekedjetek azonban az értékesebb adományokra! Ezért mindennél magasztosabb utat mutatok nektek.", "matched_text": "Törekedjetek azonban az értékesebb adományokra. Ezért mindennél magasztosabb utat mutatok nektek."}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

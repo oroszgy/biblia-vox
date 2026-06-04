@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>János evangéliuma 14. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "JHN", "hungarian_name": "János evangéliuma", "abbreviation": "Jn", "book_number": 404, "chapter_count": 21}, "chapter": {"book_usx": "JHN", "chapter_num": 14, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/50_janos/janos-evangeliuma-14-fejezet.mp3", "verse_count": 31, "aligned_count": 31}, "verses": [{"verse_num": 1, "start_sec": 1.96, "end_sec": 11.14938775510204, "confidence": 87.01298701298701, "canonical_text": "Ne legyen nyugtalan a szívetek! Higgyetek az Istenben és bennem is higgyetek!", "matched_text": "Ne nyugtalankodjék a szívetek, higgyetek az Istenben, és bennem is higgyetek."}, {"verse_num": 2, "start_sec": 10.484897959183673, "end_sec": 23.774693877551023, "confidence": 72.64957264957265, "canonical_text": "Atyám házában sok hely van, ha nem így volna, megmondtam volna nektek. Azért megyek el, hogy helyet készítsek nektek.", "matched_text": "k. Atyám házában sok lakóhely van. Ha nem így lenne, mondtam volna-e, hogy elmegyek helyet készíteni nektek? És ha elm"}, {"verse_num": 3, "start_sec": 22.44571428571429, "end_sec": 36.400000000000006, "confidence": 62.878787878787875, "canonical_text": "Ha aztán elmegyek, és helyet készítek nektek, újra eljövök, és magammal viszlek benneteket, hogy ti is ott legyetek, ahol én vagyok.", "matched_text": "elmentem, és elkészítettem számotokra a helyet, Ismét eljövök, és magamhoz viszlek titeket, hogy ahol én vagyok, ti is ott legyetek."}, {"verse_num": 4, "start_sec": 35.735510204081635, "end_sec": 41.31, "confidence": 76.19047619047619, "canonical_text": "Hisz ismeritek oda az utat, ahová megyek.\"", "matched_text": ". Ismeritek az utat oda, ahová megyek. Mond"}, {"verse_num": 5, "start_sec": 39.3, "end_sec": 48.68, "confidence": 72.61904761904762, "canonical_text": "Erre Tamás azt mondta: \"Uram, nem tudjuk, hova mégy, hát hogy ismerhetnénk az utat?\"", "matched_text": "á megyek. Mondta neki Tamás, Uram, nem tudjuk hová mégy, hogyan ismerhetnénk az utat."}, {"verse_num": 6, "start_sec": 49.92526315789474, "end_sec": 62.326153846153844, "confidence": 66.35514018691589, "canonical_text": "\"Én vagyok az Út, az Igazság és az Élet - válaszolta Jézus. - Senki sem juthat el az Atyához, csak általam.", "matched_text": "us, én vagyok az út, az igazság és az élet. Senki sem jön az atyához, Csak általam. Ha megismertetek engem,"}, {"verse_num": 7, "start_sec": 60.0, "end_sec": 70.08, "confidence": 68.6046511627907, "canonical_text": "Ha engem ismernétek, Atyámat is ismernétek, de mostantól fogva ismeritek és látjátok.\"", "matched_text": "Ha megismertetek engem, atyámat is ismerni fogjátok, és már ismeritek, és láttátok őt."}, {"verse_num": 8, "start_sec": 70.44, "end_sec": 78.99796610169491, "confidence": 72.36842105263158, "canonical_text": "Erre Fülöp kérte: \"Uram, mutasd meg nekünk az Atyát, s az elég lesz nekünk.\"", "matched_text": "ta neki Fülöp, Uram, mutasd meg nekünk az atyát, és elég nekünk. Mondta neki"}, {"verse_num": 9, "start_sec": 77.8, "end_sec": 93.97254237288135, "confidence": 65.60509554140128, "canonical_text": "\"Már oly régóta veletek vagyok - felelte Jézus -, és nem ismersz, Fülöp? Aki engem látott, az Atyát is látta. Hogy mondhatod hát: Mutasd meg nekünk az Atyát?", "matched_text": "a neki Jézus, annyi ideje veletek vagyok, és nem ismertél meg engem, Fülöp, aki látott engem, Látta az atyád. Hogyan mondhatod te? Mutasd meg nekünk az atyád."}, {"verse_num": 10, "start_sec": 93.3735593220339, "end_sec": 111.34305084745763, "confidence": 73.37278106508876, "canonical_text": "Nem hiszed, hogy én az Atyában vagyok s az Atya bennem? A szavakat, amelyeket hozzátok intézek, nem magamtól mondom, s a tetteket is az Atya viszi végbe, aki bennem van.", "matched_text": "yád. Nem hiszed, hogy én az atyában vagyok, és az atya bennem van? Az igéket, amelyeket én mondok nektek, nem magamtól mondom. Az atya pedig, aki mindig bennem van, teszi"}, {"verse_num": 11, "start_sec": 114.50099999999999, "end_sec": 126.68980769230768, "confidence": 78.30188679245282, "canonical_text": "Higgyétek, hogy én az Atyában vagyok, s az Atya bennem. Ha másképpen nem, legalább a tetteimért higgyétek.", "matched_text": "nekem, hogy én az atyában vagyok, és az atya bennem van. Ha másért nem, magukért a tettekért higgyétek. Bi"}, {"verse_num": 12, "start_sec": 126.07, "end_sec": 142.185, "confidence": 73.05389221556887, "canonical_text": "Bizony, bizony, mondom nektek: Aki hisz bennem, ugyanazokat a tetteket viszi végbe, amelyeket én végbevittem, sőt még nagyobbakat is végbevisz, mert az Atyához megyek,", "matched_text": "Bizony-bizony mondom nektek, aki hisz bennem, maga is művelni fogja a tetteket, amelyeket én cselekszem, és ezeknél nagyobbakat is fog művelni, mert én az atyához megye"}, {"verse_num": 13, "start_sec": 144.04442307692307, "end_sec": 153.34153846153848, "confidence": 69.04761904761905, "canonical_text": "s amit a nevemben kértek, azt megteszem nektek, hogy az Atya megdicsőüljön a Fiúban,", "matched_text": "jd az atyától az én nevemben, megteszem, hogy az atya megdicsőjön a fiúban. Ha valami"}, {"verse_num": 14, "start_sec": 153.34153846153848, "end_sec": 159.03702127659574, "confidence": 65.11627906976744, "canonical_text": "bármit kértek a nevemben, megteszem nektek.", "matched_text": "m fogtok kérni a nevemben, én teszem meg. Ha"}, {"verse_num": 15, "start_sec": 159.03702127659574, "end_sec": 162.22212765957448, "confidence": 85.36585365853658, "canonical_text": "Ha szerettek, tartsátok meg parancsaimat,", "matched_text": "szerettek engem, tartsátok meg parancsaima"}, {"verse_num": 16, "start_sec": 160.31106382978723, "end_sec": 171.77744680851063, "confidence": 64.70588235294117, "canonical_text": "én meg majd kérem az Atyát, és más vigasztalót ad nektek: az Igazság Lelkét, aki örökké veletek marad.", "matched_text": "k meg parancsaimat, és én kérni fogom az atyát, és más vigasztalót ad nektek, hogy veletek maradjon örö"}, {"verse_num": 17, "start_sec": 174.32553191489362, "end_sec": 188.34, "confidence": 81.65137614678899, "canonical_text": "A világ nem kaphatja meg, mert nem látja és nem ismeri. De ti ismeritek, mert bennetek van és bennetek marad.", "matched_text": "világ nem kaphat meg, mert nem látja, és nem is ismeri őt. Ti ismeritek őt, mert nálatok marad, és bennetek l"}, {"verse_num": 18, "start_sec": 187.70297872340427, "end_sec": 193.8068, "confidence": 71.9298245614035, "canonical_text": "Nem hagylak árván benneteket, hanem visszajövök hozzátok.", "matched_text": "sz. Nem hagyj lak árván titeket, eljövök hozzátok. Még egy"}, {"verse_num": 19, "start_sec": 193.8068, "end_sec": 206.2412, "confidence": 74.73684210526315, "canonical_text": "Rövid idő, s a világ nem lát többé, ti azonban láttok, mert én élek, és ti is élni fogtok majd.", "matched_text": "idő, és a világ már nem lát engem. Ti pedig látni fogtok, mert én élek, és ti is élni fogtok. A"}, {"verse_num": 20, "start_sec": 205.676, "end_sec": 214.154, "confidence": 73.07692307692308, "canonical_text": "Azon a napon majd megtudjátok, hogy Atyámban vagyok, ti bennem, s én bennetek.", "matched_text": "Azon a napon ti majd megismeritek, hogy én az én atyámban vagyok, ti én bennem,"}, {"verse_num": 21, "start_sec": 219.8425, "end_sec": 237.5, "confidence": 68.58974358974359, "canonical_text": "Aki ismeri és teljesíti parancsaimat, az szeret engem. Aki szeret engem, azt Atyám is szeretni fogja. Én is szeretni fogom, és kinyilatkoztatom magam neki.\"", "matched_text": "aimat, és megtartja azokat, ő az, aki szeret engem. Aki pedig szeret engem, azt Szeretni fogja az én atyám, én is szeretni fogom őt, és kinyilvánítom neki ma"}, {"verse_num": 22, "start_sec": 238.54, "end_sec": 251.7504347826087, "confidence": 61.6, "canonical_text": "Ekkor Júdás - nem az iskarióti - megkérdezte: \"Uram, hogy van az, hogy nekünk akarod magad kinyilatkoztatni, nem a világnak?\"", "matched_text": "ta neki Júdás, nem az akari Jóti, Uram, mi történt eddig, hogy nekünk fogod kinyilvánítani magadat, és nem a világnak? Jézus v"}, {"verse_num": 23, "start_sec": 250.54, "end_sec": 262.64434782608697, "confidence": 67.44186046511628, "canonical_text": "Jézus így folytatta: \"Aki szeret engem, az megtartja tanításomat, s Atyám is szeretni fogja. Hozzá megyünk és benne fogunk lakni.", "matched_text": "Jézus válaszolt, és mondta neki, aki szeret engem, megtartja tanításomat. Atyám is szeretni fogja őt, és eljövünk hozzá, és lakóhe"}, {"verse_num": 24, "start_sec": 263.2495652173913, "end_sec": 277.1695652173913, "confidence": 76.61290322580645, "canonical_text": "Aki nem szeret, az nem tartja meg tanításomat. A tanítás, amelyet hallotok, nem az enyém, hanem az Atyáé, aki engem küldött.", "matched_text": "ála. Aki nem szeret engem, a tanításomat nem tartja meg. És a tanítás, amit hallotok, nem az enyém, hanem azé, aki küldött en"}, {"verse_num": 25, "start_sec": 279.16, "end_sec": 284.36275862068965, "confidence": 68.62745098039215, "canonical_text": "Ezeket akartam nektek mondani, amíg veletek vagyok.", "matched_text": "Ezeket elmondtam nektek, amíg veletek voltam. A viga"}, {"verse_num": 26, "start_sec": 283.71241379310345, "end_sec": 298.02, "confidence": 82.51748251748252, "canonical_text": "S a Vigasztaló, a Szentlélek, akit majd a nevemben küld az Atya, megtanít benneteket mindenre és eszetekbe juttat mindent, amit mondtam nektek.", "matched_text": "asztaló pedig, a szent lélek, Akit az atya a nevemben küld, megtanít majd titeket mindenre, és eszetekbe juttat mindent, amit elmondtam nektek."}, {"verse_num": 27, "start_sec": 297.3696551724138, "end_sec": 312.32, "confidence": 91.42857142857143, "canonical_text": "Békességet hagyok rátok. Az én békémet adom nektek. Nem úgy adom nektek, ahogy a világ adja. Ne nyugtalankodjék a szívetek, s ne csüggedjen.", "matched_text": "Békességet hagyok rátok, az én békémet adom nektek. Én nem úgy adom nektek, ahogy a világ adja. Ne nyugtalankodjék a szívetek, és ne rettegj"}, {"verse_num": 28, "start_sec": 312.44, "end_sec": 327.96645161290326, "confidence": 87.41721854304636, "canonical_text": "Hiszen hallottátok, hogy azt mondtam: Elmegyek, de visszajövök hozzátok. Ha szeretnétek, örülnétek, hogy az Atyához megyek, mert az Atya nagyobb nálam.", "matched_text": "Hallottátok, hogy mondtam nektek, elmegyek, És visszajövök hozzátok. Ha szeretnétek engem, örülnétek, hogy az atyához megyek, mert az atya nagyobb nálam"}, {"verse_num": 29, "start_sec": 327.22709677419357, "end_sec": 335.36, "confidence": 72.72727272727273, "canonical_text": "Előre megmondtam nektek, mielőtt megtörtént volna, hogy ha majd bekövetkezik, higgyetek.", "matched_text": "álam. És most, megmondom nektek, mielőtt megtörténik, hogyha majd megtörtént, higgyétek."}, {"verse_num": 30, "start_sec": 335.42, "end_sec": 343.91970588235296, "confidence": 68.67469879518072, "canonical_text": "Már nem beszélek soká nektek, mert közeleg a világ fejedelme. Rajtam nincs hatalma.", "matched_text": "Már nem sokat beszélek hozzátok, mert jön a világfejedelme, és bennem nincs semmie."}, {"verse_num": 31, "start_sec": 345.2273529411765, "end_sec": 365.11, "confidence": 65.83333333333333, "canonical_text": "De a világ így tudja meg, hogy szeretem az Atyát, és végbeviszem, amivel az Atya megbízott. Keljetek föl, menjünk innét!", "matched_text": "erje a világ, hogy szeretem az atyát, és ahogy parancsolta nekem az atya, úgy cselekszem. Keljetek föl, menjünk innéd. [S"}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

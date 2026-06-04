@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Péter második levele 1. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "2PE", "hungarian_name": "Péter második levele", "abbreviation": "2Pt", "book_number": 422, "chapter_count": 3}, "chapter": {"book_usx": "2PE", "chapter_num": 1, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/68_peter2/szent-peter-2-level-01-fejezet.mp3", "verse_count": 21, "aligned_count": 21}, "verses": [{"verse_num": 1, "start_sec": 5.966451612903226, "end_sec": 25.533793103448275, "confidence": 81.90954773869346, "canonical_text": "Simon Péter, Jézus Krisztusnak szolgája és apostola azoknak, akik velünk együtt ugyanolyan mértékben részesültek a mindennél értékesebb hitben Istenünk és Megváltónk, Jézus Krisztus igazságosságában.", "matched_text": "Simon Péter, Jézus Krisztusnak szolgája és apostola azoknak, akik velünk együtt ugyanabban a mindennél értékesebb hitben részesültek, Istenünk és megváltónk Jézus Krisztus irgalmából. Töltsön el benne"}, {"verse_num": 2, "start_sec": 23.2, "end_sec": 32.535172413793106, "confidence": 71.08433734939759, "canonical_text": "Gyarapodjon bennetek a kegyelem és béke Isten és Urunk, Jézus Krisztus ismeretében.", "matched_text": "sön el benneteket kegyelemmel és békével Istennek és Urunknak, Jézusnak ismerete. Is"}, {"verse_num": 3, "start_sec": 30.979310344827585, "end_sec": 46.66416666666667, "confidence": 94.28571428571428, "canonical_text": "Isteni ereje az Isten szerinti jámbor élethez mindent megadott nekünk: megismertük azt, aki saját dicsőségével és erejével meghívott minket.", "matched_text": "te. Isteni ereje az Isten szerinti jámbor élethez mindent megadott nekünk. Megismertük azt, aki dicsőségével és erejével meghívott minket. Ér"}, {"verse_num": 4, "start_sec": 45.92, "end_sec": 63.78, "confidence": 98.3957219251337, "canonical_text": "Értékes és nagy ígéreteket kaptunk, hogy általuk részeseivé legyetek az isteni természetnek, és megmeneküljetek a romlottságtól, amely a világban uralkodik a bűnös kívánság következtében.", "matched_text": "Értékes és nagy ígéreteket kaptunk, hogy általuk részeseivé legyetek az Isteni természetnek. És megmeneküljetek a romlottságtól, amely a világban uralkodik a bűnös kívánság következtében."}, {"verse_num": 5, "start_sec": 63.035833333333336, "end_sec": 74.2013559322034, "confidence": 96.19047619047619, "canonical_text": "Éppen ezért minden igyekezetetekkel legyetek rajta, hogy hitetek megteremje az erényt, az erény a tudást,", "matched_text": ". Éppen ezért minden igyekezettel legyetek rajta, hogy hitetek megteremje az erényt, az erény a tudást, a"}, {"verse_num": 6, "start_sec": 71.66101694915255, "end_sec": 86.26796610169492, "confidence": 77.16535433070865, "canonical_text": "a tudás a magatok fölötti uralmat, a magatok fölötti uralom a jóban való kitartást, a jóban való kitartás a vallásos érzületet,", "matched_text": "erény a tudást, a tudás az önuralmat, az önuralom a jóban való kitartást, a jóban való kitartás pedig a vallásos érzületet. A va"}, {"verse_num": 7, "start_sec": 84.9977966101695, "end_sec": 91.98372881355934, "confidence": 98.63013698630137, "canonical_text": "a vallásos érzület a testvériességet, a testvériesség pedig a szeretetet.", "matched_text": "vallásos érzület a testvériességet, a testvériesség pedig a szeretetet. H"}, {"verse_num": 8, "start_sec": 90.7135593220339, "end_sec": 101.51, "confidence": 94.44444444444444, "canonical_text": "Mert ha ezek megvannak és gyarapodnak bennetek, nem marad Urunkra, Jézus Krisztusra vonatkozó ismeretetek hatástalan és meddő.", "matched_text": "et. Ha ezek megvannak és gyarapodnak bennetek, nem marad Urunkra, Jézus Krisztusra vonatkozó ismeretetek hatástalan és terméket"}, {"verse_num": 9, "start_sec": 101.51, "end_sec": 112.88, "confidence": 100.0, "canonical_text": "Az, akiben ezek nincsenek meg, vak és rövidlátó, mert megfeledkezett róla, hogy régi bűneitől megtisztuljon.", "matched_text": "Az, akiben ezek nincsenek meg, vak és rövidlátó, mert megfeledkezett róla, hogy régi bűneitől megtisztuljon."}, {"verse_num": 10, "start_sec": 112.122, "end_sec": 129.62529411764706, "confidence": 95.78313253012048, "canonical_text": "Testvérek, ezért még inkább törekedjetek rá, hogy hivatásotokat és kiválasztottságotokat tetteitekkel megpecsételjétek, mert ha ezt megteszitek, nem botoltok el soha.", "matched_text": ". Testvérek, ezért még inkább törekedjetek rá, hogy hivatástokat és kiválasztástokat tetteitekkel megpecsételjétek, mert ha ezt megteszitek, nem botoltok el soha. Így"}, {"verse_num": 11, "start_sec": 128.06764705882352, "end_sec": 139.75, "confidence": 93.45794392523365, "canonical_text": "Így lesz ugyanis könnyű számotokra a bemenetel Urunknak és Megváltónknak, Jézus Krisztusnak örök országába.", "matched_text": "Így ugyanis könnyű lesz számotokra a bemenetel Urunknak és megváltónknak Jézus Krisztusnak örök országába."}, {"verse_num": 12, "start_sec": 140.51, "end_sec": 155.2914814814815, "confidence": 93.38235294117648, "canonical_text": "Ezért folyton azon leszek, hogy emlékeztesselek benneteket ezekre, ha ismeritek is, és biztosak vagytok is a most felfogható igazságban.", "matched_text": "Szüntelenül azon leszek, hogy emlékeztesselek benneteket ezekre, ha ismeritek is, és biztosak vagytok is a most felfogható igazságban. K"}, {"verse_num": 13, "start_sec": 153.34684210526316, "end_sec": 162.67777777777778, "confidence": 83.83838383838383, "canonical_text": "Kötelességemnek tartom ugyanis, hogy amíg e sátorban élek, buzdítsalak és ösztönözzelek benneteket,", "matched_text": "ban. Kötelességemnek tartom ugyanis, hogy amíg élek, buzdítsalak, és öztökéljelek benneteket, mert t"}, {"verse_num": 14, "start_sec": 160.66333333333333, "end_sec": 172.07851851851854, "confidence": 82.6086956521739, "canonical_text": "mert tudom, hogy közel van sátram levetése, mint azt Urunk, Jézus Krisztus is tudtomra adta.", "matched_text": "t, mert tudom, hogy közel van életem vége, hiszen Urunk Jézus Krisztus is tudtomra adta. De i"}, {"verse_num": 15, "start_sec": 170.73555555555555, "end_sec": 177.45037037037036, "confidence": 83.87096774193549, "canonical_text": "De igyekszem, hogy ezekre halálom után is mindig emlékezzetek.", "matched_text": "De igyekszem, hogy ezekről halálom után is mindig meg tudjatok"}, {"verse_num": 16, "start_sec": 177.45037037037036, "end_sec": 191.75684210526316, "confidence": 86.0, "canonical_text": "Mert nem kieszelt meséket vettünk alapul, amikor tudtul adtuk nektek Jézus Krisztus hatalmát és eljövetelét, mert hiszen szemlélői voltunk fenségének.", "matched_text": "Mert nem kieszelt meséket vettünk alapul, amikor tudtul adtuk nektek Krisztus Jézus hatalmát és megjelenését, hiszen szemlélői voltunk nagyságának. Am"}, {"verse_num": 17, "start_sec": 190.20851851851853, "end_sec": 210.1484210526316, "confidence": 89.28571428571429, "canonical_text": "Amikor ugyanis az Atyaisten tiszteletet nyilvánított iránta és megdicsőítette, ez a szózat hallatszott rá vonatkozóan a fölséges dicsőség hazájából: \"Ez az én szeretett Fiam, akiben kedvem telik.\"", "matched_text": "Amikor ugyanis az Atyaisten tiszteletet nyilvánított iránta és megdicsőítette, Ez a szózat hallatszott a fölséges dicsőség hazájából, ez az én szeretett fiam, akiben kedvem tellik. Ezt az égből jö"}, {"verse_num": 18, "start_sec": 206.8642105263158, "end_sec": 216.86645161290323, "confidence": 93.97590361445783, "canonical_text": "Ezt az égből jövő szózatot mi is hallottuk, amikor ott voltunk vele a szent hegyen.", "matched_text": ". Ezt az égből jövő szózatot mi hallottuk, amikor ott voltunk vele a Szenthegyen. Íg"}, {"verse_num": 19, "start_sec": 216.28, "end_sec": 234.46, "confidence": 97.43589743589743, "canonical_text": "Így a prófétai jövendöléseket még jobban hisszük. Jól teszitek, ha figyeltek rájuk, mint sötétben világító lámpásra, amíg a nappal fel nem virrad, és a hajnalcsillag fel nem ragyog a szívetekben.", "matched_text": "Így a profétai jövendöléseket még jobban hisszük. Jól teszitek, ha figyeltek rájuk, mint sötétben világító lámpásra, Amíg a nappal föl nem virrad, és a hajnal csillag föl nem ragyog a szívetekben."}, {"verse_num": 20, "start_sec": 233.87354838709678, "end_sec": 245.3460606060606, "confidence": 96.22641509433963, "canonical_text": "Először is azt értsétek meg, hogy az Írásnak egyetlenegy jövendölése sem származik önkényes értelmezésből.", "matched_text": "n. Először is azt értsétek meg, hogy az írásnak egyetlen jövendölése sem származik önkényes értelmezésből."}, {"verse_num": 21, "start_sec": 245.3460606060606, "end_sec": 259.74, "confidence": 94.03973509933775, "canonical_text": "Hisz sohasem keletkezett jövendölés emberi akaratból, hanem mindig csak a Szentlélektől sugalmazva beszéltek - Isten megbízottaiként - a szent emberek.", "matched_text": "Hiszen soha sem keletkezett jövendölés emberi akaratból, hanem mindig csak a Szentlélektől sugalmazva beszéltek, Isten megbizottaiként. A Szent Emberek."}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

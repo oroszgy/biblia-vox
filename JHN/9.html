@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>János evangéliuma 9. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "JHN", "hungarian_name": "János evangéliuma", "abbreviation": "Jn", "book_number": 404, "chapter_count": 21}, "chapter": {"book_usx": "JHN", "chapter_num": 9, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/50_janos/janos-evangeliuma-09-fejezet.mp3", "verse_count": 41, "aligned_count": 41}, "verses": [{"verse_num": 1, "start_sec": 1.5066666666666666, "end_sec": 8.780000000000001, "confidence": 55.93220338983051, "canonical_text": "Egyszer útközben (Jézus) látott egy vakon született embert.", "matched_text": ". És eltávozva onnét meglátott egy születésétől vakembert. É"}, {"verse_num": 2, "start_sec": 8.780000000000001, "end_sec": 18.3, "confidence": 80.85106382978724, "canonical_text": "Tanítványai megkérdezték tőle: \"Mester, ki vétkezett, ez vagy a szülei, hogy vakon született?\"", "matched_text": "megkérdezték tőle a tanítványai, mester, ki vétkezett? Ez vagy a szülei, hogy vakon született?"}, {"verse_num": 3, "start_sec": 19.901818181818182, "end_sec": 32.519999999999996, "confidence": 56.63716814159292, "canonical_text": "\"Sem ez nem vétkezett - felelte Jézus -, sem a szülei, hanem az Isten tetteinek kell rajta nyilvánvalóvá válniuk.", "matched_text": ", sem ez nem vétkezett, sem a szülei, hanem meg kell nyilvánulnia benne Isten művének. Nekünk addig kell tennünk a"}, {"verse_num": 4, "start_sec": 29.365454545454547, "end_sec": 41.35272727272727, "confidence": 85.47008547008546, "canonical_text": "Addig kell végbevinnem annak tetteit, aki küldött, amíg nappal van. Eljön az éjszaka, s akkor senki sem munkálkodhat.", "matched_text": "addig kell tennünk annak műveit, aki küldött engem, amíg nappal van. Eljön az éjszaka, amikor senki sem munkálkodhati"}, {"verse_num": 5, "start_sec": 41.35272727272727, "end_sec": 48.1504, "confidence": 90.9090909090909, "canonical_text": "Amíg e világban vagyok, világossága vagyok a világnak.\"", "matched_text": "ig a világban vagyok, világossága vagyok a világnak. Miu"}, {"verse_num": 6, "start_sec": 47.62, "end_sec": 55.576, "confidence": 74.44444444444444, "canonical_text": "Míg ezeket mondta, a földre köpött, nyálával sarat csinált, s a sarat a vak szemére kente,", "matched_text": "iután ezeket mondta, a földre köpött, sarat csinált a nyálból, majd rákente a vak szemére,"}, {"verse_num": 7, "start_sec": 56.1064, "end_sec": 74.32428571428572, "confidence": 65.7718120805369, "canonical_text": "majd meghagyta neki: \"Menj, mosakodj meg a Siloe tavában.\" Ez annyit jelent, mint: \"küldött\". Az elment, megmosdott, s amikor visszatért, már látott.", "matched_text": "mondta neki, menj, és mosd le a sílójé tavában. Sílójé annyit jelent, mint küldött. Elment tehát, megmosdott, és látó szemmel jött vissza. Így tehát a"}, {"verse_num": 8, "start_sec": 74.32428571428572, "end_sec": 84.10476190476192, "confidence": 62.5, "canonical_text": "A szomszédok és akik azelőtt koldulni látták, megkérdezték: \"Nem ez az, aki itt ült és koldult?\"", "matched_text": "akik korábban látták őt, mert koldulni szokott, azt mondták, nem de ő az, aki itt ült és kolduln"}, {"verse_num": 9, "start_sec": 82.5604761904762, "end_sec": 94.4, "confidence": 56.15384615384615, "canonical_text": "Némelyek azt állították: \"Igen, ez az\", mások ellenben tagadták: \"Nem az, csak hasonlít hozzá.\" De ő kijelentette: \"Én vagyok az.\"", "matched_text": "és koldulni szokott. Egyesek azt mondták, ő az. Mások azt mondták, dehogyis ő, csak hasonlít hozzá. Ő pedig mondta, én vagyok az."}, {"verse_num": 10, "start_sec": 93.8852380952381, "end_sec": 99.15365853658537, "confidence": 76.92307692307692, "canonical_text": "Erre megkérdezték tőle: \"Hogyan nyílt meg a szemed?\"", "matched_text": "az. Kérdezték tehát tőle, hogyan nyílt meg a szemed?"}, {"verse_num": 11, "start_sec": 99.74536585365854, "end_sec": 116.31317073170732, "confidence": 65.66265060240963, "canonical_text": "Elmondta nekik: \"Az az ember, akit Jézusnak hívnak, sarat csinált, a szememre kente s meghagyta: Menj, mosakodj meg a Siloe tavában. Elmentem, megmosdottam és látok.\"", "matched_text": "felelte, az ember, akit Jézusnak hívnak, sarat csinált, megkente a szememet, és azt mondta nekem, menj a sílójéhoz és mosd le. Elmentem tehát, lemostam és látok. És ké"}, {"verse_num": 12, "start_sec": 115.12975609756097, "end_sec": 124.05813953488372, "confidence": 59.64912280701755, "canonical_text": "Erre megkérdezték tőle: \"Hol van?\" \"Nem tudom\" - felelte.", "matched_text": "kérdezték tőle, hol van ő? Válaszolta, nem tudom. Oda vit"}, {"verse_num": 13, "start_sec": 118.84, "end_sec": 126.29441860465116, "confidence": 61.224489795918366, "canonical_text": "Az imént még vak embert elvitték a farizeusokhoz,", "matched_text": "nem tudom. Oda vitték tehát a farizeusokhoz azt,"}, {"verse_num": 14, "start_sec": 129.08976744186046, "end_sec": 137.47581395348837, "confidence": 67.05882352941177, "canonical_text": "mert az a nap, amikor Jézus sarat csinált és megnyitotta a szemét, szombati nap volt.", "matched_text": "s az a nap, amelyen Jézus sarat készített és megnyitotta a szemét. A farizeusok tehát"}, {"verse_num": 15, "start_sec": 136.35767441860463, "end_sec": 146.98, "confidence": 71.7741935483871, "canonical_text": "A farizeusok is megkérdezték tőle, hogyan nyílt meg a szeme. Elmondta nekik: \"Sarat tett a szememre, megmosdottam és látok.\"", "matched_text": "farizeusok tehát újra megkérdezték, hogy hogyan kezdett látni. Ő pedig elmondta nekik, sarat tett a szememre, Lemosdtam és lá"}, {"verse_num": 16, "start_sec": 148.34222222222223, "end_sec": 166.8655172413793, "confidence": 67.48768472906403, "canonical_text": "A farizeusok közül némelyek így vélekedtek: \"Ez az ember nem Istentől való, hisz nem tartja meg a szombatot.\" Mások ellene vetették: \"Hogyan tehet bűnös ember ilyen csodát?\" Így szakadás támadt közöttük.", "matched_text": "lyek a farizeusok közül, nem Istentől való ez az ember, hiszen nem tartja meg a szombatot. Mások pedig azt mondták, hogyan tudna bűnös ember ilyen jeleket művelni? És szakadás támad közöttük. Mondták tehá"}, {"verse_num": 17, "start_sec": 165.61310344827587, "end_sec": 180.04439024390246, "confidence": 55.833333333333336, "canonical_text": "Azért hát tovább faggatták a vakot: \"Mit tartasz arról, aki visszaadta a szemed világát?\" \"Azt, hogy próféta\" - felelte.", "matched_text": "ták tehát újra a vaknak, Te mit tartasz róla, amiatt, hogy megnyitotta a szemedet? Ő pedig mondta, azt, hogy proféta. A z"}, {"verse_num": 18, "start_sec": 177.35333333333332, "end_sec": 191.3648780487805, "confidence": 55.6338028169014, "canonical_text": "De a zsidók sehogyse akarták elhinni, hogy vak volt, és hogy visszanyerte a szeme világát, azért odahívták az imént még vak embernek a szüleit", "matched_text": "y proféta. A zsidók tehát nem hitték el róla, hogy vak volt, és látni kezdett, mindaddig, amíg oda nem hívták a látóvá lett ember szüleit. És k"}, {"verse_num": 19, "start_sec": 190.87268292682927, "end_sec": 200.71311111111112, "confidence": 62.96296296296296, "canonical_text": "és őket faggatták: \"A ti fiatok? Azt mondjátok róla, hogy vakon született! Hogy lehet akkor, hogy most lát?\"", "matched_text": "rdezték őket mondván, ez a ti fiatok, akiről azt mondjátok, hogy vakon született? Most tehát miként lát? Fele"}, {"verse_num": 20, "start_sec": 200.71311111111112, "end_sec": 208.246, "confidence": 79.48717948717949, "canonical_text": "Szülei ezt válaszolták: \"Azt tudjuk, hogy a mi fiunk, és hogy vakon született.", "matched_text": "a szülei és mondták, azt tudjuk, hogy ez a mi fiunk, s hogy vakon született, d"}, {"verse_num": 21, "start_sec": 207.3597777777778, "end_sec": 222.0158823529412, "confidence": 60.0, "canonical_text": "De hogy most miképpen lát, azt nem tudjuk. S azt sem tudjuk, ki adta vissza a szeme világát. Kérdezzétek meg tőle magától, hisz megvan hozzá a kora, mondja el maga.\"", "matched_text": ", de hogy most miként lát, azt nem tudjuk. Vagy hogy kinyitotta meg a szemét, azt sem tudjuk, őt magát kérdezzétek, megvan a kora. Beszél majd magáról ő maga. A szüle"}, {"verse_num": 22, "start_sec": 222.60882352941178, "end_sec": 235.6535294117647, "confidence": 69.93006993006993, "canonical_text": "A szülők azért beszéltek így, mert féltek a zsidóktól. A zsidók ugyanis elhatározták, hogy azt, aki Messiásnak vallja, kizárják a zsinagógából.", "matched_text": "ák ezt, mert féltek a zsidóktól. A zsidók ugyanis már megegyeztek abban, Hogyha valaki Krisztusnak vallaná őt, azt kitaszítják a zsinagógából. E"}, {"verse_num": 23, "start_sec": 235.06058823529412, "end_sec": 243.52272727272728, "confidence": 68.42105263157895, "canonical_text": "Ezért mondták a szülei: \"Megvan hozzá a kora, kérdezzétek meg tőle magától.\"", "matched_text": "Ezért mondták a szülei, megvan a kora, őt magát kérdezzétek. Szólították tehá"}, {"verse_num": 24, "start_sec": 242.61, "end_sec": 254.85928571428573, "confidence": 54.88721804511278, "canonical_text": "Erre másodszor is hívatták a vakon született embert és figyelmeztették: \"Dicsőítsd meg az Istent! Mi tudjuk, hogy ez az ember bűnös.\"", "matched_text": "k tehát ismét az embert, aki korábban vak volt, és mondták neki, adj dicsőséget Istennek, mi tudjuk, hogy ez az ember bűnös. Ő tehát v"}, {"verse_num": 25, "start_sec": 252.19363636363636, "end_sec": 262.91696969696966, "confidence": 67.03296703296704, "canonical_text": "\"Azt, hogy bűnös-e - felelte -, nem tudom. Csak azt tudom, hogy vak voltam, és most látok.\"", "matched_text": ". Ő tehát válaszolt, hogy bűnöse, nem tudom. Egyet tudok. vak voltam, és most látok. Mondták"}, {"verse_num": 26, "start_sec": 260.2707142857143, "end_sec": 268.6036363636363, "confidence": 51.80722891566265, "canonical_text": "Erre újra faggatni kezdték: \"Mit csinált veled? Hogy adta vissza a szemed világát?\"", "matched_text": "most látok. Mondták tehát neki, mi csinált veled, hogyan nyitotta meg a szemedet? Í"}, {"verse_num": 27, "start_sec": 268.6036363636363, "end_sec": 280.0385714285714, "confidence": 74.4186046511628, "canonical_text": "\"Már elmondtam nektek - felelte -, de nem hallgattátok meg. Miért akarjátok újra hallani? Talán ti is tanítványai akartok lenni?\"", "matched_text": "t nekik, mondtam már nektek, és nem hallottátok meg. Miért akarjátok újra hallani? Csak nem akartok ti is a tanítványai lenni? Err"}, {"verse_num": 28, "start_sec": 279.52, "end_sec": 287.29857142857145, "confidence": 68.13186813186813, "canonical_text": "Erre becsmérelték, s azt mondták neki: \"Légy a tanítványa te! Mi Mózes tanítványai vagyunk.", "matched_text": "Erre megátkozták őt, és mondták, te ennek a tanítványa vagy, mi pedig Mózes tanítványai vagy"}, {"verse_num": 29, "start_sec": 287.29857142857145, "end_sec": 295.32952380952383, "confidence": 75.0, "canonical_text": "Azt tudjuk, hogy Mózessel beszélt az Isten, de hogy ez honnét való, azt nem tudjuk.\"", "matched_text": "tudjuk, hogy Mózessel beszélt az Isten, erről azonban nem tudjuk honnét való. Az emb"}, {"verse_num": 30, "start_sec": 295.32952380952383, "end_sec": 305.6247619047619, "confidence": 59.43396226415094, "canonical_text": "\"Épp az a különös - felelte az ember -, hogy nem tudjátok, honnét való, mégis visszaadta a szemem világát.", "matched_text": "és mondta nekik, éppen ebben van a csoda, hogy ti nem tudjátok honnét való, és megnyitotta a szememet. Tud"}, {"verse_num": 31, "start_sec": 305.6247619047619, "end_sec": 315.92, "confidence": 66.3716814159292, "canonical_text": "Tudjuk, hogy Isten nem hallgatja meg a bűnösöket, azt azonban, aki istenfélő és teljesíti akaratát, meghallgatja.", "matched_text": ", hogy bűnösöket nem hallgat meg az Isten, de ha valaki tiszteli Istent, és teszi az ő akaratát, azt meghallgatja."}, {"verse_num": 32, "start_sec": 312.8314285714286, "end_sec": 323.6905263157895, "confidence": 59.32203389830508, "canonical_text": "Amióta fennáll a világ, sohasem lehetett hallani, hogy valaki visszaadta volna egy vakon születettnek a szeme világát.", "matched_text": "eszi az ő akaratát, azt meghallgatja. Soha nem lehetett hallani, hogy valaki vakon született szemét megnyitotta. Ha nem"}, {"verse_num": 33, "start_sec": 321.8178947368421, "end_sec": 328.06, "confidence": 87.27272727272728, "canonical_text": "Ha nem Istentől való volna, nem tehetett volna semmit.\"", "matched_text": "Ha nem volna Istentől való, nem tehetett volna semmit."}, {"verse_num": 34, "start_sec": 329.0, "end_sec": 338.36, "confidence": 51.06382978723405, "canonical_text": "Erre rászóltak: \"Te akarsz minket tanítani, aki mindenestül bűnben születtél?\" Ezzel kidobták.", "matched_text": "álaszoltak és mondták neki, teljesen bűnökben születtél és te oktatsz minket. És kitaszították"}, {"verse_num": 35, "start_sec": 340.04, "end_sec": 349.1804255319149, "confidence": 80.58252427184466, "canonical_text": "Jézus meghallotta, hogy kidobták, s amikor találkozott vele, megkérdezte tőle: \"Hiszel az Emberfiában?\"", "matched_text": "zus meghallotta, hogy kitaszították. És amikor találkozott vele, mondta neki, te hiszel az ember fiában?"}, {"verse_num": 36, "start_sec": 349.1804255319149, "end_sec": 355.88340425531914, "confidence": 60.71428571428572, "canonical_text": "\"Ki az, Uram - kérdezte az ember -, hogy higgyek benne?\"", "matched_text": "válaszolt és mondta, és ki az Uram, hogy higgyek benne?"}, {"verse_num": 37, "start_sec": 357.71148936170215, "end_sec": 363.80510638297875, "confidence": 56.81818181818181, "canonical_text": "\"De hisz látod - felelte -, ő beszél veled.\"", "matched_text": "már meg is láttad, aki beszél veled, ő az. Er"}, {"verse_num": 38, "start_sec": 363.1957446808511, "end_sec": 369.46526315789475, "confidence": 68.5185185185185, "canonical_text": "Erre felkiáltott: \"Hiszek, Uram!\" - s leborult előtte.", "matched_text": "Erre az így szólt, hiszek Uram, és leborult előtte. És"}, {"verse_num": 39, "start_sec": 368.07063829787234, "end_sec": 385.5182857142857, "confidence": 65.06849315068493, "canonical_text": "Jézus pedig azt mondta: \"Azért jöttem a világba, hogy ítéletet tartsak, hogy akik nem látnak, azok lássanak, és akik látnak, azok vakok legyenek.\"", "matched_text": "e. És Jézus azt mondta, Ítéletre jöttem én ebbe a világba, hogy akik nem látnak, lássanak, és akik látnak, megvakuljanak. Meghallották ezt a körülö"}, {"verse_num": 40, "start_sec": 380.77473684210526, "end_sec": 393.37314285714285, "confidence": 60.17699115044248, "canonical_text": "Amikor a körülötte álló farizeusok közül ezt néhányan meghallották, megkérdezték: \"Csak nem vagyunk mi is vakok?\"", "matched_text": "megvakuljanak. Meghallották ezt a körülötte lévő farizeusok közül néhányan, és mondták neki, vajon mi is vakok vag"}, {"verse_num": 41, "start_sec": 395.3368571428571, "end_sec": 410.17, "confidence": 73.48837209302326, "canonical_text": "\"Ha vakok volnátok - felelte Jézus -, nem volna bűnötök. De azt állítjátok: Látunk. Ezért megmarad bűnötök.\"", "matched_text": "a vakok volnátok, nem volna bűnötök. Most pedig azt mondjátok, mi látunk. Ezért megmarad a bűnötök. [Music]"}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apostolok cselekedetei 7. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "ACT", "hungarian_name": "Apostolok cselekedetei", "abbreviation": "ApCsel", "book_number": 405, "chapter_count": 28}, "chapter": {"book_usx": "ACT", "chapter_num": 7, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/51_apcsel/apostolok-cselekedetei-07-fejezet.mp3", "verse_count": 60, "aligned_count": 60}, "verses": [{"verse_num": 1, "start_sec": 2.66, "end_sec": 9.31, "confidence": 65.95744680851064, "canonical_text": "A főpap megkérdezte: \"Valóban így áll a dolog?\"", "matched_text": "pedig a főpap. Valóban így áll a dolog? Ő szólt."}, {"verse_num": 2, "start_sec": 3.99, "end_sec": 21.248235294117645, "confidence": 74.46808510638299, "canonical_text": "Erre válaszul így beszélt: \"Testvérek és atyák! Hallgassatok meg! A dicsőség Istene megjelent atyánknak, Ábrahámnak, amikor még Mezopotámiában élt, mielőtt még Háránban letelepedett volna,", "matched_text": "p. Valóban így áll a dolog? Ő szólt. Férfiak, testvérek és atyák, halljátok! A dicsőség istene megjelent atyánknak, Ábrahámnak, amikor Mezopotámiában volt, mielőtt hárámba költözött volna,"}, {"verse_num": 3, "start_sec": 19.921764705882353, "end_sec": 32.81173913043478, "confidence": 63.8095238095238, "canonical_text": "és így szólt hozzá: Hagyd itt földedet és rokonságodat, s menj arra a földre, amelyet majd mutatok neked.", "matched_text": "volna, és mondta neki, Menj ki földedről, és rokonságot közül, és jöjj a földre, amelyet mutatok neked. A"}, {"verse_num": 4, "start_sec": 31.19676470588235, "end_sec": 44.646521739130435, "confidence": 62.40601503759399, "canonical_text": "Erre elvándorolt Káldea földjére, és Háránba ment lakni. Innen atyja halála után erre a földre vezette az Isten, amelyen most laktok.", "matched_text": ". Akkor kijött a kaldeusok földjéről, és hárámban lakott. És innen, miután atya meghalt, elhozta őt erre a földre, amelyen ti laktok."}, {"verse_num": 5, "start_sec": 44.054782608695646, "end_sec": 62.19714285714285, "confidence": 65.2694610778443, "canonical_text": "Örökségképpen nem adott neki még egy talpalatnyi földet sem, de megígérte, hogy birtokul adja majd neki, és ha meghal, utódainak, jóllehet ekkor még nem volt gyermeke.", "matched_text": ". És nem adott neki itt örökségül egy talpalatnyi földet sem, de megígérte, hogy neki adja örökségül és ő utána ivadékának, jó lehet nem volt fia. Isten azonban így bes"}, {"verse_num": 6, "start_sec": 57.073043478260864, "end_sec": 71.07714285714286, "confidence": 50.35971223021583, "canonical_text": "Azt is megmondta Isten, hogy utódai idegen földön hazátlanul bolyonganak majd, szolgaságba vetik, és négyszáz esztendeig sanyargatják őket.", "matched_text": "t nem volt fia. Isten azonban így beszélt hozzá, ivadékod jövevény lesz idegen földön és rabszolgaságba vetik, és keményen bánnak majd vele"}, {"verse_num": 7, "start_sec": 71.07714285714286, "end_sec": 87.88766666666666, "confidence": 63.888888888888886, "canonical_text": "A nép fölött azonban, amelynek rabszolgái lesznek, ítéletet tartok - mondta az Úr -, ők meg kivonulnak, és ezen a helyen nekem fognak szolgálni.", "matched_text": "éven át. És a népet, amelynek szolgálnak, én fogom megítélni, mondta Isten, s ezek után kivonulnak, és ezen a helyen fognak szolgálni nekem. És"}, {"verse_num": 8, "start_sec": 85.66571428571429, "end_sec": 104.57933333333334, "confidence": 67.46987951807229, "canonical_text": "Aztán adta neki a körülmetélés szövetségét. Így született neki Izsák, és a nyolcadik nap körül is metélte. Ugyanígy Izsák is Jákobot, Jákob meg a tizenkét pátriárkát.", "matched_text": "m. És bizonságul adta nekik a körülmetélést. És így nemzette Izsákot, és körülmetélte a nyolcadik napon. Izsák is Jákobot, és Jákob is a tizenkét patriárkát. A patriár"}, {"verse_num": 9, "start_sec": 102.57633333333334, "end_sec": 110.58833333333334, "confidence": 73.6842105263158, "canonical_text": "A pátriárkák irigységből eladták Józsefet Egyiptomba, de az Isten vele volt.", "matched_text": "t. A patriárkák irigykedve Józsefre eladták Egyiptomba. És Isten vele volt, é"}, {"verse_num": 10, "start_sec": 110.58833333333334, "end_sec": 129.45250000000001, "confidence": 64.0, "canonical_text": "Minden viszontagságán átsegítette, sőt kegyeltté tette, és bölcsességgel tüntette ki Egyiptom királya, a fáraó előtt, úgyhogy az megtette Egyiptom és egész háza kormányzójává.", "matched_text": "a őt minden szorongatásából, és kegyelmet adott neki, és bölcsességet Egyiptom királya a fáraó előtt, aki elöljáróvá tette őt Egyiptom fölött, és egész háza fölött. Ezután éhin"}, {"verse_num": 11, "start_sec": 128.02, "end_sec": 140.66, "confidence": 72.64150943396226, "canonical_text": "Akkor éhínség és nagy nyomor támadt egész Egyiptomban meg Kánaánban, úgyhogy atyáink nem találtak élelmet.", "matched_text": "zután éhinség támadt egész Egyiptomban és Kánaámban, és igen nagy inség, és atyáink nem találtak élelmet. M"}, {"verse_num": 12, "start_sec": 139.97, "end_sec": 148.94, "confidence": 85.22727272727273, "canonical_text": "Amikor Jákob meghallotta, hogy Egyiptomban van gabona, akkor elküldte először atyáinkat.", "matched_text": "ikor pedig Jákob meghallotta, hogy Egyiptomban van gabona, először küldte el atyáinkat. A"}, {"verse_num": 13, "start_sec": 147.56, "end_sec": 160.13297297297296, "confidence": 64.70588235294117, "canonical_text": "Második útjuk alkalmával József fölfedte testvérei előtt kilétét, és így a fáraó előtt is kitudódott József származása.", "matched_text": "tyáinkat. Amikor másodszor mentek, József felfedte magát a testvérei előtt, és a fáraó is megtudta József származását. J"}, {"verse_num": 14, "start_sec": 159.41, "end_sec": 169.5316216216216, "confidence": 64.77272727272727, "canonical_text": "József aztán odavitette atyját, Jákobot és egész rokonságát, összesen hetvenöt személyt.", "matched_text": "József pedig elhozatta atyját, Jákobot, és egész családját összesen 75 lelket. És Jákob l"}, {"verse_num": 15, "start_sec": 167.3627027027027, "end_sec": 176.03837837837838, "confidence": 59.70149253731343, "canonical_text": "Jákob így Egyiptomba költözött, ott is halt meg, s atyáink szintén.", "matched_text": "Jákob lement Egyiptomba. És meghalt ő is, meghaltak atyáink is, és"}, {"verse_num": 16, "start_sec": 172.4235135135135, "end_sec": 186.16, "confidence": 63.11475409836065, "canonical_text": "Szichembe szállították, és abban a sírban temették el őket, amelyet Ábrahám ezüstpénzen vett meg a szichemi Hámor fiaitól.", "matched_text": "is, meghaltak atyáink is, és elvitték Sihembe, abba a sírba temették, amit Ábrahám ezüstért vett meg, Hemmor fiaitól Sihemb"}, {"verse_num": 17, "start_sec": 187.84, "end_sec": 200.02, "confidence": 58.87096774193547, "canonical_text": "Amint közeledett az Isten Ábrahámnak tett ígérete beteljesülésének ideje, a nép egyre szaporodott és sokasodott Egyiptomban,", "matched_text": "kor pedig elközelgett az ígéret ideje, amelyet Isten Ábrahámnak ígért, a nép növekedett, és megsokasodott Egyiptom földjén. E"}, {"verse_num": 18, "start_sec": 200.69666666666666, "end_sec": 208.81666666666666, "confidence": 76.92307692307692, "canonical_text": "míg csak egy másik király nem került Egyiptom élére, aki nem ismerte Józsefet.", "matched_text": "egy másik király kezdett uralkodni Egyiptom fölött, aki nem ismerte Józsefet."}, {"verse_num": 19, "start_sec": 210.17, "end_sec": 220.32, "confidence": 60.19417475728155, "canonical_text": "Ez álnokul bánt népünkkel, arra kényszerítette atyáinkat, tegyék ki a csecsemőket, hogy elpusztuljanak.", "matched_text": "fordult, és azzal gyötörte atyáinkat, hogy ki kellett tenni a csecsemőiket, nehogy életben maradjanak."}, {"verse_num": 20, "start_sec": 219.64333333333332, "end_sec": 230.61891891891892, "confidence": 68.36734693877551, "canonical_text": "Ebben az időben született Mózes, aki tetszett az Istennek. Három hónapig az apai házban táplálták.", "matched_text": "adjanak. Ekkor született Mózes, és kedves volt Isten előtt. Három hónapig atyaházában táplálták. Mi"}, {"verse_num": 21, "start_sec": 229.10216216216216, "end_sec": 239.71945945945944, "confidence": 61.038961038961034, "canonical_text": "Amikor kitették, a fáraó leánya magához vette, és mint saját fiát fölnevelte.", "matched_text": "ák. Mikor pedig kitették, fölvette őt a fáraó Leánya, és a fiaként nevelte. És"}, {"verse_num": 22, "start_sec": 238.2027027027027, "end_sec": 248.82, "confidence": 60.57692307692308, "canonical_text": "Így Mózes szert tett az egyiptomiak minden tudományára, s szavaiban és tetteiben egyaránt hatalmas volt.", "matched_text": ". És Mózes-t megtanították az egyiptomiak minden bölcsességére, és hatalmas lett szavaiban és tetteiben."}, {"verse_num": 23, "start_sec": 249.28, "end_sec": 259.48, "confidence": 73.52941176470588, "canonical_text": "Amikor betöltötte negyvenedik évét, az a gondolata támadt, hogy meglátogatja testvéreit, Izrael fiait.", "matched_text": "kor pedig negyven éves lett, föltámad szívében a gondolat, hogy meglátogatja a testvéreit, Izrael fiait"}, {"verse_num": 24, "start_sec": 258.12, "end_sec": 273.53294117647056, "confidence": 47.97297297297297, "canonical_text": "Ez alkalommal észrevette, hogy az egyikkel igazságtalanul bántak. Védelmére kelt, s bosszút állt a bántalmazott emberért: agyonütötte az egyiptomit.", "matched_text": "zrael fiait. És amikor látta, hogy egyikük sérelmet szenved, az egyiptomit agyonütve, bosszut állt az elnyomott érde. Azt gondolta ugyanis, hogy a te"}, {"verse_num": 25, "start_sec": 270.19176470588235, "end_sec": 282.88823529411764, "confidence": 68.80733944954129, "canonical_text": "Azt hitte, testvérei ráeszmélnek, hogy az Isten az ő keze által ad majd nekik szabadulást, de nem fogták fel.", "matched_text": "ugyanis, hogy a testvérei megértik, hogy Isten a keze által küld nekik szabadulást, de azok nem értették meg."}, {"verse_num": 26, "start_sec": 281.55176470588236, "end_sec": 293.58, "confidence": 61.53846153846154, "canonical_text": "Másnap akkor jelent meg köztük, amikor épp verekedtek. Össze akarta őket békíteni: Emberek, ti testvérek vagytok! Miért bántalmazzátok egymást?", "matched_text": "rtették meg. És amikor másnap veszekedőkkel találkozott és békíteni próbálta őket, mondván, emberek, testvérek vagytok, miért bántjátok egymást?"}, {"verse_num": 27, "start_sec": 374.81684210526316, "end_sec": 383.10297872340425, "confidence": 49.42528735632183, "canonical_text": "De aki bántalmazta társát, elutasította, mondván: Ki tett meg elöljárónkká és bíránkká?", "matched_text": "ptomba. Ezt a Mózes-t, akit megtagadtak, mondván, ki tett téged fejedelemmé vagy bíróvá."}, {"verse_num": 28, "start_sec": 302.0625, "end_sec": 309.24, "confidence": 94.11764705882352, "canonical_text": "Talán engem is meg akarsz ölni, ahogy tegnap megölted az egyiptomit?", "matched_text": "ajon engem is meg akarsz ölni, ahogyan tegnap megölted az egyiptomit?"}, {"verse_num": 29, "start_sec": 308.58750000000003, "end_sec": 320.6372972972973, "confidence": 67.46987951807229, "canonical_text": "E szavakra Mózes elmenekült és Midián földjén telepedett le. Itt két fia született.", "matched_text": "Emiatt Mózes elmenekült, És jövevény volt Midian földjén, ahol két fia született. M"}, {"verse_num": 30, "start_sec": 320.6372972972973, "end_sec": 331.7940540540541, "confidence": 70.27027027027026, "canonical_text": "Eltelt negyven esztendő, s akkor a Sínai-hegy pusztájában egy égő csipkebokor lángjában angyal jelent meg neki.", "matched_text": "eltelt negyvenesztendő, a sínai hegy pusztájában megjelent neki az angyal a csipkebokor lángjában. Mózes pedig l"}, {"verse_num": 31, "start_sec": 329.0048648648649, "end_sec": 340.16162162162163, "confidence": 58.41584158415842, "canonical_text": "Amikor Mózes meglátta, elcsodálkozott a jelenségen. Odament, hogy megnézze, s az Úr hangját hallotta:", "matched_text": "n. Mózes pedig látva, csodálkozott a látványon, és amikor közeledett hozzá, az úr szava hallatszott, é"}, {"verse_num": 32, "start_sec": 339.4643243243243, "end_sec": 349.765, "confidence": 78.72340425531915, "canonical_text": "Én vagyok atyáid Istene, Ábrahám, Izsák és Jákob Istene. Mózes megrémült és nem mert odanézni.", "matched_text": "én vagyok atyáid istene. Abraham, Izsák és Jákob istene. Mózes félelemmel eltelve nem mert oda"}, {"verse_num": 33, "start_sec": 349.1441666666667, "end_sec": 360.94, "confidence": 66.33663366336633, "canonical_text": "Az Isten azonban folytatta a beszédet: Oldd le lábadról a sarut, mert a hely, ahol állsz, szent föld.", "matched_text": "tekinteni. Mondta pedig neki az úr, old le lábadról a sarut. A hely ugyanis, ahol állsz, szent föld."}, {"verse_num": 34, "start_sec": 362.6063157894737, "end_sec": 376.37191489361703, "confidence": 64.4927536231884, "canonical_text": "Láttam népem nyomorát Egyiptomban, és hallottam panaszát, lejöttem hát, hogy kiszabadítsam őket. Most hát jöjj, hadd küldjelek Egyiptomba.", "matched_text": "tomban lévő népem gyötrelmét, hallottam jajgatásukat és leszálltam, hogy megszabadítsam őket. És most jöjj, elküldelek téged Egyiptomba. Ez"}, {"verse_num": 35, "start_sec": 367.1852631578947, "end_sec": 383.10297872340425, "confidence": 49.382716049382715, "canonical_text": "Az Isten azt a Mózest küldte vezetőnek és szabadítónak a csipkebokorban megjelent angyal kezével, akit megtagadtak, mondván: Ki tett meg elöljárónkká és bíránkká?", "matched_text": "s leszálltam, hogy megszabadítsam őket. És most jöjj, elküldelek téged Egyiptomba. Ezt a Mózes-t, akit megtagadtak, mondván, ki tett téged fejedelemmé vagy bíróvá."}, {"verse_num": 36, "start_sec": 392.89361702127655, "end_sec": 404.52, "confidence": 80.18018018018019, "canonical_text": "Ő vezette ki őket, s ő mutatott csodajeleket Egyiptom földjén, a Vörös-tengeren és a pusztában negyven éven át.", "matched_text": "ette ki őket, csodákat és jeleket művelve Egyiptom földjén és a vörös tengerben, és a pusztában negyven éven át."}, {"verse_num": 37, "start_sec": 405.20705882352945, "end_sec": 415.88, "confidence": 83.49514563106796, "canonical_text": "Ez a Mózes mondta Izrael fiainak: Prófétát támaszt nektek az Isten testvéreitek sorából, mint engem is.", "matched_text": "a Mózes, aki megmondta Izrael fiainak, profétát támaszt nektek Isten a testvéreitek közül, mint engem."}, {"verse_num": 38, "start_sec": 415.21294117647057, "end_sec": 432.1654545454545, "confidence": 66.22516556291392, "canonical_text": "Ő volt, aki a pusztai közösségből érintkezett az angyallal, aki a Sínai-hegyen szólt hozzá. Ő kapta meg az életet adó szavakat, hogy továbbadja nekünk.", "matched_text": ". Ő az, aki a közösségből érintkezett a pusztában az angyallal, aki beszélt a sínai hegyen vele és atyáinkkal. Ő kapta az élő igéket, hogy nekünk adja."}, {"verse_num": 39, "start_sec": 430.9327272727273, "end_sec": 440.7945454545454, "confidence": 61.32075471698113, "canonical_text": "Ám atyáink nem akartak neki engedelmeskedni, visszautasították, és szívük mélyén visszavágytak Egyiptomba.", "matched_text": "adja. Neki nem akartak engedelmeskedni atyáink, hanem elvetették őt. És a szívük visszafordult Egyiptom fe"}, {"verse_num": 40, "start_sec": 438.94545454545454, "end_sec": 451.8890909090909, "confidence": 64.47368421052632, "canonical_text": "Megkérték Áront: Csinálj nekünk isteneket, azok vezessenek, mert nem tudjuk, hogy mi történt azzal a Mózessel, aki kivezetett minket Egyiptom földjéről.", "matched_text": "ult Egyiptom felé. És mondták Áronnak, csinálj nekünk isteneket, akik előttünk járnak, Mózessel ugyanis, aki kivezetett minket Egyiptom földjéről, nem tu"}, {"verse_num": 41, "start_sec": 451.27272727272725, "end_sec": 463.04, "confidence": 61.261261261261254, "canonical_text": "Így ezekben a napokban borjút készítettek, áldozatot mutattak be a bálványnak, s örömüket lelték kezük művében.", "matched_text": "mi történt. És borjut készítettek azokban a napokban, és áldozatot mutattak be a szobornak, és örültek kezük al"}, {"verse_num": 42, "start_sec": 461.17400000000004, "end_sec": 484.373125, "confidence": 70.48458149779735, "canonical_text": "Erre az Isten elfordult tőlük, és hagyta, hogy az égi sereg szolgálatára adják magukat, amint meg van írva a próféták könyvében: Vajon mutattatok-e be nekem véres és égőáldozatokat negyven esztendőn át a pusztában, Izrael háza?", "matched_text": "örültek kezük alkotásainak. Isten azonban elfordult tőlük, és átadta őket a csillagok szolgálatának, amint írva áll a proféták könyvében. Ajánlottatok-e föl nekem vágó és ételáldozatokat negyven éven át a pusztában Izrael háza?"}, {"verse_num": 43, "start_sec": 482.01625, "end_sec": 501.1738181818182, "confidence": 58.857142857142854, "canonical_text": "Inkább Moloch sátrát hordoztátok magatokkal, s Refán isten csillagát, a bálványokat, amelyeket magatok faragtatok, hogy imádjátok őket. Ezért Babilonon túlra űzlek benneteket.", "matched_text": "n Izrael háza? és hordoztátok moloch sátrát, és istenetek refeán csillagát, szobrokat, melyeket készítettetek, hogy imádjátok azokat, és elviszlek titeket Babylonon túlra. A bi"}, {"verse_num": 44, "start_sec": 500.5269090909091, "end_sec": 514.7589090909091, "confidence": 65.64885496183206, "canonical_text": "A pusztában atyáinkkal volt a bizonyság sátora. Így rendelte, aki Mózesnek megparancsolta, hogy a látott minta szerint készítse el.", "matched_text": "ág sátra ott volt atyáinkkal a pusztában, ahogyan elrendelte az, aki Mózeshez beszélt, hogy a szerint a minta szerint készítse el, A"}, {"verse_num": 45, "start_sec": 511.52436363636366, "end_sec": 528.344, "confidence": 51.685393258426956, "canonical_text": "Ezt örökölték atyáink és magukkal hozták, amikor Józsue vezetésével meghódították a pogányok (földjét), akiket Isten kiűzött innen atyáink elől. Így volt ez egészen Dávid koráig.", "matched_text": "nta szerint készítse el, Amit látott. Amit atyáink a vállukon hordozva hoztak Józsujéval a nemzetek birtokára, akiket Isten elüzött, atyáink színe elől, egészen Dávid napjaiig, ak"}, {"verse_num": 46, "start_sec": 527.6970909090909, "end_sec": 535.46, "confidence": 63.095238095238095, "canonical_text": "Ő kegyelmet talált Istennél, s könyörgött, hadd építhessen hajlékot Jákob Istenének.", "matched_text": "aki kegyelmet talált Isten előtt, és kérte, hogy hajlékot találhasson Jákob házának."}, {"verse_num": 47, "start_sec": 534.813090909091, "end_sec": 539.3334693877551, "confidence": 56.09756097560976, "canonical_text": "De csak Salamon építette fel a templomot.", "matched_text": "ának. Salomon pedig megépítette neki a ház"}, {"verse_num": 48, "start_sec": 538.761224489796, "end_sec": 546.7726530612244, "confidence": 71.08433734939759, "canonical_text": "Ám a Magasságbeli nem lakik emberi kéz emelte hajlékban, ahogy a próféta is mondja:", "matched_text": "házat. De a magasság beli nem emberi kéz alkotásában lakik, ahogy a proféta mondja,"}, {"verse_num": 49, "start_sec": 545.6281632653062, "end_sec": 559.9342857142858, "confidence": 68.93939393939394, "canonical_text": "Az ég az én trónom, s a föld lábam alatt a zsámoly. Milyen házat építhetnétek nekem - mondja az Úr -, vagy hol lehetne pihenőhelyem?", "matched_text": "mondja, az én trónusom az ég, lábam zsámolja a föld. Milyen házat építetek nekem, mondja az úr, vagy hol van az én nyugalmam helye?"}, {"verse_num": 50, "start_sec": 561.0787755102041, "end_sec": 565.8725000000001, "confidence": 80.0, "canonical_text": "Hát nem kezem alkotta mindezt?", "matched_text": "én kezem alkotta mindezt. Kemé"}, {"verse_num": 51, "start_sec": 567.3775, "end_sec": 582.4275, "confidence": 69.17293233082707, "canonical_text": "Ti vastagnyakúak, ti körülmetéletlen szívűek és fülűek, mindig ellenálltatok a Szentléleknek, s mint atyáitok, olyanok vagytok ti is.", "matched_text": "vagytok, és körülmetéletlen a szívetek. Mindig ellenálltatok a szent léleknek, miként atyáitok, ti is. Melyik profétát nem üldözték a"}, {"verse_num": 52, "start_sec": 577.9125, "end_sec": 592.9625, "confidence": 84.28571428571429, "canonical_text": "Melyik prófétát nem üldözték atyáitok? Mind megölték azokat, akik az Igaz eljöveteléről jövendöltek. S most ti lettetek árulói és gyilkosai,", "matched_text": "s. Melyik profétát nem üldözték atyáitok? Megöltétek azokat, akik az igaz eljöveteléről jövendöltek, akinek ti most árulói és gyilkosai volta"}, {"verse_num": 53, "start_sec": 592.21, "end_sec": 601.24, "confidence": 87.05882352941177, "canonical_text": "ti, akik az angyalok közreműködésével átvettétek a törvényt, de nem tartottátok meg.\"", "matched_text": "atok. Ti, akik angyalok közvetítésével Átvettétek a törvényt, de nem tartottátok meg."}, {"verse_num": 54, "start_sec": 602.44, "end_sec": 610.42, "confidence": 65.75342465753424, "canonical_text": "Amikor ezt hallották, haragra gyulladtak, és fogukat vicsorgatták ellene.", "matched_text": "ikor ezeket hallották, tomboltak a szívükben, és a fogukat vicsorították r"}, {"verse_num": 55, "start_sec": 611.2211428571428, "end_sec": 621.4405714285714, "confidence": 69.44444444444444, "canonical_text": "Ő azonban a Szentlélekkel eltelve fölnézett az égre és látta az Isten dicsőségét és Jézust az Isten jobbján.", "matched_text": "ig István telve volt szent lélekkel, föltekintett az égre, meglátta Isten dicsőségét, és az Isten jobbján áll"}, {"verse_num": 56, "start_sec": 622.6428571428571, "end_sec": 631.66, "confidence": 69.1358024691358, "canonical_text": "Felkiáltott: \"Látom, hogy nyitva az ég, és az Emberfia ott áll az Isten jobbján.\"", "matched_text": "ólt, íme, Látom a megnyílt eget, és az emberfiát, amint ott áll az Isten jobbján."}, {"verse_num": 57, "start_sec": 634.12, "end_sec": 640.2533333333333, "confidence": 65.71428571428571, "canonical_text": "Erre ordítozni kezdtek, befogták fülüket, s egy akarattal rárontottak,", "matched_text": "felordítottak, befogták a fülüket, s együttesen rárohantak, kivonszoltá"}, {"verse_num": 58, "start_sec": 638.72, "end_sec": 650.22, "confidence": 84.21052631578947, "canonical_text": "kivonszolták a városból és megkövezték. A tanúk egy Saul nevű ifjú lábához rakták le ruhájukat.", "matched_text": "ntak, kivonszolták a városból, és megköveszték. És a tanuk egy ifjú lábához rakták le ruháikat,"}, {"verse_num": 59, "start_sec": 653.8287878787878, "end_sec": 661.9742424242424, "confidence": 61.8421052631579, "canonical_text": "Míg kövezték Istvánt, így imádkozott: \"Uram, Jézus, vedd magadhoz lelkemet!\"", "matched_text": "zték Istvánt, ő fölfohászkodott, és mondta, Uram Jézus, fogadd el a lelkemet."}, {"verse_num": 60, "start_sec": 663.3318181818181, "end_sec": 675.55, "confidence": 66.05504587155964, "canonical_text": "Majd térdre esett és hangosan felkiáltott: \"Uram, ne ródd fel nekik bűnül!\" Ezekkel a szavakkal elszenderült.", "matched_text": "érdre rogyott, hangos szóval kiáltotta, Uram, ne ród föl nekik, ez bűnül. És amikor ezt mondta, elszen derült."}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

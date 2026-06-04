@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filemonhoz írt levél 1. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "PHM", "hungarian_name": "Filemonhoz írt levél", "abbreviation": "Filem", "book_number": 418, "chapter_count": 1}, "chapter": {"book_usx": "PHM", "chapter_num": 1, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/64_filemon/filemonnak-irt-level-01-fejezet.mp3", "verse_count": 25, "aligned_count": 25}, "verses": [{"verse_num": 1, "start_sec": 3.3856, "end_sec": 12.696000000000002, "confidence": 97.53086419753086, "canonical_text": "Pál, Krisztus Jézus foglya és Timóteus testvér Filemonnak, kedves munkatársunknak", "matched_text": "Pál, Krisztus Jézus fogja és Timóteus testvér Filemonnak, kedves munkatársunknak é"}, {"verse_num": 2, "start_sec": 11.8496, "end_sec": 21.947272727272725, "confidence": 97.9381443298969, "canonical_text": "és nővérünknek, Appiának, küzdőtársunknak Archippusznak, és a házadban összejövő egész egyháznak.", "matched_text": "és nővérünknek, Appiának, küzdőtársunknak, Archippusnak és a házadban összejövő egész egyháznak. K"}, {"verse_num": 3, "start_sec": 21.22, "end_sec": 30.929523809523808, "confidence": 93.75, "canonical_text": "Kegyelem nektek és békesség Istentől, az Atyától és Urunktól, Jézus Krisztustól!", "matched_text": "Kegyelem nektek és békesség Istentől, az atyától és Uromtól, Jézus Krisztustól. H"}, {"verse_num": 4, "start_sec": 28.492727272727272, "end_sec": 36.03619047619048, "confidence": 97.10144927536231, "canonical_text": "Hálát adok Istenemnek mindig, amikor imádságomban megemlékezem rólad,", "matched_text": "Hála adok Istenemnek mindig, amikor imádságomban megemlékezem rólad,"}, {"verse_num": 5, "start_sec": 36.03619047619048, "end_sec": 46.26714285714286, "confidence": 95.65217391304348, "canonical_text": "s mivel hallom, mekkora hittel és szeretettel vagy Krisztus Jézus és valamennyi szent iránt.", "matched_text": "s mivel hallom, mekkora hittelé szeretettel vagy, Krisztus Jézus és valamennyi szenti ránd. A"}, {"verse_num": 6, "start_sec": 45.52, "end_sec": 55.98, "confidence": 99.04761904761905, "canonical_text": "A hitben való közösség legyen benned hatékony mindannak a jónak felismerésére, amit Krisztusért kaptatok.", "matched_text": "A hitben való közösség legyen benned hatékony mindannak a jónak fölismerésére, amit Krisztusért kaptatok."}, {"verse_num": 7, "start_sec": 55.23285714285714, "end_sec": 66.99, "confidence": 98.30508474576271, "canonical_text": "Nagy örömömre és vigasztalásomra szolgált ugyanis, testvér, a szereteted, mert a szentek szíve enyhülést talált benne.", "matched_text": "Nagy örömömre és vigasztalásomra szolgált ugyanis testvére a szereteted, mert a szentek szíve enyhülést talált benne."}, {"verse_num": 8, "start_sec": 67.01, "end_sec": 75.26294117647059, "confidence": 96.2962962962963, "canonical_text": "Ezért bár Jézus Krisztusban parancsot is adhatnék rá, hisz kötelességed megtenni,", "matched_text": "Ezért, bár Jézus Krisztusban parancsot is adhatnék, hiszen kötelességed megtenni,"}, {"verse_num": 9, "start_sec": 75.26294117647059, "end_sec": 89.29294117647058, "confidence": 97.5, "canonical_text": "mégis a szeretetre hivatkozva inkább kéréssel fordulok hozzád, én, az öreg Pál, aki most Krisztusért fogságot szenvedek.", "matched_text": "mégis, a szeretetre hivatkozva inkább kéréssel fordulok hozzád én, az öreg pál, Aki most Krisztusért fogságot szenvedek."}, {"verse_num": 10, "start_sec": 88.46764705882353, "end_sec": 95.07, "confidence": 98.50746268656717, "canonical_text": "Fiamért, Onezimuszért könyörgök, akinek bilincseimben adtam életet.", "matched_text": "Fiamért, Onezimusért könyörgök, akinek bilincseimben adtam életet."}, {"verse_num": 11, "start_sec": 95.11, "end_sec": 103.09947368421052, "confidence": 100.0, "canonical_text": "Egykor haszontalan volt számodra, most pedig számodra is, számomra is hasznos.", "matched_text": "Egykor haszontalan volt számodra, most pedig számodra is, számomra is hasznos."}, {"verse_num": 12, "start_sec": 103.09947368421052, "end_sec": 108.91, "confidence": 95.65217391304348, "canonical_text": "Úgy küldöm vissza hozzád, mint saját szívemet.", "matched_text": "y küldöm vissza hozzád, mint a saját szívemet."}, {"verse_num": 13, "start_sec": 108.18368421052631, "end_sec": 118.63, "confidence": 99.14529914529915, "canonical_text": "Szerettem volna magam mellett tartani, hogy helyetted szolgáljon nekem fogságomban, amelyet az evangéliumért viselek,", "matched_text": "Szerettem volna magam mellett tartani, hogy helyetted szolgáljon nekem fogságomban, amelyet az evangéliumért viselek."}, {"verse_num": 14, "start_sec": 119.13, "end_sec": 128.47, "confidence": 99.07407407407408, "canonical_text": "beleegyezésed nélkül azonban mégsem teszem, hogy jótéteményed ne kényszerből fakadjon, hanem önként vállald.", "matched_text": "eleegyezésed nélkül azonban mégsem teszem, hogy jó téteményed ne kényszerből fakadjon, hanem önként vállald."}, {"verse_num": 15, "start_sec": 127.80285714285714, "end_sec": 136.81842105263158, "confidence": 95.34883720930233, "canonical_text": "Hiszen talán épp azért hagyott ott egy időre, hogy egyszer s mindenkorra visszakapjad,", "matched_text": "Hiszen talán éppen azért hagyott ott egy időre, hogy egyszer s mindenkorra visszakabd."}, {"verse_num": 16, "start_sec": 136.81842105263158, "end_sec": 151.45, "confidence": 95.8041958041958, "canonical_text": "de már nem mint szolgát, hanem mint többet, mint szeretett testvért, mert nekem teljesen az, de neked még inkább: test szerint is, az Úrban is.", "matched_text": "e már nem mint rabszolgát, hanem, mint többet, mint szeretett testvért, mert nekem teljesen az, de neked még inkább, test szerint is, az úrban i"}, {"verse_num": 17, "start_sec": 151.79, "end_sec": 159.0011111111111, "confidence": 100.0, "canonical_text": "Ha tehát együtt érzel velem, fogadd őt úgy, mint engem.", "matched_text": "Ha tehát együtt érzel velem, fogadd őt úgy, mint engem."}, {"verse_num": 18, "start_sec": 159.0011111111111, "end_sec": 165.4911111111111, "confidence": 98.36065573770492, "canonical_text": "Ha megkárosított vagy tartozik valamivel, írd az én terhemre.", "matched_text": "a megkárosított, vagy tartozik valamivel, írd az én terhemre."}, {"verse_num": 19, "start_sec": 165.4911111111111, "end_sec": 178.6775, "confidence": 95.53571428571429, "canonical_text": "Én, Pál sajátkezűleg írom: Én térítem meg. Nem is beszélek arról, hogy te többel tartozol nekem: saját magaddal.", "matched_text": "Én, Pál, saját kezüleg írom, Én térítem meg. Nem is beszélek arról, hogy te többel tartozol nekem, saját magaddal"}, {"verse_num": 20, "start_sec": 178.6775, "end_sec": 187.16, "confidence": 99.0, "canonical_text": "Igen, testvér, szeretném, ha örömömre szolgálnál az Úrban: teljesítsd hát szívem vágyát Krisztusban.", "matched_text": "Igen, testvér, szeretném, ha örömömre szolgálnál az Úrban, teljesítsd hát szívem vágyát Krisztusban."}, {"verse_num": 21, "start_sec": 188.96, "end_sec": 198.65391304347827, "confidence": 100.0, "canonical_text": "Engedelmességedben bízva írok neked. Tudom, hogy többet is teszel, mint amit mondok.", "matched_text": "Engedelmességedben bízva írok neked. Tudom, hogy többet is teszel, mint amit mondok."}, {"verse_num": 22, "start_sec": 198.65391304347827, "end_sec": 207.54, "confidence": 96.84210526315789, "canonical_text": "Egyúttal készíts szállást is nekem. Remélem ugyanis, hogy imádságotokra ajándékul visszakaptok.", "matched_text": "Egyúttal, Készíts szállást is nekem. Remélem ugyanis, hogy imádságotokra ajándékol visszakaptok."}, {"verse_num": 23, "start_sec": 207.82, "end_sec": 210.9742857142857, "confidence": 92.6829268292683, "canonical_text": "Epafrász, fogolytársam Krisztus Jézusban,", "matched_text": "Epaphras, fogolytársam Krisztus Jézusban,"}, {"verse_num": 24, "start_sec": 210.18571428571428, "end_sec": 218.07142857142856, "confidence": 92.53731343283582, "canonical_text": "és munkatársaim: Márk, Arisztarchusz, Démász és Lukács köszöntenek.", "matched_text": "és munkatársaim, Mark, Aristarchus, Démász és Lukász köszöntenek. A"}, {"verse_num": 25, "start_sec": 217.28285714285713, "end_sec": 225.88, "confidence": 93.44262295081968, "canonical_text": "A mi Urunk, Jézus Krisztus kegyelme legyen lelketekkel! Amen.", "matched_text": "mi Uronk Jézus Krisztus kegyelme legyen a lelketekkel. Amen."}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

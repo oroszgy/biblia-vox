@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apostolok cselekedetei 11. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "ACT", "hungarian_name": "Apostolok cselekedetei", "abbreviation": "ApCsel", "book_number": 405, "chapter_count": 28}, "chapter": {"book_usx": "ACT", "chapter_num": 11, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/51_apcsel/apostolok-cselekedetei-11-fejezet.mp3", "verse_count": 30, "aligned_count": 30}, "verses": [{"verse_num": 1, "start_sec": 2.3957894736842107, "end_sec": 10.781052631578948, "confidence": 68.4782608695652, "canonical_text": "Az apostolok és a júdeai testvérek megtudták, hogy a pogányok is elfogadták az Isten szavát.", "matched_text": "apostolok és a testvérek, akik Judeában voltak, meghallották, hogy a pogányok is befogadták I"}, {"verse_num": 2, "start_sec": 10.781052631578948, "end_sec": 19.304, "confidence": 52.27272727272727, "canonical_text": "Amikor Péter visszatért Jeruzsálembe, a zsidók közül némelyek szemrehányást tettek neki:", "matched_text": "ét. Mikor azonban Péter fölment Jeruzsálembe, akik a körülmetéltek közül valók voltak, rá"}, {"verse_num": 3, "start_sec": 20.607999999999997, "end_sec": 26.817999999999998, "confidence": 52.63157894736843, "canonical_text": "\"Körülmetéletlen emberek házában jártál, és ettél velük.\"", "matched_text": "ementél körülmetéletlen férfiakhoz és velük ettél. Péter p"}, {"verse_num": 4, "start_sec": 23.868, "end_sec": 31.536, "confidence": 48.38709677419355, "canonical_text": "Péter hozzáfogott, és sorjában elbeszélte nekik a történteket:", "matched_text": "l. Péter pedig az elején kezdve sorban elmondott nekik mindent."}, {"verse_num": 5, "start_sec": 32.21, "end_sec": 44.79666666666667, "confidence": 71.83098591549295, "canonical_text": "\"Joppe városában voltam és imádkoztam, közben látomásom volt. Valami lepedőféle ereszkedett le egészen elém az égből, a négy csücskénél fogva.", "matched_text": "obbe városában voltam, imádkoztam, és a lélek elragadtatásában látomást láttam. Valami edényféle ereszkedett alá az égből, a négy csücskével ös"}, {"verse_num": 6, "start_sec": 47.10333333333333, "end_sec": 55.75333333333333, "confidence": 67.88990825688073, "canonical_text": "Amikor jól szemügyre vettem, szárazföldi négylábúakat, vadakat, csúszómászókat és égi madarakat láttam benne.", "matched_text": "t. Amikor belenéztem, szemlélődtem rajta, és négy lábú vadakat, csúszómászókat és madarakat láttam. Egy hangot"}, {"verse_num": 7, "start_sec": 54.599999999999994, "end_sec": 62.096666666666664, "confidence": 62.16216216216216, "canonical_text": "És hangot is hallottam. Így szólított meg: Nos, Péter, öld meg és edd meg!", "matched_text": "Egy hangot hallottam, amely mondta nekem, rajta Péter, öld meg és egyél. Én"}, {"verse_num": 8, "start_sec": 59.21333333333333, "end_sec": 71.32333333333332, "confidence": 57.89473684210527, "canonical_text": "Én szabadkoztam: Szó sem lehet róla, Uram, hisz nekem soha semmi közönséges és tisztátalan nem volt még a számban.", "matched_text": "ld meg és egyél. Én pedig mondtam, nem én, Uram, hiszen közönséges vagy tisztáltalan, soha nem ment be a számba. A"}, {"verse_num": 9, "start_sec": 71.32333333333332, "end_sec": 80.3, "confidence": 63.63636363636363, "canonical_text": "Másodszor is megszólított az égi hang: Amit az Isten tisztává tett, azt te ne tartsd közönségesnek.", "matched_text": "pedig másodszor válaszolt az égből, amit Isten megtisztított, te ne mondd közönségesnek. Ez háromsz"}, {"verse_num": 10, "start_sec": 78.24333333333333, "end_sec": 86.205, "confidence": 74.64788732394366, "canonical_text": "Ez háromszor megismétlődött, aztán az egész fölemelkedett újra az égbe.", "matched_text": "Ez háromszor megismétlődött, és az egészet visszaemelték az égbe. És ím"}, {"verse_num": 11, "start_sec": 85.6075, "end_sec": 94.57, "confidence": 70.0, "canonical_text": "Ebben a pillanatban három ember ért a házhoz, ahol laktam. Cezáreából küldték őket hozzám.", "matched_text": "e, azonnal három férfi érkezett a házba, ahol voltunk, Cezareából küldték őket hozzám. A lé"}, {"verse_num": 12, "start_sec": 95.1675, "end_sec": 106.56714285714285, "confidence": 65.35433070866141, "canonical_text": "A Lélek felszólított, hogy habozás nélkül menjek el velük. Velem tartott ez a hat testvér is, és az illető férfi házába értünk.", "matched_text": "a nekem, hogy habozás nélkül menjek velük. Eljöttek velem hatan a testvérek is, és bementünk annak a férfinak a házába. Elmondta"}, {"verse_num": 13, "start_sec": 106.56714285714285, "end_sec": 116.84877551020409, "confidence": 55.04587155963303, "canonical_text": "Elmondta, hogy angyal jelent meg házában és felszólította: Küldj Joppéba, hívasd el Simont, más néven Pétert!", "matched_text": ", hogyan látta meg a házában álló angyalt, aki azt mondta neki, küldj el jobbéba, és hivazz Simont, akit Péter"}, {"verse_num": 14, "start_sec": 120.44734693877551, "end_sec": 126.85169811320755, "confidence": 52.94117647058824, "canonical_text": "Ő majd elmondja, ami neked és egész házad népének üdvösséget szerez.", "matched_text": "et, amelyekben üdvözülsz te és egész házad népe. Mikor pedig beszélni"}, {"verse_num": 15, "start_sec": 124.04591836734694, "end_sec": 134.41849056603772, "confidence": 78.57142857142857, "canonical_text": "Alighogy beszélni kezdtem, leszállt rájuk a Szentlélek, éppen úgy, ahogy miránk a kezdet kezdetén.", "matched_text": "pe. Mikor pedig beszélni kezdtem, leszállt rájuk a Szentlélek, mint mi ránk a kezdet-kezdetén. És a"}, {"verse_num": 16, "start_sec": 134.41849056603772, "end_sec": 143.87698113207546, "confidence": 81.30081300813008, "canonical_text": "Eszembe jutottak az Úr szavai, amikor mondta: János csak vízzel keresztelt, de ti a Szentlélekben fogtok megkeresztelkedni.", "matched_text": "sszaemlékeztem az Úr igéjére, amint mondta, János csak vízzel keresztelt, ti pedig, Szentlélekben fogtok megkeresztelkedni."}, {"verse_num": 17, "start_sec": 143.24641509433962, "end_sec": 158.38, "confidence": 81.29032258064515, "canonical_text": "Ha tehát az Isten ugyanazt az ajándékot adta nekik is, mint nekünk, akik hiszünk Jézus Krisztusban, ki vagyok én, hogy akadályt gördítsek az Isten útjába?\"", "matched_text": "ni. Ha tehát ugyanazt az ajándékot adta nekik Isten, mint nekünk, akik hittünk az Úr Jézus Krisztusban, ki vagyok én, hogy megakadályozhattam volna Istent?"}, {"verse_num": 18, "start_sec": 160.28, "end_sec": 173.99285714285713, "confidence": 70.8029197080292, "canonical_text": "Miután ezeket hallották, elhallgattak, és dicsőítették az Isten: \"Így hát a pogányoknak is megadta az Isten az életre vezető bűnbánatot.\"", "matched_text": "Miután ezeket meghallgatták, megnyugodtak, és dicsőítették Istent, mondván, Tehát Isten a pogányoknak is megadta a bűnbánatot az életre. A"}, {"verse_num": 19, "start_sec": 174.66571428571427, "end_sec": 188.79571428571427, "confidence": 64.81481481481481, "canonical_text": "Akik az István miatt kitört üldözés elől szétszéledtek, eljutottak egészen Föníciáig, Ciprusig és Antióchiáig, az evangéliumot azonban csak a zsidóknak hirdették.", "matched_text": "kik az István diákonus idejében támadt üldözés miatt szétszorultak Jeruzsálemből, eljutottak egészen Feníciaig, Ciprusig és Antióhiáig, de senki másnak nem beszélt"}, {"verse_num": 20, "start_sec": 192.97, "end_sec": 205.15666666666667, "confidence": 67.93893129770993, "canonical_text": "De akadt köztük ciprusi és kirenei férfi is, s ezek Antióchiába eljutva a görögökkel is szóba álltak: hirdették nekik az Úr Jézust.", "matched_text": "t azonban közöttük néhány ciprusi és cirenei férfi, akik Antióhiába mentek, és a görögöknek is hirdették az Úr Jézus örömhírét. És a"}, {"verse_num": 21, "start_sec": 203.4948484848485, "end_sec": 212.91153846153844, "confidence": 52.85714285714286, "canonical_text": "Velük volt az Úr segítsége: sokan hívők lettek, és megtértek az Úrhoz.", "matched_text": "ét. És az Úr keze velük volt, és nagyszámú hívő tért meg az Úrhoz. Mind"}, {"verse_num": 22, "start_sec": 212.91153846153844, "end_sec": 221.81, "confidence": 64.36781609195403, "canonical_text": "Ennek a híre a jeruzsálemi egyházba is eljutott, ezért elküldték Barnabást Antióchiába.", "matched_text": "íre eljutott a Jeruzsálemben élő egyház fülébe, és elküldték Barnabást egészen Antióhiái"}, {"verse_num": 23, "start_sec": 222.69955555555555, "end_sec": 234.422, "confidence": 62.698412698412696, "canonical_text": "Amikor megérkezett és látta az Isten kegyelmét, boldog volt és mindenkit buzdított, hogy ragaszkodjék az Úrhoz szíve mélyéből.", "matched_text": "mikor megérkezett, és látta Isten kegyelmét, örült, és buzdította minnyájukat, hogy szívük elhatározásában tartsanak ki az Úrba"}, {"verse_num": 24, "start_sec": 233.73244444444444, "end_sec": 244.07577777777777, "confidence": 54.216867469879524, "canonical_text": "Mert derék ember volt, telve Szentlélekkel és hittel. Nagyon sokan az Úrhoz tértek.", "matched_text": "Mert jó, szent lélekkel és hittel eltelt férfi volt. És nagy sokaság csatlakozott a"}, {"verse_num": 25, "start_sec": 244.07577777777777, "end_sec": 249.5922222222222, "confidence": 65.45454545454545, "canonical_text": "Barnabás ezért elment Tarzuszba, hogy fölkeresse Sault.", "matched_text": "rhoz. Útra kelt, tarzuszba ment, hogy megkeresse Saul-t,"}, {"verse_num": 26, "start_sec": 250.97133333333332, "end_sec": 269.74, "confidence": 60.439560439560445, "canonical_text": "Amikor rátalált, magával vitte Antióchiába. Egy egész évig ott maradtak az egyházban, és rengeteg embert tanítottak. Először Antióchiában nevezték el a tanítványokat keresztényeknek.", "matched_text": "a, Elvitte Antióhiába. Történt pedig, hogy egy álló esztendőn át ott éltek az egyházban, és tanították a nagy sokaságot, és a tanítványokat először Antióhiában nevezték keresztényekne"}, {"verse_num": 27, "start_sec": 270.88, "end_sec": 276.48671875, "confidence": 78.94736842105263, "canonical_text": "Ez idő tájt próféták jöttek le Jeruzsálemből Antióchiába.", "matched_text": "a napokban proféták jöttek le Jeruzsálemből Antióhiába, é"}, {"verse_num": 28, "start_sec": 276.48671875, "end_sec": 293.92984375, "confidence": 92.04545454545455, "canonical_text": "Előállt közülük az egyik, név szerint Agabusz, és a Lélek sugallatára előre megmondta, hogy nagy éhínség fog támadni az egész földön, s ez be is következett Klaudiusz idejében.", "matched_text": "ölkelt közülük az egyik, Név szerint Agabus, és a lélek sugallatára előre megmondta, hogy nagy éhinség fog támadni az egész földön, amibe is következett Klaudius idejében. A tan"}, {"verse_num": 29, "start_sec": 294.5528125, "end_sec": 302.0284375, "confidence": 58.06451612903225, "canonical_text": "A tanítványok elhatározták, hogy tehetségükhöz mérten segítik anyagilag a júdeai testvéreket.", "matched_text": "mindenki a lehetőségei szerint valamennyien elhatározták, hogy segítik a júdéai testvéreket, a"}, {"verse_num": 30, "start_sec": 301.40546875, "end_sec": 310.75, "confidence": 74.68354430379746, "canonical_text": "Ezt meg is tették: Saullal és Barnabással adományokat küldtek a presbitereknek.", "matched_text": "t meg is tettek, és Saul és Barnabás keze által El is küldték a presbitereknek."}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

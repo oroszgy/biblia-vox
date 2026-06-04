@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rómabeliekhez írt levél 5. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "ROM", "hungarian_name": "Rómabeliekhez írt levél", "abbreviation": "Róm", "book_number": 406, "chapter_count": 16}, "chapter": {"book_usx": "ROM", "chapter_num": 5, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/52_romai/romaiaknak-irt-level-05-fejezet.mp3", "verse_count": 21, "aligned_count": 21}, "verses": [{"verse_num": 1, "start_sec": 1.565, "end_sec": 12.52, "confidence": 95.74468085106383, "canonical_text": "Mivel tehát a hit révén megigazultunk, békében élünk az Istennel, Urunk, Jézus Krisztus által.", "matched_text": "et. Mivel tehát a hit révén megigazultunk, békében élünk Istennel, Urunk Jézus Krisztus által."}, {"verse_num": 2, "start_sec": 12.74, "end_sec": 25.128, "confidence": 100.0, "canonical_text": "Általa jutottunk hozzá a hitben a kegyelemhez, amelyben élünk, és dicsekszünk a reménységgel, hogy az isteni dicsőség részesei lehetünk.", "matched_text": "Általa jutottunk hozzá a hitben a kegyelemhez, amelyben élünk, és dicsekszünk a reménységgel, hogy az isteni dicsőség részesei lehetünk."}, {"verse_num": 3, "start_sec": 25.128, "end_sec": 36.211999999999996, "confidence": 97.22222222222221, "canonical_text": "De nemcsak ezzel, hanem még szenvedéseinkkel is dicsekszünk, mert tudjuk, hogy a szenvedésből türelem fakad,", "matched_text": "De nem csak ezzel, hanem még a szenvedéseinkkel is dicsekszünk, mert tudjuk, hogy a szenvedésből türelem faka"}, {"verse_num": 4, "start_sec": 36.211999999999996, "end_sec": 41.428, "confidence": 100.0, "canonical_text": "a türelemből kipróbált erény, a kipróbált erényből reménység.", "matched_text": "a türelemből kipróbált erény, a kipróbált erényből reménység."}, {"verse_num": 5, "start_sec": 40.775999999999996, "end_sec": 51.86, "confidence": 98.13084112149532, "canonical_text": "A remény pedig nem csal meg, mert a nekünk ajándékozott Szentlélekkel kiáradt szívünkbe az Isten szeretete.", "matched_text": "A remény pedig nem csal meg, mert a nekünk ajándékozott szentélekkel kiáradt szívünkbe az Isten szeretete."}, {"verse_num": 6, "start_sec": 51.208, "end_sec": 58.93666666666667, "confidence": 98.61111111111111, "canonical_text": "Amikor még erőtlenek voltunk, Krisztus éppen akkor meghalt a bűnösökért,", "matched_text": "Amikor még erőtlenek voltunk, Krisztus éppen akkor meghalt a bűnösökért."}, {"verse_num": 7, "start_sec": 58.305, "end_sec": 67.78, "confidence": 95.1219512195122, "canonical_text": "noha az igazért is alig hal meg valaki, legföljebb jó emberért vállalják a halált.", "matched_text": "Noha az igazért is alig hal meg valaki, legfőjebb jó emberért vallalják a halált."}, {"verse_num": 8, "start_sec": 68.06, "end_sec": 78.92, "confidence": 100.0, "canonical_text": "Isten azonban azzal tesz tanúságot irántunk való szeretetéről, hogy Krisztus meghalt értünk, amikor még bűnösök voltunk.", "matched_text": "Isten azonban azzal tesz tanúságot irántunk való szeretetéről, hogy Krisztus meghalt értünk, amikor még bűnösök voltunk."}, {"verse_num": 9, "start_sec": 79.04, "end_sec": 88.73945945945947, "confidence": 94.04761904761905, "canonical_text": "Most, hogy vére árán igazzá váltunk, még sokkal inkább megment bennünket haragjától.", "matched_text": "Most, hogy vére árán igazzá váltunk, Sokkal inkább megment bennünket haragjától. Mert"}, {"verse_num": 10, "start_sec": 88.04, "end_sec": 102.72864864864866, "confidence": 97.95918367346938, "canonical_text": "Mert ha Istent Fia halála kiengesztelte akkor, amikor még ellenségek voltunk, most hogy kibékültünk vele, annál inkább megmenekülünk az ő életében.", "matched_text": "ert ha Istent, fia halála kiengesztelte akkor, amikor még ellenségek voltunk, most, hogy kibékültünk vele, annál inkább megmenekülünk az ő életében."}, {"verse_num": 11, "start_sec": 102.0291891891892, "end_sec": 113.92, "confidence": 95.6896551724138, "canonical_text": "Sőt ezenfelül még dicsekszünk is az Istenben Urunk, Jézus Krisztus által, aki megszerezte nekünk a kiengesztelődést.", "matched_text": "Sőt, ezen felül még dicsekszünk is Istenben, Urunk Jézus Krisztus által, Aki megszerezte nekünk a kiengesztelődést."}, {"verse_num": 12, "start_sec": 113.92, "end_sec": 132.4990243902439, "confidence": 98.18181818181819, "canonical_text": "Amint tehát egy ember által lépett a világba a bűn, majd a bűn folyományaként a halál, és így a halál minden embernek osztályrésze lett, mert mindnyájan vétkeztek...", "matched_text": "] Amint tehát egy ember által lépett a világba a bűn, majd a bűn folyományaként a halál, és így a halál minden embernek osztályrésze lett, mert minnyájan vétkeztek. B"}, {"verse_num": 13, "start_sec": 131.98, "end_sec": 141.84146341463415, "confidence": 99.00990099009901, "canonical_text": "Bűn volt a világon azelőtt is, hogy a törvény adatott, de a bűn, ha nincs törvény, nem számít bűnnek.", "matched_text": "Bűn volt a világon azelőtt is, hogy a törvény adatott, de a bűn, ha nincs törvény, Nem számít bűnnek."}, {"verse_num": 14, "start_sec": 141.84146341463415, "end_sec": 153.26, "confidence": 94.92753623188406, "canonical_text": "Mindamellett a halál Ádámtól Mózesig úrrá lett azokon is, akik nem vétkeztek a törvényt megszegve, mint Ádám, aki az Eljövendőnek előképe.", "matched_text": "nt amellett a halál, Ádámtól, Mózesig, Urá lett azokon is, akik nem vétkeztek a törvényt megszegve, mint Ádám, aki az eljövendőnek előképe."}, {"verse_num": 15, "start_sec": 153.5, "end_sec": 174.48, "confidence": 99.52153110047847, "canonical_text": "A kegyelemmel azonban nem úgy áll a dolog, mint a bukással. Mert ha egynek bukása miatt sokan meghaltak, Isten kegyelme, s az egy embernek, Jézus Krisztusnak irgalmából nyert ajándék még inkább kiárad sokakra.", "matched_text": "A kegyelemmel azonban nem úgy áll a dolog, mint a bukással. Mert ha egynek bukása miatt sokan meghaltak, Isten kegyelme, és az egy embernek, Jézus Krisztusnak irgalmából nyert ajándék még inkább kiárad sokakra."}, {"verse_num": 16, "start_sec": 174.5, "end_sec": 191.76363636363635, "confidence": 98.78048780487805, "canonical_text": "A kegyelemmel tehát másképpen van, mint az egy ember bűnével. Az ítélet ugyanis egynek bűnéért rótt ki büntetést, a kegyelem pedig sok vétekből megigazulásra vezet.", "matched_text": "A kegyelemmel tehát másképpen van, mint az egy ember bűnével. Az ítélet ugyanis egynek bűnéért rót kibüntetést, a kegyelem pedig sok vétekből megigazulásra vezet. Me"}, {"verse_num": 17, "start_sec": 191.0730909090909, "end_sec": 212.48, "confidence": 97.54901960784314, "canonical_text": "Mert ha egynek bűnbeesése következtében egy miatt uralomra jutott a halál, mennyivel inkább uralkodnak az egy Jézus Krisztus által az életben azok, akik a kegyelem és megigazulás bőséges ajándékát kapják.", "matched_text": "t ha egynek bűnbeesése következtében, egy miatt, Uralomra jutott a halál, mennyivel inkább uralkodnak az egy Jézus Krisztus által az életben azok, akik a kegyelem és a megigazulás bőséges ajándékát kapják."}, {"verse_num": 18, "start_sec": 213.06, "end_sec": 230.4, "confidence": 98.05194805194806, "canonical_text": "Amint tehát egynek vétke minden emberre kárhozatot hozott, ugyanúgy egynek üdvösséget szerző tette minden emberre kiárasztotta az életet adó megigazulást.", "matched_text": "int tehát egynek vétke, minden emberre kárhozatot hozott, ugyanúgy egynek üdvösséget szerző tette, minden emberre Kiárasztotta az életet adó megigazulást."}, {"verse_num": 19, "start_sec": 231.36, "end_sec": 241.6188888888889, "confidence": 100.0, "canonical_text": "Ahogy egy embernek engedetlensége miatt sokan bűnössé váltak, egynek engedelmességéért sokan meg is igazultak.", "matched_text": "Ahogy egy embernek engedetlensége miatt sokan bűnössé váltak, egynek engedelmességéért sokan meg is igazultak."}, {"verse_num": 20, "start_sec": 241.6188888888889, "end_sec": 255.54166666666669, "confidence": 95.08196721311475, "canonical_text": "Közben azonban belépett a törvény, hogy vele szaporodjék a bukás. Ahol azonban elhatalmasodott a bűn, túláradt a kegyelem,", "matched_text": "ben azonban belépett a törvény, hogy vele szaporodjék a bukás, ahol azonban elhatalmasodott a bűn, Ott túláradt a kegyelem."}, {"verse_num": 21, "start_sec": 254.8088888888889, "end_sec": 272.78, "confidence": 97.8102189781022, "canonical_text": "hogy amint a halálban uralkodott a bűn, úgy uralkodjék az örök életre szóló megigazulás által a kegyelem is, Urunk, Jézus Krisztus által.", "matched_text": "Hogyamint a halálban uralkodott a bűn, úgy uralkodjék az örök életre szóló megigazulás által a kegyelem is, Urunk Jézus Krisztus által. ["}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

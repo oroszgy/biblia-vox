@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jakab levele 3. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "JAS", "hungarian_name": "Jakab levele", "abbreviation": "Jak", "book_number": 420, "chapter_count": 5}, "chapter": {"book_usx": "JAS", "chapter_num": 3, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/66_jakab/szent-jakab-level-03-fejezet.mp3", "verse_count": 18, "aligned_count": 18}, "verses": [{"verse_num": 1, "start_sec": 2.3435294117647056, "end_sec": 13.28, "confidence": 98.0, "canonical_text": "Testvéreim, ne akarjatok annyian tanítók lenni, hisz tudjátok, hogy ránk annál súlyosabb ítélet vár.", "matched_text": "estvéreim, ne akarjatok annyian tanítók lenni, hiszen tudjátok, hogy ránk annál súlyosabb ítélet vár."}, {"verse_num": 2, "start_sec": 13.77, "end_sec": 26.55, "confidence": 95.86776859504133, "canonical_text": "Mert sokban vétünk mindnyájan. Ha valaki nyelvével nem vétkezik, az tökéletes férfi, az képes egész testét is megfékezni.", "matched_text": "rt sokban vétünk mindannyian. Ha valaki a nyelvével nem vétkezik, az tökéletes férfi, az képes egész testét is megfékezni."}, {"verse_num": 3, "start_sec": 27.54, "end_sec": 35.0748, "confidence": 100.0, "canonical_text": "Ha ugyanis a lovak szájába zablát teszünk, hogy engedelmeskedjenek, akkor egész testüket irányíthatjuk.", "matched_text": "Ha ugyanis a lovak szájába zablát teszünk, hogy engedelmeskedjenek, akkor egész testüket irányíthatjuk."}, {"verse_num": 4, "start_sec": 35.0748, "end_sec": 48.614999999999995, "confidence": 96.15384615384616, "canonical_text": "Lám, a hajókat is, bármilyen nagyok, bármilyen erős szelek hajtják is őket, a kis kormány oda irányítja, ahova a kormányos akarja.", "matched_text": "me a hajókat is, bármilyen nagyok, bármilyen erős szelek hajtják is őket, A kis kormány oda irányítja, ahová a kormányos akarja. Ug"}, {"verse_num": 5, "start_sec": 47.9645, "end_sec": 61.28, "confidence": 97.72727272727273, "canonical_text": "Ugyanígy parányi testrész a nyelv is, mégis nagy dolgokat vallhat magáénak. Nézd, milyen kicsi a tűz, és milyen nagy erdőt felgyújt!", "matched_text": "gyanígy, parányi testrész, a nyelv is, mégis nagy dolgokat valhat magájénak. Nézd, milyen kicsi a tűz, és milyen nagy erdőt felgyújt."}, {"verse_num": 6, "start_sec": 61.85, "end_sec": 77.16, "confidence": 82.82208588957054, "canonical_text": "A nyelv is tűz, a gonoszság világa. A nyelv az a tagunk, amely egész testünket beszennyezi, lángba borítja változékony életünket, maga meg a pokoltól fogott tüzet.", "matched_text": "lv is tűz, a gonoszság egész világa. A nyelv az a tagunk, amely egész testünket beszennyezi, és egész életkörünket lángba borítja, maga meg a pokoltól fogott tüzet."}, {"verse_num": 7, "start_sec": 76.616, "end_sec": 90.28, "confidence": 91.97080291970804, "canonical_text": "Mert az összes vadak, madarak, csúszómászók és tengeri állatok természetét meg lehet szelídíteni, s meg is szelídíti az emberi természet,", "matched_text": "Mert az összes vadak, madarak, csúszómászók és tengeri állatok természetét meg lehet szelidíteni, és meg is szelidíti az ember, de a nyel"}, {"verse_num": 8, "start_sec": 88.28, "end_sec": 98.28, "confidence": 97.02970297029702, "canonical_text": "de a nyelvet senki emberfia nem képes megszelídíteni, az nyugtalan gonosz, tele van halálos méreggel.", "matched_text": "e a nyelvet senki emberfia nem képes megszelidíteni, az nyugtalan, gonosz, Tele van halálos méreggel."}, {"verse_num": 9, "start_sec": 97.61333333333333, "end_sec": 109.0690909090909, "confidence": 93.51851851851852, "canonical_text": "Vele áldjuk az Urat és az Atyát, és vele átkozzuk az embereket, akik az Isten hasonlóságára vannak teremtve.", "matched_text": ". Beleáldjuk az urat és az atyát, és vele átkozzuk az embereket, akik Isten hasonlóságára vannak teremtve. Ug"}, {"verse_num": 10, "start_sec": 108.4609090909091, "end_sec": 116.23, "confidence": 86.04651162790698, "canonical_text": "Ugyanabból a szájból áldás és átok jön. Testvéreim, ennek nem volna szabad így lennie!", "matched_text": "gyanabból a szájból áldás és átokfakad. Testvéreim, ennek nem volna szabad megtörténnie"}, {"verse_num": 11, "start_sec": 115.58, "end_sec": 125.07642857142858, "confidence": 81.0126582278481, "canonical_text": "Vajon a forrás esetében ugyanabból a nyílásból édes víz is fakad meg keserű is?", "matched_text": ". Vajon a forrás, ugyanabból a nyílásból, édes víz is, meg keserű is? Testvéreim"}, {"verse_num": 12, "start_sec": 124.29, "end_sec": 135.3, "confidence": 96.84210526315789, "canonical_text": "Testvéreim, teremhet fügefán olajbogyó vagy szőlőn füge? Nem törhet elő sós forrásból édes víz.", "matched_text": "stvéreim, teremhet-e fügefán olajbogyó, vagy szőlőn füge? Nem törhet elő sós forrásból édes víz."}, {"verse_num": 13, "start_sec": 135.95, "end_sec": 147.46882352941176, "confidence": 53.968253968253975, "canonical_text": "Van köztetek bölcs és értelmes ember? Azt a helyes életmódból fakadó, szelíd bölcsességben végbevitt cselekedetei bizonyítsák.", "matched_text": "Van köztetek bölcs és értelmes ember? Tegyen magatartásával bizonságot róla, hogy mindent bölcs szelítséggel tesz. Ellenben, ha"}, {"verse_num": 14, "start_sec": 146.33, "end_sec": 156.01, "confidence": 96.52173913043478, "canonical_text": "Ellenben ha keserű irigység és önzés van szívetekben, ne dicsekedjetek, és ne hazudjatok az igazsággal ellentétben.", "matched_text": "llenben, ha keserű iricség és önzés van a szívetekben, ne dicsekedjetek, és ne hazudjatok az igazsággal ellentétben."}, {"verse_num": 15, "start_sec": 156.44, "end_sec": 163.51235294117646, "confidence": 100.0, "canonical_text": "Ez a bölcsesség ugyanis nem felülről származik, hanem földi, érzéki, sátáni.", "matched_text": "Ez a bölcsesség ugyanis nem felülről származik, hanem földi, érzéki, sátáni."}, {"verse_num": 16, "start_sec": 163.51235294117646, "end_sec": 172.058, "confidence": 96.1038961038961, "canonical_text": "Mert ahol irigység és önzés honol, ott zűrzavar van és mindenféle hitványság.", "matched_text": "Mert ahol iricség és önzés honol, Ott zűrzavar van, és mindenféle hitványság."}, {"verse_num": 17, "start_sec": 172.058, "end_sec": 189.39, "confidence": 100.0, "canonical_text": "A felülről származó bölcsesség először is tiszta, aztán békeszerető, méltányos, engedékeny, irgalom tölti el, és gazdag termést hoz, nem részrehajló, nem képmutató.", "matched_text": "A felülről származó bölcsesség először is tiszta, aztán békeszerető, méltányos, engedékeny, irgalom tölti el, és gazdag termést hoz, nem részrehajló, nem képmutató."}, {"verse_num": 18, "start_sec": 189.79, "end_sec": 197.91, "confidence": 100.0, "canonical_text": "Az igazság gyümölcsét békében vetik el azok számára, akik békét teremtenek.", "matched_text": "Az igazság gyümölcsét békében vetik el azok számára, akik békét teremtenek."}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

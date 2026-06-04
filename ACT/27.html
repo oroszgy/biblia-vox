@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apostolok cselekedetei 27. fejezet - BibliaVox</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BibliaVox</h1>
+        <p class="subtitle">Szent István Társulat Biblia - Újszövetség</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html" class="back-link">&larr; Vissza a könyvekhez</a>
+    </nav>
+    
+    <main>
+        <div id="chapter-header">
+            <h2 id="chapter-title"></h2>
+            <div id="audio-controls">
+                <audio id="audio-player" controls preload="none"></audio>
+                <div id="audio-status"></div>
+                <div id="audio-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="verse-content">
+            <div id="verses"></div>
+        </div>
+        
+        <div id="chapter-nav">
+            <button id="prev-chapter" class="nav-btn" disabled>&larr; Előző fejezet</button>
+            <button id="next-chapter" class="nav-btn" disabled>Következő fejezet &rarr;</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Adatok forrása: <a href="https://mek.oszk.hu/08800/08820/mp3/index.html" target="_blank">MEK OSZK</a></p>
+    </footer>
+    
+    <script>
+        const chapterData = {"book": {"usx_code": "ACT", "hungarian_name": "Apostolok cselekedetei", "abbreviation": "ApCsel", "book_number": 405, "chapter_count": 28}, "chapter": {"book_usx": "ACT", "chapter_num": 27, "audio_url": "https://mek.oszk.hu/08800/08820/mp3/ujtestamentum/51_apcsel/apostolok-cselekedetei-27-fejezet.mp3", "verse_count": 44, "aligned_count": 44}, "verses": [{"verse_num": 1, "start_sec": 1.965, "end_sec": 19.459999999999997, "confidence": 94.03973509933775, "canonical_text": "Amikor meghozták a döntést, hogy hajón Itáliába visznek minket, Pált több más fogollyal együtt átadták az Auguszta zászlóalj Juliusz nevű századosának.", "matched_text": ". Amikor meghozták a döntést, hogy hajón Itáliába visznek minket, Pált több más fogójjal együtt átadták az Augusta zászlóai Július nevű századosának. Eg"}, {"verse_num": 2, "start_sec": 17.52952380952381, "end_sec": 36.14217391304348, "confidence": 93.75, "canonical_text": "Egy adramittiumi hajóra szálltunk fel, amely az ázsiai kikötők felé tartott, és kifutottunk a tengerre. A tesszalonikai macedón Arisztarchusz is velünk tartott.", "matched_text": "k. Egy Adramitimi hajóra szálltunk föl, amely az áziai kikötők felé tartott, és kifutottunk a tengerre. A tesszalonikai Makedon Aristarchus is velünk tartott. Má"}, {"verse_num": 3, "start_sec": 34.58913043478261, "end_sec": 47.79, "confidence": 94.02985074626866, "canonical_text": "Másnap Szidónba érkeztünk. Juliusz emberségesen bánt Pállal, megengedte, hogy meglátogassa barátait, és hogy azok gondoskodjanak róla.", "matched_text": "ott. Másnap Szidonba értünk. Július emberségesen bánt pállal, megengedte, hogy meglátogassa barátait, s hogy azok gondoskodjanak róla."}, {"verse_num": 4, "start_sec": 47.87, "end_sec": 54.116, "confidence": 100.0, "canonical_text": "Innét továbbindultunk, és az ellenszél miatt Ciprus alatt hajóztunk,", "matched_text": "Innét továbbindultunk, és az ellenszél miatt Ciprus alatt hajóztunk,"}, {"verse_num": 5, "start_sec": 54.116, "end_sec": 62.443999999999996, "confidence": 89.85507246376811, "canonical_text": "majd a kilikiai és a pamfiliai tengeren át a liciai Mirába érkeztünk.", "matched_text": "Majd a kilékiai és a pamféliai tengeren át a lékiai mírába érkeztünk."}, {"verse_num": 6, "start_sec": 62.443999999999996, "end_sec": 72.16, "confidence": 95.78947368421052, "canonical_text": "A százados talált ott egy alexandriai hajót, amely Itáliába készült, arra szállított át minket.", "matched_text": "A százados ott talált egy alexandriai hajót, amely Itáliába készült, arra szállított át minket."}, {"verse_num": 7, "start_sec": 72.68, "end_sec": 88.28870967741935, "confidence": 97.40259740259741, "canonical_text": "Hajónk napokon át lassan haladt, s csak nagy nehezen jutottunk el Knidoszig. A szél miatt nem lehetett kikötni, ezért Szalmóne-foknál Kréta alá hajóztunk.", "matched_text": "ajónk napokon át lassan haladt, és csak nagy nehezen jutottunk el Knidosig. A szél miatt nem lehetett kikötni, ezért a Szalmonefoknál Kréta alá hajóztunk."}, {"verse_num": 8, "start_sec": 87.62548387096774, "end_sec": 100.89, "confidence": 96.15384615384616, "canonical_text": "Csak nagy üggyel-bajjal tudtunk a partnál elhaladni, végül a Jókikötőnek nevezett helyhez értünk. Ehhez közel esik Laszája városa.", "matched_text": "Csak nagy ügyjel bajjal tudtunk a partnál elhaladni, végül a jó kikötőnek nevezett helyhez értünk. Ehhez közelesik Lasája városa."}, {"verse_num": 9, "start_sec": 100.22677419354838, "end_sec": 113.00666666666667, "confidence": 89.60000000000001, "canonical_text": "Az idő igen eljárt, a hajózás már nem volt biztonságos, hisz már a böjt ideje is elmúlt. Pál figyelmeztette őket, így szólva:", "matched_text": "Az idő igen eljárt, A hajózás már nem volt biztonságos, hiszen már a bőjt ideje is elmúlt. Pár figyelmeztette őket, mondván,"}, {"verse_num": 10, "start_sec": 113.00666666666667, "end_sec": 124.26461538461538, "confidence": 97.41379310344827, "canonical_text": "\"Emberek, úgy látom, hogy a hajózás nemcsak a rakományra és a hajóra, hanem az életünkre is veszélyessé kezd válni.\"", "matched_text": "emberek, úgy látom, hogy a hajózás nem csak a rakományra és a hajóra, hanem az életünkre is veszélyessé kezd válni. A"}, {"verse_num": 11, "start_sec": 123.66, "end_sec": 131.52, "confidence": 97.8021978021978, "canonical_text": "A százados azonban inkább bízott a kormányosban és a hajótulajdonosban, mint Pál szavaiban.", "matched_text": "A százados azonban inkább bizott a kormányosban és a hajótulajdonosban, mint pál szavaiban."}, {"verse_num": 12, "start_sec": 131.93, "end_sec": 154.37, "confidence": 99.22178988326849, "canonical_text": "A kikötő nem volt alkalmas a telelésre, ezért a többség abban állapodott meg, hogy elhajóznak onnét, és ha csak lehetséges, egy krétai kikötőbe, Főnixbe futnak be, és ott töltik a telet. Ez a kikötő védelmet nyújt a délnyugati és az északnyugati szél ellen.", "matched_text": "kikötő nem volt alkalmas a telelésre, ezért a többség abban állapodott meg, hogy elhajóznak onnét, és ha csak lehetséges, egy krétai kikötőbe, főnixbe futnak be, és ott töltik a telet. Ez a kikötő védelmet nyújt a délnyugati és az észak-nyugati szél ellen."}, {"verse_num": 13, "start_sec": 154.41, "end_sec": 167.3, "confidence": 98.63013698630137, "canonical_text": "Gyenge déli szél fújt, ezért azt gondolták, hogy kitarthatnak szándékuk mellett. Felvonták hát a vitorlát, és Kréta partjai mentén továbbindultak.", "matched_text": "Gyenge déli szél fújt, ezért azt gondolták, hogy kitarthatnak szándékok mellett. Fölvonták hát a vitorlát, és Kréta partjai mentén továbbindultak."}, {"verse_num": 14, "start_sec": 168.42, "end_sec": 176.635, "confidence": 96.3855421686747, "canonical_text": "Hanem nemsokára lecsapott ránk a sziget felől az északkeletinek nevezett forgószél.", "matched_text": "an nem sokára lecsapott ránk a sziget felől az észak-keletinek nevezett forgószél. E"}, {"verse_num": 15, "start_sec": 176.00307692307692, "end_sec": 186.7457692307692, "confidence": 98.01980198019803, "canonical_text": "Elkapta a hajót, nem bírtunk a széllel szemben haladni, feladtuk a harcot, s a vihar elsodort minket.", "matched_text": "Elkapta a hajót, nem bírtunk a széllel szemben haladni, föladtuk a harcot, és a vihar elsodort minket."}, {"verse_num": 16, "start_sec": 186.7457692307692, "end_sec": 194.96076923076922, "confidence": 98.98989898989899, "canonical_text": "Amikor egy Klaudának nevezett kis sziget alatt elfutottunk, alig bírtuk megtartani a mentőcsónakot.", "matched_text": "Amikor egy Klaudának nevezett kis sziget alatt elfutottunk, Alig bírtuk megtartani a mentőcsónakot."}, {"verse_num": 17, "start_sec": 195.5926923076923, "end_sec": 210.19421052631577, "confidence": 91.77215189873418, "canonical_text": "Miután mégis fölhúzták, védőintézkedést tettek, s körülkötözték a hajót. Féltek, hogy a Szirtisznek ütődnek, lebocsátották a lassítót, s így sodródtak tovább.", "matched_text": "mégis felhúzták, védőintézkedést tettek, és körül kötözték a hajót. Féltek ugyanis, hogy a szirtisznek ütődnek, lebocsátották a lassítót, és így sodródtak tová"}, {"verse_num": 18, "start_sec": 210.87684210526317, "end_sec": 220.4336842105263, "confidence": 95.6989247311828, "canonical_text": "A rettenetes vihar egyre hányt-vetett bennünket, ezért másnap a tengerbe szórták a rakományt,", "matched_text": "rettenetes vihar egyre hányt és vetett bennünket, ezért másnap a tengerbe szórták a rakományt."}, {"verse_num": 19, "start_sec": 219.75105263157894, "end_sec": 227.9908333333333, "confidence": 88.0, "canonical_text": "harmadnap pedig (a hajósok) saját kezükkel kidobálták a hajó fölszerelését.", "matched_text": "Harmadnap pedig a hajósok saját kezükkel kiszórták a hajó felszerelését. Tö"}, {"verse_num": 20, "start_sec": 227.42, "end_sec": 241.12, "confidence": 99.31972789115646, "canonical_text": "Több napon át sem a napot, sem a csillagokat nem lehetett látni. A vihar csak dühöngött, végül már minden reményünk odavolt, hogy megmenekülhetünk.", "matched_text": "Több napon át sem a napot, sem a csillagokat nem lehetett látni. A vihar csak dühöngött, végül már minden reményünk oda volt, hogy megmenekülhetünk."}, {"verse_num": 21, "start_sec": 240.54916666666668, "end_sec": 259.1622222222222, "confidence": 91.11111111111111, "canonical_text": "Már jó ideje nem ettek. Pál ekkor előállt, s megszólalt: \"Emberek, rám kellett volna hallgatnotok: nem lett volna szabad elindulni Krétáról. Elkerülhettük volna ezt a bajt és kárt.", "matched_text": "ünk. Már jó ideje nem ettek, s akkor Pál megszólalt, Emberek, rám kellett volna hallgatnotok, nem lett volna szabad elindulni Krétáról. Elkerülhettük volna ezt a bajt és kárt. De mo"}, {"verse_num": 22, "start_sec": 258.02, "end_sec": 268.3, "confidence": 100.0, "canonical_text": "De most azt mondom, ne veszítsétek el a reményt. Csak a hajó vész oda, emberekben nem esik kár.", "matched_text": "De most azt mondom, ne veszítsétek el a reményt. Csak a hajó vész oda, emberekben nem esik kár."}, {"verse_num": 23, "start_sec": 268.56, "end_sec": 276.11560000000003, "confidence": 91.30434782608697, "canonical_text": "Az éjszaka megjelent előttem annak az Istennek az angyala, akié vagyok, és akinek szolgálok.", "matched_text": "szaka ugyanis megjelent előttem annak az Istennek angyala, akié vagyok, és akinek szolgálok."}, {"verse_num": 24, "start_sec": 275.5344, "end_sec": 287.7396, "confidence": 93.27731092436974, "canonical_text": "Azt mondta: Ne félj, Pál! Neked a császár elé kell állnod! Nézd, neked ajándékoz az Isten mindenkit, aki veled hajózik.", "matched_text": "Azt mondta, Ne félj, Pál, neked a császár elé kell állnod. Íme, neked ajándékoz az Isten mindenkit, aki veled hajózik."}, {"verse_num": 25, "start_sec": 287.15840000000003, "end_sec": 295.2952, "confidence": 91.56626506024097, "canonical_text": "Bízzatok hát, emberek! Én hiszek az Istennek, hogy valóra válik, amit hírül kaptam.", "matched_text": "Bizzatok hát emberek, én hiszek Istennek, hogy valóra válik, amit hírül kaptam. Ki"}, {"verse_num": 26, "start_sec": 294.1328, "end_sec": 297.62, "confidence": 94.87179487179486, "canonical_text": "Ki kell vetődnünk valamilyen szigetre!\"", "matched_text": ". Ki kell vetődnünk valamilyen szigetre."}, {"verse_num": 27, "start_sec": 299.5, "end_sec": 314.3457142857143, "confidence": 96.95121951219512, "canonical_text": "Már a tizennegyedik éjszaka szakadt ránk azóta, hogy az Adriai-tengeren hányódtunk, amikor éjféltájban a hajósok azt kezdték sejteni, hogy szárazföldhöz közeledünk.", "matched_text": "ár a tizennegyedik éjszaka szakadt ránk azóta, hogy az adriai tengeren hányódtunk, Amikor éjfél tájban a hajósok azt kezdték sejteni, hogy száraz földhöz közeledünk."}, {"verse_num": 28, "start_sec": 314.3457142857143, "end_sec": 325.48, "confidence": 94.69026548672566, "canonical_text": "Mérőónt bocsátottak le, s húsz ölet mértek. Kisvártatva ismét lebocsátották a mérőónt, s most tizenötöt mutatott.", "matched_text": "ő únt bocsátottak le, és húsz ölet mértek. Kisvártatva ismét lebocsátották a mérő únt, és most tizenötöt mutatott."}, {"verse_num": 29, "start_sec": 325.86, "end_sec": 336.38, "confidence": 98.34710743801654, "canonical_text": "Féltek, hogy sziklazátonyba ütközünk, lebocsátottak hát négy vasmacskát a hajó faráról, s alig várták, hogy megvirradjon.", "matched_text": "ltek, hogy szikla zátonyba ütközünk, lebocsátottak hát négy vasmacskát a hajó faráról, és alig várták, hogy megvirradjon."}, {"verse_num": 30, "start_sec": 335.7611764705882, "end_sec": 352.61, "confidence": 92.0, "canonical_text": "Virradatkor a hajósok el akartak a hajóról menekülni, ezért lebocsátották a tengerre a mentőcsónakot, azzal az ürüggyel, hogy a hajó orráról le akarják ereszteni a vasmacskát.", "matched_text": "Virradatkor a hajósok el akartak menekülni a hajóról, ezért lebocsátották a tengerre a mentőcsónakot, azzal az ürügygel, hogy a hajó orrálól le akarják ereszteni a vasmaskád."}, {"verse_num": 31, "start_sec": 353.23533333333336, "end_sec": 362.28066666666666, "confidence": 92.85714285714286, "canonical_text": "Pál odaszólt a századosnak és a katonáknak: \"Ha ezek nem maradnak a hajón, nem menekülhettek meg.\"", "matched_text": "onban odaszólt a századosnak és a katonáknak, ha ezek nem maradnak a hajón, nem menekülhettek meg."}, {"verse_num": 32, "start_sec": 361.7153333333333, "end_sec": 368.4993333333333, "confidence": 90.41095890410959, "canonical_text": "Erre a katonák elvágták a mentőcsónak kötelékét s engedték, hogy kiessék.", "matched_text": "eg. Erre a katonák elvágták a mentőcsónak kötelékét, és engedték, hogy lez"}, {"verse_num": 33, "start_sec": 371.45, "end_sec": 388.09967741935486, "confidence": 92.39766081871346, "canonical_text": "Amikor virradni kezdett, Pál mindnyájukat kérte, hogy vegyenek magukhoz valami táplálékot: \"Ma már tizennegyedik napja, hogy nem ettetek, s nem vettetek magatokhoz semmit.", "matched_text": "Amikor virradni kezdett, Pál mindannyiukat kérte, hogy vegyenek magukhoz valami táplálékot. Már tizennegyedik napja, hogy nem ettetek, mondta, és nem vettetek magatokhoz se"}, {"verse_num": 34, "start_sec": 387.44387096774193, "end_sec": 399.90419354838707, "confidence": 96.96969696969697, "canonical_text": "Ezért nagyon kérlek benneteket, vegyetek magatokhoz valami táplálékot, javatokra szolgál. Senkinek még a haja szála sem görbül meg.\"", "matched_text": "Ezért nagyon kérlek benneteket, vegyetek magatokhoz valami táplálékot, Javatokra szolgál, senkinek még a haja szála sem görbül meg."}, {"verse_num": 35, "start_sec": 399.2483870967742, "end_sec": 410.3970967741935, "confidence": 86.48648648648648, "canonical_text": "Aztán kezébe vette a kenyeret, hálát adott az Istennek mindannyiuk szeme láttára, megtörte és hozzáfogott enni.", "matched_text": "g. Azután kezébe vette a kenyeret, hálát adott Istennek, mindannyiuk szeme láttára, megtörte, és enni kezdett. E"}, {"verse_num": 36, "start_sec": 409.74129032258065, "end_sec": 414.9877419354839, "confidence": 87.09677419354838, "canonical_text": "Erre mindnyájan megnyugodtak, s szintén vettek magukhoz ételt.", "matched_text": "Erre valamennyien megnyugodtak, és szintén vettek magukhoz étel"}, {"verse_num": 37, "start_sec": 414.33193548387095, "end_sec": 419.5783870967742, "confidence": 59.09090909090908, "canonical_text": "A hajón összesen kétszázhetvenhatan voltunk.", "matched_text": "elt. A hajón összesen 276-an voltak. Amikor m"}, {"verse_num": 38, "start_sec": 418.2667741935484, "end_sec": 426.56, "confidence": 96.34146341463415, "canonical_text": "Amikor már jóllaktunk, úgy könnyítettek a hajón, hogy a búzát a tengerbe vetették.", "matched_text": "Amikor már jól laktunk, Úgy könnyítettek a hajón, hogy a buzát a tengerbe vetették."}, {"verse_num": 39, "start_sec": 425.993, "end_sec": 441.77877551020407, "confidence": 93.82716049382715, "canonical_text": "Amikor megvirradt, nem ismerték fel a szárazföldet, de egy öblöt észrevettek. Lapos partja volt, úgy gondolták hát, hogy ha lehetséges, erre futtatják rá a hajót.", "matched_text": "ték. Amikor megvirratt, nem ismerték föl a száraz földet, de egy öblöt észrevettek. Lapos partja volt, úgy gondolták hát, hogyha lehetséges, ráfuttatják a hajót. A"}, {"verse_num": 40, "start_sec": 440.6138775510204, "end_sec": 457.3113043478261, "confidence": 93.5483870967742, "canonical_text": "A vasmacskákat eloldották, és hagyták a tengerbe veszni. Egyszersmind a kormányrudak köteleit is meglazították, aztán felvonták a szél irányában az orrvitorlát, s a part felé igyekeztek.", "matched_text": "A vasmaskákat eloldották, és hagyták a tengerbe veszni. Egyúttal a kormányrudak kötelékeit is meglazították, Aztán felvonták a szél irányában az orvitorlát, és a part felé igyekeztek. Am"}, {"verse_num": 41, "start_sec": 456.62, "end_sec": 472.52, "confidence": 97.45222929936305, "canonical_text": "Amikor egy földnyelvhez jutottunk, ráfuttatták a hajót. A hajó orra befúródott, és mozdulatlan maradt, de a hajó fara a nagy hullámveréstől kezdett szétesni.", "matched_text": "mikor egy föld nyelvhez jutottunk, ráfuttatták a hajót. A hajó orra belefuródott, és mozdulatlan maradt, de a hajófara a nagy hullámveréstől kezdett szétesni."}, {"verse_num": 42, "start_sec": 473.36, "end_sec": 482.34592592592594, "confidence": 96.84210526315789, "canonical_text": "A katonáknak az volt a szándékuk, hogy a foglyokat megölik, nehogy partra úszva elmeneküljenek.", "matched_text": "A katonáknak az volt a szándéka, hogy a foglyokat megölik, nehogy partra úszva, Elmeneküljenek."}, {"verse_num": 43, "start_sec": 482.34592592592594, "end_sec": 499.03407407407406, "confidence": 98.27586206896551, "canonical_text": "De a százados meg akarta menteni Pált, ezért megtiltotta tervük végrehajtását. Elrendelte, hogy először azok ugorjanak ki, akik tudnak úszni, s igyekezzenek kiúszni a partra.", "matched_text": "e a százados meg akarta menteni pált, ezért megtiltott a tervük végrehajtását. Elrendelte, hogy először azok ugorjanak ki, akik tudnak úszni, és igyekezzenek kiúszni a partra."}, {"verse_num": 44, "start_sec": 499.03407407407406, "end_sec": 508.02, "confidence": 96.875, "canonical_text": "A többieket úgy vitték ki deszkákon vagy hajóroncsokon. Így mindenki épségben kijutott a partra.", "matched_text": "A többieket úgy vitték ki deszkákon, meg hajóroncsokon. Így mindenki épségben kijutott a partra."}]};
+        
+        let selectedVerses = new Set();
+        let timeUpdateHandler = null;
+        
+        // Initialize the page
+        function init() {
+            renderChapter();
+            setupNavigation();
+        }
+        
+        // Render chapter content
+        function renderChapter() {
+            const { book, chapter, verses } = chapterData;
+            
+            // Update title
+            document.getElementById('chapter-title').textContent = 
+                `${book.hungarian_name} ${chapter.chapter_num}. fejezet`;
+            
+            // Audio info
+            const audioStatus = document.getElementById('audio-status');
+            audioStatus.textContent = `${chapter.aligned_count}/${chapter.verse_count} vershez van időbélyeg`;
+            
+            // Setup audio player
+            const audio = document.getElementById('audio-player');
+            audio.src = chapter.audio_url;
+            audio.load();
+            
+            // Add error handler
+            audio.onerror = function() {
+                console.error('Audio load error:', audio.error);
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.textContent = 'Hiba a hangfájl betöltésekor. Ellenőrizd a hálózati kapcsolatot.';
+                errorDiv.style.display = 'block';
+            };
+            
+            // Add can play handler
+            audio.oncanplay = function() {
+                console.log('Audio ready to play');
+                const errorDiv = document.getElementById('audio-error');
+                errorDiv.style.display = 'none';
+            };
+            
+            // Render verses
+            const versesDiv = document.getElementById('verses');
+            versesDiv.innerHTML = '';
+            
+            verses.forEach(verse => {
+                const verseDiv = document.createElement('div');
+                verseDiv.className = 'verse';
+                
+                if (verse.start_sec !== null) {
+                    verseDiv.classList.add('has-timestamp');
+                    verseDiv.onclick = () => toggleVerseSelection(verse.verse_num);
+                }
+                
+                const numSpan = document.createElement('span');
+                numSpan.className = 'verse-num';
+                numSpan.textContent = verse.verse_num;
+                verseDiv.appendChild(numSpan);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'verse-text';
+                textSpan.textContent = verse.canonical_text || '(szöveg nem elérhető)';
+                verseDiv.appendChild(textSpan);
+                
+                if (verse.confidence !== null) {
+                    const confSpan = document.createElement('span');
+                    confSpan.className = 'verse-confidence';
+                    confSpan.textContent = `${Math.round(verse.confidence)}%`;
+                    confSpan.title = 'Megbízhatósági pontszám';
+                    verseDiv.appendChild(confSpan);
+                }
+                
+                if (verse.start_sec !== null) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'verse-time';
+                    timeSpan.textContent = formatTime(verse.start_sec);
+                    timeSpan.title = 'Kezdés időpontja';
+                    verseDiv.appendChild(timeSpan);
+                }
+                
+                versesDiv.appendChild(verseDiv);
+            });
+        }
+        
+        // Setup chapter navigation
+        function setupNavigation() {
+            const { book, chapter } = chapterData;
+            
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+            
+            if (chapter.chapter_num > 1) {
+                prevBtn.disabled = false;
+                prevBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num - 1}.html`;
+                };
+            }
+            
+            if (chapter.chapter_num < book.chapter_count) {
+                nextBtn.disabled = false;
+                nextBtn.onclick = () => {
+                    window.location.href = `${chapter.chapter_num + 1}.html`;
+                };
+            }
+        }
+        
+        // Toggle verse selection
+        function toggleVerseSelection(verseNum) {
+            if (selectedVerses.has(verseNum)) {
+                selectedVerses.delete(verseNum);
+            } else {
+                selectedVerses.add(verseNum);
+            }
+            
+            updateVerseSelection();
+            playSelectedVerses();
+        }
+        
+        // Update verse selection visual
+        function updateVerseSelection() {
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const num = parseInt(verseDiv.querySelector('.verse-num').textContent);
+                verseDiv.classList.toggle('selected', selectedVerses.has(num));
+            });
+        }
+        
+        // Play selected verses
+        function playSelectedVerses() {
+            if (selectedVerses.size === 0) return;
+            
+            const { verses } = chapterData;
+            
+            // Find min start and max end
+            let minStart = Infinity;
+            let maxEnd = 0;
+            
+            selectedVerses.forEach(verseNum => {
+                const verse = verses.find(v => v.verse_num === verseNum);
+                if (verse && verse.start_sec !== null) {
+                    minStart = Math.min(minStart, verse.start_sec);
+                    maxEnd = Math.max(maxEnd, verse.end_sec || verse.start_sec + 10);
+                }
+            });
+            
+            if (minStart === Infinity) return;
+            
+            const audio = document.getElementById('audio-player');
+            const errorDiv = document.getElementById('audio-error');
+            
+            // Hide any previous errors
+            errorDiv.style.display = 'none';
+            
+            // Remove previous timeupdate handler
+            if (timeUpdateHandler) {
+                audio.removeEventListener('timeupdate', timeUpdateHandler);
+            }
+            
+            // Set current time and play
+            audio.currentTime = minStart;
+            
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Audio playback failed:', error);
+                    errorDiv.textContent = 'A lejátszás nem sikerült. Kattints a lejátszó gombra a kézi indításhoz.';
+                    errorDiv.style.display = 'block';
+                });
+            }
+            
+            // Stop at max end
+            timeUpdateHandler = () => {
+                if (audio.currentTime >= maxEnd) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', timeUpdateHandler);
+                    timeUpdateHandler = null;
+                }
+            };
+            audio.addEventListener('timeupdate', timeUpdateHandler);
+        }
+        
+        // Format time in MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>
