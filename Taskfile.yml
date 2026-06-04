@@ -132,6 +132,13 @@ tasks:
     cmds:
       - uv run bibliavox audio download --all --workers {{.WORKERS}}{{if .FORCE}} --force{{end}}
 
+  audio:download-nt:
+    desc: Download all New Testament chapter MP3s
+    vars:
+      WORKERS: '{{default "4" .WORKERS}}'
+    cmds:
+      - uv run bibliavox audio download --all --testament NT --workers {{.WORKERS}}{{if .FORCE}} --force{{end}}
+
   audio:convert:
     desc: Convert one chapter MP3 to 16kHz mono PCM WAV (requires BOOK/CHAPTER vars and ffmpeg+ffprobe)
     deps: [audio:download]
@@ -143,6 +150,11 @@ tasks:
     deps: [audio:download-all]
     cmds:
       - uv run bibliavox audio convert-all{{if .FORCE}} --force{{end}}
+
+  audio:convert-nt:
+    desc: Convert downloaded NT MP3s to WAV
+    cmds:
+      - uv run bibliavox audio convert-all --testament NT{{if .FORCE}} --force{{end}}
 
   audio:info:
     desc: Inspect chapter audio metadata (requires ffprobe)
@@ -161,6 +173,11 @@ tasks:
     deps: [audio:download-all]
     cmds:
       - uv run bibliavox audio prepare-all{{if .FORCE}} --force{{end}}
+
+  audio:prepare-nt:
+    desc: Prepare all NT chapter artifacts (wav + meta + index)
+    cmds:
+      - uv run bibliavox audio prepare-all --testament NT{{if .FORCE}} --force{{end}}
 
   audio:seek:
     desc: Write WAV preview window from prepared seek index
@@ -210,6 +227,11 @@ tasks:
     cmds:
       - docker compose run --rm align python -m bibliavox.main align run-all {{if .MODEL}}--model "{{.MODEL}}"{{end}}{{if .FORCE}} --force{{end}}
 
+  export:align-nt:
+    desc: Run alignment on all NT prepared chapters in Docker with GPU
+    cmds:
+      - docker compose run --rm align python -m bibliavox.main align run-all --testament NT{{if .MODEL}} --model "{{.MODEL}}"{{end}}{{if .FORCE}} --force{{end}}
+
   export:align-gold:
     desc: Run alignment on gold chapters only (for evaluation)
     cmds:
@@ -237,6 +259,21 @@ tasks:
     deps:
       - export:prepare-audio
       - task: export:align
+        vars:
+          MODEL: "{{.MODEL}}"
+
+  export:run-nt:
+    desc: Run full pipeline on New Testament only (text → audio → align → export)
+    vars:
+      MODEL: '{{default "microsoft/VibeVoice-ASR-HF" .MODEL}}'
+    cmds:
+      - task: export:jsonl
+        vars:
+          MODEL: "{{.MODEL}}"
+          FORCE: "{{.FORCE}}"
+    deps:
+      - audio:prepare-nt
+      - task: export:align-nt
         vars:
           MODEL: "{{.MODEL}}"
 

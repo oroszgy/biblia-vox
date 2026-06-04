@@ -28,9 +28,15 @@ from bibliavox.audio.seek_index import (
     resolve_sample_window,
     write_seek_preview,
 )
+from bibliavox.reference.books import load_books
 
 app = typer.Typer(name="audio", help="Bible audio operations")
 console = Console()
+
+
+def _testament_usx_codes(testament: str) -> set[str]:
+    """Return USX codes for all books in the given testament."""
+    return {b.usx_code for b in load_books() if b.testament == testament.upper()}
 
 
 def _validate_index_payload(index_payload: dict[str, Any]) -> None:
@@ -107,6 +113,9 @@ def download(
         "--output-root",
         help="Raw artifact root path",
     ),
+    testament: str | None = typer.Option(
+        None, "--testament", "-t", help="Filter by testament: OT or NT (with --all)"
+    ),
 ) -> None:
     """Download one chapter or all chapters from MEK manifest."""
     if all_books and (book is not None or chapter is not None):
@@ -127,6 +136,13 @@ def download(
     if not manifest:
         console.print("[red]Playlist parsed to an empty manifest[/red]")
         raise typer.Exit(code=1)
+
+    if testament:
+        allowed = _testament_usx_codes(testament)
+        manifest = [item for item in manifest if item["book_usx"] in allowed]
+        if not manifest:
+            console.print(f"[red]No chapters found for testament '{testament}'[/red]")
+            raise typer.Exit(code=1)
 
     if all_books:
         report = inventory_report(manifest)
@@ -332,6 +348,9 @@ def convert_all(
         "--prepared-root",
         help="Prepared audio root path",
     ),
+    testament: str | None = typer.Option(
+        None, "--testament", "-t", help="Filter by testament: OT or NT"
+    ),
 ) -> None:
     """Convert all downloaded MP3s to WAV format."""
     if not raw_root.exists():
@@ -342,6 +361,10 @@ def convert_all(
     if not mp3_files:
         console.print("[yellow]No raw MP3 files found to convert.[/yellow]")
         return
+
+    if testament:
+        allowed = _testament_usx_codes(testament)
+        mp3_files = [f for f in mp3_files if f.parent.name in allowed]
 
     converted = 0
     skipped = 0
@@ -392,6 +415,9 @@ def prepare_all(
         "--prepared-root",
         help="Prepared audio root path",
     ),
+    testament: str | None = typer.Option(
+        None, "--testament", "-t", help="Filter by testament: OT or NT"
+    ),
 ) -> None:
     """Prepare all downloaded chapters: WAV, metadata, and seek index sidecars."""
     if not raw_root.exists():
@@ -402,6 +428,10 @@ def prepare_all(
     if not mp3_files:
         console.print("[yellow]No raw MP3 files found to prepare.[/yellow]")
         return
+
+    if testament:
+        allowed = _testament_usx_codes(testament)
+        mp3_files = [f for f in mp3_files if f.parent.name in allowed]
 
     prepared = 0
     skipped = 0

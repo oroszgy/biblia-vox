@@ -27,6 +27,7 @@ from bibliavox.align.match import match_verses
 from bibliavox.align.transcribe import transcribe_audio
 from bibliavox.align.vibevoice import vibevoice_asr_match, vibevoice_direct
 from bibliavox.config import get_settings
+from bibliavox.reference.books import load_books
 
 app = typer.Typer(help="Alignment commands for text to audio synchronization.")
 console = Console()
@@ -262,6 +263,9 @@ def run_all_command(
         None, help="Specific model ID to run (defaults to all in gauntlet)"
     ),
     force: bool = typer.Option(False, help="Force re-run even if cached"),
+    testament: str | None = typer.Option(
+        None, "--testament", "-t", help="Filter by testament: OT or NT"
+    ),
 ) -> None:
     """Run alignment on all prepared chapters with caching."""
     settings = get_settings()
@@ -302,6 +306,10 @@ def run_all_command(
         for wav_file in sorted(book_dir.glob("*.wav")):
             chapter_num = int(wav_file.stem)
             chapters.append((book_dir.name, chapter_num))
+
+    if testament:
+        allowed = {b.usx_code for b in load_books() if b.testament == testament.upper()}
+        chapters = [(b, c) for b, c in chapters if b in allowed]
 
     console.print(f"[cyan]Found {len(chapters)} prepared chapters[/cyan]")
 
